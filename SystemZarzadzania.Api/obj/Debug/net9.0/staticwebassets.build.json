@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "QgKoOsyPvBIt7OKr2x7zQKYK0mq7gM0a+k24K6+rVO4=",
+  "Source": "SystemZarzadzania.Api",
+  "BasePath": "_content/SystemZarzadzania.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
