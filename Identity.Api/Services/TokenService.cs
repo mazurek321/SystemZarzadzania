@@ -24,8 +24,8 @@ public class TokenService : ITokenService
         {
             new(JwtRegisteredClaimNames.Sub, request.Email),
             new(JwtRegisteredClaimNames.Email, request.Email),
-            new("Id", request.UserId.ToString()),
-            new("Role", request.Role.ToString())
+            new("userid", request.UserId.ToString()),
+            new("userrole", request.Role.ToString())
         };
 
         var tokenDescriptor = new SecurityTokenDescriptor

@@ -12,3 +12,4 @@ D:\programowanie\C#\System zarzadzania zasobami\Database.Data\obj\Debug\net8.0\r
 D:\programowanie\C#\System zarzadzania zasobami\Database.Data\obj\Debug\net8.0\Database.Data.pdb
 D:\programowanie\C#\System zarzadzania zasobami\Database.Data\obj\Debug\net8.0\Database.Data.genruntimeconfig.cache
 D:\programowanie\C#\System zarzadzania zasobami\Database.Data\obj\Debug\net8.0\ref\Database.Data.dll
+D:\programowanie\C#\System zarzadzania zasobami\Database.Data\obj\Debug\net8.0\Database.Data.sourcelink.json

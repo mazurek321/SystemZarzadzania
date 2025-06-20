@@ -122,3 +122,4 @@ D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\obj\Debug\net8.0\re
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\obj\Debug\net8.0\Identity.Api.pdb
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\obj\Debug\net8.0\Identity.Api.genruntimeconfig.cache
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\obj\Debug\net8.0\ref\Identity.Api.dll
+D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\obj\Debug\net8.0\Identity.Api.sourcelink.json
