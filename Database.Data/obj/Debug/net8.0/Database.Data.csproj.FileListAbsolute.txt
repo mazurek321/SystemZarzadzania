@@ -7,9 +7,9 @@ D:\programowanie\C#\System zarzadzania zasobami\Database.Data\obj\Debug\net8.0\D
 D:\programowanie\C#\System zarzadzania zasobami\Database.Data\obj\Debug\net8.0\Database.Data.AssemblyInfoInputs.cache
 D:\programowanie\C#\System zarzadzania zasobami\Database.Data\obj\Debug\net8.0\Database.Data.AssemblyInfo.cs
 D:\programowanie\C#\System zarzadzania zasobami\Database.Data\obj\Debug\net8.0\Database.Data.csproj.CoreCompileInputs.cache
+D:\programowanie\C#\System zarzadzania zasobami\Database.Data\obj\Debug\net8.0\Database.Data.sourcelink.json
 D:\programowanie\C#\System zarzadzania zasobami\Database.Data\obj\Debug\net8.0\Database.Data.dll
 D:\programowanie\C#\System zarzadzania zasobami\Database.Data\obj\Debug\net8.0\refint\Database.Data.dll
 D:\programowanie\C#\System zarzadzania zasobami\Database.Data\obj\Debug\net8.0\Database.Data.pdb
 D:\programowanie\C#\System zarzadzania zasobami\Database.Data\obj\Debug\net8.0\Database.Data.genruntimeconfig.cache
 D:\programowanie\C#\System zarzadzania zasobami\Database.Data\obj\Debug\net8.0\ref\Database.Data.dll
-D:\programowanie\C#\System zarzadzania zasobami\Database.Data\obj\Debug\net8.0\Database.Data.sourcelink.json

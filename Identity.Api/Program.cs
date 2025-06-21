@@ -1,6 +1,8 @@
 using System.Text;
 using Database.Data;
 using Database.Data.Services;
+using Infrastructure.Email;
+using Infrastructure.Email.EmailTypes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -56,9 +58,13 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddControllers();
 
+
 builder.Services.AddScoped<ITokenService, TokenService>();
 
-builder.Services.AddSwaggerGen(c =>{});
+builder.Services.AddScoped<IEmailTemplate, Registration>();
+builder.Services.AddScoped<EmailTemplateFactory>();
+builder.Services.Configure<EmailInfo>(builder.Configuration.GetSection("EmailSettings"));
+builder.Services.AddScoped<EmailSender>();
 
 var app = builder.Build();
 
@@ -69,6 +75,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 

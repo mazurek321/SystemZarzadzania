@@ -4,6 +4,8 @@ using Identity.Api.Dto;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Infrastructure.Email;
+using Infrastructure.Email.EmailTypes;
 
 namespace Identity.Api.Controllers;
 
@@ -13,14 +15,18 @@ public class LoginController : ControllerBase
 {
     private readonly AppDbContext _dbContext;
     private readonly ITokenService _tokenService;
+    private readonly EmailSender _emailSender;
+
 
     public LoginController(
         AppDbContext dbContext,
-        ITokenService tokenService
+        ITokenService tokenService,
+        EmailSender emailSender
     )
     {
         _dbContext = dbContext;
         _tokenService = tokenService;
+        _emailSender = emailSender;
     }
 
     [HttpPost("login")]
@@ -50,6 +56,7 @@ public class LoginController : ControllerBase
         };
 
         var token = _tokenService.GenerateToken(request);
+
         return Ok(token);
     }
     
@@ -68,6 +75,10 @@ public class LoginController : ControllerBase
             
         var hashedPassword = hasher.HashPassword(user, dto.Password);
         user.SetPasswordHash(hashedPassword);
+
+        var message = "Thanks for creating account!";
+
+        await _emailSender.SendEmailAsync(user.Email, user.Email, EmailType.Registration);
 
         _dbContext.Users.Add(user);
         await _dbContext.SaveChangesAsync();

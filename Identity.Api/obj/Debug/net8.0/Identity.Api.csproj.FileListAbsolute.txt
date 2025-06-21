@@ -6,7 +6,9 @@ D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\Id
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\Identity.Api.runtimeconfig.json
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\Identity.Api.dll
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\Identity.Api.pdb
+D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\Humanizer.dll
+D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\MailKit.dll
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\Microsoft.AspNetCore.OpenApi.dll
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
@@ -25,6 +27,7 @@ D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\Mi
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
@@ -32,6 +35,7 @@ D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\Mi
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\Microsoft.OpenApi.dll
+D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\MimeKit.dll
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\Mono.TextTemplating.dll
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\MySqlConnector.dll
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\Pomelo.EntityFrameworkCore.MySql.dll
@@ -45,6 +49,7 @@ D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\Sy
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\System.Composition.Runtime.dll
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\System.Composition.TypedParts.dll
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
@@ -97,8 +102,11 @@ D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\ru
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\Database.Data.dll
+D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\Infrastructure.dll
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\Database.Data.pdb
+D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\bin\Debug\net8.0\Infrastructure.pdb
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\obj\Debug\net8.0\Identity.Api.csproj.AssemblyReference.cache
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\obj\Debug\net8.0\Identity.Api.GeneratedMSBuildEditorConfig.editorconfig
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\obj\Debug\net8.0\Identity.Api.AssemblyInfoInputs.cache
@@ -106,6 +114,7 @@ D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\obj\Debug\net8.0\Id
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\obj\Debug\net8.0\Identity.Api.csproj.CoreCompileInputs.cache
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\obj\Debug\net8.0\Identity.Api.MvcApplicationPartsAssemblyInfo.cs
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\obj\Debug\net8.0\Identity.Api.MvcApplicationPartsAssemblyInfo.cache
+D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\obj\Debug\net8.0\Identity.Api.sourcelink.json
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\obj\Debug\net8.0\scopedcss\bundle\Identity.Api.styles.css
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\obj\Debug\net8.0\staticwebassets.build.json
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\obj\Debug\net8.0\staticwebassets.development.json
@@ -122,4 +131,3 @@ D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\obj\Debug\net8.0\re
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\obj\Debug\net8.0\Identity.Api.pdb
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\obj\Debug\net8.0\Identity.Api.genruntimeconfig.cache
 D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\obj\Debug\net8.0\ref\Identity.Api.dll
-D:\programowanie\C#\System zarzadzania zasobami\Identity.Api\obj\Debug\net8.0\Identity.Api.sourcelink.json
