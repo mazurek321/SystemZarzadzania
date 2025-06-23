@@ -1,0 +1,6 @@
+D:\programowanie\C#\System zarzadzania zasobami\Database.Data\obj\Debug\net8.0\Database.Data.csproj.AssemblyReference.cache
+D:\programowanie\C#\System zarzadzania zasobami\Database.Data\obj\Debug\net8.0\Database.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\programowanie\C#\System zarzadzania zasobami\Database.Data\obj\Debug\net8.0\Database.Data.AssemblyInfoInputs.cache
+D:\programowanie\C#\System zarzadzania zasobami\Database.Data\obj\Debug\net8.0\Database.Data.AssemblyInfo.cs
+D:\programowanie\C#\System zarzadzania zasobami\Database.Data\obj\Debug\net8.0\Database.Data.csproj.CoreCompileInputs.cache
+D:\programowanie\C#\System zarzadzania zasobami\Database.Data\obj\Debug\net8.0\Database.Data.sourcelink.json
