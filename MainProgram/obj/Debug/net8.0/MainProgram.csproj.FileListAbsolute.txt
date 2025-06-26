@@ -1,11 +1,3 @@
-D:\programowanie\C#\System zarzadzania zasobami\MainProgram\obj\Debug\net8.0\MainProgram.csproj.AssemblyReference.cache
-D:\programowanie\C#\System zarzadzania zasobami\MainProgram\obj\Debug\net8.0\MainProgram.GeneratedMSBuildEditorConfig.editorconfig
-D:\programowanie\C#\System zarzadzania zasobami\MainProgram\obj\Debug\net8.0\MainProgram.AssemblyInfoInputs.cache
-D:\programowanie\C#\System zarzadzania zasobami\MainProgram\obj\Debug\net8.0\MainProgram.AssemblyInfo.cs
-D:\programowanie\C#\System zarzadzania zasobami\MainProgram\obj\Debug\net8.0\MainProgram.csproj.CoreCompileInputs.cache
-D:\programowanie\C#\System zarzadzania zasobami\MainProgram\obj\Debug\net8.0\MainProgram.MvcApplicationPartsAssemblyInfo.cs
-D:\programowanie\C#\System zarzadzania zasobami\MainProgram\obj\Debug\net8.0\MainProgram.MvcApplicationPartsAssemblyInfo.cache
-D:\programowanie\C#\System zarzadzania zasobami\MainProgram\obj\Debug\net8.0\MainProgram.sourcelink.json
 D:\programowanie\C#\System zarzadzania zasobami\MainProgram\bin\Debug\net8.0\appsettings.Development.json
 D:\programowanie\C#\System zarzadzania zasobami\MainProgram\bin\Debug\net8.0\appsettings.json
 D:\programowanie\C#\System zarzadzania zasobami\MainProgram\bin\Debug\net8.0\MainProgram.staticwebassets.endpoints.json
@@ -45,6 +37,8 @@ D:\programowanie\C#\System zarzadzania zasobami\MainProgram\bin\Debug\net8.0\MyS
 D:\programowanie\C#\System zarzadzania zasobami\MainProgram\bin\Debug\net8.0\Newtonsoft.Json.dll
 D:\programowanie\C#\System zarzadzania zasobami\MainProgram\bin\Debug\net8.0\Pomelo.EntityFrameworkCore.MySql.dll
 D:\programowanie\C#\System zarzadzania zasobami\MainProgram\bin\Debug\net8.0\Quartz.dll
+D:\programowanie\C#\System zarzadzania zasobami\MainProgram\bin\Debug\net8.0\Quartz.Extensions.DependencyInjection.dll
+D:\programowanie\C#\System zarzadzania zasobami\MainProgram\bin\Debug\net8.0\Quartz.Extensions.Hosting.dll
 D:\programowanie\C#\System zarzadzania zasobami\MainProgram\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\programowanie\C#\System zarzadzania zasobami\MainProgram\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\programowanie\C#\System zarzadzania zasobami\MainProgram\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -57,6 +51,14 @@ D:\programowanie\C#\System zarzadzania zasobami\MainProgram\bin\Debug\net8.0\Inf
 D:\programowanie\C#\System zarzadzania zasobami\MainProgram\bin\Debug\net8.0\Api.pdb
 D:\programowanie\C#\System zarzadzania zasobami\MainProgram\bin\Debug\net8.0\Core.pdb
 D:\programowanie\C#\System zarzadzania zasobami\MainProgram\bin\Debug\net8.0\Infrastructure.pdb
+D:\programowanie\C#\System zarzadzania zasobami\MainProgram\obj\Debug\net8.0\MainProgram.csproj.AssemblyReference.cache
+D:\programowanie\C#\System zarzadzania zasobami\MainProgram\obj\Debug\net8.0\MainProgram.GeneratedMSBuildEditorConfig.editorconfig
+D:\programowanie\C#\System zarzadzania zasobami\MainProgram\obj\Debug\net8.0\MainProgram.AssemblyInfoInputs.cache
+D:\programowanie\C#\System zarzadzania zasobami\MainProgram\obj\Debug\net8.0\MainProgram.AssemblyInfo.cs
+D:\programowanie\C#\System zarzadzania zasobami\MainProgram\obj\Debug\net8.0\MainProgram.csproj.CoreCompileInputs.cache
+D:\programowanie\C#\System zarzadzania zasobami\MainProgram\obj\Debug\net8.0\MainProgram.MvcApplicationPartsAssemblyInfo.cs
+D:\programowanie\C#\System zarzadzania zasobami\MainProgram\obj\Debug\net8.0\MainProgram.MvcApplicationPartsAssemblyInfo.cache
+D:\programowanie\C#\System zarzadzania zasobami\MainProgram\obj\Debug\net8.0\MainProgram.sourcelink.json
 D:\programowanie\C#\System zarzadzania zasobami\MainProgram\obj\Debug\net8.0\scopedcss\bundle\MainProgram.styles.css
 D:\programowanie\C#\System zarzadzania zasobami\MainProgram\obj\Debug\net8.0\staticwebassets.build.json
 D:\programowanie\C#\System zarzadzania zasobami\MainProgram\obj\Debug\net8.0\staticwebassets.development.json
@@ -73,5 +75,3 @@ D:\programowanie\C#\System zarzadzania zasobami\MainProgram\obj\Debug\net8.0\ref
 D:\programowanie\C#\System zarzadzania zasobami\MainProgram\obj\Debug\net8.0\MainProgram.pdb
 D:\programowanie\C#\System zarzadzania zasobami\MainProgram\obj\Debug\net8.0\MainProgram.genruntimeconfig.cache
 D:\programowanie\C#\System zarzadzania zasobami\MainProgram\obj\Debug\net8.0\ref\MainProgram.dll
-D:\programowanie\C#\System zarzadzania zasobami\MainProgram\bin\Debug\net8.0\Quartz.Extensions.DependencyInjection.dll
-D:\programowanie\C#\System zarzadzania zasobami\MainProgram\bin\Debug\net8.0\Quartz.Extensions.Hosting.dll
