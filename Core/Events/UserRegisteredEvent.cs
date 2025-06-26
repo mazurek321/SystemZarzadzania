@@ -1,14 +1,16 @@
 using System;
 using Core.Models.Users;
 using Core.Domain;
+using Core.Entities;
+using MediatR;
 
 namespace Core.Events;
 
-public class UserRegisteredEvent : DomainEventBase
+public class UserRegisteredEvent : DomainEventBase, INotification
 {
-    public User User { get; }
+    public UserWithEvents User { get; }
 
-    public UserRegisteredEvent(User user)
+    public UserRegisteredEvent(UserWithEvents user)
     {
         User = user;
         OccurredOn = DateTime.UtcNow;

@@ -12,8 +12,15 @@ internal sealed class UserRepository(AppDbContext dbContext) : IUserRepository
         await dbContext.SaveChangesAsync();
     }
 
+    public async Task<User> FindByIdAsync(Guid id)
+    {
+        return await dbContext.Users.FirstOrDefaultAsync(x=>x.Id == id);
+    }
+
     public async Task<User> FindByEmailAsync(string email)
     {
         return await dbContext.Users.FirstOrDefaultAsync(x => x.Email == email);
     }
+
+
 }

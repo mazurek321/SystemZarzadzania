@@ -2,11 +2,35 @@ using System.Collections.Generic;
 using Core.Events;
 using Core.Domain;
 using Core.Models.Users;
+using MediatR;
+using Newtonsoft.Json;
 
-public class UserWithEvents : User, IDomainEventEntity
+
+namespace Core.Entities;
+public class UserWithEvents : User, IDomainEventEntity, INotification
 {
-    public UserWithEvents(Guid id, string name, string lastname, string password, string email, UserRole role, DateTime createdAt, DateTime updatedAt)
-        : base(id, name, lastname, password, email, role, createdAt, updatedAt)
+    public UserWithEvents() 
+    {
+        DomainEvents = new List<DomainEventBase>();
+    }
+
+    [JsonConstructor]
+    public UserWithEvents(
+        Guid id,
+        string name,
+        string lastname,
+        string passwordHash,
+        string email,
+        User.UserRole role,
+        DateTime createdAt,
+        DateTime updatedAt)
+        : base(id, name, lastname, passwordHash, email, role, createdAt, updatedAt)
+    {
+        DomainEvents = new List<DomainEventBase>();
+    }
+
+    public UserWithEvents(User user)
+        : base(user.Id, user.Name, user.Lastname, user.PasswordHash, user.Email, user.Role, user.CreatedAt, user.UpdatedAt)
     {
         DomainEvents = new List<DomainEventBase>();
     }

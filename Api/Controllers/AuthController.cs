@@ -8,6 +8,9 @@ using Infrastructure.Database;
 using Infrastructure.Services;
 using Infrastructure.Email;
 using Infrastructure.Email.EmailTypes;
+using Core.Domain;
+using Core.Events;
+using Core.Entities;
 
 namespace Api.Controllers;
 
@@ -85,9 +88,10 @@ public class LoginController : ControllerBase
 
         var message = "Thanks for creating account!";
 
-        await _emailSender.SendEmailAsync(user.Email, user.Email, EmailType.Registration);
+        var userEvent = new UserWithEvents(user);
+        userEvent.AddDomainEvent(new UserRegisteredEvent(userEvent));
 
-        await _userRepository.AddAsync(user);
+        await _userRepository.AddAsync(userEvent);
 
         return Ok("User registered successfully.");
     }

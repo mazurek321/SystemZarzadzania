@@ -7,27 +7,31 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Core.Models.Users;
+using Infrastructure.Repositories;
 
 namespace Api.Controllers;
 
 [ApiController]
-[Route("api/auth/user")]
+[Route("api/user")]
 public class UserController : ControllerBase
 {
     private readonly AppDbContext _dbContext;
+    private readonly IUserRepository _userRepository;
     private readonly ICurrentUserService _user;
-    public UserController(AppDbContext dbContext, ICurrentUserService user)
+    public UserController(AppDbContext dbContext, ICurrentUserService user, IUserRepository userRepository)
     {
         _dbContext = dbContext;
         _user = user;
+        _userRepository = userRepository;
     }
 
     [HttpGet]
     [Authorize]
-    public async Task<IActionResult> GetMe()
+    public async Task<IActionResult> GetUser([FromQuery] Guid? userId)
     {
-        var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == _user.Id);
-
+        var query = userId is null ? _user.Id.Value : userId.Value;
+        var user = await _userRepository.FindByIdAsync(query);
+                   
         if (user is null)
             return NotFound("User not found.");
 

@@ -8,7 +8,7 @@ internal class OutboxMessageEntityTypeConfiguration : IEntityTypeConfiguration<O
 {
     public void Configure(EntityTypeBuilder<OutboxMessage> builder)
     {
-        builder.ToTable("OutboxMessages", "app");
+        builder.ToTable("OutboxMessages", "SystemZarzadzania");
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id).ValueGeneratedNever();
         builder.Property(x => x.ProcessedDate).IsRequired(false);

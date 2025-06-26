@@ -11,8 +11,11 @@ using Infrastructure.Services;
 using Core.Models.Users;
 using Infrastructure.Repositories;
 using MediatR;
+using Quartz;
+using Infrastructure.Quartz;
+using Infrastructure.Database.Abstractions;
+using Infrastructure.Database;
 
-using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -59,7 +62,6 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-
 builder.Services.AddDbContext<AppDbContext>((serviceProvider, optionsBuilder) =>
 {
     optionsBuilder.UseMySql(
@@ -68,20 +70,39 @@ builder.Services.AddDbContext<AppDbContext>((serviceProvider, optionsBuilder) =>
     );
 });
 
-
-
-
 builder.Services.AddControllers();
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddRepositories();
-
 
 builder.Services.AddScoped<IEmailTemplate, Registration>();
 builder.Services.AddScoped<EmailTemplateFactory>();
 builder.Services.Configure<EmailInfo>(builder.Configuration.GetSection("EmailSettings"));
 builder.Services.AddScoped<EmailSender>();
 
+builder.Services.AddQuartz(q =>
+{
+    q.UseMicrosoftDependencyInjectionJobFactory();
+
+    var jobKey = new JobKey("ProcessOutboxJob");
+
+    q.AddJob<ProcessOutboxJob>(opts => opts.WithIdentity(jobKey));
+    q.AddTrigger(opts => opts
+        .ForJob(jobKey)
+        .WithIdentity("ProcessOutboxJob-trigger")
+        .WithSimpleSchedule(x => x.WithIntervalInSeconds(30).RepeatForever()));
+});
+
+builder.Services.AddQuartzHostedService(q => q.WaitForJobsToComplete = true);
+
+builder.Services.AddTransient<ISqlConnectionFactory, SqlConnectionFactory>();
+builder.Services.AddMediatR(cfg =>
+{
+    cfg.RegisterServicesFromAssemblyContaining<Infrastructure.EventHandlers.UserRegisteredEventHandler>();
+    cfg.RegisterServicesFromAssemblyContaining<Core.Events.UserRegisteredEvent>();
+});
+
+builder.Services.AddLogging();
 
 var app = builder.Build();
 
@@ -98,6 +119,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-
 app.Run();
-

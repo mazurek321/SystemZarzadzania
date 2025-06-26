@@ -1,8 +1,11 @@
-using System.Data;
-
-namespace Infrastructure.Database.Abstractions;
-
-public interface ISqlConnectionFactory
+using System.Data;              
+using Microsoft.Extensions.Configuration;  
+using MySqlConnector; 
+namespace Infrastructure.Database.Abstractions
 {
-    IDbConnection CreateOpenConnection();
+    public interface ISqlConnectionFactory
+    {
+        IDbConnection CreateOpenConnection();
+    }
 }
+

@@ -1,8 +1,9 @@
 using System;
+using MediatR;
 
 namespace Core.Domain;
 
-public abstract class DomainNotificationBase<T> : DomainEventBase
+public abstract class DomainNotificationBase<T> : DomainEventBase, INotification
 {
     public T Data { get; }
 

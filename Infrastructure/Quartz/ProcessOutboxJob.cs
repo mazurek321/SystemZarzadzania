@@ -32,7 +32,7 @@ public class ProcessOutboxJob : IJob
         using var connection = _sqlConnectionFactory.CreateOpenConnection();
 
         string sql = @"SELECT Id, Type, Data 
-                       FROM app.OutboxMessages 
+                       FROM SystemZarzadzania.OutboxMessages 
                        WHERE ProcessedDate IS NULL";
 
         var messages = await connection.QueryAsync<OutboxMessageDto>(sql);
@@ -41,16 +41,30 @@ public class ProcessOutboxJob : IJob
         {
             try
             {
-                var assembly = Assembly.GetAssembly(typeof(INotification));
-                var type = assembly.GetType(message.Type);
+                var type = Type.GetType(message.Type);
+                if (type == null)
+                {
+                    _logger.LogError($"Type not found: {message.Type}");
+                    continue;
+                }
 
-                var notification = JsonConvert.DeserializeObject(message.Data, type);
+                var notification = JsonConvert.DeserializeObject(message.Data, type, new JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.All
+                }) as INotification;
 
-                await _mediator.Publish((INotification)notification);
+                if (notification == null)
+                {
+                    _logger.LogError($"Deserialized message does not implement INotification: {message.Type}");
+                    continue;
+                }
 
-                string updateSql = "UPDATE app.OutboxMessages SET ProcessedDate = @Date WHERE Id = @Id";
+                await _mediator.Publish(notification);
 
-                await connection.ExecuteAsync(updateSql, new { Date = DateTime.UtcNow, message.Id });
+                string updateSql = "UPDATE SystemZarzadzania.OutboxMessages SET ProcessedDate = @Date WHERE Id = @Id";
+                await connection.ExecuteAsync(updateSql, new { Date = DateTime.UtcNow, Id = message.Id });
+
+                _logger.LogInformation($"Processed outbox message {message.Id} of type {message.Type}.");
             }
             catch (Exception ex)
             {

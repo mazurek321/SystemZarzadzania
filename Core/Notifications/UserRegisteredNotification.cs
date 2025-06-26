@@ -2,10 +2,10 @@ using Newtonsoft.Json;
 using Core.Events;
 using Core.Models;
 using Core.Domain;
+using MediatR;
 
 namespace Core.Notifications;
-
-public class UserRegisteredNotification : DomainNotificationBase<UserRegisteredEvent>
+public class UserRegisteredNotification : DomainNotificationBase<UserRegisteredEvent>, INotification
 {
     public Guid UserId { get; }
 
