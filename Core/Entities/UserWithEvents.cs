@@ -21,16 +21,19 @@ public class UserWithEvents : User, IDomainEventEntity, INotification
         string lastname,
         string passwordHash,
         string email,
+        string phone,
+        bool isActive,
+        DateTime lastActive,
         User.UserRole role,
         DateTime createdAt,
         DateTime updatedAt)
-        : base(id, name, lastname, passwordHash, email, role, createdAt, updatedAt)
+        : base(id, name, lastname, passwordHash, email, phone, isActive, lastActive, role, createdAt, updatedAt)
     {
         DomainEvents = new List<DomainEventBase>();
     }
 
     public UserWithEvents(User user)
-        : base(user.Id, user.Name, user.Lastname, user.PasswordHash, user.Email, user.Role, user.CreatedAt, user.UpdatedAt)
+        : base(user.Id, user.Name, user.Lastname, user.PasswordHash, user.Email, user.Phone, user.IsActive, user.LastActive, user.Role, user.CreatedAt, user.UpdatedAt)
     {
         DomainEvents = new List<DomainEventBase>();
     }

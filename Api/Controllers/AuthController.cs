@@ -64,6 +64,8 @@ public class LoginController : ControllerBase
 
         var token = _tokenService.GenerateToken(request);
 
+        await _userRepository.UpdateActivityAsync(user);
+
         return Ok(token);
     }
     
@@ -80,7 +82,8 @@ public class LoginController : ControllerBase
                 dto.Name,
                 dto.Lastname,
                 "temp",
-                dto.Email
+                dto.Email,
+                dto.Phone
             );
             
         var hashedPassword = hasher.HashPassword(user, dto.Password);

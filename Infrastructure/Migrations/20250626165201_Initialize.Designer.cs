@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250622081444_Initialize")]
+    [Migration("20250626165201_Initialize")]
     partial class Initialize
     {
         /// <inheritdoc />
@@ -25,7 +25,7 @@ namespace Infrastructure.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("Core.Models.OutboxMessage", b =>
+            modelBuilder.Entity("Core.Models.OutboxMessages.OutboxMessage", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -50,7 +50,45 @@ namespace Infrastructure.Migrations
                     b.ToTable("OutboxMessages");
                 });
 
-            modelBuilder.Entity("Core.Models.User", b =>
+            modelBuilder.Entity("Core.Models.UserTasks.UserTask", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("ActualBegin")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("ActualEnd")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("PlannedBegin")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("PlannedEnd")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("Priority")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tasks");
+                });
+
+            modelBuilder.Entity("Core.Models.Users.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -63,6 +101,12 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime>("LastActive")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("Lastname")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -72,6 +116,10 @@ namespace Infrastructure.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("longtext");
 

@@ -14,12 +14,19 @@ internal sealed class UserRepository(AppDbContext dbContext) : IUserRepository
 
     public async Task<User> FindByIdAsync(Guid id)
     {
-        return await dbContext.Users.FirstOrDefaultAsync(x=>x.Id == id);
+        return await dbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
     }
 
     public async Task<User> FindByEmailAsync(string email)
     {
         return await dbContext.Users.FirstOrDefaultAsync(x => x.Email == email);
+    }
+
+    public async Task UpdateActivityAsync(User user)
+    {
+        user.UpdateActivity();
+        dbContext.Update(user);
+        await dbContext.SaveChangesAsync();
     }
 
 

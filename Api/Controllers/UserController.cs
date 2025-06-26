@@ -41,6 +41,9 @@ public class UserController : ControllerBase
             Name = user.Name,
             Lastname = user.Lastname,
             Email = user.Email,
+            Phone = user.Phone,
+            IsActive = user.IsActive,
+            LastActive = user.LastActive,
             Role = user.Role,
             CreatedAt = user.CreatedAt,
             UpdatedAt = user.UpdatedAt
@@ -59,7 +62,8 @@ public class UserController : ControllerBase
         updatingUser.UpdateUser(
             dto.Name,
             dto.Lastname,
-            dto.Email
+            dto.Email,
+            dto.Phone
         );
 
         await _dbContext.SaveChangesAsync();

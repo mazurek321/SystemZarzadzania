@@ -4,51 +4,45 @@ using Core.Models.OutboxMessages;
 using Core.Models.UserTasks;
 using Core.Domain;
 using Newtonsoft.Json;
+using System.Linq;
 
-
-
-namespace Infrastructure.Database;
-
-public class AppDbContext : DbContext
+namespace Infrastructure.Database
 {
-
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+    public class AppDbContext : DbContext
     {
-    }
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
+        public DbSet<OutboxMessage> OutboxMessages { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<UserTask> Tasks { get; set; }
 
-    public DbSet<OutboxMessage> OutboxMessages { get; set; }
-    public DbSet<User> Users { get; set; }
-    public DbSet<UserTask> Tasks { get; set; }
-
-    public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
-    {
-        var domainEntities = ChangeTracker.Entries()
-            .Where(x => x.Entity is IDomainEventEntity && x.State == EntityState.Added || x.State == EntityState.Modified);
-
-        var domainEvents = domainEntities
-            .SelectMany(x => ((IDomainEventEntity)x.Entity).DomainEvents)
-            .ToList();
-
-        foreach (var entity in domainEntities)
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
-            ((IDomainEventEntity)entity.Entity).ClearDomainEvents();
+            var domainEntities = ChangeTracker.Entries()
+                .Where(x => x.Entity is IDomainEventEntity &&
+                            (x.State == EntityState.Added || x.State == EntityState.Modified))
+                .Select(x => x.Entity as IDomainEventEntity)
+                .Where(x => x != null)
+                .ToList();
+
+            var domainEvents = domainEntities
+                .SelectMany(x => x.DomainEvents)
+                .ToList();
+
+            foreach (var entity in domainEntities)
+            {
+                entity.ClearDomainEvents();
+            }
+
+            foreach (var domainEvent in domainEvents)
+            {
+                var typeName = domainEvent.GetType().AssemblyQualifiedName;
+                var data = JsonConvert.SerializeObject(domainEvent);
+                var outboxMessage = new OutboxMessage(domainEvent.OccurredOn, typeName, data);
+                OutboxMessages.Add(outboxMessage);
+            }
+
+            return await base.SaveChangesAsync(cancellationToken);
         }
-
-        foreach (var domainEvent in domainEvents)
-        {
-            var typeName = domainEvent.GetType().AssemblyQualifiedName;
-            var data = JsonConvert.SerializeObject(domainEvent);
-
-            var outboxMessage = new OutboxMessage(domainEvent.OccurredOn, typeName, data);
-            OutboxMessages.Add(outboxMessage);
-        }
-
-        var result = await base.SaveChangesAsync(cancellationToken);
-
-        return result;
     }
-
-
-
 }
