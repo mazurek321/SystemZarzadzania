@@ -1,4 +1,4 @@
-namespace Api.Dto;
+namespace Api.Dto.UserTasksDtos;
 
 public class CreateTaskDto
 {

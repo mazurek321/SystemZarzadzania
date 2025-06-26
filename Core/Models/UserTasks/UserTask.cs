@@ -1,4 +1,4 @@
-namespace Core.Models;
+namespace Core.Models.UserTasks;
 
 public class UserTask
 {

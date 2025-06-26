@@ -1,9 +1,11 @@
-using Core.Models;
-using Api.Dto;
+using Core.Models.Users;
+using Core.Models.Tokens;
+using Api.Dto.AuthDtos;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Infrastructure.Database;
+using Infrastructure.Services;
 using Infrastructure.Email;
 using Infrastructure.Email.EmailTypes;
 
@@ -16,17 +18,20 @@ public class LoginController : ControllerBase
     private readonly AppDbContext _dbContext;
     private readonly ITokenService _tokenService;
     private readonly EmailSender _emailSender;
+    private readonly IUserRepository _userRepository;
 
 
     public LoginController(
         AppDbContext dbContext,
         ITokenService tokenService,
-        EmailSender emailSender
+        EmailSender emailSender,
+        IUserRepository userRepository
     )
     {
         _dbContext = dbContext;
         _tokenService = tokenService;
         _emailSender = emailSender;
+        _userRepository = userRepository;
     }
 
     [HttpPost("login")]
@@ -34,8 +39,7 @@ public class LoginController : ControllerBase
     {
         var email = dto.Email;
 
-        var user = await _dbContext.Users
-                        .FirstOrDefaultAsync(x => x.Email == email);
+        var user = await _userRepository.FindByEmailAsync(email);
 
         if (user is null)
             return Unauthorized("User with this email does not exist.");
@@ -65,12 +69,15 @@ public class LoginController : ControllerBase
     {
         var hasher = new PasswordHasher<User>();
 
-        var exists = await _dbContext.Users.AnyAsync(x => x.Email == dto.Email);
-        if (exists)
+        var exists = await _userRepository.FindByEmailAsync(dto.Email);
+        if (exists is not null)
             return Conflict("User with this email already exists.");
 
-        var user = Core.Models.User.CreateUser(
-                dto.Name, dto.Lastname, "temp", dto.Email
+        var user = Core.Models.Users.User.CreateUser(
+                dto.Name,
+                dto.Lastname,
+                "temp",
+                dto.Email
             );
             
         var hashedPassword = hasher.HashPassword(user, dto.Password);
@@ -80,8 +87,7 @@ public class LoginController : ControllerBase
 
         await _emailSender.SendEmailAsync(user.Email, user.Email, EmailType.Registration);
 
-        _dbContext.Users.Add(user);
-        await _dbContext.SaveChangesAsync();
+        await _userRepository.AddAsync(user);
 
         return Ok("User registered successfully.");
     }

@@ -1,12 +1,12 @@
 using System.Security.Claims;
 using Infrastructure.Database;
 using Infrastructure.Context;
-using Api.Dto;
+using Api.Dto.UserDtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using Core.Models;
+using Core.Models.Users;
 
 namespace Api.Controllers;
 

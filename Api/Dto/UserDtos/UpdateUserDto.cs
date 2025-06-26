@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.InteropServices;
 
-namespace Api.Dto;
+namespace Api.Dto.UserDtos;
 
 public class UpdateUserDto
 {

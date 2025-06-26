@@ -8,7 +8,11 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using Infrastructure.Services;
-using Core.Models;
+using Core.Models.Users;
+using Infrastructure.Repositories;
+using MediatR;
+
+using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -55,18 +59,23 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
-        new MySqlServerVersion(new Version(8, 0, 27))));
+
+builder.Services.AddDbContext<AppDbContext>((serviceProvider, optionsBuilder) =>
+{
+    optionsBuilder.UseMySql(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        new MySqlServerVersion(new Version(8, 0, 27))
+    );
+});
+
+
+
 
 builder.Services.AddControllers();
 
-
-builder.Services.AddScoped<ITokenService, TokenService>();
-
-
 builder.Services.AddHttpContextAccessor();
-builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
+builder.Services.AddRepositories();
+
 
 builder.Services.AddScoped<IEmailTemplate, Registration>();
 builder.Services.AddScoped<EmailTemplateFactory>();

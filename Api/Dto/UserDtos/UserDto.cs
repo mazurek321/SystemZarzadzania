@@ -1,5 +1,5 @@
-using Core.Models;
-namespace Api.Dto;
+using Core.Models.Users;
+namespace Api.Dto.UserDtos;
 
 public class UserDto
 {

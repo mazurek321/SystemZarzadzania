@@ -1,0 +1,68 @@
+using Dapper;
+using MediatR;
+using Microsoft.Extensions.Logging;
+using Quartz;
+using System;
+using System.Data;
+using System.Reflection;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Infrastructure.Database.Abstractions;
+using Core.Domain;
+
+
+namespace Infrastructure.Quartz;
+
+[DisallowConcurrentExecution]
+public class ProcessOutboxJob : IJob
+{
+    private readonly ISqlConnectionFactory _sqlConnectionFactory;
+    private readonly IMediator _mediator;
+    private readonly ILogger<ProcessOutboxJob> _logger;
+
+    public ProcessOutboxJob(ISqlConnectionFactory sqlConnectionFactory, IMediator mediator, ILogger<ProcessOutboxJob> logger)
+    {
+        _sqlConnectionFactory = sqlConnectionFactory;
+        _mediator = mediator;
+        _logger = logger;
+    }
+
+    public async Task Execute(IJobExecutionContext context)
+    {
+        using var connection = _sqlConnectionFactory.CreateOpenConnection();
+
+        string sql = @"SELECT Id, Type, Data 
+                       FROM app.OutboxMessages 
+                       WHERE ProcessedDate IS NULL";
+
+        var messages = await connection.QueryAsync<OutboxMessageDto>(sql);
+
+        foreach (var message in messages)
+        {
+            try
+            {
+                var assembly = Assembly.GetAssembly(typeof(INotification));
+                var type = assembly.GetType(message.Type);
+
+                var notification = JsonConvert.DeserializeObject(message.Data, type);
+
+                await _mediator.Publish((INotification)notification);
+
+                string updateSql = "UPDATE app.OutboxMessages SET ProcessedDate = @Date WHERE Id = @Id";
+
+                await connection.ExecuteAsync(updateSql, new { Date = DateTime.UtcNow, message.Id });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error processing outbox message {message.Id}");
+            }
+        }
+    }
+}
+
+public class OutboxMessageDto
+{
+    public Guid Id { get; set; }
+    public string Type { get; set; }
+    public string Data { get; set; }
+}

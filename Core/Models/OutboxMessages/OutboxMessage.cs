@@ -1,4 +1,7 @@
-namespace Core.Models;
+using System;
+
+namespace Core.Models.OutboxMessages;
+
 public class OutboxMessage
 {
     public Guid Id { get; private set; }
@@ -9,7 +12,7 @@ public class OutboxMessage
 
     private OutboxMessage() { }
 
-    internal OutboxMessage(DateTime occurredOn, string type, string data)
+    public OutboxMessage(DateTime occurredOn, string type, string data)
     {
         Id = Guid.NewGuid();
         OccurredOn = occurredOn;
@@ -17,5 +20,8 @@ public class OutboxMessage
         Data = data;
     }
 
-    public void MarkAsProcessed() => ProcessedDate = DateTime.UtcNow;
+    public void MarkProcessed()
+    {
+        ProcessedDate = DateTime.UtcNow;
+    }
 }

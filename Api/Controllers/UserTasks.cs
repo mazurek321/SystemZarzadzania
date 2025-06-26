@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Infrastructure.Database;
-using Api.Dto;
+using Api.Dto.UserTasksDtos;
 
 namespace Api.Controllers;
 

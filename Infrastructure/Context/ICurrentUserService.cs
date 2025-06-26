@@ -1,4 +1,4 @@
-using Core.Models;
+using Core.Models.Users;
 
 namespace Infrastructure.Context;
 public interface ICurrentUserService

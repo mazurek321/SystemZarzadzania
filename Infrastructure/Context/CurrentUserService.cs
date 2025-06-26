@@ -1,4 +1,4 @@
-using Core.Models;
+using Core.Models.Users;
 using Microsoft.AspNetCore.Http;
 
 namespace Infrastructure.Context;
