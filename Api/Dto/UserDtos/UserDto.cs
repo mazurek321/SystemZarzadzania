@@ -1,4 +1,5 @@
 using Core.Models.Users;
+using Api.Dto.TaskDtos;
 namespace Api.Dto.UserDtos;
 
 public class UserDto
@@ -9,8 +10,9 @@ public class UserDto
     public string Email { get; set; }
     public string Phone { get; set; }
     public bool IsActive { get; set; }
-    public DateTime LastActive  { get; set; }
+    public DateTime LastActive { get; set; }
     public User.UserRole Role { get; set; }
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
+    public IEnumerable<TaskDto> Tasks { get; set; }
 }

@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Infrastructure.Database;
-using Api.Dto.UserTasksDtos;
+using Api.Dto.TaskDtos;
 
 namespace Api.Controllers;
 
@@ -18,7 +18,7 @@ public class UserTasksController : ControllerBase
 
     [HttpPost]
     [Authorize]
-    public async Task<IActionResult> CreateTask([FromBody] CreateTaskDto dto)
+    public async Task<IActionResult> CreateTask([FromBody] TaskDto dto)
     {
         return Ok();
     }
