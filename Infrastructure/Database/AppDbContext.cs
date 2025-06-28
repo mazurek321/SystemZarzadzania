@@ -61,6 +61,18 @@ public class AppDbContext : DbContext
             .HasMany(t => t.Categories)
             .WithMany(c => c.Tasks)
             .UsingEntity(j => j.ToTable("TaskCategories"));
+        
+        modelBuilder.Entity<UserTask>()
+            .HasOne(ut => ut.CreatedByUser)
+            .WithMany()
+            .HasForeignKey(ut => ut.CreatedBy)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder.Entity<UserTask>()
+            .HasOne(ut => ut.UpdatedByUser)
+            .WithMany()
+            .HasForeignKey(ut => ut.UpdatedBy)
+            .OnDelete(DeleteBehavior.Restrict);
 
         modelBuilder.Entity<User>()
             .HasMany(t => t.Tasks)
