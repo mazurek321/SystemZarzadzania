@@ -1,0 +1,63 @@
+2025-06-29 13:06:34.436 +02:00 [INF] User profile is available. Using 'C:\Users\mazur\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-29 13:06:34.634 +02:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2025-06-29 13:06:34.638 +02:00 [INF] Quartz Scheduler created
+2025-06-29 13:06:34.642 +02:00 [INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2025-06-29 13:06:34.645 +02:00 [INF] RAMJobStore initialized.
+2025-06-29 13:06:34.649 +02:00 [INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2025-06-29 13:06:34.652 +02:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2025-06-29 13:06:34.655 +02:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2025-06-29 13:06:34.675 +02:00 [INF] Adding 1 jobs, 1 triggers.
+2025-06-29 13:06:34.680 +02:00 [INF] Adding job: DEFAULT.ProcessOutboxJob
+2025-06-29 13:06:34.745 +02:00 [INF] Now listening on: http://localhost:5259
+2025-06-29 13:06:34.748 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-29 13:06:34.750 +02:00 [INF] Hosting environment: Development
+2025-06-29 13:06:34.751 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2025-06-29 13:06:34.752 +02:00 [INF] Content root path: D:\programowanie\C#\System zarzadzania zasobami\MainProgram
+2025-06-29 13:06:38.206 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/swagger/index.html - null null
+2025-06-29 13:06:38.451 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/swagger/index.html - 200 null text/html;charset=utf-8 249.2597ms
+2025-06-29 13:06:38.606 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/swagger/v1/swagger.json - null null
+2025-06-29 13:06:38.750 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 145.214ms
+2025-06-29 13:06:42.611 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5259/api/auth/register - application/json 153
+2025-06-29 13:06:42.631 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-06-29 13:06:42.692 +02:00 [INF] Executing endpoint 'Api.Controllers.AuthController.Register (Api)'
+2025-06-29 13:06:42.735 +02:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(Api.Dto.AuthDtos.RegisterDto) on controller Api.Controllers.AuthController (Api).
+2025-06-29 13:06:43.932 +02:00 [WRN] The property 'UserTask.Categories' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2025-06-29 13:06:43.946 +02:00 [WRN] The property 'UserTask.Users' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2025-06-29 13:06:44.780 +02:00 [INF] Executed DbCommand (53ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__email_0
+LIMIT 1
+2025-06-29 13:06:45.556 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (DbType = Guid), @p6='?' (DbType = DateTime), @p7='?' (Size = 4000), @p8='?' (DbType = Boolean), @p9='?' (DbType = DateTime), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (Size = 4000), @p14='?' (DbType = Int32), @p15='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `OutboxMessages` (`Id`, `Data`, `OccurredOn`, `ProcessedDate`, `Type`)
+VALUES (@p0, @p1, @p2, @p3, @p4);
+INSERT INTO `Users` (`Id`, `CreatedAt`, `Email`, `IsActive`, `LastActive`, `Lastname`, `Name`, `PasswordHash`, `Phone`, `Role`, `UpdatedAt`)
+VALUES (@p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+2025-06-29 13:06:45.623 +02:00 [INF] [Registration] Created user "d51a208d-6786-4df6-8a1b-7653e0276def".
+2025-06-29 13:06:45.636 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-06-29 13:06:45.650 +02:00 [INF] Executed action Api.Controllers.AuthController.Register (Api) in 2899.6114ms
+2025-06-29 13:06:45.657 +02:00 [INF] Executed endpoint 'Api.Controllers.AuthController.Register (Api)'
+2025-06-29 13:06:45.677 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5259/api/auth/register - 200 null text/plain; charset=utf-8 3066.4554ms
+2025-06-29 13:06:51.456 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5259/api/auth/login - application/json 57
+2025-06-29 13:06:51.466 +02:00 [INF] Executing endpoint 'Api.Controllers.AuthController.Login (Api)'
+2025-06-29 13:06:51.476 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Api.Dto.AuthDtos.LoginDto) on controller Api.Controllers.AuthController (Api).
+2025-06-29 13:06:51.535 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__email_0
+LIMIT 1
+2025-06-29 13:06:51.828 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@p10='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `CreatedAt` = @p0, `Email` = @p1, `IsActive` = @p2, `LastActive` = @p3, `Lastname` = @p4, `Name` = @p5, `PasswordHash` = @p6, `Phone` = @p7, `Role` = @p8, `UpdatedAt` = @p9
+WHERE `Id` = @p10;
+SELECT ROW_COUNT();
+2025-06-29 13:06:51.842 +02:00 [INF] [Login] User "d51a208d-6786-4df6-8a1b-7653e0276def" logged in.
+2025-06-29 13:06:51.849 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-06-29 13:06:51.854 +02:00 [INF] Executed action Api.Controllers.AuthController.Login (Api) in 371.8286ms
+2025-06-29 13:06:51.860 +02:00 [INF] Executed endpoint 'Api.Controllers.AuthController.Login (Api)'
+2025-06-29 13:06:51.865 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5259/api/auth/login - 200 null text/plain; charset=utf-8 408.922ms
+2025-06-29 13:07:09.171 +02:00 [INF] Processed outbox message 05ce0400-f30b-4fc9-9664-3ba61b3d4cf1 of type Core.Events.UserRegisteredEvent, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.
+2025-06-29 13:07:55.100 +02:00 [INF] Application is shutting down...
+2025-06-29 13:07:55.125 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+2025-06-29 13:07:55.132 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+2025-06-29 13:07:55.145 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.

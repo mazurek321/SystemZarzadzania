@@ -417,6 +417,14 @@
             "Quartz.Extensions.Hosting": {
               "target": "Package",
               "version": "[3.14.0, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             }
           },
           "imports": [

@@ -6,6 +6,10 @@ using Api.Dto.TaskDtos;
 using Core.Models.UserTasks;
 using Core.Models.Users;
 using Infrastructure.Context;
+using Microsoft.Extensions.Logging;
+using System.Text.Json;
+
+
 
 namespace Api.Controllers;
 
@@ -17,16 +21,20 @@ public class UserTasksController : ControllerBase
     private readonly ICurrentUserService _user;
     private readonly IUserRepository _userRepository;
     private readonly IUserTaskRepository _userTaskRepository;
+    private readonly ILogger<UserTasksController> _logger;
+
     public UserTasksController(
         AppDbContext dbContext,
         ICurrentUserService user,
         IUserRepository userRepository,
-        IUserTaskRepository userTaskRepository)
+        IUserTaskRepository userTaskRepository,
+        ILogger<UserTasksController> logger)
     {
         _dbContext = dbContext;
         _user = user;
         _userRepository = userRepository;
         _userTaskRepository = userTaskRepository;
+        _logger = logger;
     }
 
     [HttpPost]
@@ -51,6 +59,9 @@ public class UserTasksController : ControllerBase
         );
 
         await _userTaskRepository.CreateAsync(task);
+
+        _logger.LogInformation("[Create] User {UserId} created task.", user.Id);
+        _logger.LogInformation("[CreateData] Task data: {task}", JsonSerializer.Serialize(task));
 
         return Ok(task);
     }
@@ -93,6 +104,9 @@ public class UserTasksController : ControllerBase
 
         if (task.CreatedBy != user.Id && !task.Users.Contains(user.Id) && user.Role != Core.Models.Users.User.UserRole.Admin)
             return BadRequest("You cannot modiy this task.");
+        
+        _logger.LogInformation("[Update] User {UserId} updated task {taskId}.", user.Id, task.Id);
+        _logger.LogInformation("[UpdateData] Task data before update: {task}", JsonSerializer.Serialize(task));
 
         task.UpdateTask
         (
@@ -108,6 +122,8 @@ public class UserTasksController : ControllerBase
         );
 
         await _userTaskRepository.UpdateAsync(task);
+
+        _logger.LogInformation("[UpdateData] Task data after update: {task}", JsonSerializer.Serialize(task));
 
         return Ok(task);
     }
@@ -129,9 +145,14 @@ public class UserTasksController : ControllerBase
         if (task.CreatedBy != user.Id && !task.Users.Contains(user.Id) && user.Role != Core.Models.Users.User.UserRole.Admin)
             return BadRequest("You cant modiy users within this task."); 
 
+        _logger.LogInformation("[Update] User {UserId} updated task {taskId}.", user.Id, task.Id);
+        _logger.LogInformation("[UpdateData] Task data before update: {task}", JsonSerializer.Serialize(task));
+
         task.UpdateUsers(users);
 
         await _userTaskRepository.UpdateAsync(task);
+
+        _logger.LogInformation("[UpdateData] Task data after update: {task}", JsonSerializer.Serialize(task));
 
         return Ok(task);
     }
@@ -151,6 +172,8 @@ public class UserTasksController : ControllerBase
             return BadRequest("You cannot delete this task.");
 
         await _userTaskRepository.DeleteAsync(task);
+
+        _logger.LogInformation("[Delete] User {userId} deleted task: {task}.", user.Id, JsonSerializer.Serialize(task));
 
         return NoContent();
     }

@@ -11,30 +11,37 @@ using Infrastructure.Email.EmailTypes;
 using Core.Domain;
 using Core.Events;
 using Core.Entities;
+using Microsoft.Extensions.Logging;
+using System.Text.Json;
+
+
+
 
 namespace Api.Controllers;
 
 [ApiController]
 [Route("api/auth")]
-public class LoginController : ControllerBase
+public class AuthController : ControllerBase
 {
     private readonly AppDbContext _dbContext;
     private readonly ITokenService _tokenService;
     private readonly EmailSender _emailSender;
     private readonly IUserRepository _userRepository;
+    private readonly ILogger<AuthController> _logger;
 
-
-    public LoginController(
+    public AuthController(
         AppDbContext dbContext,
         ITokenService tokenService,
         EmailSender emailSender,
-        IUserRepository userRepository
+        IUserRepository userRepository,
+        ILogger<AuthController> logger
     )
     {
         _dbContext = dbContext;
         _tokenService = tokenService;
         _emailSender = emailSender;
         _userRepository = userRepository;
+        _logger = logger;
     }
 
     [HttpPost("login")]
@@ -66,6 +73,8 @@ public class LoginController : ControllerBase
 
         await _userRepository.UpdateActivityAsync(user);
 
+         _logger.LogInformation("[Login] User {UserId} logged in.", user.Id);
+
         return Ok(token);
     }
     
@@ -95,6 +104,8 @@ public class LoginController : ControllerBase
         userEvent.AddDomainEvent(new UserRegisteredEvent(userEvent));
 
         await _userRepository.AddAsync(userEvent);
+
+        _logger.LogInformation("[Registration] Created user {UserId}.", userEvent.Id);
 
         return Ok("User registered successfully.");
     }

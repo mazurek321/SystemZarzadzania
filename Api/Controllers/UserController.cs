@@ -9,6 +9,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Core.Models.Users;
 using Infrastructure.Repositories;
+using Microsoft.Extensions.Logging;
+using System.Text.Json;
+
+
 
 namespace Api.Controllers;
 
@@ -19,11 +23,13 @@ public class UserController : ControllerBase
     private readonly AppDbContext _dbContext;
     private readonly IUserRepository _userRepository;
     private readonly ICurrentUserService _user;
-    public UserController(AppDbContext dbContext, ICurrentUserService user, IUserRepository userRepository)
+    private readonly ILogger<UserController> _logger;
+    public UserController(AppDbContext dbContext, ICurrentUserService user, IUserRepository userRepository, ILogger<UserController> logger)
     {
         _dbContext = dbContext;
         _user = user;
         _userRepository = userRepository;
+        _logger = logger;
     }
 
     [HttpGet]
@@ -85,6 +91,9 @@ public class UserController : ControllerBase
         if (updatingUser.Id != _user.Id)
             return BadRequest("You cannot update this user.");
 
+        _logger.LogInformation("[Update] User {UserId} updated", updatingUser.Id, DateTime.Now);
+        _logger.LogInformation("[UpdateData] User {UserId} updated from {userData}.", updatingUser.Id, JsonSerializer.Serialize(updatingUser));
+
         updatingUser.UpdateUser(
             dto.Name,
             dto.Lastname,
@@ -93,6 +102,8 @@ public class UserController : ControllerBase
         );
 
         await _userRepository.UpdateInformationAsync(updatingUser);
+
+        _logger.LogInformation("[UpdateData] User {UserId} updated to {userData}.", updatingUser.Id, JsonSerializer.Serialize(updatingUser));
 
         return Ok(updatingUser);
     }
@@ -121,6 +132,8 @@ public class UserController : ControllerBase
         updatingUser.SetPasswordHash(hashedPassword);
         await _userRepository.UpdateInformationAsync(updatingUser);
 
+         _logger.LogInformation("[UpdatePassword] User {UserId} updated password.", updatingUser.Id);
+
         return Ok();
     }
 
@@ -134,6 +147,8 @@ public class UserController : ControllerBase
             return NotFound("User not found.");
 
         await _userRepository.DeleteUserAsync(user);
+
+         _logger.LogInformation("[Delete] User deleted account: {user}.", JsonSerializer.Serialize(user));
 
         return NoContent();
     }

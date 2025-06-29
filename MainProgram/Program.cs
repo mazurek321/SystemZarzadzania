@@ -15,9 +15,17 @@ using Quartz;
 using Infrastructure.Quartz;
 using Infrastructure.Database.Abstractions;
 using Infrastructure.Database;
+using Serilog;
 
+
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.File("logs/app-log-.txt", rollingInterval: RollingInterval.Day)
+    .WriteTo.Console()
+    .CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseSerilog();
 
 builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer("Bearer", options =>
