@@ -58,26 +58,19 @@ public class AppDbContext : DbContext
         });
 
         modelBuilder.Entity<UserTask>()
-            .HasMany(t => t.Categories)
-            .WithMany(c => c.Tasks)
-            .UsingEntity(j => j.ToTable("TaskCategories"));
-        
-        modelBuilder.Entity<UserTask>()
-            .HasOne(ut => ut.CreatedByUser)
-            .WithMany()
-            .HasForeignKey(ut => ut.CreatedBy)
-            .OnDelete(DeleteBehavior.Restrict);
+            .Property(e => e.Users)
+           .HasConversion(
+                v => Newtonsoft.Json.JsonConvert.SerializeObject(v),
+                v => Newtonsoft.Json.JsonConvert.DeserializeObject<List<Guid>>(v));
+
+
 
         modelBuilder.Entity<UserTask>()
-            .HasOne(ut => ut.UpdatedByUser)
-            .WithMany()
-            .HasForeignKey(ut => ut.UpdatedBy)
-            .OnDelete(DeleteBehavior.Restrict);
-
-        modelBuilder.Entity<User>()
-            .HasMany(t => t.Tasks)
-            .WithMany(c => c.Users)
-            .UsingEntity(j => j.ToTable("UserTasksAssignment"));
+            .Property(t => t.Categories)
+            .HasConversion(
+                v => string.Join(',', v),
+                v => v.Split(',', StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToList()
+            );
     
     }
 }

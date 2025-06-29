@@ -18,28 +18,30 @@ internal sealed class UserTaskRepository(AppDbContext dbContext) : IUserTaskRepo
     }
     public async Task<UserTask> GetByIdAsync(Guid id)
     {
-        return await dbContext.Tasks.FirstOrDefaultAsync(x=>x.Id == id);
+        return await dbContext.Tasks
+                        .FirstOrDefaultAsync(x => x.Id == id);
     }
+
     public async Task<ICollection<UserTask>> BrowseTasks(int pageNumber, int pageSize, Guid? userId, List<int>? categories)
     {
-        var query = dbContext.Tasks
-                        .Include(x => x.Users)
-                        .Include(x => x.Categories)
-                        .AsQueryable();
-
-        if (userId is not null)
-            query = query.Where(x => x.Users.Any(u=>u.Id == userId) || x.CreatedBy == userId);
+        var query = dbContext.Tasks.AsQueryable();
 
         if (categories is not null && categories.Any())
-            query = query.Where(x => x.Categories.Any(c => categories.Contains(c.Id)));
+            query = query.Where(x => x.Categories.Any(c => categories.Contains(c)));
 
-        var result = await query
-                            .Skip((pageNumber - 1) * pageSize)
-                            .Take(pageSize)
-                            .ToListAsync();
-        return result;
-        
+        var tasks = await query.ToListAsync();
+
+        if (userId.HasValue)
+            tasks = tasks
+                .Where(x => x.Users.Contains(userId.Value) || x.CreatedBy == userId)
+                .ToList();
+
+        return tasks
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
+            .ToList();
     }
+
     public async Task DeleteAsync(UserTask task)
     {
         dbContext.Tasks.Remove(task);

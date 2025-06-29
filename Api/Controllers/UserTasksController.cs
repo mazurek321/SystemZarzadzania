@@ -33,8 +33,8 @@ public class UserTasksController : ControllerBase
     [Authorize]
     public async Task<IActionResult> CreateTask([FromBody] CreateTaskDto dto)
     {
-        var userId = _user.Id.Value;
-        var user = await _userRepository.FindByIdAsync(userId);
+        var user = await _userRepository.FindByIdAsync(_user.Id.Value);
+
         var task = UserTask.NewTask
         (
             dto.Title,
@@ -44,12 +44,10 @@ public class UserTasksController : ControllerBase
             dto.Priority,
             DateTime.Now,
             user.Id,
-            user,
             DateTime.Now,
             user.Id,
-            user,
-            dto.Users.ToList(),
-            dto.Categories
+            dto.UsersIds.ToList(),
+            dto.CategoriesIds
         );
 
         await _userTaskRepository.CreateAsync(task);
@@ -72,7 +70,9 @@ public class UserTasksController : ControllerBase
     [HttpGet("browse")]
     [Authorize]
     public async Task<IActionResult> BrowseTasks(
-        [FromQuery] int pageNumber = 1, int pageSize = 25, Guid? userId = null, List<int>? categories = null
+        [FromQuery] int pageNumber = 1, int pageSize = 25,
+        [FromQuery] Guid? userId = null,
+        [FromQuery] List<int>? categories = null
     )
     {
         var query = await _userTaskRepository.BrowseTasks(pageNumber, pageSize, userId, categories);
@@ -91,7 +91,7 @@ public class UserTasksController : ControllerBase
 
         var user = await _userRepository.FindByIdAsync(_user.Id.Value);
 
-        if (task.CreatedBy != user.Id || !task.Users.Any(u => u.Id == user.Id) || user.Role != Core.Models.Users.User.UserRole.Admin)
+        if (task.CreatedBy != user.Id && !task.Users.Contains(user.Id) && user.Role != Core.Models.Users.User.UserRole.Admin)
             return BadRequest("You cannot modiy this task.");
 
         task.UpdateTask
@@ -103,10 +103,33 @@ public class UserTasksController : ControllerBase
             dto.Priority,
             DateTime.Now,
             user.Id,
-            user,
-            dto.Users.ToList(),
-            dto.Categories
+            dto.UsersIds.ToList(),
+            dto.CategoriesIds
         );
+
+        await _userTaskRepository.UpdateAsync(task);
+
+        return Ok(task);
+    }
+
+    [HttpPut("users")]
+    [Authorize]
+    public async Task<IActionResult> UpdateUsersInTask(
+        [FromQuery] Guid taskId,
+        [FromBody] List<Guid> users
+    )
+    {
+        var task = await _userTaskRepository.GetByIdAsync(taskId);
+
+        if (task is null)
+            return NotFound("Task not found.");
+
+        var user = await _userRepository.FindByIdAsync(_user.Id.Value);
+
+        if (task.CreatedBy != user.Id && !task.Users.Contains(user.Id) && user.Role != Core.Models.Users.User.UserRole.Admin)
+            return BadRequest("You cant modiy users within this task."); 
+
+        task.UpdateUsers(users);
 
         await _userTaskRepository.UpdateAsync(task);
 
@@ -124,7 +147,7 @@ public class UserTasksController : ControllerBase
         
         var user = await _userRepository.FindByIdAsync(_user.Id.Value);
 
-        if (task.CreatedBy != user.Id || !task.Users.Any(u => u.Id == user.Id) || user.Role != Core.Models.Users.User.UserRole.Admin)
+        if (task.CreatedBy != user.Id && user.Role != Core.Models.Users.User.UserRole.Admin)
             return BadRequest("You cannot delete this task.");
 
         await _userTaskRepository.DeleteAsync(task);

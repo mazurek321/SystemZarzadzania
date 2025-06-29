@@ -4,6 +4,7 @@ using Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250629093242_Changes")]
+    partial class Changes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -117,6 +120,10 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("CategoryId");
 
+                    b.HasIndex("CreatedBy");
+
+                    b.HasIndex("UpdatedBy");
+
                     b.HasIndex("UserId");
 
                     b.ToTable("Tasks");
@@ -174,9 +181,25 @@ namespace Infrastructure.Migrations
                         .WithMany("Tasks")
                         .HasForeignKey("CategoryId");
 
+                    b.HasOne("Core.Models.Users.User", "CreatedByUser")
+                        .WithMany()
+                        .HasForeignKey("CreatedBy")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Core.Models.Users.User", "UpdatedByUser")
+                        .WithMany()
+                        .HasForeignKey("UpdatedBy")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("Core.Models.Users.User", null)
                         .WithMany("Tasks")
                         .HasForeignKey("UserId");
+
+                    b.Navigation("CreatedByUser");
+
+                    b.Navigation("UpdatedByUser");
                 });
 
             modelBuilder.Entity("Core.Models.Categories.Category", b =>

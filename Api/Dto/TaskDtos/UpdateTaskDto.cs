@@ -9,6 +9,6 @@ public class UpdateTaskDto
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
     public int Priority { get; set; }
-    public ICollection<User> Users { get; set; }
-    public List<Category> Categories { get; set; }
+    public List<Guid> UsersIds { get; set; }
+    public List<int> CategoriesIds { get; set; }
 }

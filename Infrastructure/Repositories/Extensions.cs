@@ -1,5 +1,6 @@
 using Core.Models.Users;
 using Core.Models.Tokens;
+using Core.Models.UserTasks;
 using Infrastructure.Services;
 using Infrastructure.Context;
 
@@ -14,6 +15,8 @@ public static class Extensions
         services.AddScoped<ICurrentUserService, CurrentUserService>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<ITokenService, TokenService>();
+        services.AddScoped<IUserTaskRepository, UserTaskRepository>();
+
 
         return services;
     }
