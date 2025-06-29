@@ -47,6 +47,7 @@ public class UserTasksController : ControllerBase
         (
             dto.Title,
             dto.Description,
+            dto.Deadline,
             dto.StartDate,
             dto.EndDate,
             dto.Priority,
@@ -112,6 +113,7 @@ public class UserTasksController : ControllerBase
         (
             dto.Title,
             dto.Description,
+            dto.Deadline,
             dto.StartDate,
             dto.EndDate,
             dto.Priority,

@@ -17,7 +17,7 @@ internal sealed class CategoryRepository(AppDbContext dbContext) : ICategoryRepo
                         .Take(pageSize)
                         .ToListAsync();
     }
-    public async Task<Category> FindCategoryByIdAsync(int id)
+    public async Task<Category> GetCategoryByIdAsync(int id)
     {
         return await dbContext.Categories.FirstOrDefaultAsync(x=>x.Id == id);
     }

@@ -6,7 +6,7 @@ namespace Core.Models.UserTasks;
 public class UserTask
 {
     public UserTask() { }
-    public UserTask(Guid id, string title, string description,
+    public UserTask(Guid id, string title, string description, DateTime deadline,
                     DateTime startDate, DateTime endDate, int priority,
                     DateTime createdAt, Guid createdBy,
                     DateTime lastUpdate,Guid updatedBy,
@@ -15,6 +15,7 @@ public class UserTask
         Id = id;
         Title = title;
         Description = description;
+        Deadline = deadline;
         StartDate = startDate;
         EndDate = endDate;
         Priority = priority;
@@ -28,6 +29,7 @@ public class UserTask
     public Guid Id { get; private set; }
     public string Title { get; private set; }
     public string Description { get; private set; }
+    public DateTime Deadline { get; private set; }
     public DateTime StartDate { get; private set; }
     public DateTime EndDate { get; private set; }
     public int Priority { get; private set; }
@@ -39,21 +41,21 @@ public class UserTask
     public List<int> Categories { get; private set; }
 
     public static UserTask NewTask(
-        string title, string description,
+        string title, string description, DateTime deadline,
         DateTime startDate, DateTime endDate, int priority, DateTime createdAt, Guid createdBy,
-         DateTime lastUpdate, Guid updatedBy,
+        DateTime lastUpdate, Guid updatedBy,
         List<Guid> users, List<int> categories
     )
     {
         return new UserTask(
-            Guid.NewGuid(), title, description,
+            Guid.NewGuid(), title, description, deadline,
             startDate, endDate, priority, createdAt, createdBy, lastUpdate,
             updatedBy, users, categories
         );
     }
 
     public void UpdateTask(
-        string title, string description,
+        string title, string description, DateTime deadline,
         DateTime startDate, DateTime endDate, int priority,
         DateTime lastUpdate, Guid updatedBy,
         List<Guid> users, List<int> categories
@@ -61,6 +63,7 @@ public class UserTask
     {
         Title = title;
         Description = description;
+        Deadline = deadline;
         StartDate = startDate;
         EndDate = endDate;
         Priority = priority;

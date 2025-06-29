@@ -1,6 +1,7 @@
 using Core.Models.Users;
 using Core.Models.Tokens;
 using Core.Models.UserTasks;
+using Core.Models.Categories;
 using Infrastructure.Services;
 using Infrastructure.Context;
 
@@ -16,6 +17,7 @@ public static class Extensions
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<ITokenService, TokenService>();
         services.AddScoped<IUserTaskRepository, UserTaskRepository>();
+        services.AddScoped<ICategoryRepository, CategoryRepository>();
 
 
         return services;
