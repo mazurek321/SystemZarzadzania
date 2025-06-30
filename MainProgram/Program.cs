@@ -1,7 +1,5 @@
 using System.Text;
 using Infrastructure.Context;
-using Infrastructure.Email;
-using Infrastructure.Email.EmailTypes;
 using Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -16,6 +14,8 @@ using Infrastructure.Quartz;
 using Infrastructure.Database.Abstractions;
 using Infrastructure.Database;
 using Serilog;
+using Infrastructure.Email;
+
 
 
 Log.Logger = new LoggerConfiguration()
@@ -26,6 +26,8 @@ Log.Logger = new LoggerConfiguration()
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Host.UseSerilog();
+builder.Services.AddSignalR();
+
 
 builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer("Bearer", options =>
@@ -82,11 +84,11 @@ builder.Services.AddControllers();
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddRepositories();
+builder.Services.AddServices();
 
-builder.Services.AddScoped<IEmailTemplate, Registration>();
-builder.Services.AddScoped<EmailTemplateFactory>();
 builder.Services.Configure<EmailInfo>(builder.Configuration.GetSection("EmailSettings"));
-builder.Services.AddScoped<EmailSender>();
+builder.Services.AddScoped<Core.Models.Notifications.INotificationSender, Api.Services.NotificationSender>();
+
 
 builder.Services.AddQuartz(q =>
 {
@@ -126,5 +128,9 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapHub<Api.Hubs.NotificationHub>("/notificationHub");
+
 
 app.Run();
+
+public partial class Program { }

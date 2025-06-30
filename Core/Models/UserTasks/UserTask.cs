@@ -10,7 +10,7 @@ public class UserTask
                     DateTime startDate, DateTime endDate, int priority,
                     DateTime createdAt, Guid createdBy,
                     DateTime lastUpdate,Guid updatedBy,
-                    List<Guid> users, List<int> categories)
+                    List<User> users, List<Category> categories)
     {
         Id = id;
         Title = title;
@@ -37,28 +37,26 @@ public class UserTask
     public Guid CreatedBy { get; private set; }
     public DateTime LastUpdate { get; private set; }
     public Guid UpdatedBy { get; private set; }
-    public ICollection<Guid> Users { get; private set; }
-    public List<int> Categories { get; private set; }
+    public ICollection<User> Users { get; private set; }
+    public List<Category> Categories { get; private set; }
 
     public static UserTask NewTask(
         string title, string description, DateTime deadline,
-        DateTime startDate, DateTime endDate, int priority, DateTime createdAt, Guid createdBy,
-        DateTime lastUpdate, Guid updatedBy,
-        List<Guid> users, List<int> categories
+        DateTime startDate, DateTime endDate, int priority, Guid createdBy, Guid updatedBy,
+        List<User> users, List<Category> categories
     )
     {
         return new UserTask(
             Guid.NewGuid(), title, description, deadline,
-            startDate, endDate, priority, createdAt, createdBy, lastUpdate,
+            startDate, endDate, priority, DateTime.UtcNow, createdBy, DateTime.UtcNow,
             updatedBy, users, categories
         );
     }
 
     public void UpdateTask(
         string title, string description, DateTime deadline,
-        DateTime startDate, DateTime endDate, int priority,
-        DateTime lastUpdate, Guid updatedBy,
-        List<Guid> users, List<int> categories
+        DateTime startDate, DateTime endDate, int priority, Guid updatedBy,
+        List<User> users, List<Category> categories
     )
     {
         Title = title;
@@ -67,14 +65,14 @@ public class UserTask
         StartDate = startDate;
         EndDate = endDate;
         Priority = priority;
-        LastUpdate = lastUpdate;
+        LastUpdate = DateTime.UtcNow;
         UpdatedBy = updatedBy;
         Users = users;
         Categories = categories;
     }
 
-    public void UpdateUsers(List<Guid> users)
+    public void UpdateUsers(List<User> users)
     {
-        Users = new List<Guid>(users);
+        Users = new List<User>(users);
     }
 }

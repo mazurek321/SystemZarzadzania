@@ -21,6 +21,11 @@ internal sealed class CategoryRepository(AppDbContext dbContext) : ICategoryRepo
     {
         return await dbContext.Categories.FirstOrDefaultAsync(x=>x.Id == id);
     }
+
+    public async Task<List<Category>> GetByIdsAsync(List<int> list)
+    {
+        return await dbContext.Categories.Where(x => list.Contains(x.Id)).ToListAsync();
+    }
     public async Task DeleteCategoryAsync(Category category)
     {
         dbContext.Categories.Remove(category);

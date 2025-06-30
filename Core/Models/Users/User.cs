@@ -36,7 +36,7 @@ public class User
 
     public static User CreateUser(string name, string lastname, string password, string email, string phone)
     {
-        return new User(Guid.NewGuid(), name, lastname, password, email, phone, false, DateTime.Now, UserRole.User, DateTime.Now, DateTime.Now);
+        return new User(Guid.NewGuid(), name, lastname, password, email, phone, false, DateTime.UtcNow, UserRole.User, DateTime.Now, DateTime.UtcNow);
     }
 
     public void SetPasswordHash(string hashedPassword)
@@ -55,7 +55,7 @@ public class User
     public void UpdateActivity()
     {
         IsActive = !IsActive;
-        LastActive = DateTime.Now;
+        LastActive = DateTime.UtcNow;
     }
 
 

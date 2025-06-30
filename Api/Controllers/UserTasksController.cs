@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Infrastructure.Database;
 using Api.Dto.TaskDtos;
+using Core.Models.Categories;
 using Core.Models.UserTasks;
 using Core.Models.Users;
 using Infrastructure.Context;
@@ -21,6 +22,7 @@ public class UserTasksController : ControllerBase
     private readonly ICurrentUserService _user;
     private readonly IUserRepository _userRepository;
     private readonly IUserTaskRepository _userTaskRepository;
+    private readonly ICategoryRepository _categoryRepository;
     private readonly ILogger<UserTasksController> _logger;
 
     public UserTasksController(
@@ -28,12 +30,14 @@ public class UserTasksController : ControllerBase
         ICurrentUserService user,
         IUserRepository userRepository,
         IUserTaskRepository userTaskRepository,
+        ICategoryRepository categoryRepository,
         ILogger<UserTasksController> logger)
     {
         _dbContext = dbContext;
         _user = user;
         _userRepository = userRepository;
         _userTaskRepository = userTaskRepository;
+        _categoryRepository = categoryRepository;
         _logger = logger;
     }
 
@@ -42,21 +46,20 @@ public class UserTasksController : ControllerBase
     public async Task<IActionResult> CreateTask([FromBody] CreateTaskDto dto)
     {
         var user = await _userRepository.FindByIdAsync(_user.Id.Value);
+        var users = await _userRepository.FindByIdsAsync(dto.UsersIds);
+        var categories = await _categoryRepository.GetByIdsAsync(dto.CategoriesIds);
 
-        var task = UserTask.NewTask
-        (
+        var task = UserTask.NewTask(
             dto.Title,
             dto.Description,
             dto.Deadline,
             dto.StartDate,
             dto.EndDate,
             dto.Priority,
-            DateTime.Now,
             user.Id,
-            DateTime.Now,
             user.Id,
-            dto.UsersIds.ToList(),
-            dto.CategoriesIds
+            users,
+            categories
         );
 
         await _userTaskRepository.CreateAsync(task);
@@ -103,8 +106,12 @@ public class UserTasksController : ControllerBase
 
         var user = await _userRepository.FindByIdAsync(_user.Id.Value);
 
-        if (task.CreatedBy != user.Id && !task.Users.Contains(user.Id) && user.Role != Core.Models.Users.User.UserRole.Admin)
+        if (task.CreatedBy != user.Id && !task.Users.Any(x=>x.Id == user.Id) && user.Role != Core.Models.Users.User.UserRole.Admin)
             return BadRequest("You cannot modiy this task.");
+
+        var users = await _userRepository.FindByIdsAsync(dto.UsersIds);
+        var categories = await _categoryRepository.GetByIdsAsync(dto.CategoriesIds);
+
         
         _logger.LogInformation("[Update] User {UserId} updated task {taskId}.", user.Id, task.Id);
         _logger.LogInformation("[UpdateData] Task data before update: {task}", JsonSerializer.Serialize(task));
@@ -117,10 +124,9 @@ public class UserTasksController : ControllerBase
             dto.StartDate,
             dto.EndDate,
             dto.Priority,
-            DateTime.Now,
             user.Id,
-            dto.UsersIds.ToList(),
-            dto.CategoriesIds
+            users,
+            categories
         );
 
         await _userTaskRepository.UpdateAsync(task);
@@ -134,7 +140,7 @@ public class UserTasksController : ControllerBase
     [Authorize]
     public async Task<IActionResult> UpdateUsersInTask(
         [FromQuery] Guid taskId,
-        [FromBody] List<Guid> users
+        [FromBody] List<Guid> usersIds
     )
     {
         var task = await _userTaskRepository.GetByIdAsync(taskId);
@@ -144,11 +150,13 @@ public class UserTasksController : ControllerBase
 
         var user = await _userRepository.FindByIdAsync(_user.Id.Value);
 
-        if (task.CreatedBy != user.Id && !task.Users.Contains(user.Id) && user.Role != Core.Models.Users.User.UserRole.Admin)
+        if (task.CreatedBy != user.Id && !task.Users.Any(x=>x.Id == user.Id) && user.Role != Core.Models.Users.User.UserRole.Admin)
             return BadRequest("You cant modiy users within this task."); 
 
         _logger.LogInformation("[Update] User {UserId} updated task {taskId}.", user.Id, task.Id);
         _logger.LogInformation("[UpdateData] Task data before update: {task}", JsonSerializer.Serialize(task));
+
+        var users = await _userRepository.FindByIdsAsync(usersIds);
 
         task.UpdateUsers(users);
 

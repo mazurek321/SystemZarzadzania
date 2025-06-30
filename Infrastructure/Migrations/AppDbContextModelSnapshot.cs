@@ -22,6 +22,21 @@ namespace Infrastructure.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
+            modelBuilder.Entity("CategoryUserTask", b =>
+                {
+                    b.Property<int>("CategoriesId")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("TasksId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("CategoriesId", "TasksId");
+
+                    b.HasIndex("TasksId");
+
+                    b.ToTable("CategoryUserTask");
+                });
+
             modelBuilder.Entity("Core.Models.Categories.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -70,13 +85,6 @@ namespace Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<string>("Categories")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int?>("CategoryId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
@@ -109,18 +117,7 @@ namespace Infrastructure.Migrations
                     b.Property<Guid>("UpdatedBy")
                         .HasColumnType("char(36)");
 
-                    b.Property<Guid?>("UserId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<string>("Users")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Tasks");
                 });
@@ -171,25 +168,49 @@ namespace Infrastructure.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Core.Models.UserTasks.UserTask", b =>
+            modelBuilder.Entity("UserUserTask", b =>
+                {
+                    b.Property<Guid>("TasksId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("UsersId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("TasksId", "UsersId");
+
+                    b.HasIndex("UsersId");
+
+                    b.ToTable("UserUserTask");
+                });
+
+            modelBuilder.Entity("CategoryUserTask", b =>
                 {
                     b.HasOne("Core.Models.Categories.Category", null)
-                        .WithMany("Tasks")
-                        .HasForeignKey("CategoryId");
+                        .WithMany()
+                        .HasForeignKey("CategoriesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Core.Models.UserTasks.UserTask", null)
+                        .WithMany()
+                        .HasForeignKey("TasksId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("UserUserTask", b =>
+                {
+                    b.HasOne("Core.Models.UserTasks.UserTask", null)
+                        .WithMany()
+                        .HasForeignKey("TasksId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Core.Models.Users.User", null)
-                        .WithMany("Tasks")
-                        .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("Core.Models.Categories.Category", b =>
-                {
-                    b.Navigation("Tasks");
-                });
-
-            modelBuilder.Entity("Core.Models.Users.User", b =>
-                {
-                    b.Navigation("Tasks");
+                        .WithMany()
+                        .HasForeignKey("UsersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

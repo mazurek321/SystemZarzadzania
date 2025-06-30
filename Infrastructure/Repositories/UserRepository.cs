@@ -17,6 +17,11 @@ internal sealed class UserRepository(AppDbContext dbContext) : IUserRepository
         return await dbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
     }
 
+    public async Task<List<User>> FindByIdsAsync(List<Guid> list)
+    {
+        return await dbContext.Users.Where(x => list.Contains(x.Id)).ToListAsync();
+    }
+
     public async Task<User> FindByEmailAsync(string email)
     {
         return await dbContext.Users.FirstOrDefaultAsync(x => x.Email == email);

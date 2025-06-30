@@ -56,21 +56,6 @@ public class AppDbContext : DbContext
             entity.HasKey(t => t.Id);
             entity.Property(t => t.Id).ValueGeneratedOnAdd();
         });
-
-        modelBuilder.Entity<UserTask>()
-            .Property(e => e.Users)
-           .HasConversion(
-                v => Newtonsoft.Json.JsonConvert.SerializeObject(v),
-                v => Newtonsoft.Json.JsonConvert.DeserializeObject<List<Guid>>(v));
-
-
-
-        modelBuilder.Entity<UserTask>()
-            .Property(t => t.Categories)
-            .HasConversion(
-                v => string.Join(',', v),
-                v => v.Split(',', StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToList()
-            );
     
     }
 }

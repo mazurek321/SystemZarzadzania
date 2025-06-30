@@ -1,15 +1,15 @@
 using Core.Models.Users;
 using Core.Models.Categories;
-namespace Api.Dto.TaskDtos;
-
+using System.ComponentModel.DataAnnotations;
 public class CreateTaskDto
 {
-    public string Title { get; set; }
-    public string Description { get; set; }
-    public DateTime Deadline { get; set; }
-    public DateTime StartDate { get; set; }
-    public DateTime EndDate { get; set; }
-    public int Priority { get; set; }
-    public List<Guid>? UsersIds { get; set; } = new List<Guid>();
-    public List<int>? CategoriesIds { get; set; } = new List<int>();
+    [Required]
+    public string Title { get; init; }
+    public string Description { get; init; }
+    public DateTime Deadline { get; init; }
+    public DateTime StartDate { get; init; }
+    public DateTime EndDate { get; init; }
+    public int Priority { get; init; }
+    public List<Guid>? UsersIds { get; init; } = new List<Guid>();
+    public List<int>? CategoriesIds { get; init; } = new List<int>();
 }

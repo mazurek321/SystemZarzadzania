@@ -22,18 +22,26 @@ internal sealed class UserTaskRepository(AppDbContext dbContext) : IUserTaskRepo
                         .FirstOrDefaultAsync(x => x.Id == id);
     }
 
+    public async Task<List<UserTask>> GetWithComingDeadlinesAsync(DateTime time, Guid userId)
+    {
+        return await dbContext.Tasks
+                                .Where(x=>x.Users.Any(u => u.Id == userId) && x.Deadline <= time)
+                                .ToListAsync();                     
+    }
+
+
     public async Task<ICollection<UserTask>> BrowseTasks(int pageNumber, int pageSize, Guid? userId, List<int>? categories)
     {
         var query = dbContext.Tasks.AsQueryable();
 
         if (categories is not null && categories.Any())
-            query = query.Where(x => x.Categories.Any(c => categories.Contains(c)));
+            query = query.Where(x => x.Categories.Any(c => categories.Contains(c.Id)));
 
         var tasks = await query.ToListAsync();
 
         if (userId.HasValue)
             tasks = tasks
-                .Where(x => x.Users.Contains(userId.Value) || x.CreatedBy == userId)
+                .Where(x => x.Users.Any(u => u.Id == userId.Value) || x.CreatedBy == userId.Value)
                 .ToList();
 
         return tasks

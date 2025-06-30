@@ -4,16 +4,16 @@ namespace Api.Dto.TaskDtos;
 
 public class TaskDto
 {
-    public Guid Id { get; set; }
-    public string Title { get; set; }
-    public string Description { get; set; }
-    public string Deadline { get; set; }
-    public DateTime StartDate { get; set; }
-    public DateTime EndDate { get; set; }
-    public int Priority { get; set; }
-    public Guid CreatedBy { get; set; }
-    public DateTime LastUpdate { get; set; }
-    public Guid UpdatedBy { get; set; }
-    public ICollection<Guid> Users { get; set; }
-    public List<int> Categories { get; set; }
+    public Guid Id { get; init; }
+    public string Title { get; init; }
+    public string Description { get; init; }
+    public string Deadline { get; init; }
+    public DateTime StartDate { get; init; }
+    public DateTime EndDate { get; init; }
+    public int Priority { get; init; }
+    public Guid CreatedBy { get; init; }
+    public DateTime LastUpdate { get; init; }
+    public Guid UpdatedBy { get; init; }
+    public ICollection<Guid> Users { get; init; }
+    public List<int> Categories { get; init; }
 }
