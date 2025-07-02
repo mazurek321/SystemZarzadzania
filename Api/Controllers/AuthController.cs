@@ -52,7 +52,7 @@ public class AuthController : ControllerBase
         var user = await _userRepository.FindByEmailAsync(email);
 
         if (user is null)
-            return Unauthorized("User with this email does not exist.");
+            return NotFound("User with this email does not exist.");
 
         var inputpassword = dto.Password;
 
@@ -98,8 +98,6 @@ public class AuthController : ControllerBase
         var hashedPassword = hasher.HashPassword(user, dto.Password);
         user.SetPasswordHash(hashedPassword);
 
-        var message = "Thanks for creating account!";
-
         var userEvent = new UserWithEvents(user);
         userEvent.AddDomainEvent(new UserRegisteredEvent(userEvent));
 
@@ -107,7 +105,7 @@ public class AuthController : ControllerBase
 
         _logger.LogInformation("[Registration] Created user {UserId}.", userEvent.Id);
 
-        return Ok("User registered successfully.");
+        return Ok(userEvent.Id.ToString());
     }
 
 }

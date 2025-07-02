@@ -83,7 +83,7 @@ public class UserController : ControllerBase
     [Authorize]
     public async Task<IActionResult> UpdateUser([FromBody] UpdateUserDto dto)
     {
-        var updatingUser = await _userRepository.FindByEmailAsync(dto.Email);
+        var updatingUser = await _userRepository.FindByIdAsync(_user.Id.Value);
 
         if (updatingUser is null)
             return NotFound("User not found.");
@@ -118,21 +118,21 @@ public class UserController : ControllerBase
             return NotFound("User not found.");
 
         if (updatingUser.Id != _user.Id)
-            return BadRequest("You cannot change password of this user.");
+            return BadRequest("You cannot change password for this user.");
 
         var hasher = new PasswordHasher<User>();
 
         var result = hasher.VerifyHashedPassword(updatingUser, updatingUser.PasswordHash, dto.OldPassword);
 
         if (result != PasswordVerificationResult.Success)
-            return Unauthorized("Old password incorrect.");
+            return BadRequest("Old password incorrect.");
 
         var hashedPassword = hasher.HashPassword(updatingUser, dto.NewPassword);
 
         updatingUser.SetPasswordHash(hashedPassword);
         await _userRepository.UpdateInformationAsync(updatingUser);
 
-         _logger.LogInformation("[UpdatePassword] User {UserId} updated password.", updatingUser.Id);
+        _logger.LogInformation("[UpdatePassword] User {UserId} updated password.", updatingUser.Id);
 
         return Ok();
     }
@@ -148,8 +148,10 @@ public class UserController : ControllerBase
 
         await _userRepository.DeleteUserAsync(user);
 
-         _logger.LogInformation("[Delete] User deleted account: {user}.", JsonSerializer.Serialize(user));
+        _logger.LogInformation("[Delete] User deleted account: {user}.", JsonSerializer.Serialize(user));
 
         return NoContent();
     }
+
+    
 }
