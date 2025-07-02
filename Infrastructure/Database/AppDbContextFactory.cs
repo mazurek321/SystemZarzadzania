@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
+
 
 namespace Infrastructure.Database;
 
@@ -9,8 +11,13 @@ public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
     {
         var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
 
+        var configuration = new ConfigurationBuilder()
+            .SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "..", "MainProgram"))
+            .AddJsonFile("appsettings.Test.json") 
+            .Build();
+
         optionsBuilder.UseMySql(
-            "server=localhost;database=systemzarzadzania;user=root;password=Bartek123456",
+            configuration.GetConnectionString("DefaultConnection"),
             new MySqlServerVersion(new Version(8, 0, 32))
         );
 

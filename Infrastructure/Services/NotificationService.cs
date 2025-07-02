@@ -1,7 +1,6 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Infrastructure.Database;
 using Core.Models.Notifications;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -13,16 +12,13 @@ namespace Infrastructure.Services;
 public class NotificationService : BackgroundService
 {
     private readonly IServiceProvider _serviceProvider;
-    private readonly AppDbContext _dbContext;
     private readonly ILogger<NotificationService> _logger;
 
     public NotificationService(
         IServiceProvider serviceProvider,
-        AppDbContext dbContext,
         ILogger<NotificationService> logger)
     {
         _serviceProvider = serviceProvider;
-        _dbContext = dbContext;
         _logger = logger;
     }
 
