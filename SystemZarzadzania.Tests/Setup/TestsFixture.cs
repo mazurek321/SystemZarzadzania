@@ -47,29 +47,31 @@ public class TestFixture : IAsyncLifetime
             SchemasToInclude = Array.Empty<string>()
         });
 
+        await ResetDatabaseAsync();
+
         _factory = new WebApplicationFactory<Program>()
-    .WithWebHostBuilder(builder =>
-    {
-        builder.ConfigureAppConfiguration((context, config) =>
+        .WithWebHostBuilder(builder =>
         {
-            config.Sources.Clear();
-            config.AddJsonFile("appsettings.Test.json");
-        });
+            builder.ConfigureAppConfiguration((context, config) =>
+            {
+                config.Sources.Clear();
+                config.AddJsonFile("appsettings.Test.json");
+            });
 
-        builder.ConfigureServices((context, services) =>
-        {
-            services.RemoveAll(typeof(IHostedService));
+            builder.ConfigureServices((context, services) =>
+            {
+                services.RemoveAll(typeof(IHostedService));
 
-            var descriptor = services.SingleOrDefault(
-                d => d.ServiceType == typeof(DbContextOptions<AppDbContext>));
-            if (descriptor != null)
-                services.Remove(descriptor);
+                var descriptor = services.SingleOrDefault(
+                    d => d.ServiceType == typeof(DbContextOptions<AppDbContext>));
+                if (descriptor != null)
+                    services.Remove(descriptor);
 
-            var config = context.Configuration;
-            var connStr = config.GetConnectionString("DefaultConnection");
+                var config = context.Configuration;
+                var connStr = config.GetConnectionString("DefaultConnection");
 
-            services.AddDbContext<AppDbContext>(options =>
-                options.UseMySql(connStr, new MySqlServerVersion(new Version(8, 0, 32))));
+                services.AddDbContext<AppDbContext>(options =>
+                    options.UseMySql(connStr, new MySqlServerVersion(new Version(8, 0, 32))));
         });
     });
 
@@ -89,12 +91,8 @@ public class TestFixture : IAsyncLifetime
 
     public async Task ResetDatabaseAsync()
     {
-        if (_connection.Database != "systemzarzadzaniatesty")
-            throw new InvalidOperationException($"PRÓBA WYCZYSZCZENIA BAZY: {_connection.Database}");
-
-        if (_respawner != null)
-            await _respawner.ResetAsync(_connection);
-        }
+        await _respawner.ResetAsync(_connection);
+    }
 
     public async Task<HttpStatusCode> RegisterAndLoginAsync()
     {

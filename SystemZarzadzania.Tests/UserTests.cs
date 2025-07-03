@@ -1,5 +1,4 @@
 using SystemZarzadzania.Setup;
-using Api.Controllers;
 using Api.Dto.AuthDtos;
 using Api.Dto.UserDtos;
 using System.Net;
@@ -18,14 +17,15 @@ public class UserTests : IClassFixture<TestFixture>, IAsyncLifetime
         _fixture = fixture;
     }
 
-    public Task InitializeAsync()
-    {
-        return Task.CompletedTask;
-    }
-
-    public async Task DisposeAsync()
+    public async Task InitializeAsync()
     {
         await _fixture.ResetDatabaseAsync();
+    }
+
+
+    public Task DisposeAsync()
+    {
+        return Task.CompletedTask;
     }
 
     [Fact]

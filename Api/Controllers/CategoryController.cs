@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Infrastructure.Database;
+using Api.Dto.CategoryDtos;
 using Core.Models.Categories;
 using Core.Models.Users;
 using Infrastructure.Context;
@@ -36,9 +37,14 @@ public class CategoryController : ControllerBase
 
     [HttpPost]
     [Authorize]
-    public async Task<IActionResult> AddCategory([FromBody] string name)
+    public async Task<IActionResult> AddCategory([FromBody] AddCategoryDto dto)
     {
-        var category = Category.NewCategory(name);
+        var exists = await _categoryRepository.CheckIfCategoryElareadyExists(dto.Name);
+
+        if (exists)
+            return BadRequest("Category already exists.");
+
+        var category = Category.NewCategory(dto.Name);
 
         await _categoryRepository.AddCategoryAsync(category);
 
@@ -56,7 +62,12 @@ public class CategoryController : ControllerBase
         if (category is null)
             return NotFound("Category not found.");
 
-        return Ok(category);
+        return Ok(new GetCategoryDto
+        {
+            Id = category.Id,
+            Name = category.Name,
+            Tasks = category.Tasks
+        });
     }
 
     [HttpGet("browse")]
@@ -65,7 +76,14 @@ public class CategoryController : ControllerBase
     {
         var categories = await _categoryRepository.BrowseCategoriesAsync(pageNumber, pageSize);
 
-        return Ok(categories);
+        var result = categories.Select(category => new GetCategoryDto
+        {
+            Id = category.Id,
+            Name = category.Name,
+            Tasks = category.Tasks 
+        }).ToList();
+
+        return Ok(result);
     }
 
     [HttpDelete]
