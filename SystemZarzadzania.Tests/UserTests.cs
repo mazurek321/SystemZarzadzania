@@ -145,11 +145,12 @@ public class UserTests : IClassFixture<TestFixture>, IAsyncLifetime
         };
         var registerResponse = await _fixture.Client.PostAsJsonAsync("api/auth/register", registerRequest);
         registerResponse.StatusCode.ShouldBe(HttpStatusCode.OK);
-        var registerResponseContent = await registerResponse.Content.ReadAsStringAsync();
+        var user = await registerResponse.Content.ReadFromJsonAsync<UserIdDto>();
+        var userId = user.Id;
 
         await _fixture.RegisterAndLoginAsync();
 
-        var response = await _fixture.Client.GetAsync($"api/user?userId={registerResponseContent}");
+        var response = await _fixture.Client.GetAsync($"api/user?userId={userId}");
         response.StatusCode.ShouldBe(HttpStatusCode.OK);
     }
 

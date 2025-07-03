@@ -5646,7 +5646,7 @@
       "code": "NU1603",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Api depends on Swashbuckle.AspNetCore (>= 8.0.13) but Swashbuckle.AspNetCore 8.0.13 was not found. Swashbuckle.AspNetCore 8.1.0 was resolved instead.",
+      "message": "Wersja Api jest zależna od Swashbuckle.AspNetCore (>= 8.0.13), ale nie znaleziono Swashbuckle.AspNetCore 8.0.13. Zamiast tego rozwiązano Swashbuckle.AspNetCore 8.1.0.",
       "libraryId": "Swashbuckle.AspNetCore",
       "targetGraphs": [
         "net8.0"
@@ -5656,7 +5656,7 @@
       "code": "NU1608",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Detected package version outside of dependency constraint: MediatR.Extensions.Microsoft.DependencyInjection 11.1.0 requires MediatR (>= 11.0.0 && < 12.0.0) but version MediatR 12.5.0 was resolved.",
+      "message": "Wykryta wersja pakietu jest poza ograniczeniami zależności: element MediatR.Extensions.Microsoft.DependencyInjection 11.1.0 wymaga wersji MediatR (>= 11.0.0 && < 12.0.0), ale rozpoznano wersję MediatR 12.5.0.",
       "libraryId": "MediatR",
       "targetGraphs": [
         "net8.0"

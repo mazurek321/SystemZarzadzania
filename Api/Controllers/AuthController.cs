@@ -105,7 +105,8 @@ public class AuthController : ControllerBase
 
         _logger.LogInformation("[Registration] Created user {UserId}.", userEvent.Id);
 
-        return Ok(userEvent.Id.ToString());
+        return Ok(new { Id = userEvent.Id });
+
     }
 
 }

@@ -64,10 +64,26 @@ public class UserTasksController : ControllerBase
 
         await _userTaskRepository.CreateAsync(task);
 
-        _logger.LogInformation("[Create] User {UserId} created task.", user.Id);
-        _logger.LogInformation("[CreateData] Task data: {task}", JsonSerializer.Serialize(task));
+        var taskDto = new TaskDto
+        {
+            Id = task.Id,
+            Title = task.Title,
+            Description = task.Description,
+            Deadline = task.Deadline,
+            StartDate = task.StartDate,
+            EndDate = task.EndDate,
+            Priority = task.Priority,
+            CreatedBy = task.CreatedBy,
+            LastUpdate = task.LastUpdate,
+            UpdatedBy = task.UpdatedBy,
+            Users = task.Users.Select(u => u.Id).ToList(),
+            Categories = task.Categories.Select(c => c.Id).ToList()
+        };
 
-        return Ok(task);
+        _logger.LogInformation("[Create] User {UserId} created task.", user.Id);
+        _logger.LogInformation("[CreateData] Task data: {task}", JsonSerializer.Serialize(taskDto));
+
+        return Ok(taskDto);
     }
 
     [HttpGet]
@@ -78,8 +94,24 @@ public class UserTasksController : ControllerBase
 
         if (task is null)
             return NotFound("Task not found.");
+        
+        var dto = new TaskDto
+        {
+            Id = task.Id,
+            Title = task.Title,
+            Description = task.Description,
+            Deadline = task.Deadline,
+            StartDate = task.StartDate,
+            EndDate = task.EndDate,
+            Priority = task.Priority,
+            CreatedBy = task.CreatedBy,
+            LastUpdate = task.LastUpdate,
+            UpdatedBy = task.UpdatedBy,
+            Users = task.Users.Select(u => u.Id).ToList(),
+            Categories = task.Categories.Select(c => c.Id).ToList()
+        };
 
-        return Ok(task);
+        return Ok(dto);
     }
 
     [HttpGet("browse")]
@@ -90,9 +122,26 @@ public class UserTasksController : ControllerBase
         [FromQuery] List<int>? categories = null
     )
     {
-        var query = await _userTaskRepository.BrowseTasks(pageNumber, pageSize, userId, categories);
+        var tasks = await _userTaskRepository.BrowseTasks(pageNumber, pageSize, userId, categories);
 
-        return Ok(query);
+        var dtos = tasks.Select(task => new TaskDto
+        {
+            Id = task.Id,
+            Title = task.Title,
+            Description = task.Description,
+            Deadline = task.Deadline,
+            StartDate = task.StartDate,
+            EndDate = task.EndDate,
+            Priority = task.Priority,
+            CreatedBy = task.CreatedBy,
+            LastUpdate = task.LastUpdate,
+            UpdatedBy = task.UpdatedBy,
+            Users = task.Users.Select(u => u.Id).ToList(),
+            Categories = task.Categories.Select(c => c.Id).ToList()
+        }).ToList();
+
+
+        return Ok(dtos);
     }
 
     [HttpPut]

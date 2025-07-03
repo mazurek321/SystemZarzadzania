@@ -5,6 +5,7 @@ D:\programowanie\C#\System zarzadzania zasobami\SystemZarzadzania.Tests\bin\Debu
 D:\programowanie\C#\System zarzadzania zasobami\SystemZarzadzania.Tests\bin\Debug\net8.0\MainProgram.runtimeconfig.json
 D:\programowanie\C#\System zarzadzania zasobami\SystemZarzadzania.Tests\bin\Debug\net8.0\appsettings.Development.json
 D:\programowanie\C#\System zarzadzania zasobami\SystemZarzadzania.Tests\bin\Debug\net8.0\appsettings.json
+D:\programowanie\C#\System zarzadzania zasobami\SystemZarzadzania.Tests\bin\Debug\net8.0\appsettings.Test.json
 D:\programowanie\C#\System zarzadzania zasobami\SystemZarzadzania.Tests\bin\Debug\net8.0\MainProgram.staticwebassets.endpoints.json
 D:\programowanie\C#\System zarzadzania zasobami\SystemZarzadzania.Tests\bin\Debug\net8.0\MainProgram.exe
 D:\programowanie\C#\System zarzadzania zasobami\SystemZarzadzania.Tests\bin\Debug\net8.0\EmptyFiles\archive\empty.7z
@@ -538,4 +539,3 @@ D:\programowanie\C#\System zarzadzania zasobami\SystemZarzadzania.Tests\obj\Debu
 D:\programowanie\C#\System zarzadzania zasobami\SystemZarzadzania.Tests\obj\Debug\net8.0\SystemZarzadzania.Tests.pdb
 D:\programowanie\C#\System zarzadzania zasobami\SystemZarzadzania.Tests\obj\Debug\net8.0\SystemZarzadzania.Tests.genruntimeconfig.cache
 D:\programowanie\C#\System zarzadzania zasobami\SystemZarzadzania.Tests\obj\Debug\net8.0\ref\SystemZarzadzania.Tests.dll
-D:\programowanie\C#\System zarzadzania zasobami\SystemZarzadzania.Tests\bin\Debug\net8.0\appsettings.Test.json

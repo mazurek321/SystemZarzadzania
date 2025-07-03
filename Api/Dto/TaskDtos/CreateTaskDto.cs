@@ -10,6 +10,6 @@ public class CreateTaskDto
     public DateTime StartDate { get; init; }
     public DateTime EndDate { get; init; }
     public int Priority { get; init; }
-    public List<Guid>? UsersIds { get; init; } = new List<Guid>();
-    public List<int>? CategoriesIds { get; init; } = new List<int>();
+    public List<Guid> UsersIds { get; init; } = new List<Guid>();
+    public List<int> CategoriesIds { get; init; } = new List<int>();
 }

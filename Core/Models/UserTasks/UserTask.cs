@@ -1,5 +1,6 @@
 using Core.Models.Categories;
 using Core.Models.Users;
+using System.Text.Json.Serialization;
 
 namespace Core.Models.UserTasks;
 
@@ -37,6 +38,7 @@ public class UserTask
     public Guid CreatedBy { get; private set; }
     public DateTime LastUpdate { get; private set; }
     public Guid UpdatedBy { get; private set; }
+    [JsonIgnore]
     public ICollection<User> Users { get; private set; }
     public List<Category> Categories { get; private set; }
 
