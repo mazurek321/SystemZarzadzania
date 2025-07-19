@@ -15,7 +15,6 @@ public static class Extensions
         services.AddScoped<IEmailTemplate, Registration>();
         services.AddScoped<EmailTemplateFactory>();
         services.AddScoped<EmailSender>();
-        services.AddHostedService<Infrastructure.Services.NotificationService>();
 
         return services;
     }

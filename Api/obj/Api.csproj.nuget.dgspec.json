@@ -324,6 +324,14 @@
               "target": "Package",
               "version": "[3.14.0, )"
             },
+            "Quartz.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[3.14.0, )"
+            },
+            "Quartz.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[3.14.0, )"
+            },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[8.12.1, )"

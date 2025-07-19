@@ -41,6 +41,9 @@ public class DeadlineChecker : INotificationChecker
         using var scope = _serviceProvider.CreateScope();
         var notificationSender = scope.ServiceProvider.GetRequiredService<INotificationSender>();
 
+        if (!_user.Id.HasValue)
+            return;
+            
         var user = await _userRepository.FindByIdAsync(_user.Id.Value);
         var time = DateTime.UtcNow.AddDays(1);
         var tasks = await _userTaskRepository.GetWithComingDeadlinesAsync(time, user.Id);
