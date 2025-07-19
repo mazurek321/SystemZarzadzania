@@ -1,0 +1,100 @@
+2025-07-19 12:28:25.849 +02:00 [INF] User profile is available. Using 'C:\Users\mazur\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-19 12:28:26.668 +02:00 [ERR] Error during notification check.
+System.InvalidOperationException: Nullable object must have a value.
+   at System.Nullable`1.get_Value()
+   at Infrastructure.Services.Checkers.DeadlineChecker.CheckAsync(CancellationToken cancellationToken) in D:\programowanie\C#\System zarzadzania zasobami\Infrastructure\Services\Checkers\DeadlineChecker.cs:line 44
+   at Infrastructure.Services.NotificationService.ExecuteAsync(CancellationToken stoppingToken) in D:\programowanie\C#\System zarzadzania zasobami\Infrastructure\Services\NotificationService.cs:line 36
+2025-07-19 12:28:26.805 +02:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2025-07-19 12:28:26.809 +02:00 [INF] Quartz Scheduler created
+2025-07-19 12:28:26.813 +02:00 [INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2025-07-19 12:28:26.817 +02:00 [INF] RAMJobStore initialized.
+2025-07-19 12:28:26.823 +02:00 [INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2025-07-19 12:28:26.828 +02:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2025-07-19 12:28:26.832 +02:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2025-07-19 12:28:26.864 +02:00 [INF] Adding 1 jobs, 1 triggers.
+2025-07-19 12:28:26.873 +02:00 [INF] Adding job: DEFAULT.ProcessOutboxJob
+2025-07-19 12:28:26.995 +02:00 [INF] Now listening on: http://localhost:5259
+2025-07-19 12:28:27.000 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-19 12:28:27.005 +02:00 [INF] Hosting environment: Development
+2025-07-19 12:28:27.012 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2025-07-19 12:28:27.013 +02:00 [INF] Content root path: D:\programowanie\C#\System zarzadzania zasobami\MainProgram
+2025-07-19 12:28:31.480 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/swagger/index.html - null null
+2025-07-19 12:28:31.786 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/swagger/index.html - 200 null text/html;charset=utf-8 308.963ms
+2025-07-19 12:28:31.867 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/swagger/index.css - null null
+2025-07-19 12:28:31.867 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/swagger/swagger-ui.css - null null
+2025-07-19 12:28:31.868 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/swagger/swagger-ui-bundle.js - null null
+2025-07-19 12:28:31.869 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/swagger/swagger-ui-standalone-preset.js - null null
+2025-07-19 12:28:31.870 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/swagger/index.js - null null
+2025-07-19 12:28:31.929 +02:00 [INF] Sending file. Request path: '/index.css'. Physical path: 'N/A'
+2025-07-19 12:28:31.942 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/swagger/index.js - 200 null application/javascript;charset=utf-8 71.8279ms
+2025-07-19 12:28:31.944 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/swagger/index.css - 200 202 text/css 79.9892ms
+2025-07-19 12:28:31.946 +02:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2025-07-19 12:28:31.948 +02:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-07-19 12:28:32.007 +02:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-07-19 12:28:32.008 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/swagger/swagger-ui.css - 200 154948 text/css 143.8381ms
+2025-07-19 12:28:32.011 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/swagger/swagger-ui-standalone-preset.js - 200 229223 text/javascript 141.8126ms
+2025-07-19 12:28:32.019 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/swagger/swagger-ui-bundle.js - 200 1466741 text/javascript 150.0673ms
+2025-07-19 12:28:32.431 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/swagger/v1/swagger.json - null null
+2025-07-19 12:28:32.489 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/swagger/favicon-32x32.png - null null
+2025-07-19 12:28:32.502 +02:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-07-19 12:28:32.510 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/swagger/favicon-32x32.png - 200 628 image/png 21.2495ms
+2025-07-19 12:28:32.759 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 327.9334ms
+2025-07-19 12:38:26.738 +02:00 [ERR] Error during notification check.
+System.InvalidOperationException: Nullable object must have a value.
+   at System.Nullable`1.get_Value()
+   at Infrastructure.Services.Checkers.DeadlineChecker.CheckAsync(CancellationToken cancellationToken) in D:\programowanie\C#\System zarzadzania zasobami\Infrastructure\Services\Checkers\DeadlineChecker.cs:line 44
+   at Infrastructure.Services.NotificationService.ExecuteAsync(CancellationToken stoppingToken) in D:\programowanie\C#\System zarzadzania zasobami\Infrastructure\Services\NotificationService.cs:line 36
+2025-07-19 12:48:12.432 +02:00 [INF] Application is shutting down...
+2025-07-19 12:48:12.455 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+2025-07-19 12:48:12.464 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+2025-07-19 12:48:12.477 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+2025-07-19 13:17:46.152 +02:00 [INF] User profile is available. Using 'C:\Users\mazur\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-19 13:17:46.397 +02:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2025-07-19 13:17:46.402 +02:00 [INF] Quartz Scheduler created
+2025-07-19 13:17:46.405 +02:00 [INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2025-07-19 13:17:46.408 +02:00 [INF] RAMJobStore initialized.
+2025-07-19 13:17:46.412 +02:00 [INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2025-07-19 13:17:46.415 +02:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2025-07-19 13:17:46.419 +02:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2025-07-19 13:17:46.443 +02:00 [INF] Adding 2 jobs, 2 triggers.
+2025-07-19 13:17:46.452 +02:00 [INF] Adding job: DEFAULT.ProcessOutboxJob-trigger
+2025-07-19 13:17:46.472 +02:00 [INF] Adding job: DEFAULT.NotificationCheckJob-trigger
+2025-07-19 13:17:46.558 +02:00 [INF] Now listening on: http://localhost:5259
+2025-07-19 13:17:46.564 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-19 13:17:46.568 +02:00 [INF] Hosting environment: Development
+2025-07-19 13:17:46.572 +02:00 [INF] Content root path: D:\programowanie\C#\System zarzadzania zasobami\MainProgram
+2025-07-19 13:17:46.573 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2025-07-19 13:17:46.891 +02:00 [ERR] Error during notification check.
+System.InvalidOperationException: Nullable object must have a value.
+   at System.Nullable`1.get_Value()
+   at Infrastructure.Services.Checkers.DeadlineChecker.CheckAsync(CancellationToken cancellationToken) in D:\programowanie\C#\System zarzadzania zasobami\Infrastructure\Services\Checkers\DeadlineChecker.cs:line 44
+   at Infrastructure.Quartz.NotificationCheckJob.Execute(IJobExecutionContext context) in D:\programowanie\C#\System zarzadzania zasobami\Infrastructure\Quartz\NotificationCheckJob.cs:line 31
+2025-07-19 13:18:56.214 +02:00 [INF] Application is shutting down...
+2025-07-19 13:18:56.241 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+2025-07-19 13:18:56.258 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+2025-07-19 13:18:56.265 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+2025-07-19 13:19:01.472 +02:00 [INF] User profile is available. Using 'C:\Users\mazur\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-19 13:19:01.633 +02:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2025-07-19 13:19:01.647 +02:00 [INF] Quartz Scheduler created
+2025-07-19 13:19:01.656 +02:00 [INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2025-07-19 13:19:01.663 +02:00 [INF] RAMJobStore initialized.
+2025-07-19 13:19:01.667 +02:00 [INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2025-07-19 13:19:01.672 +02:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2025-07-19 13:19:01.675 +02:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2025-07-19 13:19:01.690 +02:00 [INF] Adding 2 jobs, 2 triggers.
+2025-07-19 13:19:01.696 +02:00 [INF] Adding job: DEFAULT.ProcessOutboxJob-trigger
+2025-07-19 13:19:01.707 +02:00 [INF] Adding job: DEFAULT.NotificationCheckJob-trigger
+2025-07-19 13:19:01.788 +02:00 [INF] Now listening on: http://localhost:5259
+2025-07-19 13:19:01.791 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-19 13:19:01.794 +02:00 [INF] Hosting environment: Development
+2025-07-19 13:19:01.795 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2025-07-19 13:19:01.796 +02:00 [INF] Content root path: D:\programowanie\C#\System zarzadzania zasobami\MainProgram
+2025-07-19 13:19:02.040 +02:00 [WRN] Current user ID is null
+2025-07-19 13:19:12.786 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/swagger/index.html - null null
+2025-07-19 13:19:13.069 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/swagger/index.html - 200 null text/html;charset=utf-8 285.7495ms
+2025-07-19 13:19:13.322 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/swagger/v1/swagger.json - null null
+2025-07-19 13:19:13.578 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 256.9051ms
+2025-07-19 13:19:32.660 +02:00 [INF] Application is shutting down...
+2025-07-19 13:19:32.703 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+2025-07-19 13:19:32.709 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+2025-07-19 13:19:32.718 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.

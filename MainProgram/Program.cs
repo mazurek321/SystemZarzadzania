@@ -1,22 +1,16 @@
 using System.Text;
 using Infrastructure.Context;
 using Infrastructure.Database;
+using Infrastructure.Database.Abstractions;
+using Infrastructure.Email;
+using Infrastructure.Repositories;
+using Infrastructure.Services;
+using Infrastructure.Configuration;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using System.Reflection;
-using Infrastructure.Services;
-using Core.Models.Users;
-using Infrastructure.Repositories;
-using MediatR;
-using Quartz;
-using Infrastructure.Quartz;
-using Infrastructure.Database.Abstractions;
-using Infrastructure.Database;
 using Serilog;
-using Infrastructure.Email;
-
-
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.File("logs/app-log-.txt", rollingInterval: RollingInterval.Day)
@@ -26,8 +20,6 @@ Log.Logger = new LoggerConfiguration()
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Host.UseSerilog();
-builder.Services.AddSignalR();
-
 
 builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer("Bearer", options =>
@@ -52,8 +44,7 @@ builder.Services.AddSwaggerGen(options =>
         Type = SecuritySchemeType.Http,
         Scheme = "Bearer",
         BearerFormat = "JWT",
-        In = ParameterLocation.Header,
-        Description = "Enter 'Bearer' followed by your token"
+        In = ParameterLocation.Header
     });
 
     options.AddSecurityRequirement(new OpenApiSecurityRequirement
@@ -81,6 +72,7 @@ builder.Services.AddDbContext<AppDbContext>((serviceProvider, optionsBuilder) =>
 });
 
 builder.Services.AddControllers();
+builder.Services.AddSignalR();
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddRepositories();
@@ -89,30 +81,15 @@ builder.Services.AddServices();
 builder.Services.Configure<EmailInfo>(builder.Configuration.GetSection("EmailSettings"));
 builder.Services.AddScoped<Core.Models.Notifications.INotificationSender, Api.Services.NotificationSender>();
 
-
-builder.Services.AddQuartz(q =>
-{
-    q.UseMicrosoftDependencyInjectionJobFactory();
-
-    var jobKey = new JobKey("ProcessOutboxJob");
-
-    q.AddJob<ProcessOutboxJob>(opts => opts.WithIdentity(jobKey));
-    q.AddTrigger(opts => opts
-        .ForJob(jobKey)
-        .WithIdentity("ProcessOutboxJob-trigger")
-        .WithSimpleSchedule(x => x.WithIntervalInSeconds(30).RepeatForever()));
-});
-
-builder.Services.AddQuartzHostedService(q => q.WaitForJobsToComplete = true);
+builder.Services.AddQuartzJobs();
 
 builder.Services.AddTransient<ISqlConnectionFactory, SqlConnectionFactory>();
+
 builder.Services.AddMediatR(cfg =>
 {
     cfg.RegisterServicesFromAssemblyContaining<Infrastructure.EventHandlers.UserRegisteredEventHandler>();
     cfg.RegisterServicesFromAssemblyContaining<Core.Events.UserRegisteredEvent>();
 });
-
-builder.Services.AddLogging();
 
 var app = builder.Build();
 
@@ -123,13 +100,11 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
 app.MapHub<Api.Hubs.NotificationHub>("/notificationHub");
-
 
 app.Run();
 
