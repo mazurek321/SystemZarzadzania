@@ -30,6 +30,7 @@ internal sealed class UserRepository(AppDbContext dbContext) : IUserRepository
     public async Task<List<User>> BrowseUsers(int pageNumber, int pageSize)
     {
         return await dbContext.Users
+                        .AsNoTracking()
                         .OrderBy(x => x.CreatedAt)
                         .Skip((pageNumber - 1) * pageSize)
                         .Take(pageSize)

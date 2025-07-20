@@ -46,8 +46,10 @@ public class UserTasksController : ControllerBase
     public async Task<IActionResult> CreateTask([FromBody] CreateTaskDto dto)
     {
         var user = await _userRepository.FindByIdAsync(_user.Id.Value);
-        var users = await _userRepository.FindByIdsAsync(dto.UsersIds);
-        var categories = await _categoryRepository.GetByIdsAsync(dto.CategoriesIds);
+
+        var users = dto.UsersIds != null ? await _userRepository.FindByIdsAsync(dto.UsersIds) : new List<User>();
+        var categories = dto.CategoriesIds != null ? await _categoryRepository.GetByIdsAsync(dto.CategoriesIds) : new List<Category>();
+
 
         var task = UserTask.NewTask(
             dto.Title,
@@ -64,21 +66,7 @@ public class UserTasksController : ControllerBase
 
         await _userTaskRepository.CreateAsync(task);
 
-        var taskDto = new TaskDto
-        {
-            Id = task.Id,
-            Title = task.Title,
-            Description = task.Description,
-            Deadline = task.Deadline,
-            StartDate = task.StartDate,
-            EndDate = task.EndDate,
-            Priority = task.Priority,
-            CreatedBy = task.CreatedBy,
-            LastUpdate = task.LastUpdate,
-            UpdatedBy = task.UpdatedBy,
-            Users = task.Users.Select(u => u.Id).ToList(),
-            Categories = task.Categories.Select(c => c.Id).ToList()
-        };
+        var taskDto = MapToDto(task);
 
         _logger.LogInformation("[Create] User {UserId} created task.", user.Id);
         _logger.LogInformation("[CreateData] Task data: {task}", JsonSerializer.Serialize(taskDto));
@@ -88,28 +76,14 @@ public class UserTasksController : ControllerBase
 
     [HttpGet]
     [Authorize]
-    public async Task<IActionResult> GetTask([FromQuery] Guid id)
+    public async Task<IActionResult> GetTask([FromQuery] Guid taskId)
     {
-        var task = await _userTaskRepository.GetByIdAsync(id);
+        var task = await _userTaskRepository.GetByIdAsync(taskId);
 
         if (task is null)
             return NotFound("Task not found.");
-        
-        var dto = new TaskDto
-        {
-            Id = task.Id,
-            Title = task.Title,
-            Description = task.Description,
-            Deadline = task.Deadline,
-            StartDate = task.StartDate,
-            EndDate = task.EndDate,
-            Priority = task.Priority,
-            CreatedBy = task.CreatedBy,
-            LastUpdate = task.LastUpdate,
-            UpdatedBy = task.UpdatedBy,
-            Users = task.Users.Select(u => u.Id).ToList(),
-            Categories = task.Categories.Select(c => c.Id).ToList()
-        };
+
+        var dto = MapToDto(task);
 
         return Ok(dto);
     }
@@ -124,22 +98,7 @@ public class UserTasksController : ControllerBase
     {
         var tasks = await _userTaskRepository.BrowseTasks(pageNumber, pageSize, userId, categories);
 
-        var dtos = tasks.Select(task => new TaskDto
-        {
-            Id = task.Id,
-            Title = task.Title,
-            Description = task.Description,
-            Deadline = task.Deadline,
-            StartDate = task.StartDate,
-            EndDate = task.EndDate,
-            Priority = task.Priority,
-            CreatedBy = task.CreatedBy,
-            LastUpdate = task.LastUpdate,
-            UpdatedBy = task.UpdatedBy,
-            Users = task.Users.Select(u => u.Id).ToList(),
-            Categories = task.Categories.Select(c => c.Id).ToList()
-        }).ToList();
-
+        var dtos = tasks.Select(t => MapToDto(t)).ToList();
 
         return Ok(dtos);
     }
@@ -155,13 +114,17 @@ public class UserTasksController : ControllerBase
 
         var user = await _userRepository.FindByIdAsync(_user.Id.Value);
 
-        if (task.CreatedBy != user.Id && !task.Users.Any(x=>x.Id == user.Id) && user.Role != Core.Models.Users.User.UserRole.Admin)
-            return BadRequest("You cannot modiy this task.");
+        if (task.CreatedBy != user.Id
+                && !(task.Users?.Any(x => x.Id == user.Id) ?? false)
+                && user.Role != Core.Models.Users.User.UserRole.Admin)
+            return BadRequest("You cannot modify this task.");
 
-        var users = await _userRepository.FindByIdsAsync(dto.UsersIds);
-        var categories = await _categoryRepository.GetByIdsAsync(dto.CategoriesIds);
 
-        
+        var users = dto.UsersIds != null ? await _userRepository.FindByIdsAsync(dto.UsersIds) : new List<User>();
+        var categories = dto.CategoriesIds != null ? await _categoryRepository.GetByIdsAsync(dto.CategoriesIds) : new List<Category>();
+
+
+
         _logger.LogInformation("[Update] User {UserId} updated task {taskId}.", user.Id, task.Id);
         _logger.LogInformation("[UpdateData] Task data before update: {task}", JsonSerializer.Serialize(task));
 
@@ -199,8 +162,11 @@ public class UserTasksController : ControllerBase
 
         var user = await _userRepository.FindByIdAsync(_user.Id.Value);
 
-        if (task.CreatedBy != user.Id && !task.Users.Any(x=>x.Id == user.Id) && user.Role != Core.Models.Users.User.UserRole.Admin)
-            return BadRequest("You cant modiy users within this task."); 
+        if (task.CreatedBy != user.Id
+                && !(task.Users?.Any(x => x.Id == user.Id) ?? false)
+                && user.Role != Core.Models.Users.User.UserRole.Admin)
+            return BadRequest("You cannot modify this task.");
+
 
         _logger.LogInformation("[Update] User {UserId} updated task {taskId}.", user.Id, task.Id);
         _logger.LogInformation("[UpdateData] Task data before update: {task}", JsonSerializer.Serialize(task));
@@ -224,7 +190,7 @@ public class UserTasksController : ControllerBase
 
         if (task is null)
             return NotFound("Task not found.");
-        
+
         var user = await _userRepository.FindByIdAsync(_user.Id.Value);
 
         if (task.CreatedBy != user.Id && user.Role != Core.Models.Users.User.UserRole.Admin)
@@ -236,4 +202,22 @@ public class UserTasksController : ControllerBase
 
         return NoContent();
     }
+    
+
+    private TaskDto MapToDto(UserTask task) => new TaskDto
+    {
+        Id = task.Id,
+        Title = task.Title,
+        Description = task.Description,
+        Deadline = task.Deadline,
+        StartDate = task.StartDate ?? default(DateTime),
+        EndDate = task.EndDate ?? default(DateTime),
+        Priority = task.Priority,
+        CreatedBy = task.CreatedBy,
+        LastUpdate = task.LastUpdate,
+        UpdatedBy = task.UpdatedBy,
+        Users = task.Users?.Select(u => u.Id).ToList() ?? new List<Guid>(),
+        Categories = task.Categories?.Select(c => c.Id).ToList() ?? new List<int>()
+    };
+
 }

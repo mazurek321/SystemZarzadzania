@@ -50,6 +50,33 @@ internal sealed class UserTaskRepository(AppDbContext dbContext) : IUserTaskRepo
             .ToList();
     }
 
+    public async Task<ICollection<UserTask>> GetCompletedTasks(DateTime? from, DateTime? to, Guid? userId)
+    {
+        var query = dbContext.Tasks
+                                .AsNoTracking()
+                                .Include(x=>x.Users)
+                                .Include(x=>x.Categories)
+                                .AsQueryable();
+
+        query = query.Where(x => x.EndDate.HasValue);
+
+        if (userId is not null)
+            query = query.Where(
+                x =>
+                x.CreatedBy == userId.Value
+                ||
+                x.Users.Any(u => u.Id == userId.Value)
+        );
+
+        if (from.HasValue)
+            query = query.Where(x => x.EndDate.Value >= from.Value.Date);
+        if (to.HasValue)
+            query = query.Where(x => x.EndDate.Value < to.Value.Date.AddDays(1));
+        
+        return await query.ToListAsync();
+    }
+
+
     public async Task DeleteAsync(UserTask task)
     {
         dbContext.Tasks.Remove(task);

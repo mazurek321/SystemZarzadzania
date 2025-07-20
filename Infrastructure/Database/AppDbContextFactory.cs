@@ -13,7 +13,7 @@ public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
 
         var configuration = new ConfigurationBuilder()
             .SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "..", "MainProgram"))
-            .AddJsonFile("appsettings.Test.json") 
+            .AddJsonFile("appsettings.json") 
             .Build();
 
         optionsBuilder.UseMySql(

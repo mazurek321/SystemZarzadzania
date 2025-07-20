@@ -48,6 +48,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "ClosedXML": {
+              "target": "Package",
+              "version": "[0.105.0, )"
+            },
+            "EPPlus": {
+              "target": "Package",
+              "version": "[8.0.7, )"
+            },
             "MailKit": {
               "target": "Package",
               "version": "[4.12.1, )"
@@ -89,6 +97,10 @@
             "Quartz": {
               "target": "Package",
               "version": "[3.14.0, )"
+            },
+            "QuestPDF": {
+              "target": "Package",
+              "version": "[2025.7.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

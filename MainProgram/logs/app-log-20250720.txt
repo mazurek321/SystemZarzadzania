@@ -1,0 +1,1361 @@
+2025-07-20 15:18:17.013 +02:00 [INF] User profile is available. Using 'C:\Users\mazur\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-20 15:18:17.272 +02:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2025-07-20 15:18:17.275 +02:00 [INF] Quartz Scheduler created
+2025-07-20 15:18:17.280 +02:00 [INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2025-07-20 15:18:17.284 +02:00 [INF] RAMJobStore initialized.
+2025-07-20 15:18:17.288 +02:00 [INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2025-07-20 15:18:17.294 +02:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2025-07-20 15:18:17.298 +02:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2025-07-20 15:18:17.325 +02:00 [INF] Adding 2 jobs, 2 triggers.
+2025-07-20 15:18:17.335 +02:00 [INF] Adding job: DEFAULT.ProcessOutboxJob-trigger
+2025-07-20 15:18:17.358 +02:00 [INF] Adding job: DEFAULT.NotificationCheckJob-trigger
+2025-07-20 15:18:17.453 +02:00 [INF] Now listening on: http://localhost:5259
+2025-07-20 15:18:17.459 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-20 15:18:17.463 +02:00 [INF] Hosting environment: Development
+2025-07-20 15:18:17.467 +02:00 [INF] Content root path: D:\programowanie\C#\System zarzadzania zasobami\MainProgram
+2025-07-20 15:18:17.469 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2025-07-20 15:18:26.705 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/swagger/v1/swagger.json - null null
+2025-07-20 15:18:27.342 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 639.2976ms
+2025-07-20 15:18:32.309 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5259/api/auth/register - application/json 153
+2025-07-20 15:18:32.335 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-07-20 15:18:32.603 +02:00 [INF] Executing endpoint 'Api.Controllers.AuthController.Register (Api)'
+2025-07-20 15:18:32.650 +02:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(Api.Dto.AuthDtos.RegisterDto) on controller Api.Controllers.AuthController (Api).
+2025-07-20 15:18:34.961 +02:00 [INF] Executed DbCommand (60ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__email_0
+LIMIT 1
+2025-07-20 15:18:35.774 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (DbType = Guid), @p6='?' (DbType = DateTime), @p7='?' (Size = 4000), @p8='?' (DbType = Boolean), @p9='?' (DbType = DateTime), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (Size = 4000), @p14='?' (DbType = Int32), @p15='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `OutboxMessages` (`Id`, `Data`, `OccurredOn`, `ProcessedDate`, `Type`)
+VALUES (@p0, @p1, @p2, @p3, @p4);
+INSERT INTO `Users` (`Id`, `CreatedAt`, `Email`, `IsActive`, `LastActive`, `Lastname`, `Name`, `PasswordHash`, `Phone`, `Role`, `UpdatedAt`)
+VALUES (@p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+2025-07-20 15:18:35.834 +02:00 [INF] [Registration] Created user "01b9a92c-531b-459d-babb-15e603805e1b".
+2025-07-20 15:18:35.854 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-20 15:18:35.912 +02:00 [INF] Executed action Api.Controllers.AuthController.Register (Api) in 3246.7397ms
+2025-07-20 15:18:35.919 +02:00 [INF] Executed endpoint 'Api.Controllers.AuthController.Register (Api)'
+2025-07-20 15:18:35.941 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5259/api/auth/register - 200 null application/json; charset=utf-8 3633.6341ms
+2025-07-20 15:18:41.123 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5259/api/auth/login - application/json 57
+2025-07-20 15:18:41.144 +02:00 [INF] Executing endpoint 'Api.Controllers.AuthController.Login (Api)'
+2025-07-20 15:18:41.161 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Api.Dto.AuthDtos.LoginDto) on controller Api.Controllers.AuthController (Api).
+2025-07-20 15:18:41.227 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__email_0
+LIMIT 1
+2025-07-20 15:18:41.651 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[@p10='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `CreatedAt` = @p0, `Email` = @p1, `IsActive` = @p2, `LastActive` = @p3, `Lastname` = @p4, `Name` = @p5, `PasswordHash` = @p6, `Phone` = @p7, `Role` = @p8, `UpdatedAt` = @p9
+WHERE `Id` = @p10;
+SELECT ROW_COUNT();
+2025-07-20 15:18:41.665 +02:00 [INF] [Login] User "01b9a92c-531b-459d-babb-15e603805e1b" logged in.
+2025-07-20 15:18:41.675 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-07-20 15:18:41.683 +02:00 [INF] Executed action Api.Controllers.AuthController.Login (Api) in 513.4314ms
+2025-07-20 15:18:41.690 +02:00 [INF] Executed endpoint 'Api.Controllers.AuthController.Login (Api)'
+2025-07-20 15:18:41.696 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5259/api/auth/login - 200 null text/plain; charset=utf-8 572.5281ms
+2025-07-20 15:18:51.921 +02:00 [INF] Processed outbox message 523e3f20-de3e-4db3-a479-e217d1e0a6f2 of type Core.Events.UserRegisteredEvent, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.
+2025-07-20 15:19:37.229 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5259/api/UserTasks - application/json 125
+2025-07-20 15:19:37.346 +02:00 [INF] Executing endpoint 'Api.Controllers.UserTasksController.CreateTask (Api)'
+2025-07-20 15:19:37.357 +02:00 [INF] Route matched with {action = "CreateTask", controller = "UserTasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateTask(CreateTaskDto) on controller Api.Controllers.UserTasksController (Api).
+2025-07-20 15:19:37.431 +02:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-07-20 15:19:37.493 +02:00 [INF] Executed action Api.Controllers.UserTasksController.CreateTask (Api) in 126.9133ms
+2025-07-20 15:19:37.499 +02:00 [INF] Executed endpoint 'Api.Controllers.UserTasksController.CreateTask (Api)'
+2025-07-20 15:19:37.504 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5259/api/UserTasks - 400 null application/problem+json; charset=utf-8 274.475ms
+2025-07-20 15:20:05.396 +02:00 [INF] Application is shutting down...
+2025-07-20 15:20:05.443 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+2025-07-20 15:20:05.450 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+2025-07-20 15:20:05.463 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+2025-07-20 15:24:39.777 +02:00 [INF] User profile is available. Using 'C:\Users\mazur\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-20 15:24:40.008 +02:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2025-07-20 15:24:40.014 +02:00 [INF] Quartz Scheduler created
+2025-07-20 15:24:40.019 +02:00 [INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2025-07-20 15:24:40.024 +02:00 [INF] RAMJobStore initialized.
+2025-07-20 15:24:40.029 +02:00 [INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2025-07-20 15:24:40.033 +02:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2025-07-20 15:24:40.037 +02:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2025-07-20 15:24:40.061 +02:00 [INF] Adding 2 jobs, 2 triggers.
+2025-07-20 15:24:40.071 +02:00 [INF] Adding job: DEFAULT.ProcessOutboxJob-trigger
+2025-07-20 15:24:40.089 +02:00 [INF] Adding job: DEFAULT.NotificationCheckJob-trigger
+2025-07-20 15:24:40.181 +02:00 [INF] Now listening on: http://localhost:5259
+2025-07-20 15:24:40.188 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-20 15:24:40.193 +02:00 [INF] Hosting environment: Development
+2025-07-20 15:24:40.196 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2025-07-20 15:24:40.199 +02:00 [INF] Content root path: D:\programowanie\C#\System zarzadzania zasobami\MainProgram
+2025-07-20 15:25:02.311 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5259/api/auth/register - application/json 156
+2025-07-20 15:25:02.411 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-07-20 15:25:02.590 +02:00 [INF] Executing endpoint 'Api.Controllers.AuthController.Register (Api)'
+2025-07-20 15:25:02.632 +02:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(Api.Dto.AuthDtos.RegisterDto) on controller Api.Controllers.AuthController (Api).
+2025-07-20 15:25:04.652 +02:00 [INF] Executed DbCommand (66ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__email_0
+LIMIT 1
+2025-07-20 15:25:05.401 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (DbType = Guid), @p6='?' (DbType = DateTime), @p7='?' (Size = 4000), @p8='?' (DbType = Boolean), @p9='?' (DbType = DateTime), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (Size = 4000), @p14='?' (DbType = Int32), @p15='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `OutboxMessages` (`Id`, `Data`, `OccurredOn`, `ProcessedDate`, `Type`)
+VALUES (@p0, @p1, @p2, @p3, @p4);
+INSERT INTO `Users` (`Id`, `CreatedAt`, `Email`, `IsActive`, `LastActive`, `Lastname`, `Name`, `PasswordHash`, `Phone`, `Role`, `UpdatedAt`)
+VALUES (@p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+2025-07-20 15:25:05.455 +02:00 [INF] [Registration] Created user "e76d07b3-fbc0-4e0c-af16-9778ffe93460".
+2025-07-20 15:25:05.477 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-20 15:25:05.550 +02:00 [INF] Executed action Api.Controllers.AuthController.Register (Api) in 2901.4037ms
+2025-07-20 15:25:05.558 +02:00 [INF] Executed endpoint 'Api.Controllers.AuthController.Register (Api)'
+2025-07-20 15:25:05.581 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5259/api/auth/register - 200 null application/json; charset=utf-8 3271.7569ms
+2025-07-20 15:25:11.240 +02:00 [INF] Processed outbox message 0cc848b9-6b0a-48d8-9956-b47ba2da7913 of type Core.Events.UserRegisteredEvent, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.
+2025-07-20 15:25:17.933 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5259/api/auth/login - application/json 60
+2025-07-20 15:25:17.957 +02:00 [INF] Executing endpoint 'Api.Controllers.AuthController.Login (Api)'
+2025-07-20 15:25:17.974 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Api.Dto.AuthDtos.LoginDto) on controller Api.Controllers.AuthController (Api).
+2025-07-20 15:25:18.041 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__email_0
+LIMIT 1
+2025-07-20 15:25:18.277 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@p10='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `CreatedAt` = @p0, `Email` = @p1, `IsActive` = @p2, `LastActive` = @p3, `Lastname` = @p4, `Name` = @p5, `PasswordHash` = @p6, `Phone` = @p7, `Role` = @p8, `UpdatedAt` = @p9
+WHERE `Id` = @p10;
+SELECT ROW_COUNT();
+2025-07-20 15:25:18.291 +02:00 [INF] [Login] User "e76d07b3-fbc0-4e0c-af16-9778ffe93460" logged in.
+2025-07-20 15:25:18.298 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-07-20 15:25:18.305 +02:00 [INF] Executed action Api.Controllers.AuthController.Login (Api) in 321.8049ms
+2025-07-20 15:25:18.312 +02:00 [INF] Executed endpoint 'Api.Controllers.AuthController.Login (Api)'
+2025-07-20 15:25:18.318 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5259/api/auth/login - 200 null text/plain; charset=utf-8 385.6935ms
+2025-07-20 15:25:59.956 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5259/api/UserTasks - application/json 125
+2025-07-20 15:26:00.008 +02:00 [INF] Executing endpoint 'Api.Controllers.UserTasksController.CreateTask (Api)'
+2025-07-20 15:26:00.023 +02:00 [INF] Route matched with {action = "CreateTask", controller = "UserTasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateTask(CreateTaskDto) on controller Api.Controllers.UserTasksController (Api).
+2025-07-20 15:26:00.097 +02:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-07-20 15:26:00.155 +02:00 [INF] Executed action Api.Controllers.UserTasksController.CreateTask (Api) in 122.646ms
+2025-07-20 15:26:00.161 +02:00 [INF] Executed endpoint 'Api.Controllers.UserTasksController.CreateTask (Api)'
+2025-07-20 15:26:00.165 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5259/api/UserTasks - 400 null application/problem+json; charset=utf-8 208.5413ms
+2025-07-20 15:30:04.053 +02:00 [INF] Application is shutting down...
+2025-07-20 15:30:04.086 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+2025-07-20 15:30:04.094 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+2025-07-20 15:30:04.106 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+2025-07-20 15:30:15.398 +02:00 [INF] User profile is available. Using 'C:\Users\mazur\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-20 15:30:15.650 +02:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2025-07-20 15:30:15.656 +02:00 [INF] Quartz Scheduler created
+2025-07-20 15:30:15.661 +02:00 [INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2025-07-20 15:30:15.666 +02:00 [INF] RAMJobStore initialized.
+2025-07-20 15:30:15.671 +02:00 [INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2025-07-20 15:30:15.676 +02:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2025-07-20 15:30:15.681 +02:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2025-07-20 15:30:15.705 +02:00 [INF] Adding 2 jobs, 2 triggers.
+2025-07-20 15:30:15.714 +02:00 [INF] Adding job: DEFAULT.ProcessOutboxJob-trigger
+2025-07-20 15:30:15.734 +02:00 [INF] Adding job: DEFAULT.NotificationCheckJob-trigger
+2025-07-20 15:30:15.819 +02:00 [INF] Now listening on: http://localhost:5259
+2025-07-20 15:30:15.826 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-20 15:30:15.831 +02:00 [INF] Hosting environment: Development
+2025-07-20 15:30:15.835 +02:00 [INF] Content root path: D:\programowanie\C#\System zarzadzania zasobami\MainProgram
+2025-07-20 15:30:15.836 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2025-07-20 15:30:21.704 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5259/api/UserTasks - application/json 82
+2025-07-20 15:30:21.796 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-07-20 15:30:21.982 +02:00 [INF] Executing endpoint 'Api.Controllers.UserTasksController.CreateTask (Api)'
+2025-07-20 15:30:22.029 +02:00 [INF] Route matched with {action = "CreateTask", controller = "UserTasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateTask(CreateTaskDto) on controller Api.Controllers.UserTasksController (Api).
+2025-07-20 15:30:22.277 +02:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-07-20 15:30:22.402 +02:00 [INF] Executed action Api.Controllers.UserTasksController.CreateTask (Api) in 360.064ms
+2025-07-20 15:30:22.413 +02:00 [INF] Executed endpoint 'Api.Controllers.UserTasksController.CreateTask (Api)'
+2025-07-20 15:30:22.424 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5259/api/UserTasks - 400 null application/problem+json; charset=utf-8 721.9994ms
+2025-07-20 15:30:36.600 +02:00 [INF] Application is shutting down...
+2025-07-20 15:30:36.643 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+2025-07-20 15:30:36.652 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+2025-07-20 15:30:36.665 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+2025-07-20 15:30:46.418 +02:00 [INF] User profile is available. Using 'C:\Users\mazur\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-20 15:30:46.662 +02:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2025-07-20 15:30:46.668 +02:00 [INF] Quartz Scheduler created
+2025-07-20 15:30:46.673 +02:00 [INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2025-07-20 15:30:46.678 +02:00 [INF] RAMJobStore initialized.
+2025-07-20 15:30:46.683 +02:00 [INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2025-07-20 15:30:46.688 +02:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2025-07-20 15:30:46.692 +02:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2025-07-20 15:30:46.714 +02:00 [INF] Adding 2 jobs, 2 triggers.
+2025-07-20 15:30:46.725 +02:00 [INF] Adding job: DEFAULT.ProcessOutboxJob-trigger
+2025-07-20 15:30:46.745 +02:00 [INF] Adding job: DEFAULT.NotificationCheckJob-trigger
+2025-07-20 15:30:46.829 +02:00 [INF] Now listening on: http://localhost:5259
+2025-07-20 15:30:46.837 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-20 15:30:46.843 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2025-07-20 15:30:46.939 +02:00 [INF] Hosting environment: Development
+2025-07-20 15:30:46.947 +02:00 [INF] Content root path: D:\programowanie\C#\System zarzadzania zasobami\MainProgram
+2025-07-20 15:30:50.439 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5259/api/UserTasks - application/json 82
+2025-07-20 15:30:50.534 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-07-20 15:30:50.754 +02:00 [INF] Executing endpoint 'Api.Controllers.UserTasksController.CreateTask (Api)'
+2025-07-20 15:30:50.807 +02:00 [INF] Route matched with {action = "CreateTask", controller = "UserTasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateTask(CreateTaskDto) on controller Api.Controllers.UserTasksController (Api).
+2025-07-20 15:30:51.050 +02:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-07-20 15:30:51.155 +02:00 [INF] Executed action Api.Controllers.UserTasksController.CreateTask (Api) in 331.415ms
+2025-07-20 15:30:51.169 +02:00 [INF] Executed endpoint 'Api.Controllers.UserTasksController.CreateTask (Api)'
+2025-07-20 15:30:51.179 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5259/api/UserTasks - 400 null application/problem+json; charset=utf-8 743.7767ms
+2025-07-20 15:31:33.959 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5259/api/UserTasks - application/json 81
+2025-07-20 15:31:33.986 +02:00 [INF] Executing endpoint 'Api.Controllers.UserTasksController.CreateTask (Api)'
+2025-07-20 15:31:33.992 +02:00 [INF] Route matched with {action = "CreateTask", controller = "UserTasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateTask(CreateTaskDto) on controller Api.Controllers.UserTasksController (Api).
+2025-07-20 15:31:35.839 +02:00 [INF] Executed DbCommand (51ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-20 15:31:36.422 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE FALSE
+2025-07-20 15:31:36.602 +02:00 [INF] Executed DbCommand (137ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Name`
+FROM `Categories` AS `c`
+WHERE FALSE
+2025-07-20 15:31:36.911 +02:00 [INF] Executed DbCommand (14ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?' (DbType = Guid), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime), @p6='?' (DbType = DateTime), @p7='?' (DbType = Int32), @p8='?' (DbType = DateTime), @p9='?' (Size = 4000), @p10='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Tasks` (`Id`, `CreatedAt`, `CreatedBy`, `Deadline`, `Description`, `EndDate`, `LastUpdate`, `Priority`, `StartDate`, `Title`, `UpdatedBy`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10);
+2025-07-20 15:31:36.949 +02:00 [INF] [Create] User "e76d07b3-fbc0-4e0c-af16-9778ffe93460" created task.
+2025-07-20 15:31:37.009 +02:00 [INF] [CreateData] Task data: {"Id":"3fbbd136-fba4-4520-bc6b-4ee429b230d1","Title":"TASK1","Description":null,"Deadline":"2025-07-20T13:19:52.4Z","StartDate":"0001-01-01T00:00:00","EndDate":"0001-01-01T00:00:00","Priority":1,"CreatedBy":"e76d07b3-fbc0-4e0c-af16-9778ffe93460","LastUpdate":"2025-07-20T13:31:36.6122479Z","UpdatedBy":"e76d07b3-fbc0-4e0c-af16-9778ffe93460","Users":[],"Categories":[]}
+2025-07-20 15:31:37.066 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.TaskDtos.TaskDto'.
+2025-07-20 15:31:37.091 +02:00 [INF] Executed action Api.Controllers.UserTasksController.CreateTask (Api) in 3090.3524ms
+2025-07-20 15:31:37.098 +02:00 [INF] Executed endpoint 'Api.Controllers.UserTasksController.CreateTask (Api)'
+2025-07-20 15:31:37.126 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5259/api/UserTasks - 200 null application/json; charset=utf-8 3167.282ms
+2025-07-20 15:32:19.166 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5259/api/UserTasks - application/json 193
+2025-07-20 15:32:19.191 +02:00 [INF] Executing endpoint 'Api.Controllers.UserTasksController.CreateTask (Api)'
+2025-07-20 15:32:19.198 +02:00 [INF] Route matched with {action = "CreateTask", controller = "UserTasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateTask(CreateTaskDto) on controller Api.Controllers.UserTasksController (Api).
+2025-07-20 15:32:19.262 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-20 15:32:19.276 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE FALSE
+2025-07-20 15:32:19.289 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Name`
+FROM `Categories` AS `c`
+WHERE FALSE
+2025-07-20 15:32:19.315 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?' (DbType = Guid), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime), @p6='?' (DbType = DateTime), @p7='?' (DbType = Int32), @p8='?' (DbType = DateTime), @p9='?' (Size = 4000), @p10='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Tasks` (`Id`, `CreatedAt`, `CreatedBy`, `Deadline`, `Description`, `EndDate`, `LastUpdate`, `Priority`, `StartDate`, `Title`, `UpdatedBy`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10);
+2025-07-20 15:32:19.329 +02:00 [INF] [Create] User "e76d07b3-fbc0-4e0c-af16-9778ffe93460" created task.
+2025-07-20 15:32:19.334 +02:00 [INF] [CreateData] Task data: {"Id":"7308456b-f4f0-4046-badf-5378717ed8f9","Title":"string","Description":"string","Deadline":"2025-07-20T13:32:04.357Z","StartDate":"2025-07-18T13:32:04.357Z","EndDate":"2025-07-19T13:32:04.357Z","Priority":0,"CreatedBy":"e76d07b3-fbc0-4e0c-af16-9778ffe93460","LastUpdate":"2025-07-20T13:32:19.2992214Z","UpdatedBy":"e76d07b3-fbc0-4e0c-af16-9778ffe93460","Users":[],"Categories":[]}
+2025-07-20 15:32:19.340 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.TaskDtos.TaskDto'.
+2025-07-20 15:32:19.346 +02:00 [INF] Executed action Api.Controllers.UserTasksController.CreateTask (Api) in 135.0327ms
+2025-07-20 15:32:19.353 +02:00 [INF] Executed endpoint 'Api.Controllers.UserTasksController.CreateTask (Api)'
+2025-07-20 15:32:19.357 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5259/api/UserTasks - 200 null application/json; charset=utf-8 191.4743ms
+2025-07-20 15:32:26.018 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/UserTasks - null null
+2025-07-20 15:32:26.041 +02:00 [INF] Executing endpoint 'Api.Controllers.UserTasksController.GetTask (Api)'
+2025-07-20 15:32:26.058 +02:00 [INF] Route matched with {action = "GetTask", controller = "UserTasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetTask(System.Guid) on controller Api.Controllers.UserTasksController (Api).
+2025-07-20 15:32:26.216 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Title`, `t`.`UpdatedBy`
+FROM `Tasks` AS `t`
+WHERE `t`.`Id` = @__id_0
+LIMIT 1
+2025-07-20 15:32:26.230 +02:00 [INF] Executing NotFoundObjectResult, writing value of type 'System.String'.
+2025-07-20 15:32:26.237 +02:00 [INF] Executed action Api.Controllers.UserTasksController.GetTask (Api) in 169.4087ms
+2025-07-20 15:32:26.245 +02:00 [INF] Executed endpoint 'Api.Controllers.UserTasksController.GetTask (Api)'
+2025-07-20 15:32:26.250 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/UserTasks - 404 null text/plain; charset=utf-8 231.6511ms
+2025-07-20 15:32:47.365 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=25 - null null
+2025-07-20 15:32:47.380 +02:00 [INF] Executing endpoint 'Api.Controllers.UserTasksController.BrowseTasks (Api)'
+2025-07-20 15:32:47.401 +02:00 [INF] Route matched with {action = "BrowseTasks", controller = "UserTasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseTasks(Int32, Int32, System.Nullable`1[System.Guid], System.Collections.Generic.List`1[System.Int32]) on controller Api.Controllers.UserTasksController (Api).
+2025-07-20 15:32:47.449 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Title`, `t`.`UpdatedBy`
+FROM `Tasks` AS `t`
+2025-07-20 15:32:47.463 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Api.Dto.TaskDtos.TaskDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-20 15:32:47.474 +02:00 [INF] Executed action Api.Controllers.UserTasksController.BrowseTasks (Api) in 63.1731ms
+2025-07-20 15:32:47.482 +02:00 [INF] Executed endpoint 'Api.Controllers.UserTasksController.BrowseTasks (Api)'
+2025-07-20 15:32:47.488 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=25 - 200 null application/json; charset=utf-8 123.1914ms
+2025-07-20 15:33:38.174 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=25 - null null
+2025-07-20 15:33:38.210 +02:00 [INF] Executing endpoint 'Api.Controllers.UserTasksController.BrowseTasks (Api)'
+2025-07-20 15:33:38.216 +02:00 [INF] Route matched with {action = "BrowseTasks", controller = "UserTasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseTasks(Int32, Int32, System.Nullable`1[System.Guid], System.Collections.Generic.List`1[System.Int32]) on controller Api.Controllers.UserTasksController (Api).
+2025-07-20 15:33:38.232 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Title`, `t`.`UpdatedBy`
+FROM `Tasks` AS `t`
+2025-07-20 15:33:38.242 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Api.Dto.TaskDtos.TaskDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-20 15:33:38.249 +02:00 [INF] Executed action Api.Controllers.UserTasksController.BrowseTasks (Api) in 24.8734ms
+2025-07-20 15:33:38.255 +02:00 [INF] Executed endpoint 'Api.Controllers.UserTasksController.BrowseTasks (Api)'
+2025-07-20 15:33:38.261 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=25 - 200 null application/json; charset=utf-8 87.3574ms
+2025-07-20 15:33:49.702 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=25&userId=3fbbd136-fba4-4520-bc6b-4ee429b230d1 - null null
+2025-07-20 15:33:49.714 +02:00 [INF] Executing endpoint 'Api.Controllers.UserTasksController.BrowseTasks (Api)'
+2025-07-20 15:33:49.718 +02:00 [INF] Route matched with {action = "BrowseTasks", controller = "UserTasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseTasks(Int32, Int32, System.Nullable`1[System.Guid], System.Collections.Generic.List`1[System.Int32]) on controller Api.Controllers.UserTasksController (Api).
+2025-07-20 15:33:49.735 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Title`, `t`.`UpdatedBy`
+FROM `Tasks` AS `t`
+2025-07-20 15:33:49.746 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Api.Dto.TaskDtos.TaskDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-20 15:33:49.752 +02:00 [INF] Executed action Api.Controllers.UserTasksController.BrowseTasks (Api) in 24.4868ms
+2025-07-20 15:33:49.758 +02:00 [INF] Executed endpoint 'Api.Controllers.UserTasksController.BrowseTasks (Api)'
+2025-07-20 15:33:49.763 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=25&userId=3fbbd136-fba4-4520-bc6b-4ee429b230d1 - 200 null application/json; charset=utf-8 60.836ms
+2025-07-20 15:34:05.061 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/UserTasks?id=3fbbd136-fba4-4520-bc6b-4ee429b230d1 - null null
+2025-07-20 15:34:05.073 +02:00 [INF] Executing endpoint 'Api.Controllers.UserTasksController.GetTask (Api)'
+2025-07-20 15:34:05.079 +02:00 [INF] Route matched with {action = "GetTask", controller = "UserTasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetTask(System.Guid) on controller Api.Controllers.UserTasksController (Api).
+2025-07-20 15:34:05.095 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Title`, `t`.`UpdatedBy`
+FROM `Tasks` AS `t`
+WHERE `t`.`Id` = @__id_0
+LIMIT 1
+2025-07-20 15:34:05.105 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.TaskDtos.TaskDto'.
+2025-07-20 15:34:05.110 +02:00 [INF] Executed action Api.Controllers.UserTasksController.GetTask (Api) in 22.0272ms
+2025-07-20 15:34:05.115 +02:00 [INF] Executed endpoint 'Api.Controllers.UserTasksController.GetTask (Api)'
+2025-07-20 15:34:05.121 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/UserTasks?id=3fbbd136-fba4-4520-bc6b-4ee429b230d1 - 200 null application/json; charset=utf-8 60.3678ms
+2025-07-20 15:34:19.004 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=25&userId=e76d07b3-fbc0-4e0c-af16-9778ffe93460 - null null
+2025-07-20 15:34:19.016 +02:00 [INF] Executing endpoint 'Api.Controllers.UserTasksController.BrowseTasks (Api)'
+2025-07-20 15:34:19.021 +02:00 [INF] Route matched with {action = "BrowseTasks", controller = "UserTasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseTasks(Int32, Int32, System.Nullable`1[System.Guid], System.Collections.Generic.List`1[System.Int32]) on controller Api.Controllers.UserTasksController (Api).
+2025-07-20 15:34:19.035 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Title`, `t`.`UpdatedBy`
+FROM `Tasks` AS `t`
+2025-07-20 15:34:19.045 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Api.Dto.TaskDtos.TaskDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-20 15:34:19.051 +02:00 [INF] Executed action Api.Controllers.UserTasksController.BrowseTasks (Api) in 21.6219ms
+2025-07-20 15:34:19.056 +02:00 [INF] Executed endpoint 'Api.Controllers.UserTasksController.BrowseTasks (Api)'
+2025-07-20 15:34:19.062 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=25&userId=e76d07b3-fbc0-4e0c-af16-9778ffe93460 - 200 null application/json; charset=utf-8 57.5743ms
+2025-07-20 15:34:29.264 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/Efficiency - null null
+2025-07-20 15:34:29.276 +02:00 [INF] Executing endpoint 'Api.Controllers.EfficiencyController.GetCompletedTasks (Api)'
+2025-07-20 15:34:29.292 +02:00 [INF] Route matched with {action = "GetCompletedTasks", controller = "Efficiency"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCompletedTasks(System.Nullable`1[System.Guid], System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime]) on controller Api.Controllers.EfficiencyController (Api).
+2025-07-20 15:34:29.524 +02:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-07-20 15:34:29.560 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__userId_Value_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Title`, `t`.`UpdatedBy`, `t0`.`Id`, `t0`.`CreatedAt`, `t0`.`Email`, `t0`.`IsActive`, `t0`.`LastActive`, `t0`.`Lastname`, `t0`.`Name`, `t0`.`PasswordHash`, `t0`.`Phone`, `t0`.`Role`, `t0`.`UpdatedAt`, `t0`.`TasksId`, `t0`.`UsersId`, `t1`.`Id`, `t1`.`Name`, `t1`.`CategoriesId`, `t1`.`TasksId`
+FROM `Tasks` AS `t`
+LEFT JOIN (
+    SELECT `u2`.`Id`, `u2`.`CreatedAt`, `u2`.`Email`, `u2`.`IsActive`, `u2`.`LastActive`, `u2`.`Lastname`, `u2`.`Name`, `u2`.`PasswordHash`, `u2`.`Phone`, `u2`.`Role`, `u2`.`UpdatedAt`, `u1`.`TasksId`, `u1`.`UsersId`
+    FROM `UserUserTask` AS `u1`
+    INNER JOIN `Users` AS `u2` ON `u1`.`UsersId` = `u2`.`Id`
+) AS `t0` ON `t`.`Id` = `t0`.`TasksId`
+LEFT JOIN (
+    SELECT `c0`.`Id`, `c0`.`Name`, `c`.`CategoriesId`, `c`.`TasksId`
+    FROM `CategoryUserTask` AS `c`
+    INNER JOIN `Categories` AS `c0` ON `c`.`CategoriesId` = `c0`.`Id`
+) AS `t1` ON `t`.`Id` = `t1`.`TasksId`
+WHERE `t`.`EndDate` IS NOT NULL AND ((`t`.`CreatedBy` = @__userId_Value_0) OR EXISTS (
+    SELECT 1
+    FROM `UserUserTask` AS `u`
+    INNER JOIN `Users` AS `u0` ON `u`.`UsersId` = `u0`.`Id`
+    WHERE (`t`.`Id` = `u`.`TasksId`) AND (`u0`.`Id` = @__userId_Value_0)))
+ORDER BY `t`.`Id`, `t0`.`TasksId`, `t0`.`UsersId`, `t0`.`Id`, `t1`.`CategoriesId`, `t1`.`TasksId`
+2025-07-20 15:34:29.579 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Api.Dto.TaskDtos.TaskDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-20 15:34:29.586 +02:00 [INF] Executed action Api.Controllers.EfficiencyController.GetCompletedTasks (Api) in 285.4596ms
+2025-07-20 15:34:29.592 +02:00 [INF] Executed endpoint 'Api.Controllers.EfficiencyController.GetCompletedTasks (Api)'
+2025-07-20 15:34:29.597 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/Efficiency - 200 null application/json; charset=utf-8 333.6887ms
+2025-07-20 15:40:07.965 +02:00 [INF] Application is shutting down...
+2025-07-20 15:40:07.987 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+2025-07-20 15:40:07.995 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+2025-07-20 15:40:08.008 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+2025-07-20 15:50:39.194 +02:00 [INF] User profile is available. Using 'C:\Users\mazur\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-20 15:50:39.436 +02:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2025-07-20 15:50:39.441 +02:00 [INF] Quartz Scheduler created
+2025-07-20 15:50:39.445 +02:00 [INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2025-07-20 15:50:39.450 +02:00 [INF] RAMJobStore initialized.
+2025-07-20 15:50:39.454 +02:00 [INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2025-07-20 15:50:39.457 +02:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2025-07-20 15:50:39.460 +02:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2025-07-20 15:50:39.483 +02:00 [INF] Adding 2 jobs, 2 triggers.
+2025-07-20 15:50:39.491 +02:00 [INF] Adding job: DEFAULT.ProcessOutboxJob-trigger
+2025-07-20 15:50:39.510 +02:00 [INF] Adding job: DEFAULT.NotificationCheckJob-trigger
+2025-07-20 15:50:39.598 +02:00 [INF] Now listening on: http://localhost:5259
+2025-07-20 15:50:39.605 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-20 15:50:39.610 +02:00 [INF] Hosting environment: Development
+2025-07-20 15:50:39.615 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2025-07-20 15:50:39.615 +02:00 [INF] Content root path: D:\programowanie\C#\System zarzadzania zasobami\MainProgram
+2025-07-20 15:50:46.275 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/swagger/index.html - null null
+2025-07-20 15:50:46.625 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/swagger/index.html - 200 null text/html;charset=utf-8 351.9068ms
+2025-07-20 15:50:47.217 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/swagger/v1/swagger.json - null null
+2025-07-20 15:50:47.516 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 299.5531ms
+2025-07-20 15:50:58.375 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5259/api/auth/login - application/json 60
+2025-07-20 15:50:58.398 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-07-20 15:50:58.456 +02:00 [INF] Executing endpoint 'Api.Controllers.AuthController.Login (Api)'
+2025-07-20 15:50:58.498 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Api.Dto.AuthDtos.LoginDto) on controller Api.Controllers.AuthController (Api).
+2025-07-20 15:51:00.439 +02:00 [INF] Executed DbCommand (64ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__email_0
+LIMIT 1
+2025-07-20 15:51:01.044 +02:00 [INF] Executed DbCommand (13ms) [Parameters=[@p10='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `CreatedAt` = @p0, `Email` = @p1, `IsActive` = @p2, `LastActive` = @p3, `Lastname` = @p4, `Name` = @p5, `PasswordHash` = @p6, `Phone` = @p7, `Role` = @p8, `UpdatedAt` = @p9
+WHERE `Id` = @p10;
+SELECT ROW_COUNT();
+2025-07-20 15:51:01.072 +02:00 [INF] [Login] User "e76d07b3-fbc0-4e0c-af16-9778ffe93460" logged in.
+2025-07-20 15:51:01.092 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-07-20 15:51:01.106 +02:00 [INF] Executed action Api.Controllers.AuthController.Login (Api) in 2593.6339ms
+2025-07-20 15:51:01.114 +02:00 [INF] Executed endpoint 'Api.Controllers.AuthController.Login (Api)'
+2025-07-20 15:51:01.135 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5259/api/auth/login - 200 null text/plain; charset=utf-8 2759.743ms
+2025-07-20 15:51:12.855 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/Efficiency/completed-tasks/export?format=excel - null null
+2025-07-20 15:51:12.979 +02:00 [INF] Executing endpoint 'Api.Controllers.EfficiencyController.ExportCompletedTasks (Api)'
+2025-07-20 15:51:12.995 +02:00 [INF] Route matched with {action = "ExportCompletedTasks", controller = "Efficiency"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ExportCompletedTasks(System.Nullable`1[System.Guid], System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.String) on controller Api.Controllers.EfficiencyController (Api).
+2025-07-20 15:51:13.327 +02:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-07-20 15:51:13.363 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__userId_Value_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Title`, `t`.`UpdatedBy`, `t0`.`Id`, `t0`.`CreatedAt`, `t0`.`Email`, `t0`.`IsActive`, `t0`.`LastActive`, `t0`.`Lastname`, `t0`.`Name`, `t0`.`PasswordHash`, `t0`.`Phone`, `t0`.`Role`, `t0`.`UpdatedAt`, `t0`.`TasksId`, `t0`.`UsersId`, `t1`.`Id`, `t1`.`Name`, `t1`.`CategoriesId`, `t1`.`TasksId`
+FROM `Tasks` AS `t`
+LEFT JOIN (
+    SELECT `u2`.`Id`, `u2`.`CreatedAt`, `u2`.`Email`, `u2`.`IsActive`, `u2`.`LastActive`, `u2`.`Lastname`, `u2`.`Name`, `u2`.`PasswordHash`, `u2`.`Phone`, `u2`.`Role`, `u2`.`UpdatedAt`, `u1`.`TasksId`, `u1`.`UsersId`
+    FROM `UserUserTask` AS `u1`
+    INNER JOIN `Users` AS `u2` ON `u1`.`UsersId` = `u2`.`Id`
+) AS `t0` ON `t`.`Id` = `t0`.`TasksId`
+LEFT JOIN (
+    SELECT `c0`.`Id`, `c0`.`Name`, `c`.`CategoriesId`, `c`.`TasksId`
+    FROM `CategoryUserTask` AS `c`
+    INNER JOIN `Categories` AS `c0` ON `c`.`CategoriesId` = `c0`.`Id`
+) AS `t1` ON `t`.`Id` = `t1`.`TasksId`
+WHERE `t`.`EndDate` IS NOT NULL AND ((`t`.`CreatedBy` = @__userId_Value_0) OR EXISTS (
+    SELECT 1
+    FROM `UserUserTask` AS `u`
+    INNER JOIN `Users` AS `u0` ON `u`.`UsersId` = `u0`.`Id`
+    WHERE (`t`.`Id` = `u`.`TasksId`) AND (`u0`.`Id` = @__userId_Value_0)))
+ORDER BY `t`.`Id`, `t0`.`TasksId`, `t0`.`UsersId`, `t0`.`Id`, `t1`.`CategoriesId`, `t1`.`TasksId`
+2025-07-20 15:51:14.879 +02:00 [INF] Executing FileContentResult, sending file with download name 'CompletedTasks.xlsx' ...
+2025-07-20 15:51:14.899 +02:00 [INF] Executed action Api.Controllers.EfficiencyController.ExportCompletedTasks (Api) in 1895.7025ms
+2025-07-20 15:51:14.906 +02:00 [INF] Executed endpoint 'Api.Controllers.EfficiencyController.ExportCompletedTasks (Api)'
+2025-07-20 15:51:14.912 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/Efficiency/completed-tasks/export?format=excel - 200 6409 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet 2057.2774ms
+2025-07-20 16:00:36.071 +02:00 [INF] Application is shutting down...
+2025-07-20 16:00:36.117 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+2025-07-20 16:00:36.125 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+2025-07-20 16:00:36.141 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+2025-07-20 16:01:14.889 +02:00 [INF] User profile is available. Using 'C:\Users\mazur\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-20 16:01:15.166 +02:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2025-07-20 16:01:15.171 +02:00 [INF] Quartz Scheduler created
+2025-07-20 16:01:15.176 +02:00 [INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2025-07-20 16:01:15.181 +02:00 [INF] RAMJobStore initialized.
+2025-07-20 16:01:15.185 +02:00 [INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2025-07-20 16:01:15.188 +02:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2025-07-20 16:01:15.192 +02:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2025-07-20 16:01:15.217 +02:00 [INF] Adding 2 jobs, 2 triggers.
+2025-07-20 16:01:15.225 +02:00 [INF] Adding job: DEFAULT.ProcessOutboxJob-trigger
+2025-07-20 16:01:15.244 +02:00 [INF] Adding job: DEFAULT.NotificationCheckJob-trigger
+2025-07-20 16:01:15.344 +02:00 [INF] Now listening on: http://localhost:5259
+2025-07-20 16:01:15.349 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-20 16:01:15.354 +02:00 [INF] Hosting environment: Development
+2025-07-20 16:01:15.357 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2025-07-20 16:01:15.357 +02:00 [INF] Content root path: D:\programowanie\C#\System zarzadzania zasobami\MainProgram
+2025-07-20 16:01:22.264 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/Efficiency/completed-tasks/export?format=excel - null null
+2025-07-20 16:01:22.369 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-07-20 16:01:22.574 +02:00 [INF] Executing endpoint 'Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api)'
+2025-07-20 16:01:22.623 +02:00 [INF] Route matched with {action = "ExportCompletedTasksForUser", controller = "Efficiency"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ExportCompletedTasksForUser(System.Nullable`1[System.Guid], System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.String) on controller Api.Controllers.EfficiencyController (Api).
+2025-07-20 16:01:24.990 +02:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-07-20 16:01:25.297 +02:00 [INF] Executed DbCommand (76ms) [Parameters=[@__userId_Value_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Title`, `t`.`UpdatedBy`, `t0`.`Id`, `t0`.`CreatedAt`, `t0`.`Email`, `t0`.`IsActive`, `t0`.`LastActive`, `t0`.`Lastname`, `t0`.`Name`, `t0`.`PasswordHash`, `t0`.`Phone`, `t0`.`Role`, `t0`.`UpdatedAt`, `t0`.`TasksId`, `t0`.`UsersId`, `t1`.`Id`, `t1`.`Name`, `t1`.`CategoriesId`, `t1`.`TasksId`
+FROM `Tasks` AS `t`
+LEFT JOIN (
+    SELECT `u2`.`Id`, `u2`.`CreatedAt`, `u2`.`Email`, `u2`.`IsActive`, `u2`.`LastActive`, `u2`.`Lastname`, `u2`.`Name`, `u2`.`PasswordHash`, `u2`.`Phone`, `u2`.`Role`, `u2`.`UpdatedAt`, `u1`.`TasksId`, `u1`.`UsersId`
+    FROM `UserUserTask` AS `u1`
+    INNER JOIN `Users` AS `u2` ON `u1`.`UsersId` = `u2`.`Id`
+) AS `t0` ON `t`.`Id` = `t0`.`TasksId`
+LEFT JOIN (
+    SELECT `c0`.`Id`, `c0`.`Name`, `c`.`CategoriesId`, `c`.`TasksId`
+    FROM `CategoryUserTask` AS `c`
+    INNER JOIN `Categories` AS `c0` ON `c`.`CategoriesId` = `c0`.`Id`
+) AS `t1` ON `t`.`Id` = `t1`.`TasksId`
+WHERE `t`.`EndDate` IS NOT NULL AND ((`t`.`CreatedBy` = @__userId_Value_0) OR EXISTS (
+    SELECT 1
+    FROM `UserUserTask` AS `u`
+    INNER JOIN `Users` AS `u0` ON `u`.`UsersId` = `u0`.`Id`
+    WHERE (`t`.`Id` = `u`.`TasksId`) AND (`u0`.`Id` = @__userId_Value_0)))
+ORDER BY `t`.`Id`, `t0`.`TasksId`, `t0`.`UsersId`, `t0`.`Id`, `t1`.`CategoriesId`, `t1`.`TasksId`
+2025-07-20 16:01:25.389 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-20 16:01:27.016 +02:00 [INF] Executing FileContentResult, sending file with download name 'CompletedTasks.xlsx' ...
+2025-07-20 16:01:27.045 +02:00 [INF] Executed action Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api) in 4403.4025ms
+2025-07-20 16:01:27.053 +02:00 [INF] Executed endpoint 'Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api)'
+2025-07-20 16:01:27.077 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/Efficiency/completed-tasks/export?format=excel - 200 6516 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet 4814.8298ms
+2025-07-20 16:06:34.114 +02:00 [INF] Application is shutting down...
+2025-07-20 16:06:34.151 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+2025-07-20 16:06:34.159 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+2025-07-20 16:06:34.172 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+2025-07-20 16:07:24.772 +02:00 [INF] User profile is available. Using 'C:\Users\mazur\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-20 16:07:25.065 +02:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2025-07-20 16:07:25.070 +02:00 [INF] Quartz Scheduler created
+2025-07-20 16:07:25.075 +02:00 [INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2025-07-20 16:07:25.079 +02:00 [INF] RAMJobStore initialized.
+2025-07-20 16:07:25.083 +02:00 [INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2025-07-20 16:07:25.086 +02:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2025-07-20 16:07:25.090 +02:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2025-07-20 16:07:25.114 +02:00 [INF] Adding 2 jobs, 2 triggers.
+2025-07-20 16:07:25.122 +02:00 [INF] Adding job: DEFAULT.ProcessOutboxJob-trigger
+2025-07-20 16:07:25.141 +02:00 [INF] Adding job: DEFAULT.NotificationCheckJob-trigger
+2025-07-20 16:07:25.231 +02:00 [INF] Now listening on: http://localhost:5259
+2025-07-20 16:07:25.236 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-20 16:07:25.241 +02:00 [INF] Hosting environment: Development
+2025-07-20 16:07:25.246 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2025-07-20 16:07:25.246 +02:00 [INF] Content root path: D:\programowanie\C#\System zarzadzania zasobami\MainProgram
+2025-07-20 16:07:30.573 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/Efficiency/completed-tasks/export?format=excel - null null
+2025-07-20 16:07:30.759 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-07-20 16:07:30.953 +02:00 [INF] Executing endpoint 'Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api)'
+2025-07-20 16:07:31.000 +02:00 [INF] Route matched with {action = "ExportCompletedTasksForUser", controller = "Efficiency"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ExportCompletedTasksForUser(System.Nullable`1[System.Guid], System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.String) on controller Api.Controllers.EfficiencyController (Api).
+2025-07-20 16:07:32.955 +02:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-07-20 16:07:33.257 +02:00 [INF] Executed DbCommand (64ms) [Parameters=[@__userId_Value_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Title`, `t`.`UpdatedBy`, `t0`.`Id`, `t0`.`CreatedAt`, `t0`.`Email`, `t0`.`IsActive`, `t0`.`LastActive`, `t0`.`Lastname`, `t0`.`Name`, `t0`.`PasswordHash`, `t0`.`Phone`, `t0`.`Role`, `t0`.`UpdatedAt`, `t0`.`TasksId`, `t0`.`UsersId`, `t1`.`Id`, `t1`.`Name`, `t1`.`CategoriesId`, `t1`.`TasksId`
+FROM `Tasks` AS `t`
+LEFT JOIN (
+    SELECT `u2`.`Id`, `u2`.`CreatedAt`, `u2`.`Email`, `u2`.`IsActive`, `u2`.`LastActive`, `u2`.`Lastname`, `u2`.`Name`, `u2`.`PasswordHash`, `u2`.`Phone`, `u2`.`Role`, `u2`.`UpdatedAt`, `u1`.`TasksId`, `u1`.`UsersId`
+    FROM `UserUserTask` AS `u1`
+    INNER JOIN `Users` AS `u2` ON `u1`.`UsersId` = `u2`.`Id`
+) AS `t0` ON `t`.`Id` = `t0`.`TasksId`
+LEFT JOIN (
+    SELECT `c0`.`Id`, `c0`.`Name`, `c`.`CategoriesId`, `c`.`TasksId`
+    FROM `CategoryUserTask` AS `c`
+    INNER JOIN `Categories` AS `c0` ON `c`.`CategoriesId` = `c0`.`Id`
+) AS `t1` ON `t`.`Id` = `t1`.`TasksId`
+WHERE `t`.`EndDate` IS NOT NULL AND ((`t`.`CreatedBy` = @__userId_Value_0) OR EXISTS (
+    SELECT 1
+    FROM `UserUserTask` AS `u`
+    INNER JOIN `Users` AS `u0` ON `u`.`UsersId` = `u0`.`Id`
+    WHERE (`t`.`Id` = `u`.`TasksId`) AND (`u0`.`Id` = @__userId_Value_0)))
+ORDER BY `t`.`Id`, `t0`.`TasksId`, `t0`.`UsersId`, `t0`.`Id`, `t1`.`CategoriesId`, `t1`.`TasksId`
+2025-07-20 16:07:33.351 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-20 16:07:35.005 +02:00 [INF] Executing FileContentResult, sending file with download name 'CompletedTasks.xlsx' ...
+2025-07-20 16:07:35.037 +02:00 [INF] Executed action Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api) in 4018.8931ms
+2025-07-20 16:07:35.046 +02:00 [INF] Executed endpoint 'Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api)'
+2025-07-20 16:07:35.072 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/Efficiency/completed-tasks/export?format=excel - 200 6585 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet 4503.109ms
+2025-07-20 16:10:02.168 +02:00 [INF] Application is shutting down...
+2025-07-20 16:10:02.210 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+2025-07-20 16:10:02.224 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+2025-07-20 16:10:02.250 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+2025-07-20 16:27:54.840 +02:00 [INF] User profile is available. Using 'C:\Users\mazur\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-20 16:27:55.167 +02:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2025-07-20 16:27:55.171 +02:00 [INF] Quartz Scheduler created
+2025-07-20 16:27:55.176 +02:00 [INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2025-07-20 16:27:55.181 +02:00 [INF] RAMJobStore initialized.
+2025-07-20 16:27:55.187 +02:00 [INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2025-07-20 16:27:55.190 +02:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2025-07-20 16:27:55.194 +02:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2025-07-20 16:27:55.226 +02:00 [INF] Adding 2 jobs, 2 triggers.
+2025-07-20 16:27:55.234 +02:00 [INF] Adding job: DEFAULT.ProcessOutboxJob-trigger
+2025-07-20 16:27:55.261 +02:00 [INF] Adding job: DEFAULT.NotificationCheckJob-trigger
+2025-07-20 16:27:55.379 +02:00 [INF] Now listening on: http://localhost:5259
+2025-07-20 16:27:55.385 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-20 16:27:55.390 +02:00 [INF] Hosting environment: Development
+2025-07-20 16:27:55.393 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2025-07-20 16:27:55.394 +02:00 [INF] Content root path: D:\programowanie\C#\System zarzadzania zasobami\MainProgram
+2025-07-20 16:28:01.184 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/Efficiency/completed-tasks/export?format=excel - null null
+2025-07-20 16:28:01.285 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-07-20 16:28:01.477 +02:00 [INF] Executing endpoint 'Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api)'
+2025-07-20 16:28:01.524 +02:00 [INF] Route matched with {action = "ExportCompletedTasksForUser", controller = "Efficiency"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ExportCompletedTasksForUser(System.Nullable`1[System.Guid], System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.String) on controller Api.Controllers.EfficiencyController (Api).
+2025-07-20 16:28:03.715 +02:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-07-20 16:28:04.069 +02:00 [INF] Executed DbCommand (85ms) [Parameters=[@__userId_Value_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Title`, `t`.`UpdatedBy`, `t0`.`Id`, `t0`.`CreatedAt`, `t0`.`Email`, `t0`.`IsActive`, `t0`.`LastActive`, `t0`.`Lastname`, `t0`.`Name`, `t0`.`PasswordHash`, `t0`.`Phone`, `t0`.`Role`, `t0`.`UpdatedAt`, `t0`.`TasksId`, `t0`.`UsersId`, `t1`.`Id`, `t1`.`Name`, `t1`.`CategoriesId`, `t1`.`TasksId`
+FROM `Tasks` AS `t`
+LEFT JOIN (
+    SELECT `u2`.`Id`, `u2`.`CreatedAt`, `u2`.`Email`, `u2`.`IsActive`, `u2`.`LastActive`, `u2`.`Lastname`, `u2`.`Name`, `u2`.`PasswordHash`, `u2`.`Phone`, `u2`.`Role`, `u2`.`UpdatedAt`, `u1`.`TasksId`, `u1`.`UsersId`
+    FROM `UserUserTask` AS `u1`
+    INNER JOIN `Users` AS `u2` ON `u1`.`UsersId` = `u2`.`Id`
+) AS `t0` ON `t`.`Id` = `t0`.`TasksId`
+LEFT JOIN (
+    SELECT `c0`.`Id`, `c0`.`Name`, `c`.`CategoriesId`, `c`.`TasksId`
+    FROM `CategoryUserTask` AS `c`
+    INNER JOIN `Categories` AS `c0` ON `c`.`CategoriesId` = `c0`.`Id`
+) AS `t1` ON `t`.`Id` = `t1`.`TasksId`
+WHERE `t`.`EndDate` IS NOT NULL AND ((`t`.`CreatedBy` = @__userId_Value_0) OR EXISTS (
+    SELECT 1
+    FROM `UserUserTask` AS `u`
+    INNER JOIN `Users` AS `u0` ON `u`.`UsersId` = `u0`.`Id`
+    WHERE (`t`.`Id` = `u`.`TasksId`) AND (`u0`.`Id` = @__userId_Value_0)))
+ORDER BY `t`.`Id`, `t0`.`TasksId`, `t0`.`UsersId`, `t0`.`Id`, `t1`.`CategoriesId`, `t1`.`TasksId`
+2025-07-20 16:28:04.181 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-20 16:28:04.458 +02:00 [INF] Executed action Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api) in 2919.353ms
+2025-07-20 16:28:04.467 +02:00 [INF] Executed endpoint 'Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api)'
+2025-07-20 16:28:04.479 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+OfficeOpenXml.LicenseNotSetException: Please set the license using one of the methods on the static property ExcelPackage.License. See https://epplussoftware.com/developers/licensenotsetexception for more information
+   at OfficeOpenXml.ExcelPackage.get_Workbook()
+   at OfficeOpenXml.ExcelPackage.CreateBlankWb()
+   at OfficeOpenXml.ExcelPackage.ConstructNewFile(String password)
+   at OfficeOpenXml.ExcelPackage..ctor()
+   at Api.Controllers.EfficiencyController.ExportCompletedTasksForUser(Nullable`1 userId, Nullable`1 from, Nullable`1 to, String format) in D:\programowanie\C#\System zarzadzania zasobami\Api\Controllers\EfficiencyController.cs:line 80
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-07-20 16:28:04.583 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/Efficiency/completed-tasks/export?format=excel - 500 null text/plain; charset=utf-8 3402.0201ms
+2025-07-20 16:28:35.532 +02:00 [INF] Application is shutting down...
+2025-07-20 16:28:35.576 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+2025-07-20 16:28:35.583 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+2025-07-20 16:28:35.596 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+2025-07-20 16:28:48.348 +02:00 [INF] User profile is available. Using 'C:\Users\mazur\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-20 16:28:48.617 +02:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2025-07-20 16:28:48.622 +02:00 [INF] Quartz Scheduler created
+2025-07-20 16:28:48.626 +02:00 [INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2025-07-20 16:28:48.630 +02:00 [INF] RAMJobStore initialized.
+2025-07-20 16:28:48.635 +02:00 [INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2025-07-20 16:28:48.639 +02:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2025-07-20 16:28:48.644 +02:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2025-07-20 16:28:48.677 +02:00 [INF] Adding 2 jobs, 2 triggers.
+2025-07-20 16:28:48.687 +02:00 [INF] Adding job: DEFAULT.ProcessOutboxJob-trigger
+2025-07-20 16:28:48.707 +02:00 [INF] Adding job: DEFAULT.NotificationCheckJob-trigger
+2025-07-20 16:28:48.797 +02:00 [INF] Now listening on: http://localhost:5259
+2025-07-20 16:28:48.803 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-20 16:28:48.809 +02:00 [INF] Hosting environment: Development
+2025-07-20 16:28:48.813 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2025-07-20 16:28:48.813 +02:00 [INF] Content root path: D:\programowanie\C#\System zarzadzania zasobami\MainProgram
+2025-07-20 16:28:52.737 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/Efficiency/completed-tasks/export?format=excel - null null
+2025-07-20 16:28:52.838 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-07-20 16:28:53.023 +02:00 [INF] Executing endpoint 'Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api)'
+2025-07-20 16:28:53.104 +02:00 [INF] Route matched with {action = "ExportCompletedTasksForUser", controller = "Efficiency"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ExportCompletedTasksForUser(System.Nullable`1[System.Guid], System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.String) on controller Api.Controllers.EfficiencyController (Api).
+2025-07-20 16:28:54.978 +02:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-07-20 16:28:55.263 +02:00 [INF] Executed DbCommand (65ms) [Parameters=[@__userId_Value_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Title`, `t`.`UpdatedBy`, `t0`.`Id`, `t0`.`CreatedAt`, `t0`.`Email`, `t0`.`IsActive`, `t0`.`LastActive`, `t0`.`Lastname`, `t0`.`Name`, `t0`.`PasswordHash`, `t0`.`Phone`, `t0`.`Role`, `t0`.`UpdatedAt`, `t0`.`TasksId`, `t0`.`UsersId`, `t1`.`Id`, `t1`.`Name`, `t1`.`CategoriesId`, `t1`.`TasksId`
+FROM `Tasks` AS `t`
+LEFT JOIN (
+    SELECT `u2`.`Id`, `u2`.`CreatedAt`, `u2`.`Email`, `u2`.`IsActive`, `u2`.`LastActive`, `u2`.`Lastname`, `u2`.`Name`, `u2`.`PasswordHash`, `u2`.`Phone`, `u2`.`Role`, `u2`.`UpdatedAt`, `u1`.`TasksId`, `u1`.`UsersId`
+    FROM `UserUserTask` AS `u1`
+    INNER JOIN `Users` AS `u2` ON `u1`.`UsersId` = `u2`.`Id`
+) AS `t0` ON `t`.`Id` = `t0`.`TasksId`
+LEFT JOIN (
+    SELECT `c0`.`Id`, `c0`.`Name`, `c`.`CategoriesId`, `c`.`TasksId`
+    FROM `CategoryUserTask` AS `c`
+    INNER JOIN `Categories` AS `c0` ON `c`.`CategoriesId` = `c0`.`Id`
+) AS `t1` ON `t`.`Id` = `t1`.`TasksId`
+WHERE `t`.`EndDate` IS NOT NULL AND ((`t`.`CreatedBy` = @__userId_Value_0) OR EXISTS (
+    SELECT 1
+    FROM `UserUserTask` AS `u`
+    INNER JOIN `Users` AS `u0` ON `u`.`UsersId` = `u0`.`Id`
+    WHERE (`t`.`Id` = `u`.`TasksId`) AND (`u0`.`Id` = @__userId_Value_0)))
+ORDER BY `t`.`Id`, `t0`.`TasksId`, `t0`.`UsersId`, `t0`.`Id`, `t1`.`CategoriesId`, `t1`.`TasksId`
+2025-07-20 16:28:55.353 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-20 16:28:55.515 +02:00 [INF] Executed action Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api) in 2311.0319ms
+2025-07-20 16:28:55.524 +02:00 [INF] Executed endpoint 'Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api)'
+2025-07-20 16:28:55.535 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+OfficeOpenXml.LicenseNotSetException: Please set the license using one of the methods on the static property ExcelPackage.License. See https://epplussoftware.com/developers/licensenotsetexception for more information
+   at OfficeOpenXml.ExcelPackage.get_Workbook()
+   at OfficeOpenXml.ExcelPackage.CreateBlankWb()
+   at OfficeOpenXml.ExcelPackage.ConstructNewFile(String password)
+   at OfficeOpenXml.ExcelPackage..ctor()
+   at Api.Controllers.EfficiencyController.ExportCompletedTasksForUser(Nullable`1 userId, Nullable`1 from, Nullable`1 to, String format) in D:\programowanie\C#\System zarzadzania zasobami\Api\Controllers\EfficiencyController.cs:line 80
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-07-20 16:28:55.616 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/Efficiency/completed-tasks/export?format=excel - 500 null text/plain; charset=utf-8 2882.2883ms
+2025-07-20 16:29:55.827 +02:00 [INF] Application is shutting down...
+2025-07-20 16:29:55.866 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+2025-07-20 16:29:55.874 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+2025-07-20 16:29:55.889 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+2025-07-20 16:30:07.206 +02:00 [INF] User profile is available. Using 'C:\Users\mazur\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-20 16:30:07.468 +02:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2025-07-20 16:30:07.472 +02:00 [INF] Quartz Scheduler created
+2025-07-20 16:30:07.476 +02:00 [INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2025-07-20 16:30:07.484 +02:00 [INF] RAMJobStore initialized.
+2025-07-20 16:30:07.490 +02:00 [INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2025-07-20 16:30:07.494 +02:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2025-07-20 16:30:07.498 +02:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2025-07-20 16:30:07.523 +02:00 [INF] Adding 2 jobs, 2 triggers.
+2025-07-20 16:30:07.533 +02:00 [INF] Adding job: DEFAULT.ProcessOutboxJob-trigger
+2025-07-20 16:30:07.555 +02:00 [INF] Adding job: DEFAULT.NotificationCheckJob-trigger
+2025-07-20 16:30:07.646 +02:00 [INF] Now listening on: http://localhost:5259
+2025-07-20 16:30:07.653 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-20 16:30:07.657 +02:00 [INF] Hosting environment: Development
+2025-07-20 16:30:07.660 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2025-07-20 16:30:07.662 +02:00 [INF] Content root path: D:\programowanie\C#\System zarzadzania zasobami\MainProgram
+2025-07-20 16:30:12.726 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/Efficiency/completed-tasks/export?format=excel - null null
+2025-07-20 16:30:12.821 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-07-20 16:30:13.014 +02:00 [INF] Executing endpoint 'Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api)'
+2025-07-20 16:30:13.064 +02:00 [INF] Route matched with {action = "ExportCompletedTasksForUser", controller = "Efficiency"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ExportCompletedTasksForUser(System.Nullable`1[System.Guid], System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.String) on controller Api.Controllers.EfficiencyController (Api).
+2025-07-20 16:30:14.823 +02:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-07-20 16:30:15.092 +02:00 [INF] Executed DbCommand (63ms) [Parameters=[@__userId_Value_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Title`, `t`.`UpdatedBy`, `t0`.`Id`, `t0`.`CreatedAt`, `t0`.`Email`, `t0`.`IsActive`, `t0`.`LastActive`, `t0`.`Lastname`, `t0`.`Name`, `t0`.`PasswordHash`, `t0`.`Phone`, `t0`.`Role`, `t0`.`UpdatedAt`, `t0`.`TasksId`, `t0`.`UsersId`, `t1`.`Id`, `t1`.`Name`, `t1`.`CategoriesId`, `t1`.`TasksId`
+FROM `Tasks` AS `t`
+LEFT JOIN (
+    SELECT `u2`.`Id`, `u2`.`CreatedAt`, `u2`.`Email`, `u2`.`IsActive`, `u2`.`LastActive`, `u2`.`Lastname`, `u2`.`Name`, `u2`.`PasswordHash`, `u2`.`Phone`, `u2`.`Role`, `u2`.`UpdatedAt`, `u1`.`TasksId`, `u1`.`UsersId`
+    FROM `UserUserTask` AS `u1`
+    INNER JOIN `Users` AS `u2` ON `u1`.`UsersId` = `u2`.`Id`
+) AS `t0` ON `t`.`Id` = `t0`.`TasksId`
+LEFT JOIN (
+    SELECT `c0`.`Id`, `c0`.`Name`, `c`.`CategoriesId`, `c`.`TasksId`
+    FROM `CategoryUserTask` AS `c`
+    INNER JOIN `Categories` AS `c0` ON `c`.`CategoriesId` = `c0`.`Id`
+) AS `t1` ON `t`.`Id` = `t1`.`TasksId`
+WHERE `t`.`EndDate` IS NOT NULL AND ((`t`.`CreatedBy` = @__userId_Value_0) OR EXISTS (
+    SELECT 1
+    FROM `UserUserTask` AS `u`
+    INNER JOIN `Users` AS `u0` ON `u`.`UsersId` = `u0`.`Id`
+    WHERE (`t`.`Id` = `u`.`TasksId`) AND (`u0`.`Id` = @__userId_Value_0)))
+ORDER BY `t`.`Id`, `t0`.`TasksId`, `t0`.`UsersId`, `t0`.`Id`, `t1`.`CategoriesId`, `t1`.`TasksId`
+2025-07-20 16:30:15.181 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-20 16:30:15.322 +02:00 [INF] Executed action Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api) in 2241.2985ms
+2025-07-20 16:30:15.332 +02:00 [INF] Executed endpoint 'Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api)'
+2025-07-20 16:30:15.341 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+OfficeOpenXml.LicenseContextPropertyObsoleteException: Please use the static 'ExcelPackage.License' property to set the required license information from EPPlus 8 and later versions. For more info see http://epplussoftware.com/developers/licensenotsetexception.
+   at OfficeOpenXml.ExcelPackage.set_LicenseContext(Nullable`1 value)
+   at Api.Controllers.EfficiencyController.ExportCompletedTasksForUser(Nullable`1 userId, Nullable`1 from, Nullable`1 to, String format) in D:\programowanie\C#\System zarzadzania zasobami\Api\Controllers\EfficiencyController.cs:line 80
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-07-20 16:30:15.428 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/Efficiency/completed-tasks/export?format=excel - 500 null text/plain; charset=utf-8 2704.6634ms
+2025-07-20 16:30:38.426 +02:00 [INF] Application is shutting down...
+2025-07-20 16:30:38.462 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+2025-07-20 16:30:38.489 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+2025-07-20 16:30:38.530 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+2025-07-20 16:31:44.171 +02:00 [INF] User profile is available. Using 'C:\Users\mazur\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-20 16:31:44.418 +02:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2025-07-20 16:31:44.423 +02:00 [INF] Quartz Scheduler created
+2025-07-20 16:31:44.429 +02:00 [INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2025-07-20 16:31:44.434 +02:00 [INF] RAMJobStore initialized.
+2025-07-20 16:31:44.439 +02:00 [INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2025-07-20 16:31:44.443 +02:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2025-07-20 16:31:44.447 +02:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2025-07-20 16:31:44.476 +02:00 [INF] Adding 2 jobs, 2 triggers.
+2025-07-20 16:31:44.485 +02:00 [INF] Adding job: DEFAULT.ProcessOutboxJob-trigger
+2025-07-20 16:31:44.508 +02:00 [INF] Adding job: DEFAULT.NotificationCheckJob-trigger
+2025-07-20 16:31:44.605 +02:00 [INF] Now listening on: http://localhost:5259
+2025-07-20 16:31:44.611 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-20 16:31:44.616 +02:00 [INF] Hosting environment: Development
+2025-07-20 16:31:44.618 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2025-07-20 16:31:44.621 +02:00 [INF] Content root path: D:\programowanie\C#\System zarzadzania zasobami\MainProgram
+2025-07-20 16:31:47.652 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/Efficiency/completed-tasks/export?format=excel - null null
+2025-07-20 16:31:47.751 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-07-20 16:31:47.936 +02:00 [INF] Executing endpoint 'Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api)'
+2025-07-20 16:31:47.984 +02:00 [INF] Route matched with {action = "ExportCompletedTasksForUser", controller = "Efficiency"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ExportCompletedTasksForUser(System.Nullable`1[System.Guid], System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.String) on controller Api.Controllers.EfficiencyController (Api).
+2025-07-20 16:31:49.841 +02:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-07-20 16:31:50.113 +02:00 [INF] Executed DbCommand (67ms) [Parameters=[@__userId_Value_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Title`, `t`.`UpdatedBy`, `t0`.`Id`, `t0`.`CreatedAt`, `t0`.`Email`, `t0`.`IsActive`, `t0`.`LastActive`, `t0`.`Lastname`, `t0`.`Name`, `t0`.`PasswordHash`, `t0`.`Phone`, `t0`.`Role`, `t0`.`UpdatedAt`, `t0`.`TasksId`, `t0`.`UsersId`, `t1`.`Id`, `t1`.`Name`, `t1`.`CategoriesId`, `t1`.`TasksId`
+FROM `Tasks` AS `t`
+LEFT JOIN (
+    SELECT `u2`.`Id`, `u2`.`CreatedAt`, `u2`.`Email`, `u2`.`IsActive`, `u2`.`LastActive`, `u2`.`Lastname`, `u2`.`Name`, `u2`.`PasswordHash`, `u2`.`Phone`, `u2`.`Role`, `u2`.`UpdatedAt`, `u1`.`TasksId`, `u1`.`UsersId`
+    FROM `UserUserTask` AS `u1`
+    INNER JOIN `Users` AS `u2` ON `u1`.`UsersId` = `u2`.`Id`
+) AS `t0` ON `t`.`Id` = `t0`.`TasksId`
+LEFT JOIN (
+    SELECT `c0`.`Id`, `c0`.`Name`, `c`.`CategoriesId`, `c`.`TasksId`
+    FROM `CategoryUserTask` AS `c`
+    INNER JOIN `Categories` AS `c0` ON `c`.`CategoriesId` = `c0`.`Id`
+) AS `t1` ON `t`.`Id` = `t1`.`TasksId`
+WHERE `t`.`EndDate` IS NOT NULL AND ((`t`.`CreatedBy` = @__userId_Value_0) OR EXISTS (
+    SELECT 1
+    FROM `UserUserTask` AS `u`
+    INNER JOIN `Users` AS `u0` ON `u`.`UsersId` = `u0`.`Id`
+    WHERE (`t`.`Id` = `u`.`TasksId`) AND (`u0`.`Id` = @__userId_Value_0)))
+ORDER BY `t`.`Id`, `t0`.`TasksId`, `t0`.`UsersId`, `t0`.`Id`, `t1`.`CategoriesId`, `t1`.`TasksId`
+2025-07-20 16:31:50.199 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-20 16:31:52.846 +02:00 [INF] Executing FileContentResult, sending file with download name 'CompletedTasks.xlsx' ...
+2025-07-20 16:31:52.878 +02:00 [INF] Executed action Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api) in 4872.6829ms
+2025-07-20 16:31:52.887 +02:00 [INF] Executed endpoint 'Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api)'
+2025-07-20 16:31:52.914 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/Efficiency/completed-tasks/export?format=excel - 200 6702 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet 5264.1534ms
+2025-07-20 16:32:31.711 +02:00 [INF] Application is shutting down...
+2025-07-20 16:32:31.774 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+2025-07-20 16:32:31.782 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+2025-07-20 16:32:31.799 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+2025-07-20 16:32:41.900 +02:00 [INF] User profile is available. Using 'C:\Users\mazur\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-20 16:32:42.129 +02:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2025-07-20 16:32:42.134 +02:00 [INF] Quartz Scheduler created
+2025-07-20 16:32:42.138 +02:00 [INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2025-07-20 16:32:42.143 +02:00 [INF] RAMJobStore initialized.
+2025-07-20 16:32:42.149 +02:00 [INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2025-07-20 16:32:42.155 +02:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2025-07-20 16:32:42.160 +02:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2025-07-20 16:32:42.205 +02:00 [INF] Adding 2 jobs, 2 triggers.
+2025-07-20 16:32:42.214 +02:00 [INF] Adding job: DEFAULT.ProcessOutboxJob-trigger
+2025-07-20 16:32:42.237 +02:00 [INF] Adding job: DEFAULT.NotificationCheckJob-trigger
+2025-07-20 16:32:42.348 +02:00 [INF] Now listening on: http://localhost:5259
+2025-07-20 16:32:42.357 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-20 16:32:42.362 +02:00 [INF] Hosting environment: Development
+2025-07-20 16:32:42.366 +02:00 [INF] Content root path: D:\programowanie\C#\System zarzadzania zasobami\MainProgram
+2025-07-20 16:32:42.367 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2025-07-20 16:32:44.777 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/Efficiency/completed-tasks/export?format=excel - null null
+2025-07-20 16:32:44.901 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-07-20 16:32:45.113 +02:00 [INF] Executing endpoint 'Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api)'
+2025-07-20 16:32:45.162 +02:00 [INF] Route matched with {action = "ExportCompletedTasksForUser", controller = "Efficiency"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ExportCompletedTasksForUser(System.Nullable`1[System.Guid], System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.String) on controller Api.Controllers.EfficiencyController (Api).
+2025-07-20 16:32:47.058 +02:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-07-20 16:32:47.326 +02:00 [INF] Executed DbCommand (64ms) [Parameters=[@__userId_Value_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Title`, `t`.`UpdatedBy`, `t0`.`Id`, `t0`.`CreatedAt`, `t0`.`Email`, `t0`.`IsActive`, `t0`.`LastActive`, `t0`.`Lastname`, `t0`.`Name`, `t0`.`PasswordHash`, `t0`.`Phone`, `t0`.`Role`, `t0`.`UpdatedAt`, `t0`.`TasksId`, `t0`.`UsersId`, `t1`.`Id`, `t1`.`Name`, `t1`.`CategoriesId`, `t1`.`TasksId`
+FROM `Tasks` AS `t`
+LEFT JOIN (
+    SELECT `u2`.`Id`, `u2`.`CreatedAt`, `u2`.`Email`, `u2`.`IsActive`, `u2`.`LastActive`, `u2`.`Lastname`, `u2`.`Name`, `u2`.`PasswordHash`, `u2`.`Phone`, `u2`.`Role`, `u2`.`UpdatedAt`, `u1`.`TasksId`, `u1`.`UsersId`
+    FROM `UserUserTask` AS `u1`
+    INNER JOIN `Users` AS `u2` ON `u1`.`UsersId` = `u2`.`Id`
+) AS `t0` ON `t`.`Id` = `t0`.`TasksId`
+LEFT JOIN (
+    SELECT `c0`.`Id`, `c0`.`Name`, `c`.`CategoriesId`, `c`.`TasksId`
+    FROM `CategoryUserTask` AS `c`
+    INNER JOIN `Categories` AS `c0` ON `c`.`CategoriesId` = `c0`.`Id`
+) AS `t1` ON `t`.`Id` = `t1`.`TasksId`
+WHERE `t`.`EndDate` IS NOT NULL AND ((`t`.`CreatedBy` = @__userId_Value_0) OR EXISTS (
+    SELECT 1
+    FROM `UserUserTask` AS `u`
+    INNER JOIN `Users` AS `u0` ON `u`.`UsersId` = `u0`.`Id`
+    WHERE (`t`.`Id` = `u`.`TasksId`) AND (`u0`.`Id` = @__userId_Value_0)))
+ORDER BY `t`.`Id`, `t0`.`TasksId`, `t0`.`UsersId`, `t0`.`Id`, `t1`.`CategoriesId`, `t1`.`TasksId`
+2025-07-20 16:32:47.414 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-20 16:32:49.700 +02:00 [INF] Executing FileContentResult, sending file with download name 'CompletedTasksmazurek321.93@wp.pl.xlsx' ...
+2025-07-20 16:32:49.736 +02:00 [INF] Executed action Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api) in 4554.4976ms
+2025-07-20 16:32:49.745 +02:00 [INF] Executed endpoint 'Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api)'
+2025-07-20 16:32:49.767 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/Efficiency/completed-tasks/export?format=excel - 200 6679 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet 4993.8703ms
+2025-07-20 16:34:12.179 +02:00 [INF] Application is shutting down...
+2025-07-20 16:34:12.214 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+2025-07-20 16:34:12.224 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+2025-07-20 16:34:12.244 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+2025-07-20 16:34:22.688 +02:00 [INF] User profile is available. Using 'C:\Users\mazur\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-20 16:34:22.929 +02:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2025-07-20 16:34:22.934 +02:00 [INF] Quartz Scheduler created
+2025-07-20 16:34:22.939 +02:00 [INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2025-07-20 16:34:22.944 +02:00 [INF] RAMJobStore initialized.
+2025-07-20 16:34:22.949 +02:00 [INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2025-07-20 16:34:22.952 +02:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2025-07-20 16:34:22.957 +02:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2025-07-20 16:34:22.981 +02:00 [INF] Adding 2 jobs, 2 triggers.
+2025-07-20 16:34:22.990 +02:00 [INF] Adding job: DEFAULT.ProcessOutboxJob-trigger
+2025-07-20 16:34:23.016 +02:00 [INF] Adding job: DEFAULT.NotificationCheckJob-trigger
+2025-07-20 16:34:23.111 +02:00 [INF] Now listening on: http://localhost:5259
+2025-07-20 16:34:23.116 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-20 16:34:23.121 +02:00 [INF] Hosting environment: Development
+2025-07-20 16:34:23.124 +02:00 [INF] Content root path: D:\programowanie\C#\System zarzadzania zasobami\MainProgram
+2025-07-20 16:34:23.127 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2025-07-20 16:34:26.148 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/Efficiency/completed-tasks/export?format=excel - null null
+2025-07-20 16:34:26.262 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-07-20 16:34:26.452 +02:00 [INF] Executing endpoint 'Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api)'
+2025-07-20 16:34:26.500 +02:00 [INF] Route matched with {action = "ExportCompletedTasksForUser", controller = "Efficiency"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ExportCompletedTasksForUser(System.Nullable`1[System.Guid], System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.String) on controller Api.Controllers.EfficiencyController (Api).
+2025-07-20 16:34:28.366 +02:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-07-20 16:34:28.632 +02:00 [INF] Executed DbCommand (62ms) [Parameters=[@__userId_Value_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Title`, `t`.`UpdatedBy`, `t0`.`Id`, `t0`.`CreatedAt`, `t0`.`Email`, `t0`.`IsActive`, `t0`.`LastActive`, `t0`.`Lastname`, `t0`.`Name`, `t0`.`PasswordHash`, `t0`.`Phone`, `t0`.`Role`, `t0`.`UpdatedAt`, `t0`.`TasksId`, `t0`.`UsersId`, `t1`.`Id`, `t1`.`Name`, `t1`.`CategoriesId`, `t1`.`TasksId`
+FROM `Tasks` AS `t`
+LEFT JOIN (
+    SELECT `u2`.`Id`, `u2`.`CreatedAt`, `u2`.`Email`, `u2`.`IsActive`, `u2`.`LastActive`, `u2`.`Lastname`, `u2`.`Name`, `u2`.`PasswordHash`, `u2`.`Phone`, `u2`.`Role`, `u2`.`UpdatedAt`, `u1`.`TasksId`, `u1`.`UsersId`
+    FROM `UserUserTask` AS `u1`
+    INNER JOIN `Users` AS `u2` ON `u1`.`UsersId` = `u2`.`Id`
+) AS `t0` ON `t`.`Id` = `t0`.`TasksId`
+LEFT JOIN (
+    SELECT `c0`.`Id`, `c0`.`Name`, `c`.`CategoriesId`, `c`.`TasksId`
+    FROM `CategoryUserTask` AS `c`
+    INNER JOIN `Categories` AS `c0` ON `c`.`CategoriesId` = `c0`.`Id`
+) AS `t1` ON `t`.`Id` = `t1`.`TasksId`
+WHERE `t`.`EndDate` IS NOT NULL AND ((`t`.`CreatedBy` = @__userId_Value_0) OR EXISTS (
+    SELECT 1
+    FROM `UserUserTask` AS `u`
+    INNER JOIN `Users` AS `u0` ON `u`.`UsersId` = `u0`.`Id`
+    WHERE (`t`.`Id` = `u`.`TasksId`) AND (`u0`.`Id` = @__userId_Value_0)))
+ORDER BY `t`.`Id`, `t0`.`TasksId`, `t0`.`UsersId`, `t0`.`Id`, `t1`.`CategoriesId`, `t1`.`TasksId`
+2025-07-20 16:34:28.720 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-20 16:34:30.814 +02:00 [INF] Executing FileContentResult, sending file with download name 'CompletedTasks-mazurek321.93@wp.pl.xlsx' ...
+2025-07-20 16:34:30.848 +02:00 [INF] Executed action Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api) in 4330.1708ms
+2025-07-20 16:34:30.856 +02:00 [INF] Executed endpoint 'Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api)'
+2025-07-20 16:34:30.880 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/Efficiency/completed-tasks/export?format=excel - 200 6661 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet 4735.3572ms
+2025-07-20 16:35:37.886 +02:00 [INF] Application is shutting down...
+2025-07-20 16:35:37.918 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+2025-07-20 16:35:37.925 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+2025-07-20 16:35:37.937 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+2025-07-20 16:35:49.188 +02:00 [INF] User profile is available. Using 'C:\Users\mazur\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-20 16:35:49.472 +02:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2025-07-20 16:35:49.476 +02:00 [INF] Quartz Scheduler created
+2025-07-20 16:35:49.479 +02:00 [INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2025-07-20 16:35:49.483 +02:00 [INF] RAMJobStore initialized.
+2025-07-20 16:35:49.487 +02:00 [INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2025-07-20 16:35:49.490 +02:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2025-07-20 16:35:49.493 +02:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2025-07-20 16:35:49.517 +02:00 [INF] Adding 2 jobs, 2 triggers.
+2025-07-20 16:35:49.526 +02:00 [INF] Adding job: DEFAULT.ProcessOutboxJob-trigger
+2025-07-20 16:35:49.543 +02:00 [INF] Adding job: DEFAULT.NotificationCheckJob-trigger
+2025-07-20 16:35:49.630 +02:00 [INF] Now listening on: http://localhost:5259
+2025-07-20 16:35:49.637 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-20 16:35:49.642 +02:00 [INF] Hosting environment: Development
+2025-07-20 16:35:49.643 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2025-07-20 16:35:49.648 +02:00 [INF] Content root path: D:\programowanie\C#\System zarzadzania zasobami\MainProgram
+2025-07-20 16:35:52.490 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/Efficiency/completed-tasks/export?format=excel - null null
+2025-07-20 16:35:52.622 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-07-20 16:35:52.844 +02:00 [INF] Executing endpoint 'Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api)'
+2025-07-20 16:35:52.893 +02:00 [INF] Route matched with {action = "ExportCompletedTasksForUser", controller = "Efficiency"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ExportCompletedTasksForUser(System.Nullable`1[System.Guid], System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.String) on controller Api.Controllers.EfficiencyController (Api).
+2025-07-20 16:35:54.983 +02:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-07-20 16:35:55.363 +02:00 [INF] Executed DbCommand (64ms) [Parameters=[@__userId_Value_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Title`, `t`.`UpdatedBy`, `t0`.`Id`, `t0`.`CreatedAt`, `t0`.`Email`, `t0`.`IsActive`, `t0`.`LastActive`, `t0`.`Lastname`, `t0`.`Name`, `t0`.`PasswordHash`, `t0`.`Phone`, `t0`.`Role`, `t0`.`UpdatedAt`, `t0`.`TasksId`, `t0`.`UsersId`, `t1`.`Id`, `t1`.`Name`, `t1`.`CategoriesId`, `t1`.`TasksId`
+FROM `Tasks` AS `t`
+LEFT JOIN (
+    SELECT `u2`.`Id`, `u2`.`CreatedAt`, `u2`.`Email`, `u2`.`IsActive`, `u2`.`LastActive`, `u2`.`Lastname`, `u2`.`Name`, `u2`.`PasswordHash`, `u2`.`Phone`, `u2`.`Role`, `u2`.`UpdatedAt`, `u1`.`TasksId`, `u1`.`UsersId`
+    FROM `UserUserTask` AS `u1`
+    INNER JOIN `Users` AS `u2` ON `u1`.`UsersId` = `u2`.`Id`
+) AS `t0` ON `t`.`Id` = `t0`.`TasksId`
+LEFT JOIN (
+    SELECT `c0`.`Id`, `c0`.`Name`, `c`.`CategoriesId`, `c`.`TasksId`
+    FROM `CategoryUserTask` AS `c`
+    INNER JOIN `Categories` AS `c0` ON `c`.`CategoriesId` = `c0`.`Id`
+) AS `t1` ON `t`.`Id` = `t1`.`TasksId`
+WHERE `t`.`EndDate` IS NOT NULL AND ((`t`.`CreatedBy` = @__userId_Value_0) OR EXISTS (
+    SELECT 1
+    FROM `UserUserTask` AS `u`
+    INNER JOIN `Users` AS `u0` ON `u`.`UsersId` = `u0`.`Id`
+    WHERE (`t`.`Id` = `u`.`TasksId`) AND (`u0`.`Id` = @__userId_Value_0)))
+ORDER BY `t`.`Id`, `t0`.`TasksId`, `t0`.`UsersId`, `t0`.`Id`, `t1`.`CategoriesId`, `t1`.`TasksId`
+2025-07-20 16:35:55.457 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-20 16:35:58.186 +02:00 [INF] Executing FileContentResult, sending file with download name 'CompletedTasks-mazurek321.93@wp.pl.xlsx' ...
+2025-07-20 16:35:58.218 +02:00 [INF] Executed action Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api) in 5304.7644ms
+2025-07-20 16:35:58.227 +02:00 [INF] Executed endpoint 'Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api)'
+2025-07-20 16:35:58.251 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/Efficiency/completed-tasks/export?format=excel - 200 6652 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet 5764.5014ms
+2025-07-20 16:37:23.632 +02:00 [INF] Application is shutting down...
+2025-07-20 16:37:23.678 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+2025-07-20 16:37:23.685 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+2025-07-20 16:37:23.700 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+2025-07-20 16:52:40.660 +02:00 [INF] User profile is available. Using 'C:\Users\mazur\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-20 16:52:40.945 +02:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2025-07-20 16:52:40.949 +02:00 [INF] Quartz Scheduler created
+2025-07-20 16:52:40.954 +02:00 [INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2025-07-20 16:52:40.958 +02:00 [INF] RAMJobStore initialized.
+2025-07-20 16:52:40.962 +02:00 [INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2025-07-20 16:52:40.965 +02:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2025-07-20 16:52:40.968 +02:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2025-07-20 16:52:41.000 +02:00 [INF] Adding 2 jobs, 2 triggers.
+2025-07-20 16:52:41.008 +02:00 [INF] Adding job: DEFAULT.ProcessOutboxJob-trigger
+2025-07-20 16:52:41.027 +02:00 [INF] Adding job: DEFAULT.NotificationCheckJob-trigger
+2025-07-20 16:52:41.122 +02:00 [INF] Now listening on: http://localhost:5259
+2025-07-20 16:52:41.128 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-20 16:52:41.133 +02:00 [INF] Hosting environment: Development
+2025-07-20 16:52:41.137 +02:00 [INF] Content root path: D:\programowanie\C#\System zarzadzania zasobami\MainProgram
+2025-07-20 16:52:41.138 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2025-07-20 16:52:45.255 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/Efficiency/completed-tasks/export?format=excel - null null
+2025-07-20 16:52:45.362 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-07-20 16:52:45.544 +02:00 [INF] Executing endpoint 'Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api)'
+2025-07-20 16:52:45.588 +02:00 [INF] Route matched with {action = "ExportCompletedTasksForUser", controller = "Efficiency"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ExportCompletedTasksForUser(System.Nullable`1[System.Guid], System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.String) on controller Api.Controllers.EfficiencyController (Api).
+2025-07-20 16:52:47.596 +02:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-07-20 16:52:47.882 +02:00 [INF] Executed DbCommand (68ms) [Parameters=[@__userId_Value_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Title`, `t`.`UpdatedBy`, `t0`.`Id`, `t0`.`CreatedAt`, `t0`.`Email`, `t0`.`IsActive`, `t0`.`LastActive`, `t0`.`Lastname`, `t0`.`Name`, `t0`.`PasswordHash`, `t0`.`Phone`, `t0`.`Role`, `t0`.`UpdatedAt`, `t0`.`TasksId`, `t0`.`UsersId`, `t1`.`Id`, `t1`.`Name`, `t1`.`CategoriesId`, `t1`.`TasksId`
+FROM `Tasks` AS `t`
+LEFT JOIN (
+    SELECT `u2`.`Id`, `u2`.`CreatedAt`, `u2`.`Email`, `u2`.`IsActive`, `u2`.`LastActive`, `u2`.`Lastname`, `u2`.`Name`, `u2`.`PasswordHash`, `u2`.`Phone`, `u2`.`Role`, `u2`.`UpdatedAt`, `u1`.`TasksId`, `u1`.`UsersId`
+    FROM `UserUserTask` AS `u1`
+    INNER JOIN `Users` AS `u2` ON `u1`.`UsersId` = `u2`.`Id`
+) AS `t0` ON `t`.`Id` = `t0`.`TasksId`
+LEFT JOIN (
+    SELECT `c0`.`Id`, `c0`.`Name`, `c`.`CategoriesId`, `c`.`TasksId`
+    FROM `CategoryUserTask` AS `c`
+    INNER JOIN `Categories` AS `c0` ON `c`.`CategoriesId` = `c0`.`Id`
+) AS `t1` ON `t`.`Id` = `t1`.`TasksId`
+WHERE `t`.`EndDate` IS NOT NULL AND ((`t`.`CreatedBy` = @__userId_Value_0) OR EXISTS (
+    SELECT 1
+    FROM `UserUserTask` AS `u`
+    INNER JOIN `Users` AS `u0` ON `u`.`UsersId` = `u0`.`Id`
+    WHERE (`t`.`Id` = `u`.`TasksId`) AND (`u0`.`Id` = @__userId_Value_0)))
+ORDER BY `t`.`Id`, `t0`.`TasksId`, `t0`.`UsersId`, `t0`.`Id`, `t1`.`CategoriesId`, `t1`.`TasksId`
+2025-07-20 16:52:47.971 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-20 16:52:50.461 +02:00 [INF] Executing FileContentResult, sending file with download name 'CompletedTasks-mazurek321.93@wp.pl.xlsx' ...
+2025-07-20 16:52:50.496 +02:00 [INF] Executed action Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api) in 4887.2088ms
+2025-07-20 16:52:50.503 +02:00 [INF] Executed endpoint 'Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api)'
+2025-07-20 16:52:50.529 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/Efficiency/completed-tasks/export?format=excel - 200 6652 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet 5276.7207ms
+2025-07-20 16:52:52.019 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/Efficiency/completed-tasks/export?format=pdf - null null
+2025-07-20 16:52:52.063 +02:00 [INF] Executing endpoint 'Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api)'
+2025-07-20 16:52:52.068 +02:00 [INF] Route matched with {action = "ExportCompletedTasksForUser", controller = "Efficiency"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ExportCompletedTasksForUser(System.Nullable`1[System.Guid], System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.String) on controller Api.Controllers.EfficiencyController (Api).
+2025-07-20 16:52:52.133 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_Value_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Title`, `t`.`UpdatedBy`, `t0`.`Id`, `t0`.`CreatedAt`, `t0`.`Email`, `t0`.`IsActive`, `t0`.`LastActive`, `t0`.`Lastname`, `t0`.`Name`, `t0`.`PasswordHash`, `t0`.`Phone`, `t0`.`Role`, `t0`.`UpdatedAt`, `t0`.`TasksId`, `t0`.`UsersId`, `t1`.`Id`, `t1`.`Name`, `t1`.`CategoriesId`, `t1`.`TasksId`
+FROM `Tasks` AS `t`
+LEFT JOIN (
+    SELECT `u2`.`Id`, `u2`.`CreatedAt`, `u2`.`Email`, `u2`.`IsActive`, `u2`.`LastActive`, `u2`.`Lastname`, `u2`.`Name`, `u2`.`PasswordHash`, `u2`.`Phone`, `u2`.`Role`, `u2`.`UpdatedAt`, `u1`.`TasksId`, `u1`.`UsersId`
+    FROM `UserUserTask` AS `u1`
+    INNER JOIN `Users` AS `u2` ON `u1`.`UsersId` = `u2`.`Id`
+) AS `t0` ON `t`.`Id` = `t0`.`TasksId`
+LEFT JOIN (
+    SELECT `c0`.`Id`, `c0`.`Name`, `c`.`CategoriesId`, `c`.`TasksId`
+    FROM `CategoryUserTask` AS `c`
+    INNER JOIN `Categories` AS `c0` ON `c`.`CategoriesId` = `c0`.`Id`
+) AS `t1` ON `t`.`Id` = `t1`.`TasksId`
+WHERE `t`.`EndDate` IS NOT NULL AND ((`t`.`CreatedBy` = @__userId_Value_0) OR EXISTS (
+    SELECT 1
+    FROM `UserUserTask` AS `u`
+    INNER JOIN `Users` AS `u0` ON `u`.`UsersId` = `u0`.`Id`
+    WHERE (`t`.`Id` = `u`.`TasksId`) AND (`u0`.`Id` = @__userId_Value_0)))
+ORDER BY `t`.`Id`, `t0`.`TasksId`, `t0`.`UsersId`, `t0`.`Id`, `t1`.`CategoriesId`, `t1`.`TasksId`
+2025-07-20 16:52:52.149 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-20 16:52:52.289 +02:00 [INF] Executed action Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api) in 212.4824ms
+2025-07-20 16:52:52.295 +02:00 [INF] Executed endpoint 'Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api)'
+2025-07-20 16:52:52.301 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Exception: 
+
+
+
+Welcome to QuestPDF! 👋 
+
+QuestPDF is an open-source library committed to long-term sustainability and continuous improvement. 
+
+To maintain high-quality development and support while keeping the library free for most users, we use a fair pricing model where only larger organizations help by providing necessary funding for the project. 
+
+If your organization’s annual gross revenue exceeds $1M USD, a Commercial License is required for production use (you can freely evaluate and test QuestPDF in non-production environments at no cost). In that case, please share this information with your team or management. By purchasing a license, you directly contribute to the ongoing development and reliability of QuestPDF. 
+
+For details on the license types and determining which applies to you, please visit: https://www.questpdf.com/license/ 
+
+We trust our users. To continue, no license key is needed. Instead, simply select and configure the appropriate license in your code. For example, if you qualify for the Community license, add: 
+
+> QuestPDF.Settings.License = LicenseType.Community; 
+
+Thank you for supporting QuestPDF! ❤️ By choosing the right license, you help ensure that our project remains transparent, sustainable, and continuously improving for everyone. 🚀 
+
+
+
+
+   at QuestPDF.Drawing.DocumentGenerator.ValidateLicense()
+   at QuestPDF.Drawing.DocumentGenerator.GeneratePdf(SkWriteStream stream, IDocument document)
+   at QuestPDF.Fluent.GenerateExtensions.GeneratePdf(IDocument document, Stream stream)
+   at Api.Controllers.EfficiencyController.ExportCompletedTasksForUser(Nullable`1 userId, Nullable`1 from, Nullable`1 to, String format) in D:\programowanie\C#\System zarzadzania zasobami\Api\Controllers\EfficiencyController.cs:line 194
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-07-20 16:52:52.389 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/Efficiency/completed-tasks/export?format=pdf - 500 null text/plain; charset=utf-8 370.3996ms
+2025-07-20 16:53:28.860 +02:00 [INF] Application is shutting down...
+2025-07-20 16:53:28.917 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+2025-07-20 16:53:28.925 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+2025-07-20 16:53:28.939 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+2025-07-20 16:53:40.149 +02:00 [INF] User profile is available. Using 'C:\Users\mazur\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-20 16:53:40.429 +02:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2025-07-20 16:53:40.433 +02:00 [INF] Quartz Scheduler created
+2025-07-20 16:53:40.437 +02:00 [INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2025-07-20 16:53:40.441 +02:00 [INF] RAMJobStore initialized.
+2025-07-20 16:53:40.446 +02:00 [INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2025-07-20 16:53:40.451 +02:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2025-07-20 16:53:40.456 +02:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2025-07-20 16:53:40.481 +02:00 [INF] Adding 2 jobs, 2 triggers.
+2025-07-20 16:53:40.490 +02:00 [INF] Adding job: DEFAULT.ProcessOutboxJob-trigger
+2025-07-20 16:53:40.517 +02:00 [INF] Adding job: DEFAULT.NotificationCheckJob-trigger
+2025-07-20 16:53:40.616 +02:00 [INF] Now listening on: http://localhost:5259
+2025-07-20 16:53:40.621 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-20 16:53:40.626 +02:00 [INF] Hosting environment: Development
+2025-07-20 16:53:40.631 +02:00 [INF] Content root path: D:\programowanie\C#\System zarzadzania zasobami\MainProgram
+2025-07-20 16:53:40.631 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2025-07-20 16:53:43.902 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/Efficiency/completed-tasks/export?format=pdf - null null
+2025-07-20 16:53:44.016 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-07-20 16:53:44.237 +02:00 [INF] Executing endpoint 'Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api)'
+2025-07-20 16:53:44.298 +02:00 [INF] Route matched with {action = "ExportCompletedTasksForUser", controller = "Efficiency"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ExportCompletedTasksForUser(System.Nullable`1[System.Guid], System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.String) on controller Api.Controllers.EfficiencyController (Api).
+2025-07-20 16:53:46.142 +02:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-07-20 16:53:46.416 +02:00 [INF] Executed DbCommand (66ms) [Parameters=[@__userId_Value_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Title`, `t`.`UpdatedBy`, `t0`.`Id`, `t0`.`CreatedAt`, `t0`.`Email`, `t0`.`IsActive`, `t0`.`LastActive`, `t0`.`Lastname`, `t0`.`Name`, `t0`.`PasswordHash`, `t0`.`Phone`, `t0`.`Role`, `t0`.`UpdatedAt`, `t0`.`TasksId`, `t0`.`UsersId`, `t1`.`Id`, `t1`.`Name`, `t1`.`CategoriesId`, `t1`.`TasksId`
+FROM `Tasks` AS `t`
+LEFT JOIN (
+    SELECT `u2`.`Id`, `u2`.`CreatedAt`, `u2`.`Email`, `u2`.`IsActive`, `u2`.`LastActive`, `u2`.`Lastname`, `u2`.`Name`, `u2`.`PasswordHash`, `u2`.`Phone`, `u2`.`Role`, `u2`.`UpdatedAt`, `u1`.`TasksId`, `u1`.`UsersId`
+    FROM `UserUserTask` AS `u1`
+    INNER JOIN `Users` AS `u2` ON `u1`.`UsersId` = `u2`.`Id`
+) AS `t0` ON `t`.`Id` = `t0`.`TasksId`
+LEFT JOIN (
+    SELECT `c0`.`Id`, `c0`.`Name`, `c`.`CategoriesId`, `c`.`TasksId`
+    FROM `CategoryUserTask` AS `c`
+    INNER JOIN `Categories` AS `c0` ON `c`.`CategoriesId` = `c0`.`Id`
+) AS `t1` ON `t`.`Id` = `t1`.`TasksId`
+WHERE `t`.`EndDate` IS NOT NULL AND ((`t`.`CreatedBy` = @__userId_Value_0) OR EXISTS (
+    SELECT 1
+    FROM `UserUserTask` AS `u`
+    INNER JOIN `Users` AS `u0` ON `u`.`UsersId` = `u0`.`Id`
+    WHERE (`t`.`Id` = `u`.`TasksId`) AND (`u0`.`Id` = @__userId_Value_0)))
+ORDER BY `t`.`Id`, `t0`.`TasksId`, `t0`.`UsersId`, `t0`.`Id`, `t1`.`CategoriesId`, `t1`.`TasksId`
+2025-07-20 16:53:46.503 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-20 16:53:48.055 +02:00 [INF] Executing FileContentResult, sending file with download name 'CompletedTasks-mazurek321.93@wp.pl.pdf' ...
+2025-07-20 16:53:48.084 +02:00 [INF] Executed action Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api) in 3772.8561ms
+2025-07-20 16:53:48.094 +02:00 [INF] Executed endpoint 'Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api)'
+2025-07-20 16:53:48.119 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/Efficiency/completed-tasks/export?format=pdf - 200 19977 application/pdf 4220.2516ms
+2025-07-20 16:56:43.020 +02:00 [INF] Application is shutting down...
+2025-07-20 16:56:43.041 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+2025-07-20 16:56:43.050 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+2025-07-20 16:56:43.063 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+2025-07-20 19:52:36.521 +02:00 [INF] User profile is available. Using 'C:\Users\mazur\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-20 19:52:36.858 +02:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2025-07-20 19:52:36.866 +02:00 [INF] Quartz Scheduler created
+2025-07-20 19:52:36.875 +02:00 [INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2025-07-20 19:52:36.881 +02:00 [INF] RAMJobStore initialized.
+2025-07-20 19:52:36.885 +02:00 [INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2025-07-20 19:52:36.889 +02:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2025-07-20 19:52:36.893 +02:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2025-07-20 19:52:36.937 +02:00 [INF] Adding 2 jobs, 2 triggers.
+2025-07-20 19:52:36.943 +02:00 [INF] Adding job: DEFAULT.ProcessOutboxJob-trigger
+2025-07-20 19:52:36.970 +02:00 [INF] Adding job: DEFAULT.NotificationCheckJob-trigger
+2025-07-20 19:52:37.102 +02:00 [INF] Now listening on: http://localhost:5259
+2025-07-20 19:52:37.108 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-20 19:52:37.114 +02:00 [INF] Hosting environment: Development
+2025-07-20 19:52:37.118 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2025-07-20 19:52:37.118 +02:00 [INF] Content root path: D:\programowanie\C#\System zarzadzania zasobami\MainProgram
+2025-07-20 19:52:43.796 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/swagger/v1/swagger.json - null null
+2025-07-20 19:52:44.315 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 522.5982ms
+2025-07-20 19:53:19.945 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5259/api/auth/login - application/json 60
+2025-07-20 19:53:19.976 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-07-20 19:53:20.040 +02:00 [INF] Executing endpoint 'Api.Controllers.AuthController.Login (Api)'
+2025-07-20 19:53:20.083 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Api.Dto.AuthDtos.LoginDto) on controller Api.Controllers.AuthController (Api).
+2025-07-20 19:53:22.255 +02:00 [INF] Executed DbCommand (58ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__email_0
+LIMIT 1
+2025-07-20 19:53:22.920 +02:00 [INF] Executed DbCommand (20ms) [Parameters=[@p10='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `CreatedAt` = @p0, `Email` = @p1, `IsActive` = @p2, `LastActive` = @p3, `Lastname` = @p4, `Name` = @p5, `PasswordHash` = @p6, `Phone` = @p7, `Role` = @p8, `UpdatedAt` = @p9
+WHERE `Id` = @p10;
+SELECT ROW_COUNT();
+2025-07-20 19:53:22.957 +02:00 [INF] [Login] User "e76d07b3-fbc0-4e0c-af16-9778ffe93460" logged in.
+2025-07-20 19:53:22.992 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-07-20 19:53:23.011 +02:00 [INF] Executed action Api.Controllers.AuthController.Login (Api) in 2908.9931ms
+2025-07-20 19:53:23.025 +02:00 [INF] Executed endpoint 'Api.Controllers.AuthController.Login (Api)'
+2025-07-20 19:53:23.047 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5259/api/auth/login - 200 null text/plain; charset=utf-8 3102.1701ms
+2025-07-20 19:53:37.933 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/Efficiency/completed-tasks/export?format=pdf - null null
+2025-07-20 19:53:38.055 +02:00 [INF] Executing endpoint 'Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api)'
+2025-07-20 19:53:38.074 +02:00 [INF] Route matched with {action = "ExportCompletedTasksForUser", controller = "Efficiency"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ExportCompletedTasksForUser(System.Nullable`1[System.Guid], System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.String) on controller Api.Controllers.EfficiencyController (Api).
+2025-07-20 19:53:38.421 +02:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-07-20 19:53:38.461 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@__userId_Value_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Title`, `t`.`UpdatedBy`, `t0`.`Id`, `t0`.`CreatedAt`, `t0`.`Email`, `t0`.`IsActive`, `t0`.`LastActive`, `t0`.`Lastname`, `t0`.`Name`, `t0`.`PasswordHash`, `t0`.`Phone`, `t0`.`Role`, `t0`.`UpdatedAt`, `t0`.`TasksId`, `t0`.`UsersId`, `t1`.`Id`, `t1`.`Name`, `t1`.`CategoriesId`, `t1`.`TasksId`
+FROM `Tasks` AS `t`
+LEFT JOIN (
+    SELECT `u2`.`Id`, `u2`.`CreatedAt`, `u2`.`Email`, `u2`.`IsActive`, `u2`.`LastActive`, `u2`.`Lastname`, `u2`.`Name`, `u2`.`PasswordHash`, `u2`.`Phone`, `u2`.`Role`, `u2`.`UpdatedAt`, `u1`.`TasksId`, `u1`.`UsersId`
+    FROM `UserUserTask` AS `u1`
+    INNER JOIN `Users` AS `u2` ON `u1`.`UsersId` = `u2`.`Id`
+) AS `t0` ON `t`.`Id` = `t0`.`TasksId`
+LEFT JOIN (
+    SELECT `c0`.`Id`, `c0`.`Name`, `c`.`CategoriesId`, `c`.`TasksId`
+    FROM `CategoryUserTask` AS `c`
+    INNER JOIN `Categories` AS `c0` ON `c`.`CategoriesId` = `c0`.`Id`
+) AS `t1` ON `t`.`Id` = `t1`.`TasksId`
+WHERE `t`.`EndDate` IS NOT NULL AND ((`t`.`CreatedBy` = @__userId_Value_0) OR EXISTS (
+    SELECT 1
+    FROM `UserUserTask` AS `u`
+    INNER JOIN `Users` AS `u0` ON `u`.`UsersId` = `u0`.`Id`
+    WHERE (`t`.`Id` = `u`.`TasksId`) AND (`u0`.`Id` = @__userId_Value_0)))
+ORDER BY `t`.`Id`, `t0`.`TasksId`, `t0`.`UsersId`, `t0`.`Id`, `t1`.`CategoriesId`, `t1`.`TasksId`
+2025-07-20 19:53:38.502 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-20 19:53:38.537 +02:00 [INF] Executed action Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api) in 452.7259ms
+2025-07-20 19:53:38.546 +02:00 [INF] Executed endpoint 'Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api)'
+2025-07-20 19:53:38.555 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Exception: 
+
+
+
+Welcome to QuestPDF! 👋 
+
+QuestPDF is an open-source library committed to long-term sustainability and continuous improvement. 
+
+To maintain high-quality development and support while keeping the library free for most users, we use a fair pricing model where only larger organizations help by providing necessary funding for the project. 
+
+If your organization’s annual gross revenue exceeds $1M USD, a Commercial License is required for production use (you can freely evaluate and test QuestPDF in non-production environments at no cost). In that case, please share this information with your team or management. By purchasing a license, you directly contribute to the ongoing development and reliability of QuestPDF. 
+
+For details on the license types and determining which applies to you, please visit: https://www.questpdf.com/license/ 
+
+We trust our users. To continue, no license key is needed. Instead, simply select and configure the appropriate license in your code. For example, if you qualify for the Community license, add: 
+
+> QuestPDF.Settings.License = LicenseType.Community; 
+
+Thank you for supporting QuestPDF! ❤️ By choosing the right license, you help ensure that our project remains transparent, sustainable, and continuously improving for everyone. 🚀 
+
+
+
+
+   at QuestPDF.Drawing.DocumentGenerator.ValidateLicense()
+   at QuestPDF.Drawing.DocumentGenerator.GeneratePdf(SkWriteStream stream, IDocument document)
+   at QuestPDF.Fluent.GenerateExtensions.GeneratePdf(IDocument document, Stream stream)
+   at Api.Controllers.EfficiencyController.ExportCompletedTasksForUser(Nullable`1 userId, Nullable`1 from, Nullable`1 to, String format) in D:\programowanie\C#\System zarzadzania zasobami\Api\Controllers\EfficiencyController.cs:line 200
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-07-20 19:53:38.646 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/Efficiency/completed-tasks/export?format=pdf - 500 null text/plain; charset=utf-8 713.0713ms
+2025-07-20 19:54:06.411 +02:00 [INF] Application is shutting down...
+2025-07-20 19:54:06.438 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+2025-07-20 19:54:06.444 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+2025-07-20 19:54:06.456 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+2025-07-20 19:54:18.860 +02:00 [INF] User profile is available. Using 'C:\Users\mazur\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-20 19:54:19.289 +02:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2025-07-20 19:54:19.293 +02:00 [INF] Quartz Scheduler created
+2025-07-20 19:54:19.297 +02:00 [INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2025-07-20 19:54:19.331 +02:00 [INF] RAMJobStore initialized.
+2025-07-20 19:54:19.496 +02:00 [INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2025-07-20 19:54:19.501 +02:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2025-07-20 19:54:19.510 +02:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2025-07-20 19:54:19.543 +02:00 [INF] Adding 2 jobs, 2 triggers.
+2025-07-20 19:54:19.550 +02:00 [INF] Adding job: DEFAULT.ProcessOutboxJob-trigger
+2025-07-20 19:54:19.569 +02:00 [INF] Adding job: DEFAULT.NotificationCheckJob-trigger
+2025-07-20 19:54:19.659 +02:00 [INF] Now listening on: http://localhost:5259
+2025-07-20 19:54:19.665 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-20 19:54:19.671 +02:00 [INF] Hosting environment: Development
+2025-07-20 19:54:19.673 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2025-07-20 19:54:19.675 +02:00 [INF] Content root path: D:\programowanie\C#\System zarzadzania zasobami\MainProgram
+2025-07-20 19:54:31.955 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/Efficiency/completed-tasks/export?format=pdf - null null
+2025-07-20 19:54:32.062 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-07-20 19:54:32.272 +02:00 [INF] Executing endpoint 'Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api)'
+2025-07-20 19:54:32.314 +02:00 [INF] Route matched with {action = "ExportCompletedTasksForUser", controller = "Efficiency"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ExportCompletedTasksForUser(System.Nullable`1[System.Guid], System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.String) on controller Api.Controllers.EfficiencyController (Api).
+2025-07-20 19:54:34.376 +02:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-07-20 19:54:34.664 +02:00 [INF] Executed DbCommand (64ms) [Parameters=[@__userId_Value_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Title`, `t`.`UpdatedBy`, `t0`.`Id`, `t0`.`CreatedAt`, `t0`.`Email`, `t0`.`IsActive`, `t0`.`LastActive`, `t0`.`Lastname`, `t0`.`Name`, `t0`.`PasswordHash`, `t0`.`Phone`, `t0`.`Role`, `t0`.`UpdatedAt`, `t0`.`TasksId`, `t0`.`UsersId`, `t1`.`Id`, `t1`.`Name`, `t1`.`CategoriesId`, `t1`.`TasksId`
+FROM `Tasks` AS `t`
+LEFT JOIN (
+    SELECT `u2`.`Id`, `u2`.`CreatedAt`, `u2`.`Email`, `u2`.`IsActive`, `u2`.`LastActive`, `u2`.`Lastname`, `u2`.`Name`, `u2`.`PasswordHash`, `u2`.`Phone`, `u2`.`Role`, `u2`.`UpdatedAt`, `u1`.`TasksId`, `u1`.`UsersId`
+    FROM `UserUserTask` AS `u1`
+    INNER JOIN `Users` AS `u2` ON `u1`.`UsersId` = `u2`.`Id`
+) AS `t0` ON `t`.`Id` = `t0`.`TasksId`
+LEFT JOIN (
+    SELECT `c0`.`Id`, `c0`.`Name`, `c`.`CategoriesId`, `c`.`TasksId`
+    FROM `CategoryUserTask` AS `c`
+    INNER JOIN `Categories` AS `c0` ON `c`.`CategoriesId` = `c0`.`Id`
+) AS `t1` ON `t`.`Id` = `t1`.`TasksId`
+WHERE `t`.`EndDate` IS NOT NULL AND ((`t`.`CreatedBy` = @__userId_Value_0) OR EXISTS (
+    SELECT 1
+    FROM `UserUserTask` AS `u`
+    INNER JOIN `Users` AS `u0` ON `u`.`UsersId` = `u0`.`Id`
+    WHERE (`t`.`Id` = `u`.`TasksId`) AND (`u0`.`Id` = @__userId_Value_0)))
+ORDER BY `t`.`Id`, `t0`.`TasksId`, `t0`.`UsersId`, `t0`.`Id`, `t1`.`CategoriesId`, `t1`.`TasksId`
+2025-07-20 19:54:34.765 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-20 19:54:35.642 +02:00 [INF] Executing FileStreamResult, sending file with download name 'CompletedTasks-mazurek321.93@wp.pl.pdf' ...
+2025-07-20 19:54:35.669 +02:00 [INF] Executed action Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api) in 3338.5574ms
+2025-07-20 19:54:35.679 +02:00 [INF] Executed endpoint 'Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api)'
+2025-07-20 19:54:35.687 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ObjectDisposedException: Cannot access a closed Stream.
+   at System.IO.MemoryStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.MemoryStream.ReadAsync(Memory`1 buffer, CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Http.StreamCopyOperationInternal.CopyToAsync(Stream source, Stream destination, Nullable`1 count, Int32 bufferSize, CancellationToken cancel)
+   at Microsoft.AspNetCore.Internal.FileResultHelper.WriteFileAsync(HttpContext context, Stream fileStream, RangeItemHeaderValue range, Int64 rangeLength)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.FileResultExecutorBase.WriteFileAsync(HttpContext context, Stream fileStream, RangeItemHeaderValue range, Int64 rangeLength)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.FileStreamResultExecutor.ExecuteAsync(ActionContext context, FileStreamResult result)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-07-20 19:54:35.765 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/Efficiency/completed-tasks/export?format=pdf - 500 null text/plain; charset=utf-8 3813.8939ms
+2025-07-20 19:54:55.777 +02:00 [INF] Application is shutting down...
+2025-07-20 19:54:55.809 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+2025-07-20 19:54:55.816 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+2025-07-20 19:54:55.828 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+2025-07-20 19:55:06.417 +02:00 [INF] User profile is available. Using 'C:\Users\mazur\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-20 19:55:06.722 +02:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2025-07-20 19:55:06.727 +02:00 [INF] Quartz Scheduler created
+2025-07-20 19:55:06.732 +02:00 [INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2025-07-20 19:55:06.736 +02:00 [INF] RAMJobStore initialized.
+2025-07-20 19:55:06.741 +02:00 [INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2025-07-20 19:55:06.746 +02:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2025-07-20 19:55:06.750 +02:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2025-07-20 19:55:06.778 +02:00 [INF] Adding 2 jobs, 2 triggers.
+2025-07-20 19:55:06.786 +02:00 [INF] Adding job: DEFAULT.ProcessOutboxJob-trigger
+2025-07-20 19:55:06.812 +02:00 [INF] Adding job: DEFAULT.NotificationCheckJob-trigger
+2025-07-20 19:55:06.914 +02:00 [INF] Now listening on: http://localhost:5259
+2025-07-20 19:55:06.920 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-20 19:55:06.924 +02:00 [INF] Hosting environment: Development
+2025-07-20 19:55:06.927 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2025-07-20 19:55:06.928 +02:00 [INF] Content root path: D:\programowanie\C#\System zarzadzania zasobami\MainProgram
+2025-07-20 19:55:11.476 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/Efficiency/completed-tasks/export?format=pdf - null null
+2025-07-20 19:55:11.611 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-07-20 19:55:11.810 +02:00 [INF] Executing endpoint 'Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api)'
+2025-07-20 19:55:11.856 +02:00 [INF] Route matched with {action = "ExportCompletedTasksForUser", controller = "Efficiency"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ExportCompletedTasksForUser(System.Nullable`1[System.Guid], System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.String) on controller Api.Controllers.EfficiencyController (Api).
+2025-07-20 19:55:13.779 +02:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-07-20 19:55:14.092 +02:00 [INF] Executed DbCommand (68ms) [Parameters=[@__userId_Value_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Title`, `t`.`UpdatedBy`, `t0`.`Id`, `t0`.`CreatedAt`, `t0`.`Email`, `t0`.`IsActive`, `t0`.`LastActive`, `t0`.`Lastname`, `t0`.`Name`, `t0`.`PasswordHash`, `t0`.`Phone`, `t0`.`Role`, `t0`.`UpdatedAt`, `t0`.`TasksId`, `t0`.`UsersId`, `t1`.`Id`, `t1`.`Name`, `t1`.`CategoriesId`, `t1`.`TasksId`
+FROM `Tasks` AS `t`
+LEFT JOIN (
+    SELECT `u2`.`Id`, `u2`.`CreatedAt`, `u2`.`Email`, `u2`.`IsActive`, `u2`.`LastActive`, `u2`.`Lastname`, `u2`.`Name`, `u2`.`PasswordHash`, `u2`.`Phone`, `u2`.`Role`, `u2`.`UpdatedAt`, `u1`.`TasksId`, `u1`.`UsersId`
+    FROM `UserUserTask` AS `u1`
+    INNER JOIN `Users` AS `u2` ON `u1`.`UsersId` = `u2`.`Id`
+) AS `t0` ON `t`.`Id` = `t0`.`TasksId`
+LEFT JOIN (
+    SELECT `c0`.`Id`, `c0`.`Name`, `c`.`CategoriesId`, `c`.`TasksId`
+    FROM `CategoryUserTask` AS `c`
+    INNER JOIN `Categories` AS `c0` ON `c`.`CategoriesId` = `c0`.`Id`
+) AS `t1` ON `t`.`Id` = `t1`.`TasksId`
+WHERE `t`.`EndDate` IS NOT NULL AND ((`t`.`CreatedBy` = @__userId_Value_0) OR EXISTS (
+    SELECT 1
+    FROM `UserUserTask` AS `u`
+    INNER JOIN `Users` AS `u0` ON `u`.`UsersId` = `u0`.`Id`
+    WHERE (`t`.`Id` = `u`.`TasksId`) AND (`u0`.`Id` = @__userId_Value_0)))
+ORDER BY `t`.`Id`, `t0`.`TasksId`, `t0`.`UsersId`, `t0`.`Id`, `t1`.`CategoriesId`, `t1`.`TasksId`
+2025-07-20 19:55:14.226 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-20 19:55:15.247 +02:00 [INF] Executing FileContentResult, sending file with download name 'CompletedTasks-mazurek321.93@wp.pl.pdf' ...
+2025-07-20 19:55:15.279 +02:00 [INF] Executed action Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api) in 3405.9902ms
+2025-07-20 19:55:15.291 +02:00 [INF] Executed endpoint 'Api.Controllers.EfficiencyController.ExportCompletedTasksForUser (Api)'
+2025-07-20 19:55:15.322 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/Efficiency/completed-tasks/export?format=pdf - 200 20097 application/pdf 3848.8608ms
+2025-07-20 19:56:49.976 +02:00 [INF] Application is shutting down...
+2025-07-20 19:56:50.013 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+2025-07-20 19:56:50.020 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+2025-07-20 19:56:50.035 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.

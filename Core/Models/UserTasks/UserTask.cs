@@ -7,11 +7,11 @@ namespace Core.Models.UserTasks;
 public class UserTask
 {
     public UserTask() { }
-    public UserTask(Guid id, string title, string description, DateTime deadline,
-                    DateTime startDate, DateTime endDate, int priority,
+    public UserTask(Guid id, string title, string? description, DateTime deadline,
+                    DateTime? startDate, DateTime? endDate, int priority,
                     DateTime createdAt, Guid createdBy,
                     DateTime lastUpdate,Guid updatedBy,
-                    List<User> users, List<Category> categories)
+                    List<User>? users, List<Category>? categories)
     {
         Id = id;
         Title = title;
@@ -29,23 +29,23 @@ public class UserTask
     }
     public Guid Id { get; private set; }
     public string Title { get; private set; }
-    public string Description { get; private set; }
+    public string? Description { get; private set; }
     public DateTime Deadline { get; private set; }
-    public DateTime StartDate { get; private set; }
-    public DateTime EndDate { get; private set; }
+    public DateTime? StartDate { get; private set; }
+    public DateTime? EndDate { get; private set; }
     public int Priority { get; private set; }
     public DateTime CreatedAt { get; private set; }
     public Guid CreatedBy { get; private set; }
     public DateTime LastUpdate { get; private set; }
     public Guid UpdatedBy { get; private set; }
     [JsonIgnore]
-    public ICollection<User> Users { get; private set; }
-    public List<Category> Categories { get; private set; }
+    public ICollection<User> Users { get; private set; } = new List<User>();
+    public List<Category> Categories { get; private set; } = new List<Category>();
 
     public static UserTask NewTask(
-        string title, string description, DateTime deadline,
-        DateTime startDate, DateTime endDate, int priority, Guid createdBy, Guid updatedBy,
-        List<User> users, List<Category> categories
+        string title, string? description, DateTime deadline,
+        DateTime? startDate, DateTime? endDate, int priority, Guid createdBy, Guid updatedBy,
+        List<User>? users, List<Category>? categories
     )
     {
         return new UserTask(
@@ -56,9 +56,9 @@ public class UserTask
     }
 
     public void UpdateTask(
-        string title, string description, DateTime deadline,
-        DateTime startDate, DateTime endDate, int priority, Guid updatedBy,
-        List<User> users, List<Category> categories
+        string title, string? description, DateTime deadline,
+        DateTime? startDate, DateTime? endDate, int priority, Guid updatedBy,
+        List<User>? users, List<Category>? categories
     )
     {
         Title = title;
@@ -69,8 +69,8 @@ public class UserTask
         Priority = priority;
         LastUpdate = DateTime.UtcNow;
         UpdatedBy = updatedBy;
-        Users = users;
-        Categories = categories;
+        Users = users ?? new List<User>();
+        Categories = categories ?? new List<Category>();
     }
 
     public void UpdateUsers(List<User> users)

@@ -1,0 +1,165 @@
+2025-07-20 15:03:49.661 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost/api/auth/register - application/json; charset=utf-8 164
+2025-07-20 15:03:49.921 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-07-20 15:03:50.040 +02:00 [INF] Executing endpoint 'Api.Controllers.AuthController.Register (Api)'
+2025-07-20 15:03:50.122 +02:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(Api.Dto.AuthDtos.RegisterDto) on controller Api.Controllers.AuthController (Api).
+2025-07-20 15:03:53.637 +02:00 [INF] Executed DbCommand (72ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__email_0
+LIMIT 1
+2025-07-20 15:03:54.337 +02:00 [INF] Executed DbCommand (11ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (DbType = Guid), @p6='?' (DbType = DateTime), @p7='?' (Size = 4000), @p8='?' (DbType = Boolean), @p9='?' (DbType = DateTime), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (Size = 4000), @p14='?' (DbType = Int32), @p15='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `OutboxMessages` (`Id`, `Data`, `OccurredOn`, `ProcessedDate`, `Type`)
+VALUES (@p0, @p1, @p2, @p3, @p4);
+INSERT INTO `Users` (`Id`, `CreatedAt`, `Email`, `IsActive`, `LastActive`, `Lastname`, `Name`, `PasswordHash`, `Phone`, `Role`, `UpdatedAt`)
+VALUES (@p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+2025-07-20 15:03:54.394 +02:00 [INF] [Registration] Created user "67f0bd85-94f4-4131-9d8d-3cda5ab6126b".
+2025-07-20 15:03:54.413 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-20 15:03:54.459 +02:00 [INF] Executed action Api.Controllers.AuthController.Register (Api) in 4325.3332ms
+2025-07-20 15:03:54.465 +02:00 [INF] Executed endpoint 'Api.Controllers.AuthController.Register (Api)'
+2025-07-20 15:03:54.496 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost/api/auth/login - application/json; charset=utf-8 61
+2025-07-20 15:03:54.503 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost/api/auth/register - 200 null application/json; charset=utf-8 4862.0516ms
+2025-07-20 15:03:54.511 +02:00 [INF] Executing endpoint 'Api.Controllers.AuthController.Login (Api)'
+2025-07-20 15:03:54.523 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Api.Dto.AuthDtos.LoginDto) on controller Api.Controllers.AuthController (Api).
+2025-07-20 15:03:54.583 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__email_0
+LIMIT 1
+2025-07-20 15:03:54.879 +02:00 [INF] Executed DbCommand (10ms) [Parameters=[@p10='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `CreatedAt` = @p0, `Email` = @p1, `IsActive` = @p2, `LastActive` = @p3, `Lastname` = @p4, `Name` = @p5, `PasswordHash` = @p6, `Phone` = @p7, `Role` = @p8, `UpdatedAt` = @p9
+WHERE `Id` = @p10;
+SELECT ROW_COUNT();
+2025-07-20 15:03:54.886 +02:00 [INF] [Login] User "67f0bd85-94f4-4131-9d8d-3cda5ab6126b" logged in.
+2025-07-20 15:03:54.887 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-07-20 15:03:54.889 +02:00 [INF] Executed action Api.Controllers.AuthController.Login (Api) in 366.0613ms
+2025-07-20 15:03:54.890 +02:00 [INF] Executed endpoint 'Api.Controllers.AuthController.Login (Api)'
+2025-07-20 15:03:54.891 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost/api/auth/login - 200 null text/plain; charset=utf-8 394.7957ms
+2025-07-20 15:03:54.932 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost/api/UserTasks - application/json; charset=utf-8 207
+2025-07-20 15:03:55.051 +02:00 [INF] Executing endpoint 'Api.Controllers.UserTasksController.CreateTask (Api)'
+2025-07-20 15:03:55.060 +02:00 [INF] Route matched with {action = "CreateTask", controller = "UserTasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateTask(CreateTaskDto) on controller Api.Controllers.UserTasksController (Api).
+2025-07-20 15:03:55.252 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-20 15:03:55.324 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE FALSE
+2025-07-20 15:03:55.347 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Name`
+FROM `Categories` AS `c`
+WHERE FALSE
+2025-07-20 15:03:55.470 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?' (DbType = Guid), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime), @p6='?' (DbType = DateTime), @p7='?' (DbType = Int32), @p8='?' (DbType = DateTime), @p9='?' (Size = 4000), @p10='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Tasks` (`Id`, `CreatedAt`, `CreatedBy`, `Deadline`, `Description`, `EndDate`, `LastUpdate`, `Priority`, `StartDate`, `Title`, `UpdatedBy`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10);
+2025-07-20 15:03:55.494 +02:00 [INF] [Create] User "67f0bd85-94f4-4131-9d8d-3cda5ab6126b" created task.
+2025-07-20 15:03:55.511 +02:00 [INF] [CreateData] Task data: {"Id":"f2ab4332-7e7a-49a5-bdca-a754a139beb6","Title":"Title of task","Description":"Description","Deadline":"2025-07-30T13:03:54.8940587Z","StartDate":"0001-01-01T00:00:00","EndDate":"0001-01-01T00:00:00","Priority":0,"CreatedBy":"67f0bd85-94f4-4131-9d8d-3cda5ab6126b","LastUpdate":"2025-07-20T13:03:55.3481851Z","UpdatedBy":"67f0bd85-94f4-4131-9d8d-3cda5ab6126b","Users":[],"Categories":[]}
+2025-07-20 15:03:55.512 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.TaskDtos.TaskDto'.
+2025-07-20 15:03:55.514 +02:00 [INF] Executed action Api.Controllers.UserTasksController.CreateTask (Api) in 453.947ms
+2025-07-20 15:03:55.515 +02:00 [INF] Executed endpoint 'Api.Controllers.UserTasksController.CreateTask (Api)'
+2025-07-20 15:03:55.515 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost/api/UserTasks - 200 null application/json; charset=utf-8 583.4674ms
+2025-07-20 15:03:55.636 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost/api/auth/register - application/json; charset=utf-8 169
+2025-07-20 15:03:55.637 +02:00 [INF] Executing endpoint 'Api.Controllers.AuthController.Register (Api)'
+2025-07-20 15:03:55.638 +02:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(Api.Dto.AuthDtos.RegisterDto) on controller Api.Controllers.AuthController (Api).
+2025-07-20 15:03:55.649 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__email_0
+LIMIT 1
+2025-07-20 15:03:55.841 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (DbType = Guid), @p6='?' (DbType = DateTime), @p7='?' (Size = 4000), @p8='?' (DbType = Boolean), @p9='?' (DbType = DateTime), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (Size = 4000), @p14='?' (DbType = Int32), @p15='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `OutboxMessages` (`Id`, `Data`, `OccurredOn`, `ProcessedDate`, `Type`)
+VALUES (@p0, @p1, @p2, @p3, @p4);
+INSERT INTO `Users` (`Id`, `CreatedAt`, `Email`, `IsActive`, `LastActive`, `Lastname`, `Name`, `PasswordHash`, `Phone`, `Role`, `UpdatedAt`)
+VALUES (@p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+2025-07-20 15:03:55.847 +02:00 [INF] [Registration] Created user "dd6ed22e-e29a-4cf4-9cb3-31ec08f321ef".
+2025-07-20 15:03:55.847 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-20 15:03:55.848 +02:00 [INF] Executed action Api.Controllers.AuthController.Register (Api) in 210.1615ms
+2025-07-20 15:03:55.848 +02:00 [INF] Executed endpoint 'Api.Controllers.AuthController.Register (Api)'
+2025-07-20 15:03:55.849 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost/api/auth/register - 200 null application/json; charset=utf-8 212.9437ms
+2025-07-20 15:03:55.856 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost/api/auth/register - application/json; charset=utf-8 164
+2025-07-20 15:03:55.857 +02:00 [INF] Executing endpoint 'Api.Controllers.AuthController.Register (Api)'
+2025-07-20 15:03:55.858 +02:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(Api.Dto.AuthDtos.RegisterDto) on controller Api.Controllers.AuthController (Api).
+2025-07-20 15:03:55.864 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__email_0
+LIMIT 1
+2025-07-20 15:03:56.193 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (DbType = Guid), @p6='?' (DbType = DateTime), @p7='?' (Size = 4000), @p8='?' (DbType = Boolean), @p9='?' (DbType = DateTime), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (Size = 4000), @p14='?' (DbType = Int32), @p15='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `OutboxMessages` (`Id`, `Data`, `OccurredOn`, `ProcessedDate`, `Type`)
+VALUES (@p0, @p1, @p2, @p3, @p4);
+INSERT INTO `Users` (`Id`, `CreatedAt`, `Email`, `IsActive`, `LastActive`, `Lastname`, `Name`, `PasswordHash`, `Phone`, `Role`, `UpdatedAt`)
+VALUES (@p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+2025-07-20 15:03:56.199 +02:00 [INF] [Registration] Created user "bd3e623d-293e-4293-a9dc-3897edaced1b".
+2025-07-20 15:03:56.203 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-20 15:03:56.204 +02:00 [INF] Executed action Api.Controllers.AuthController.Register (Api) in 346.2364ms
+2025-07-20 15:03:56.205 +02:00 [INF] Executed endpoint 'Api.Controllers.AuthController.Register (Api)'
+2025-07-20 15:03:56.205 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost/api/auth/register - 200 null application/json; charset=utf-8 349.0211ms
+2025-07-20 15:03:56.207 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost/api/auth/login - application/json; charset=utf-8 61
+2025-07-20 15:03:56.208 +02:00 [INF] Executing endpoint 'Api.Controllers.AuthController.Login (Api)'
+2025-07-20 15:03:56.208 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Api.Dto.AuthDtos.LoginDto) on controller Api.Controllers.AuthController (Api).
+2025-07-20 15:03:56.218 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__email_0
+LIMIT 1
+2025-07-20 15:03:56.416 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@p10='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `CreatedAt` = @p0, `Email` = @p1, `IsActive` = @p2, `LastActive` = @p3, `Lastname` = @p4, `Name` = @p5, `PasswordHash` = @p6, `Phone` = @p7, `Role` = @p8, `UpdatedAt` = @p9
+WHERE `Id` = @p10;
+SELECT ROW_COUNT();
+2025-07-20 15:03:56.417 +02:00 [INF] [Login] User "bd3e623d-293e-4293-a9dc-3897edaced1b" logged in.
+2025-07-20 15:03:56.417 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-07-20 15:03:56.418 +02:00 [INF] Executed action Api.Controllers.AuthController.Login (Api) in 209.6831ms
+2025-07-20 15:03:56.418 +02:00 [INF] Executed endpoint 'Api.Controllers.AuthController.Login (Api)'
+2025-07-20 15:03:56.419 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost/api/auth/login - 200 null text/plain; charset=utf-8 212.0375ms
+2025-07-20 15:03:56.422 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost/api/Category - application/json; charset=utf-8 26
+2025-07-20 15:03:56.427 +02:00 [INF] Executing endpoint 'Api.Controllers.CategoryController.AddCategory (Api)'
+2025-07-20 15:03:56.436 +02:00 [INF] Route matched with {action = "AddCategory", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddCategory(Api.Dto.CategoryDtos.AddCategoryDto) on controller Api.Controllers.CategoryController (Api).
+2025-07-20 15:03:56.481 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__name_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `Categories` AS `c`
+    WHERE `c`.`Name` = @__name_0)
+2025-07-20 15:03:56.546 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `Categories` (`Name`)
+VALUES (@p0);
+SELECT `Id`
+FROM `Categories`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+2025-07-20 15:03:56.586 +02:00 [INF] [Create] New category added: 67
+2025-07-20 15:03:56.586 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Models.Categories.Category'.
+2025-07-20 15:03:56.590 +02:00 [INF] Executed action Api.Controllers.CategoryController.AddCategory (Api) in 153.888ms
+2025-07-20 15:03:56.591 +02:00 [INF] Executed endpoint 'Api.Controllers.CategoryController.AddCategory (Api)'
+2025-07-20 15:03:56.591 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost/api/Category - 200 null application/json; charset=utf-8 168.8152ms
+2025-07-20 15:03:56.610 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost/api/UserTasks - application/json; charset=utf-8 294
+2025-07-20 15:03:56.614 +02:00 [INF] Executing endpoint 'Api.Controllers.UserTasksController.CreateTask (Api)'
+2025-07-20 15:03:56.615 +02:00 [INF] Route matched with {action = "CreateTask", controller = "UserTasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateTask(CreateTaskDto) on controller Api.Controllers.UserTasksController (Api).
+2025-07-20 15:03:56.628 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-20 15:03:56.635 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = 'dd6ed22e-e29a-4cf4-9cb3-31ec08f321ef'
+2025-07-20 15:03:56.640 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Name`
+FROM `Categories` AS `c`
+WHERE `c`.`Id` = 67
+2025-07-20 15:03:56.786 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?' (DbType = Guid), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime), @p6='?' (DbType = DateTime), @p7='?' (DbType = Int32), @p8='?' (DbType = DateTime), @p9='?' (Size = 4000), @p10='?' (DbType = Guid), @p11='?' (DbType = Int32), @p12='?' (DbType = Guid), @p13='?' (DbType = Guid), @p14='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `Tasks` (`Id`, `CreatedAt`, `CreatedBy`, `Deadline`, `Description`, `EndDate`, `LastUpdate`, `Priority`, `StartDate`, `Title`, `UpdatedBy`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10);
+INSERT INTO `CategoryUserTask` (`CategoriesId`, `TasksId`)
+VALUES (@p11, @p12);
+INSERT INTO `UserUserTask` (`TasksId`, `UsersId`)
+VALUES (@p13, @p14);
+2025-07-20 15:03:56.793 +02:00 [INF] [Create] User "bd3e623d-293e-4293-a9dc-3897edaced1b" created task.
+2025-07-20 15:03:56.793 +02:00 [INF] [CreateData] Task data: {"Id":"a0f40096-ca6f-4b45-9a28-f4100d33d2e5","Title":"Title of task","Description":"Description of task with full parameters","Deadline":"2025-07-30T13:03:56.6080877Z","StartDate":"2025-07-21T13:03:56.6080897Z","EndDate":"2025-07-29T13:03:56.6080904Z","Priority":1,"CreatedBy":"bd3e623d-293e-4293-a9dc-3897edaced1b","LastUpdate":"2025-07-20T13:03:56.6427953Z","UpdatedBy":"bd3e623d-293e-4293-a9dc-3897edaced1b","Users":["dd6ed22e-e29a-4cf4-9cb3-31ec08f321ef"],"Categories":[67]}
+2025-07-20 15:03:56.794 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.TaskDtos.TaskDto'.
+2025-07-20 15:03:56.794 +02:00 [INF] Executed action Api.Controllers.UserTasksController.CreateTask (Api) in 179.6436ms
+2025-07-20 15:03:56.795 +02:00 [INF] Executed endpoint 'Api.Controllers.UserTasksController.CreateTask (Api)'
+2025-07-20 15:03:56.795 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost/api/UserTasks - 200 null application/json; charset=utf-8 185.5932ms

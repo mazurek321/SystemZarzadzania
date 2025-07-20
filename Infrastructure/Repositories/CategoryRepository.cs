@@ -13,6 +13,7 @@ internal sealed class CategoryRepository(AppDbContext dbContext) : ICategoryRepo
     public async Task<ICollection<Category>> BrowseCategoriesAsync(int pageNumber, int pageSize)
     {
         return await dbContext.Categories
+                        .AsNoTracking()
                         .Skip((pageNumber - 1) * pageSize)
                         .Take(pageSize)
                         .ToListAsync();
@@ -29,7 +30,10 @@ internal sealed class CategoryRepository(AppDbContext dbContext) : ICategoryRepo
 
     public async Task<List<Category>> GetByIdsAsync(List<int> list)
     {
-        return await dbContext.Categories.Where(x => list.Contains(x.Id)).ToListAsync();
+        return await dbContext.Categories
+                                    .AsNoTracking()
+                                    .Where(x => list.Contains(x.Id))
+                                    .ToListAsync();
     }
     public async Task DeleteCategoryAsync(Category category)
     {
