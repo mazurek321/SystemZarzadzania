@@ -11,7 +11,7 @@ public class UserDto
     public string Phone { get; set; }
     public bool IsActive { get; set; }
     public DateTime LastActive { get; set; }
-    public User.UserRole Role { get; set; }
+    public string Role { get; set; }
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
     public IEnumerable<TaskDto> Tasks { get; set; }

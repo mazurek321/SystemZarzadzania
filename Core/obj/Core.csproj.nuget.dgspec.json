@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\programowanie\\C#\\System zarzadzania zasobami\\Core\\Core.csproj": {}
+    "C:\\Users\\mazur\\Desktop\\System zarzadzania zasobami\\Core\\Core.csproj": {}
   },
   "projects": {
-    "D:\\programowanie\\C#\\System zarzadzania zasobami\\Core\\Core.csproj": {
+    "C:\\Users\\mazur\\Desktop\\System zarzadzania zasobami\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\programowanie\\C#\\System zarzadzania zasobami\\Core\\Core.csproj",
+        "projectUniqueName": "C:\\Users\\mazur\\Desktop\\System zarzadzania zasobami\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "D:\\programowanie\\C#\\System zarzadzania zasobami\\Core\\Core.csproj",
+        "projectPath": "C:\\Users\\mazur\\Desktop\\System zarzadzania zasobami\\Core\\Core.csproj",
         "packagesPath": "C:\\Users\\mazur\\.nuget\\packages\\",
-        "outputPath": "D:\\programowanie\\C#\\System zarzadzania zasobami\\Core\\obj\\",
+        "outputPath": "C:\\Users\\mazur\\Desktop\\System zarzadzania zasobami\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mazur\\AppData\\Roaming\\NuGet\\NuGet.Config"

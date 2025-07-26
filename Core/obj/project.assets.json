@@ -2224,11 +2224,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\programowanie\\C#\\System zarzadzania zasobami\\Core\\Core.csproj",
+      "projectUniqueName": "c:\\Users\\mazur\\Desktop\\System zarzadzania zasobami\\Core\\Core.csproj",
       "projectName": "Core",
-      "projectPath": "D:\\programowanie\\C#\\System zarzadzania zasobami\\Core\\Core.csproj",
+      "projectPath": "c:\\Users\\mazur\\Desktop\\System zarzadzania zasobami\\Core\\Core.csproj",
       "packagesPath": "C:\\Users\\mazur\\.nuget\\packages\\",
-      "outputPath": "D:\\programowanie\\C#\\System zarzadzania zasobami\\Core\\obj\\",
+      "outputPath": "c:\\Users\\mazur\\Desktop\\System zarzadzania zasobami\\Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\mazur\\AppData\\Roaming\\NuGet\\NuGet.Config"

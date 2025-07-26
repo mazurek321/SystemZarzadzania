@@ -29,7 +29,6 @@ internal sealed class UserTaskRepository(AppDbContext dbContext) : IUserTaskRepo
                                 .ToListAsync();                     
     }
 
-
     public async Task<ICollection<UserTask>> BrowseTasks(int pageNumber, int pageSize, Guid? userId, List<int>? categories)
     {
         var query = dbContext.Tasks.AsQueryable();

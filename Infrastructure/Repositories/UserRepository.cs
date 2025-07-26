@@ -27,14 +27,34 @@ internal sealed class UserRepository(AppDbContext dbContext) : IUserRepository
         return await dbContext.Users.FirstOrDefaultAsync(x => x.Email == email);
     }
 
-    public async Task<List<User>> BrowseUsers(int pageNumber, int pageSize)
+    public async Task<List<User>> BrowseUsers(int pageNumber, int pageSize, bool? isActiveFilter, User.UserRole? roleFilter, string? sortBy)
     {
-        return await dbContext.Users
-                        .AsNoTracking()
-                        .OrderBy(x => x.CreatedAt)
-                        .Skip((pageNumber - 1) * pageSize)
-                        .Take(pageSize)
-                        .ToListAsync();
+        var query = dbContext.Users.AsQueryable();
+
+        if(isActiveFilter.HasValue)
+            query = query.Where(x => x.IsActive == isActiveFilter.Value);
+        
+        if(roleFilter.HasValue)
+            query = query.Where(x=>x.Role == roleFilter.Value);
+
+        if(sortBy is not null)
+                query = sortBy?.ToLower()
+                switch
+                {
+                    "name" => query.OrderBy(x => x.Name),
+                    "email" => query.OrderBy(x => x.Email),
+                    "createdat" => query.OrderBy(x => x.CreatedAt),
+                    "lastname" => query.OrderBy(x => x.Lastname),
+                    _ => query.OrderBy(x => x.CreatedAt) 
+                };
+
+        var users = await query
+                            .AsNoTracking()
+                            .Skip((pageNumber - 1) * pageSize)
+                            .Take(pageSize)
+                            .ToListAsync();
+
+        return users;
     }
 
     public async Task UpdateActivityAsync(User user)

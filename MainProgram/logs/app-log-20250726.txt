@@ -1,0 +1,20 @@
+2025-07-26 13:45:55.169 +02:00 [INF] User profile is available. Using 'C:\Users\mazur\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-26 13:45:56.134 +02:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2025-07-26 13:45:56.205 +02:00 [INF] Quartz Scheduler created
+2025-07-26 13:45:56.581 +02:00 [INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2025-07-26 13:45:56.781 +02:00 [INF] RAMJobStore initialized.
+2025-07-26 13:45:57.106 +02:00 [INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2025-07-26 13:45:57.114 +02:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2025-07-26 13:45:57.117 +02:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2025-07-26 13:45:57.159 +02:00 [INF] Adding 2 jobs, 2 triggers.
+2025-07-26 13:45:57.169 +02:00 [INF] Adding job: DEFAULT.ProcessOutboxJob-trigger
+2025-07-26 13:45:57.195 +02:00 [INF] Adding job: DEFAULT.NotificationCheckJob-trigger
+2025-07-26 13:45:57.574 +02:00 [INF] Now listening on: http://localhost:5259
+2025-07-26 13:45:58.101 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-26 13:45:58.125 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2025-07-26 13:45:58.204 +02:00 [INF] Hosting environment: Development
+2025-07-26 13:45:58.236 +02:00 [INF] Content root path: C:\Users\mazur\Desktop\System zarzadzania zasobami\MainProgram
+2025-07-26 13:54:18.547 +02:00 [INF] Application is shutting down...
+2025-07-26 13:54:18.572 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+2025-07-26 13:54:18.581 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+2025-07-26 13:54:18.594 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.

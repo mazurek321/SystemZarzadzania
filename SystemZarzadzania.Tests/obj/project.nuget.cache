@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Z4JbEIcPQL4=",
+  "dgSpecHash": "uqi4ys9iC48=",
   "success": true,
-  "projectFilePath": "D:\\programowanie\\C#\\System zarzadzania zasobami\\SystemZarzadzania.Tests\\SystemZarzadzania.Tests.csproj",
+  "projectFilePath": "C:\\Users\\mazur\\Desktop\\System zarzadzania zasobami\\SystemZarzadzania.Tests\\SystemZarzadzania.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mazur\\.nuget\\packages\\azure.core\\1.6.0\\azure.core.1.6.0.nupkg.sha512",
     "C:\\Users\\mazur\\.nuget\\packages\\azure.identity\\1.3.0\\azure.identity.1.3.0.nupkg.sha512",

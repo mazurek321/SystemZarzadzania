@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\programowanie\\C#\\System zarzadzania zasobami\\Api\\Api.csproj": {}
+    "C:\\Users\\mazur\\Desktop\\System zarzadzania zasobami\\Api\\Api.csproj": {}
   },
   "projects": {
-    "D:\\programowanie\\C#\\System zarzadzania zasobami\\Api\\Api.csproj": {
+    "C:\\Users\\mazur\\Desktop\\System zarzadzania zasobami\\Api\\Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\programowanie\\C#\\System zarzadzania zasobami\\Api\\Api.csproj",
+        "projectUniqueName": "C:\\Users\\mazur\\Desktop\\System zarzadzania zasobami\\Api\\Api.csproj",
         "projectName": "Api",
-        "projectPath": "D:\\programowanie\\C#\\System zarzadzania zasobami\\Api\\Api.csproj",
+        "projectPath": "C:\\Users\\mazur\\Desktop\\System zarzadzania zasobami\\Api\\Api.csproj",
         "packagesPath": "C:\\Users\\mazur\\.nuget\\packages\\",
-        "outputPath": "D:\\programowanie\\C#\\System zarzadzania zasobami\\Api\\obj\\",
+        "outputPath": "C:\\Users\\mazur\\Desktop\\System zarzadzania zasobami\\Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mazur\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -26,8 +26,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\programowanie\\C#\\System zarzadzania zasobami\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "D:\\programowanie\\C#\\System zarzadzania zasobami\\Infrastructure\\Infrastructure.csproj"
+              "C:\\Users\\mazur\\Desktop\\System zarzadzania zasobami\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\mazur\\Desktop\\System zarzadzania zasobami\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -141,14 +141,14 @@
         }
       }
     },
-    "D:\\programowanie\\C#\\System zarzadzania zasobami\\Core\\Core.csproj": {
+    "C:\\Users\\mazur\\Desktop\\System zarzadzania zasobami\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\programowanie\\C#\\System zarzadzania zasobami\\Core\\Core.csproj",
+        "projectUniqueName": "C:\\Users\\mazur\\Desktop\\System zarzadzania zasobami\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "D:\\programowanie\\C#\\System zarzadzania zasobami\\Core\\Core.csproj",
+        "projectPath": "C:\\Users\\mazur\\Desktop\\System zarzadzania zasobami\\Core\\Core.csproj",
         "packagesPath": "C:\\Users\\mazur\\.nuget\\packages\\",
-        "outputPath": "D:\\programowanie\\C#\\System zarzadzania zasobami\\Core\\obj\\",
+        "outputPath": "C:\\Users\\mazur\\Desktop\\System zarzadzania zasobami\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mazur\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -234,14 +234,14 @@
         }
       }
     },
-    "D:\\programowanie\\C#\\System zarzadzania zasobami\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\mazur\\Desktop\\System zarzadzania zasobami\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\programowanie\\C#\\System zarzadzania zasobami\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\mazur\\Desktop\\System zarzadzania zasobami\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "D:\\programowanie\\C#\\System zarzadzania zasobami\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "C:\\Users\\mazur\\Desktop\\System zarzadzania zasobami\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\mazur\\.nuget\\packages\\",
-        "outputPath": "D:\\programowanie\\C#\\System zarzadzania zasobami\\Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\mazur\\Desktop\\System zarzadzania zasobami\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mazur\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -256,8 +256,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\programowanie\\C#\\System zarzadzania zasobami\\Core\\Core.csproj": {
-                "projectPath": "D:\\programowanie\\C#\\System zarzadzania zasobami\\Core\\Core.csproj"
+              "C:\\Users\\mazur\\Desktop\\System zarzadzania zasobami\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\mazur\\Desktop\\System zarzadzania zasobami\\Core\\Core.csproj"
               }
             }
           }
@@ -297,6 +297,10 @@
             "Microsoft.AspNetCore.Http.Abstractions": {
               "target": "Package",
               "version": "[2.3.0, )"
+            },
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.3.1, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",

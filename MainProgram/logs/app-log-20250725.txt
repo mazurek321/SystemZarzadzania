@@ -1,0 +1,50 @@
+2025-07-25 17:02:22.044 +02:00 [INF] User profile is available. Using 'C:\Users\mazur\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-25 17:02:22.388 +02:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2025-07-25 17:02:22.392 +02:00 [INF] Quartz Scheduler created
+2025-07-25 17:02:22.397 +02:00 [INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2025-07-25 17:02:22.401 +02:00 [INF] RAMJobStore initialized.
+2025-07-25 17:02:22.407 +02:00 [INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2025-07-25 17:02:22.411 +02:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2025-07-25 17:02:22.415 +02:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2025-07-25 17:02:22.450 +02:00 [INF] Adding 2 jobs, 2 triggers.
+2025-07-25 17:02:22.459 +02:00 [INF] Adding job: DEFAULT.ProcessOutboxJob-trigger
+2025-07-25 17:02:22.483 +02:00 [INF] Adding job: DEFAULT.NotificationCheckJob-trigger
+2025-07-25 17:02:22.691 +02:00 [INF] Now listening on: http://localhost:5259
+2025-07-25 17:02:22.700 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-25 17:02:22.713 +02:00 [INF] Hosting environment: Development
+2025-07-25 17:02:22.717 +02:00 [INF] Content root path: C:\Users\mazur\Desktop\System zarzadzania zasobami\MainProgram
+2025-07-25 17:02:22.724 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2025-07-25 17:08:37.655 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259//swagger/index.html - null null
+2025-07-25 17:08:37.790 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-07-25 17:08:37.963 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259//swagger/index.html - 404 0 null 313.9059ms
+2025-07-25 17:08:37.999 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5259//swagger/index.html, Response status code: 404
+2025-07-25 17:08:40.215 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/swagger/index.html - null null
+2025-07-25 17:08:40.470 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/swagger/index.html - 200 null text/html;charset=utf-8 255.7195ms
+2025-07-25 17:08:40.540 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/swagger/swagger-ui.css - null null
+2025-07-25 17:08:40.559 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/swagger/index.css - null null
+2025-07-25 17:08:40.561 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/swagger/swagger-ui-bundle.js - null null
+2025-07-25 17:08:40.561 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/swagger/swagger-ui-standalone-preset.js - null null
+2025-07-25 17:08:40.564 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/swagger/index.js - null null
+2025-07-25 17:08:40.594 +02:00 [INF] Sending file. Request path: '/index.css'. Physical path: 'N/A'
+2025-07-25 17:08:40.608 +02:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2025-07-25 17:08:40.625 +02:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-07-25 17:08:40.633 +02:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-07-25 17:08:40.644 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/swagger/index.js - 200 null application/javascript;charset=utf-8 79.3565ms
+2025-07-25 17:08:40.657 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/swagger/index.css - 200 202 text/css 97.6733ms
+2025-07-25 17:08:40.668 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/swagger/swagger-ui.css - 200 154948 text/css 127.7151ms
+2025-07-25 17:08:40.672 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/swagger/swagger-ui-standalone-preset.js - 200 229223 text/javascript 110.752ms
+2025-07-25 17:08:40.679 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/swagger/swagger-ui-bundle.js - 200 1466741 text/javascript 117.3586ms
+2025-07-25 17:08:41.175 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/swagger/v1/swagger.json - null null
+2025-07-25 17:08:41.486 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 310.9247ms
+2025-07-25 17:48:38.620 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/auth/login - null null
+2025-07-25 17:48:38.646 +02:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-07-25 17:48:38.654 +02:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-07-25 17:48:38.715 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/auth/login - 405 0 null 94.9801ms
+2025-07-25 17:49:46.596 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/auth/login - null null
+2025-07-25 17:49:46.624 +02:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-07-25 17:49:46.630 +02:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-07-25 17:49:46.635 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/auth/login - 405 0 null 39.5079ms
+2025-07-25 17:50:36.209 +02:00 [INF] Application is shutting down...
+2025-07-25 17:50:36.236 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+2025-07-25 17:50:36.243 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+2025-07-25 17:50:36.258 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.

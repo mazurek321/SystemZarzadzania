@@ -8708,11 +8708,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\programowanie\\C#\\System zarzadzania zasobami\\SystemZarzadzania.Tests\\SystemZarzadzania.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\mazur\\Desktop\\System zarzadzania zasobami\\SystemZarzadzania.Tests\\SystemZarzadzania.Tests.csproj",
       "projectName": "SystemZarzadzania.Tests",
-      "projectPath": "D:\\programowanie\\C#\\System zarzadzania zasobami\\SystemZarzadzania.Tests\\SystemZarzadzania.Tests.csproj",
+      "projectPath": "C:\\Users\\mazur\\Desktop\\System zarzadzania zasobami\\SystemZarzadzania.Tests\\SystemZarzadzania.Tests.csproj",
       "packagesPath": "C:\\Users\\mazur\\.nuget\\packages\\",
-      "outputPath": "D:\\programowanie\\C#\\System zarzadzania zasobami\\SystemZarzadzania.Tests\\obj\\",
+      "outputPath": "C:\\Users\\mazur\\Desktop\\System zarzadzania zasobami\\SystemZarzadzania.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\mazur\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -8727,8 +8727,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\programowanie\\C#\\System zarzadzania zasobami\\MainProgram\\MainProgram.csproj": {
-              "projectPath": "D:\\programowanie\\C#\\System zarzadzania zasobami\\MainProgram\\MainProgram.csproj"
+            "C:\\Users\\mazur\\Desktop\\System zarzadzania zasobami\\MainProgram\\MainProgram.csproj": {
+              "projectPath": "C:\\Users\\mazur\\Desktop\\System zarzadzania zasobami\\MainProgram\\MainProgram.csproj"
             }
           }
         }

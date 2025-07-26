@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
+using Core.Models.Users;
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.File("logs/app-log-.txt", rollingInterval: RollingInterval.Day)
@@ -91,7 +92,20 @@ builder.Services.AddMediatR(cfg =>
     cfg.RegisterServicesFromAssemblyContaining<Core.Events.UserRegisteredEvent>();
 });
 
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularDevServer",
+        builder => builder
+            .WithOrigins("http://localhost:4200")
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials());
+});
+
 var app = builder.Build();
+
+app.UseCors("AllowAngularDevServer");
 
 if (app.Environment.IsDevelopment())
 {
@@ -102,6 +116,16 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<AppDbContext>();
+
+    var userRepository = services.GetRequiredService<IUserRepository>();
+    var seeder = new AdminSeeder(context, userRepository);
+    await seeder.SeedAdminAsync();
+}
 
 app.MapControllers();
 app.MapHub<Api.Hubs.NotificationHub>("/notificationHub");

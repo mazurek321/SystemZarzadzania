@@ -51,7 +51,7 @@ public class UserController : ControllerBase
             Phone = user.Phone,
             IsActive = user.IsActive,
             LastActive = user.LastActive,
-            Role = user.Role,
+            Role = user.Role.ToString(),
             CreatedAt = user.CreatedAt,
             UpdatedAt = user.UpdatedAt,
         });
@@ -59,9 +59,11 @@ public class UserController : ControllerBase
 
     [HttpGet("browse")]
     [Authorize]
-    public async Task<IActionResult> BrowseUsers([FromQuery] int pageNumber = 1, int pageSize = 25)
+    public async Task<IActionResult> BrowseUsers(
+        [FromQuery] int pageNumber = 1, int pageSize = 25, bool? isActiveFilter=null, User.UserRole? roleFilter=null, string? sortBy=null
+    )
     {
-        var users = await _userRepository.BrowseUsers(pageNumber, pageSize);
+        var users = await _userRepository.BrowseUsers(pageNumber, pageSize, isActiveFilter, roleFilter, sortBy);
         var userDtos = users.Select(user => new UserDto
         {
             Id = user.Id,
@@ -71,7 +73,7 @@ public class UserController : ControllerBase
             Phone = user.Phone,
             IsActive = user.IsActive,
             LastActive = user.LastActive,
-            Role = user.Role,
+            Role = user.Role.ToString(),
             CreatedAt = user.CreatedAt,
             UpdatedAt = user.UpdatedAt,
         }).ToList();
