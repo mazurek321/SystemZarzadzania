@@ -1204,3 +1204,4 @@ c:\Users\mazur\Desktop\System zarzadzania zasobami\SystemZarzadzania.Tests\obj\D
 c:\Users\mazur\Desktop\System zarzadzania zasobami\SystemZarzadzania.Tests\obj\Debug\net8.0\SystemZarzadzania.Tests.pdb
 c:\Users\mazur\Desktop\System zarzadzania zasobami\SystemZarzadzania.Tests\obj\Debug\net8.0\SystemZarzadzania.Tests.genruntimeconfig.cache
 c:\Users\mazur\Desktop\System zarzadzania zasobami\SystemZarzadzania.Tests\obj\Debug\net8.0\ref\SystemZarzadzania.Tests.dll
+c:\Users\mazur\Desktop\System zarzadzania zasobami\SystemZarzadzania.Tests\bin\Debug\net8.0\Microsoft.Extensions.WebEncoders.dll

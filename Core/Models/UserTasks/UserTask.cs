@@ -8,9 +8,9 @@ public class UserTask
 {
     public UserTask() { }
     public UserTask(Guid id, string title, string? description, DateTime deadline,
-                    DateTime? startDate, DateTime? endDate, int priority,
+                    DateTime? startDate, DateTime? endDate, int priority, TaskStatus status,
                     DateTime createdAt, Guid createdBy,
-                    DateTime lastUpdate,Guid updatedBy,
+                    DateTime lastUpdate, Guid updatedBy,
                     List<User>? users, List<Category>? categories)
     {
         Id = id;
@@ -20,6 +20,7 @@ public class UserTask
         StartDate = startDate;
         EndDate = endDate;
         Priority = priority;
+        Status = status;
         CreatedAt = createdAt;
         CreatedBy = createdBy;
         LastUpdate = lastUpdate;
@@ -34,6 +35,7 @@ public class UserTask
     public DateTime? StartDate { get; private set; }
     public DateTime? EndDate { get; private set; }
     public int Priority { get; private set; }
+    public TaskStatus Status { get; private set; }
     public DateTime CreatedAt { get; private set; }
     public Guid CreatedBy { get; private set; }
     public DateTime LastUpdate { get; private set; }
@@ -44,20 +46,20 @@ public class UserTask
 
     public static UserTask NewTask(
         string title, string? description, DateTime deadline,
-        DateTime? startDate, DateTime? endDate, int priority, Guid createdBy, Guid updatedBy,
+        DateTime? startDate, DateTime? endDate, int priority, TaskStatus status, Guid createdBy, Guid updatedBy,
         List<User>? users, List<Category>? categories
     )
     {
         return new UserTask(
             Guid.NewGuid(), title, description, deadline,
-            startDate, endDate, priority, DateTime.UtcNow, createdBy, DateTime.UtcNow,
+            startDate, endDate, priority, status, DateTime.UtcNow, createdBy, DateTime.UtcNow,
             updatedBy, users, categories
         );
     }
 
     public void UpdateTask(
         string title, string? description, DateTime deadline,
-        DateTime? startDate, DateTime? endDate, int priority, Guid updatedBy,
+        DateTime? startDate, DateTime? endDate, int priority, TaskStatus status, Guid updatedBy,
         List<User>? users, List<Category>? categories
     )
     {
@@ -67,6 +69,7 @@ public class UserTask
         StartDate = startDate;
         EndDate = endDate;
         Priority = priority;
+        Status = status;
         LastUpdate = DateTime.UtcNow;
         UpdatedBy = updatedBy;
         Users = users ?? new List<User>();
@@ -76,5 +79,19 @@ public class UserTask
     public void UpdateUsers(List<User> users)
     {
         Users = new List<User>(users);
+    }
+
+    public void UpdateStatus(TaskStatus status)
+    {
+        Status = status;
+    }
+
+    public enum TaskStatus
+    {
+        Pending,
+        InProgress,
+        Done,
+        Almostdue,
+        Overdue
     }
 }

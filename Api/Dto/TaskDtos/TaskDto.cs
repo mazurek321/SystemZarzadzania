@@ -11,6 +11,7 @@ public class TaskDto
     public DateTime StartDate { get; init; }
     public DateTime EndDate { get; init; }
     public int Priority { get; init; }
+    public string Status { get; init; }
     public Guid CreatedBy { get; init; }
     public DateTime LastUpdate { get; init; }
     public Guid UpdatedBy { get; init; }

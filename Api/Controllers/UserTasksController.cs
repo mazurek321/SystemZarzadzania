@@ -50,6 +50,7 @@ public class UserTasksController : ControllerBase
         var users = dto.UsersIds != null ? await _userRepository.FindByIdsAsync(dto.UsersIds) : new List<User>();
         var categories = dto.CategoriesIds != null ? await _categoryRepository.GetByIdsAsync(dto.CategoriesIds) : new List<Category>();
 
+        var status = checkStatus(dto.Deadline);
 
         var task = UserTask.NewTask(
             dto.Title,
@@ -58,6 +59,7 @@ public class UserTasksController : ControllerBase
             dto.StartDate,
             dto.EndDate,
             dto.Priority,
+            status,
             user.Id,
             user.Id,
             users,
@@ -128,6 +130,8 @@ public class UserTasksController : ControllerBase
         _logger.LogInformation("[Update] User {UserId} updated task {taskId}.", user.Id, task.Id);
         _logger.LogInformation("[UpdateData] Task data before update: {task}", JsonSerializer.Serialize(task));
 
+        var status = checkStatus(dto.Deadline);
+
         task.UpdateTask
         (
             dto.Title,
@@ -136,6 +140,7 @@ public class UserTasksController : ControllerBase
             dto.StartDate,
             dto.EndDate,
             dto.Priority,
+            status,
             user.Id,
             users,
             categories
@@ -202,8 +207,14 @@ public class UserTasksController : ControllerBase
 
         return NoContent();
     }
-    
 
+
+    private UserTask.TaskStatus checkStatus(DateTime deadline)
+    {
+        if (deadline <= DateTime.UtcNow) return UserTask.TaskStatus.Overdue;
+        else if ((deadline - DateTime.UtcNow).TotalDays <= 1) return UserTask.TaskStatus.Almostdue;
+        else  return UserTask.TaskStatus.Pending;
+    }
     private TaskDto MapToDto(UserTask task) => new TaskDto
     {
         Id = task.Id,
@@ -213,6 +224,7 @@ public class UserTasksController : ControllerBase
         StartDate = task.StartDate ?? default(DateTime),
         EndDate = task.EndDate ?? default(DateTime),
         Priority = task.Priority,
+        Status = task.Status.ToString(),
         CreatedBy = task.CreatedBy,
         LastUpdate = task.LastUpdate,
         UpdatedBy = task.UpdatedBy,

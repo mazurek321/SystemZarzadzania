@@ -3,6 +3,7 @@ using Infrastructure.Database;
 using Infrastructure.Context;
 using Api.Dto.UserDtos;
 using Api.Dto.TaskDtos;
+using Core.Dto;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -60,11 +61,16 @@ public class UserController : ControllerBase
     [HttpGet("browse")]
     [Authorize]
     public async Task<IActionResult> BrowseUsers(
-        [FromQuery] int pageNumber = 1, int pageSize = 25, bool? isActiveFilter=null, User.UserRole? roleFilter=null, string? sortBy=null
+        [FromQuery] int pageNumber = 1,
+        [FromQuery] int pageSize = 25,
+        [FromQuery] bool? isActiveFilter = null,
+        [FromQuery] User.UserRole? roleFilter = null,
+        [FromQuery] string? sortBy = null
     )
     {
-        var users = await _userRepository.BrowseUsers(pageNumber, pageSize, isActiveFilter, roleFilter, sortBy);
-        var userDtos = users.Select(user => new UserDto
+        var result = await _userRepository.BrowseUsers(pageNumber, pageSize, isActiveFilter, roleFilter, sortBy);
+
+        var userDtos = result.Items.Select(user => new UserDto
         {
             Id = user.Id,
             Name = user.Name,
@@ -74,11 +80,16 @@ public class UserController : ControllerBase
             IsActive = user.IsActive,
             LastActive = user.LastActive,
             Role = user.Role.ToString(),
+            RoleExpiration = user.RoleExpiration,
             CreatedAt = user.CreatedAt,
             UpdatedAt = user.UpdatedAt,
-        }).ToList();
+        });
 
-        return Ok(userDtos);
+        return Ok(new PagedResult<UserDto>
+        {
+            Items = userDtos,
+            TotalCount = result.TotalCount
+        });
     }
 
     [HttpPut]

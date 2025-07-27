@@ -1,4 +1,5 @@
 using Infrastructure.Database;
+using Core.Dto;
 using Core.Models.Users;
 using Microsoft.EntityFrameworkCore;
 
@@ -27,7 +28,7 @@ internal sealed class UserRepository(AppDbContext dbContext) : IUserRepository
         return await dbContext.Users.FirstOrDefaultAsync(x => x.Email == email);
     }
 
-    public async Task<List<User>> BrowseUsers(int pageNumber, int pageSize, bool? isActiveFilter, User.UserRole? roleFilter, string? sortBy)
+    public async Task<PagedResult<User>> BrowseUsers(int pageNumber, int pageSize, bool? isActiveFilter, User.UserRole? roleFilter, string? sortBy)
     {
         var query = dbContext.Users.AsQueryable();
 
@@ -47,6 +48,8 @@ internal sealed class UserRepository(AppDbContext dbContext) : IUserRepository
                     "lastname" => query.OrderBy(x => x.Lastname),
                     _ => query.OrderBy(x => x.CreatedAt) 
                 };
+        
+        var totalCount = await query.CountAsync();
 
         var users = await query
                             .AsNoTracking()
@@ -54,7 +57,11 @@ internal sealed class UserRepository(AppDbContext dbContext) : IUserRepository
                             .Take(pageSize)
                             .ToListAsync();
 
-        return users;
+       return new PagedResult<User>
+                {
+                    Items = users,
+                    TotalCount = totalCount
+                };
     }
 
     public async Task UpdateActivityAsync(User user)
