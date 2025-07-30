@@ -1,0 +1,35 @@
+2025-07-29 23:32:55.346 +02:00 [INF] Executed DbCommand (60ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `Users` AS `u`
+    WHERE `u`.`Email` = 'admin@admin.com')
+2025-07-29 23:32:55.941 +02:00 [INF] User profile is available. Using 'C:\Users\mazur\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-29 23:32:56.040 +02:00 [INF] Creating key {96fad783-d46b-4151-a13c-ccb4473b36e1} with creation date 2025-07-29 21:32:56Z, activation date 2025-07-31 16:45:16Z, and expiration date 2025-10-27 21:32:55Z.
+2025-07-29 23:32:56.067 +02:00 [INF] Writing data to file 'C:\Users\mazur\AppData\Local\ASP.NET\DataProtection-Keys\key-96fad783-d46b-4151-a13c-ccb4473b36e1.xml'.
+2025-07-29 23:32:56.164 +02:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2025-07-29 23:32:56.168 +02:00 [INF] Quartz Scheduler created
+2025-07-29 23:32:56.174 +02:00 [INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2025-07-29 23:32:56.178 +02:00 [INF] RAMJobStore initialized.
+2025-07-29 23:32:56.183 +02:00 [INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2025-07-29 23:32:56.188 +02:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2025-07-29 23:32:56.193 +02:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2025-07-29 23:32:56.223 +02:00 [INF] Adding 2 jobs, 2 triggers.
+2025-07-29 23:32:56.232 +02:00 [INF] Adding job: DEFAULT.ProcessOutboxJob-trigger
+2025-07-29 23:32:56.256 +02:00 [INF] Adding job: DEFAULT.NotificationCheckJob-trigger
+2025-07-29 23:32:56.438 +02:00 [INF] Now listening on: http://localhost:5259
+2025-07-29 23:32:56.444 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-29 23:32:56.450 +02:00 [INF] Hosting environment: Development
+2025-07-29 23:32:56.451 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2025-07-29 23:32:56.455 +02:00 [INF] Content root path: C:\Users\mazur\Desktop\System zarzadzania zasobami\MainProgram
+2025-07-29 23:33:15.154 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/swagger/v1/swagger.json - null null
+2025-07-29 23:33:15.607 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 455.8195ms
+2025-07-29 23:33:44.987 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5259/api/auth/login - application/json 55
+2025-07-29 23:33:45.014 +02:00 [INF] CORS policy execution failed.
+2025-07-29 23:33:45.020 +02:00 [INF] Request origin http://localhost:5259 does not have permission to access the resource.
+2025-07-29 23:33:45.032 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-07-29 23:33:45.262 +02:00 [INF] Executing endpoint 'Api.Controllers.AuthController.Login (Api)'
+2025-07-29 23:33:45.307 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Api.Dto.AuthDtos.LoginDto) on controller Api.Controllers.AuthController (Api).
+2025-07-29 23:33:45.435 +02:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-07-29 23:33:45.542 +02:00 [INF] Executed action Api.Controllers.AuthController.Login (Api) in 217.0649ms
+2025-07-29 23:33:45.550 +02:00 [INF] Executed endpoint 'Api.Controllers.AuthController.Login (Api)'
+2025-07-29 23:33:45.559 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5259/api/auth/login - 400 null application/problem+json; charset=utf-8 572.4515ms

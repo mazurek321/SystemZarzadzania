@@ -37,6 +37,6 @@ public class Notification
 public enum NotificationType
 {
     Alert,
-    Reminder,
+    Warning,
     Normal
 }

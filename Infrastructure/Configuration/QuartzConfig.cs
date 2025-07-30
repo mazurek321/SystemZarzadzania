@@ -17,9 +17,9 @@ public static class QuartzConfig
                 .WithIdentity("ProcessOutboxJob-trigger")
                 .WithSimpleSchedule(x => x.WithIntervalInSeconds(30).RepeatForever()));
 
-            q.ScheduleJob<NotificationCheckJob>(trigger => trigger
-                .WithIdentity("NotificationCheckJob-trigger")
-                .WithSimpleSchedule(x => x.WithInterval(TimeSpan.FromMinutes(10)).RepeatForever()));
+            q.ScheduleJob<TaskStatusCheckJob>(trigger => trigger
+                .WithIdentity("TaskStatusCheckJob-trigger")
+                 .WithSimpleSchedule(x => x.WithInterval(TimeSpan.FromHours(10)).RepeatForever()));
         });
 
         services.AddQuartzHostedService(options => 

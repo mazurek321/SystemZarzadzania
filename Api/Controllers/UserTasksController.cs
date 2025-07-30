@@ -56,8 +56,8 @@ public class UserTasksController : ControllerBase
             dto.Title,
             dto.Description,
             dto.Deadline,
-            dto.StartDate,
-            dto.EndDate,
+            null,
+            null,
             dto.Priority,
             status,
             user.Id,
@@ -213,7 +213,7 @@ public class UserTasksController : ControllerBase
     {
         if (deadline <= DateTime.UtcNow) return UserTask.TaskStatus.Overdue;
         else if ((deadline - DateTime.UtcNow).TotalDays <= 1) return UserTask.TaskStatus.Almostdue;
-        else  return UserTask.TaskStatus.Pending;
+        else return UserTask.TaskStatus.Pending;
     }
     private TaskDto MapToDto(UserTask task) => new TaskDto
     {
@@ -221,8 +221,8 @@ public class UserTasksController : ControllerBase
         Title = task.Title,
         Description = task.Description,
         Deadline = task.Deadline,
-        StartDate = task.StartDate ?? default(DateTime),
-        EndDate = task.EndDate ?? default(DateTime),
+        StartDate = task.StartDate,
+        EndDate = task.EndDate,
         Priority = task.Priority,
         Status = task.Status.ToString(),
         CreatedBy = task.CreatedBy,

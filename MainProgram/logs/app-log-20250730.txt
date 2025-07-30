@@ -1,0 +1,1185 @@
+2025-07-30 10:28:01.238 +02:00 [INF] Executed DbCommand (81ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `Users` AS `u`
+    WHERE `u`.`Email` = 'admin@admin.com')
+2025-07-30 10:28:01.594 +02:00 [INF] User profile is available. Using 'C:\Users\mazur\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-30 10:28:01.777 +02:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2025-07-30 10:28:01.780 +02:00 [INF] Quartz Scheduler created
+2025-07-30 10:28:01.799 +02:00 [INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2025-07-30 10:28:01.806 +02:00 [INF] RAMJobStore initialized.
+2025-07-30 10:28:01.812 +02:00 [INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2025-07-30 10:28:01.817 +02:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2025-07-30 10:28:01.821 +02:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2025-07-30 10:28:01.841 +02:00 [INF] Adding 2 jobs, 2 triggers.
+2025-07-30 10:28:01.846 +02:00 [INF] Adding job: DEFAULT.ProcessOutboxJob-trigger
+2025-07-30 10:28:01.882 +02:00 [INF] Adding job: DEFAULT.NotificationCheckJob-trigger
+2025-07-30 10:28:01.965 +02:00 [INF] Now listening on: http://localhost:5259
+2025-07-30 10:28:01.982 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-30 10:28:01.989 +02:00 [INF] Hosting environment: Development
+2025-07-30 10:28:01.992 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2025-07-30 10:28:01.995 +02:00 [INF] Content root path: C:\Users\mazur\Desktop\System zarzadzania zasobami\MainProgram
+2025-07-30 10:28:32.707 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/auth/login - null null
+2025-07-30 10:28:32.777 +02:00 [INF] CORS policy execution successful.
+2025-07-30 10:28:32.790 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/auth/login - 204 null null 86.8309ms
+2025-07-30 10:28:32.801 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5259/api/auth/login - application/json 48
+2025-07-30 10:28:32.811 +02:00 [INF] CORS policy execution successful.
+2025-07-30 10:28:32.913 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-07-30 10:28:32.987 +02:00 [INF] Executing endpoint 'Api.Controllers.AuthController.Login (Api)'
+2025-07-30 10:28:33.011 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Api.Dto.AuthDtos.LoginDto) on controller Api.Controllers.AuthController (Api).
+2025-07-30 10:28:33.250 +02:00 [INF] Executed DbCommand (32ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__email_0
+LIMIT 1
+2025-07-30 10:28:33.686 +02:00 [INF] Executed DbCommand (20ms) [Parameters=[@p11='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = DateTime), @p10='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `CreatedAt` = @p0, `Email` = @p1, `IsActive` = @p2, `LastActive` = @p3, `Lastname` = @p4, `Name` = @p5, `PasswordHash` = @p6, `Phone` = @p7, `Role` = @p8, `RoleExpiration` = @p9, `UpdatedAt` = @p10
+WHERE `Id` = @p11;
+SELECT ROW_COUNT();
+2025-07-30 10:28:33.703 +02:00 [INF] [Login] User "f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a" logged in.
+2025-07-30 10:28:33.714 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-07-30 10:28:33.722 +02:00 [INF] Executed action Api.Controllers.AuthController.Login (Api) in 704.682ms
+2025-07-30 10:28:33.727 +02:00 [INF] Executed endpoint 'Api.Controllers.AuthController.Login (Api)'
+2025-07-30 10:28:33.735 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5259/api/auth/login - 200 null text/plain; charset=utf-8 933.475ms
+2025-07-30 10:28:33.741 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user - null null
+2025-07-30 10:28:33.745 +02:00 [INF] CORS policy execution successful.
+2025-07-30 10:28:33.747 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user - 204 null null 5.7448ms
+2025-07-30 10:28:33.784 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user - null null
+2025-07-30 10:28:33.804 +02:00 [INF] CORS policy execution successful.
+2025-07-30 10:28:33.909 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 10:28:33.918 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-07-30 10:28:34.042 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-30 10:28:34.052 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-07-30 10:28:34.144 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 220.0658ms
+2025-07-30 10:28:34.149 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 10:28:34.153 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user - 200 null application/json; charset=utf-8 369.2048ms
+2025-07-30 10:28:34.243 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user - null null
+2025-07-30 10:28:34.251 +02:00 [INF] CORS policy execution successful.
+2025-07-30 10:28:34.287 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 10:28:34.292 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-07-30 10:28:34.308 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-30 10:28:34.316 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-07-30 10:28:34.320 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 21.2918ms
+2025-07-30 10:28:34.323 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 10:28:34.325 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user - 200 null application/json; charset=utf-8 81.6214ms
+2025-07-30 10:28:39.337 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=5 - null null
+2025-07-30 10:28:39.345 +02:00 [INF] CORS policy execution successful.
+2025-07-30 10:28:39.348 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=5 - 204 null null 10.8181ms
+2025-07-30 10:28:39.357 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=5 - null null
+2025-07-30 10:28:39.383 +02:00 [INF] CORS policy execution successful.
+2025-07-30 10:28:39.402 +02:00 [INF] Executing endpoint 'Api.Controllers.UserTasksController.BrowseTasks (Api)'
+2025-07-30 10:28:39.432 +02:00 [INF] Route matched with {action = "BrowseTasks", controller = "UserTasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseTasks(Int32, Int32, System.Nullable`1[System.Guid], System.Collections.Generic.List`1[System.Int32]) on controller Api.Controllers.UserTasksController (Api).
+2025-07-30 10:28:39.471 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Status`, `t`.`Title`, `t`.`UpdatedBy`
+FROM `Tasks` AS `t`
+2025-07-30 10:28:39.509 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Api.Dto.TaskDtos.TaskDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 10:28:39.519 +02:00 [INF] Executed action Api.Controllers.UserTasksController.BrowseTasks (Api) in 78.6826ms
+2025-07-30 10:28:39.523 +02:00 [INF] Executed endpoint 'Api.Controllers.UserTasksController.BrowseTasks (Api)'
+2025-07-30 10:28:39.543 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=5 - 200 null application/json; charset=utf-8 186.4601ms
+2025-07-30 10:28:41.226 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=5 - null null
+2025-07-30 10:28:41.235 +02:00 [INF] CORS policy execution successful.
+2025-07-30 10:28:41.238 +02:00 [INF] Executing endpoint 'Api.Controllers.UserTasksController.BrowseTasks (Api)'
+2025-07-30 10:28:41.241 +02:00 [INF] Route matched with {action = "BrowseTasks", controller = "UserTasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseTasks(Int32, Int32, System.Nullable`1[System.Guid], System.Collections.Generic.List`1[System.Int32]) on controller Api.Controllers.UserTasksController (Api).
+2025-07-30 10:28:41.261 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Status`, `t`.`Title`, `t`.`UpdatedBy`
+FROM `Tasks` AS `t`
+2025-07-30 10:28:41.282 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Api.Dto.TaskDtos.TaskDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 10:28:41.287 +02:00 [INF] Executed action Api.Controllers.UserTasksController.BrowseTasks (Api) in 41.9607ms
+2025-07-30 10:28:41.293 +02:00 [INF] Executed endpoint 'Api.Controllers.UserTasksController.BrowseTasks (Api)'
+2025-07-30 10:28:41.297 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=5 - 200 null application/json; charset=utf-8 70.8292ms
+2025-07-30 10:28:50.319 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - null null
+2025-07-30 10:28:50.397 +02:00 [INF] CORS policy execution successful.
+2025-07-30 10:28:50.413 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - 204 null null 94.4032ms
+2025-07-30 10:28:50.427 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - null null
+2025-07-30 10:28:50.434 +02:00 [INF] CORS policy execution successful.
+2025-07-30 10:28:50.454 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 10:28:50.482 +02:00 [INF] Route matched with {action = "BrowseUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseUsers(Int32, Int32, System.Nullable`1[System.Boolean], System.Nullable`1[Core.Models.Users.User+UserRole], System.String) on controller Api.Controllers.UserController (Api).
+2025-07-30 10:28:50.630 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Users` AS `u`
+2025-07-30 10:28:50.653 +02:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-07-30 10:28:50.656 +02:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-07-30 10:28:50.700 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+LIMIT @__p_1 OFFSET @__p_0
+2025-07-30 10:28:50.749 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.UserDtos.UserDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 10:28:50.769 +02:00 [INF] Executed action Api.Controllers.UserController.BrowseUsers (Api) in 279.1199ms
+2025-07-30 10:28:50.772 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 10:28:50.774 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - 200 null application/json; charset=utf-8 346.9601ms
+2025-07-30 10:50:08.787 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user - null null
+2025-07-30 10:50:08.798 +02:00 [INF] CORS policy execution successful.
+2025-07-30 10:50:08.802 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user - 204 null null 14.9847ms
+2025-07-30 10:50:08.821 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user - null null
+2025-07-30 10:50:08.836 +02:00 [INF] CORS policy execution successful.
+2025-07-30 10:50:08.844 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 10:50:08.849 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-07-30 10:50:08.894 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-30 10:50:08.903 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-07-30 10:50:08.909 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 52.2004ms
+2025-07-30 10:50:08.915 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 10:50:08.919 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user - 200 null application/json; charset=utf-8 98.0312ms
+2025-07-30 10:57:04.577 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user - null null
+2025-07-30 10:57:04.590 +02:00 [INF] CORS policy execution successful.
+2025-07-30 10:57:04.593 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user - 204 null null 15.9647ms
+2025-07-30 10:57:04.608 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user - null null
+2025-07-30 10:57:04.619 +02:00 [INF] CORS policy execution successful.
+2025-07-30 10:57:04.625 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 10:57:04.630 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-07-30 10:57:04.676 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-30 10:57:04.685 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-07-30 10:57:04.691 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 52.5419ms
+2025-07-30 10:57:04.697 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 10:57:04.702 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user - 200 null application/json; charset=utf-8 93.3465ms
+2025-07-30 10:57:34.671 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user - null null
+2025-07-30 10:57:34.687 +02:00 [INF] CORS policy execution successful.
+2025-07-30 10:57:34.690 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user - 204 null null 18.8775ms
+2025-07-30 10:57:34.790 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user - null null
+2025-07-30 10:57:34.806 +02:00 [INF] CORS policy execution successful.
+2025-07-30 10:57:34.813 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 10:57:34.819 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-07-30 10:57:34.835 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-30 10:57:34.860 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-07-30 10:57:34.868 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 40.389ms
+2025-07-30 10:57:34.874 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 10:57:34.880 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user - 200 null application/json; charset=utf-8 90.1835ms
+2025-07-30 10:58:06.421 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user - null null
+2025-07-30 10:58:06.435 +02:00 [INF] CORS policy execution successful.
+2025-07-30 10:58:06.439 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user - 204 null null 18.0639ms
+2025-07-30 10:58:06.441 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=5&pageSize=5 - null null
+2025-07-30 10:58:06.455 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user - null null
+2025-07-30 10:58:06.468 +02:00 [INF] CORS policy execution successful.
+2025-07-30 10:58:06.479 +02:00 [INF] CORS policy execution successful.
+2025-07-30 10:58:06.483 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=5&pageSize=5 - 204 null null 41.3284ms
+2025-07-30 10:58:06.486 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 10:58:06.500 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=5&pageSize=5 - null null
+2025-07-30 10:58:06.504 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-07-30 10:58:06.514 +02:00 [INF] CORS policy execution successful.
+2025-07-30 10:58:06.525 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 10:58:06.527 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-30 10:58:06.530 +02:00 [INF] Route matched with {action = "BrowseUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseUsers(Int32, Int32, System.Nullable`1[System.Boolean], System.Nullable`1[Core.Models.Users.User+UserRole], System.String) on controller Api.Controllers.UserController (Api).
+2025-07-30 10:58:06.538 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-07-30 10:58:06.550 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 29.6121ms
+2025-07-30 10:58:06.555 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Users` AS `u`
+2025-07-30 10:58:06.556 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 10:58:06.568 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+LIMIT @__p_1 OFFSET @__p_0
+2025-07-30 10:58:06.568 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user - 200 null application/json; charset=utf-8 113.5338ms
+2025-07-30 10:58:06.578 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.UserDtos.UserDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 10:58:06.594 +02:00 [INF] Executed action Api.Controllers.UserController.BrowseUsers (Api) in 48.9951ms
+2025-07-30 10:58:06.599 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 10:58:06.603 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=5&pageSize=5 - 200 null application/json; charset=utf-8 102.9695ms
+2025-07-30 10:58:08.064 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=2&pageSize=5 - null null
+2025-07-30 10:58:08.079 +02:00 [INF] CORS policy execution successful.
+2025-07-30 10:58:08.083 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=2&pageSize=5 - 204 null null 18.7317ms
+2025-07-30 10:58:08.099 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=2&pageSize=5 - null null
+2025-07-30 10:58:08.108 +02:00 [INF] CORS policy execution successful.
+2025-07-30 10:58:08.112 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 10:58:08.117 +02:00 [INF] Route matched with {action = "BrowseUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseUsers(Int32, Int32, System.Nullable`1[System.Boolean], System.Nullable`1[Core.Models.Users.User+UserRole], System.String) on controller Api.Controllers.UserController (Api).
+2025-07-30 10:58:08.133 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Users` AS `u`
+2025-07-30 10:58:08.146 +02:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-07-30 10:58:08.151 +02:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-07-30 10:58:08.162 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+LIMIT @__p_0 OFFSET @__p_0
+2025-07-30 10:58:08.173 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.UserDtos.UserDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 10:58:08.178 +02:00 [INF] Executed action Api.Controllers.UserController.BrowseUsers (Api) in 51.9227ms
+2025-07-30 10:58:08.183 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 10:58:08.187 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=2&pageSize=5 - 200 null application/json; charset=utf-8 88.5638ms
+2025-07-30 10:58:10.835 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=1&pageSize=5 - null null
+2025-07-30 10:58:10.853 +02:00 [INF] CORS policy execution successful.
+2025-07-30 10:58:10.858 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=1&pageSize=5 - 204 null null 22.865ms
+2025-07-30 10:58:10.875 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=5 - null null
+2025-07-30 10:58:10.886 +02:00 [INF] CORS policy execution successful.
+2025-07-30 10:58:10.889 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 10:58:10.895 +02:00 [INF] Route matched with {action = "BrowseUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseUsers(Int32, Int32, System.Nullable`1[System.Boolean], System.Nullable`1[Core.Models.Users.User+UserRole], System.String) on controller Api.Controllers.UserController (Api).
+2025-07-30 10:58:10.908 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Users` AS `u`
+2025-07-30 10:58:10.921 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+LIMIT @__p_1 OFFSET @__p_0
+2025-07-30 10:58:10.932 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.UserDtos.UserDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 10:58:10.937 +02:00 [INF] Executed action Api.Controllers.UserController.BrowseUsers (Api) in 35.0793ms
+2025-07-30 10:58:10.942 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 10:58:10.945 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=5 - 200 null application/json; charset=utf-8 70.1605ms
+2025-07-30 10:58:36.362 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user - null null
+2025-07-30 10:58:36.374 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=5&pageSize=5 - null null
+2025-07-30 10:58:36.383 +02:00 [INF] CORS policy execution successful.
+2025-07-30 10:58:36.397 +02:00 [INF] CORS policy execution successful.
+2025-07-30 10:58:36.401 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user - 204 null null 38.4017ms
+2025-07-30 10:58:36.405 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=5&pageSize=5 - 204 null null 31.0612ms
+2025-07-30 10:58:36.427 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=5&pageSize=5 - null null
+2025-07-30 10:58:36.443 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user - null null
+2025-07-30 10:58:36.455 +02:00 [INF] CORS policy execution successful.
+2025-07-30 10:58:36.464 +02:00 [INF] CORS policy execution successful.
+2025-07-30 10:58:36.470 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 10:58:36.473 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 10:58:36.477 +02:00 [INF] Route matched with {action = "BrowseUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseUsers(Int32, Int32, System.Nullable`1[System.Boolean], System.Nullable`1[Core.Models.Users.User+UserRole], System.String) on controller Api.Controllers.UserController (Api).
+2025-07-30 10:58:36.480 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-07-30 10:58:36.495 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Users` AS `u`
+2025-07-30 10:58:36.507 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+LIMIT @__p_1 OFFSET @__p_0
+2025-07-30 10:58:36.515 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.UserDtos.UserDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 10:58:36.522 +02:00 [INF] Executed action Api.Controllers.UserController.BrowseUsers (Api) in 34.4576ms
+2025-07-30 10:58:36.523 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-30 10:58:36.527 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 10:58:36.536 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-07-30 10:58:36.540 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=5&pageSize=5 - 200 null application/json; charset=utf-8 113.1333ms
+2025-07-30 10:58:36.545 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 50.3859ms
+2025-07-30 10:58:36.563 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 10:58:36.567 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user - 200 null application/json; charset=utf-8 124.2281ms
+2025-07-30 11:01:09.823 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user - null null
+2025-07-30 11:01:09.827 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=1&pageSize=5 - null null
+2025-07-30 11:01:09.843 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:01:09.856 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:01:09.860 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user - 204 null null 37.0225ms
+2025-07-30 11:01:09.869 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=1&pageSize=5 - 204 null null 42.6129ms
+2025-07-30 11:01:09.888 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user - null null
+2025-07-30 11:01:09.902 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=5 - null null
+2025-07-30 11:01:09.911 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:01:09.922 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:01:09.925 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:01:09.928 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:01:09.933 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:01:09.937 +02:00 [INF] Route matched with {action = "BrowseUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseUsers(Int32, Int32, System.Nullable`1[System.Boolean], System.Nullable`1[Core.Models.Users.User+UserRole], System.String) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:01:09.951 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-30 11:01:09.962 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Users` AS `u`
+2025-07-30 11:01:09.965 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-07-30 11:01:09.976 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+LIMIT @__p_1 OFFSET @__p_0
+2025-07-30 11:01:09.980 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 35.2496ms
+2025-07-30 11:01:09.989 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.UserDtos.UserDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:01:09.993 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:01:09.999 +02:00 [INF] Executed action Api.Controllers.UserController.BrowseUsers (Api) in 44.5897ms
+2025-07-30 11:01:10.006 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user - 200 null application/json; charset=utf-8 117.8229ms
+2025-07-30 11:01:10.011 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:01:10.029 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=5 - 200 null application/json; charset=utf-8 127.0095ms
+2025-07-30 11:01:23.686 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user - null null
+2025-07-30 11:01:23.703 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=1&pageSize=5 - null null
+2025-07-30 11:01:23.717 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:01:23.751 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:01:23.767 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user - 204 null null 80.9109ms
+2025-07-30 11:01:23.773 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=1&pageSize=5 - 204 null null 71.3308ms
+2025-07-30 11:01:23.801 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user - null null
+2025-07-30 11:01:23.820 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=5 - null null
+2025-07-30 11:01:23.842 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:01:23.871 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:01:23.875 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:01:23.878 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:01:23.885 +02:00 [INF] Route matched with {action = "BrowseUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseUsers(Int32, Int32, System.Nullable`1[System.Boolean], System.Nullable`1[Core.Models.Users.User+UserRole], System.String) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:01:23.889 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:01:23.924 +02:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Users` AS `u`
+2025-07-30 11:01:23.926 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-30 11:01:23.990 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+LIMIT @__p_1 OFFSET @__p_0
+2025-07-30 11:01:23.996 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-07-30 11:01:24.005 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.UserDtos.UserDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:01:24.011 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 89.9987ms
+2025-07-30 11:01:24.016 +02:00 [INF] Executed action Api.Controllers.UserController.BrowseUsers (Api) in 110.402ms
+2025-07-30 11:01:24.021 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:01:24.027 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:01:24.032 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user - 200 null application/json; charset=utf-8 231.1699ms
+2025-07-30 11:01:24.036 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=5 - 200 null application/json; charset=utf-8 216.4814ms
+2025-07-30 11:01:27.538 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - null null
+2025-07-30 11:01:27.551 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:01:27.554 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - 204 null null 15.3448ms
+2025-07-30 11:01:27.570 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - null null
+2025-07-30 11:01:27.582 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:01:27.585 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:01:27.590 +02:00 [INF] Route matched with {action = "BrowseUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseUsers(Int32, Int32, System.Nullable`1[System.Boolean], System.Nullable`1[Core.Models.Users.User+UserRole], System.String) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:01:27.605 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Users` AS `u`
+2025-07-30 11:01:27.618 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+LIMIT @__p_1 OFFSET @__p_0
+2025-07-30 11:01:27.629 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.UserDtos.UserDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:01:27.634 +02:00 [INF] Executed action Api.Controllers.UserController.BrowseUsers (Api) in 35.0754ms
+2025-07-30 11:01:27.639 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:01:27.644 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - 200 null application/json; charset=utf-8 74.0612ms
+2025-07-30 11:01:30.648 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=2&pageSize=4 - null null
+2025-07-30 11:01:30.663 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:01:30.667 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=2&pageSize=4 - 204 null null 19.3384ms
+2025-07-30 11:01:30.683 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=2&pageSize=4 - null null
+2025-07-30 11:01:30.693 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:01:30.696 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:01:30.701 +02:00 [INF] Route matched with {action = "BrowseUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseUsers(Int32, Int32, System.Nullable`1[System.Boolean], System.Nullable`1[Core.Models.Users.User+UserRole], System.String) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:01:30.716 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Users` AS `u`
+2025-07-30 11:01:30.730 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+LIMIT @__p_0 OFFSET @__p_0
+2025-07-30 11:01:30.740 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.UserDtos.UserDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:01:30.747 +02:00 [INF] Executed action Api.Controllers.UserController.BrowseUsers (Api) in 36.3538ms
+2025-07-30 11:01:30.752 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:01:30.757 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=2&pageSize=4 - 200 null application/json; charset=utf-8 73.9276ms
+2025-07-30 11:01:33.722 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=2&pageSize=4 - null null
+2025-07-30 11:01:33.735 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:01:33.739 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:01:33.744 +02:00 [INF] Route matched with {action = "BrowseUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseUsers(Int32, Int32, System.Nullable`1[System.Boolean], System.Nullable`1[Core.Models.Users.User+UserRole], System.String) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:01:33.757 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Users` AS `u`
+2025-07-30 11:01:33.772 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+LIMIT @__p_0 OFFSET @__p_0
+2025-07-30 11:01:33.781 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.UserDtos.UserDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:01:33.785 +02:00 [INF] Executed action Api.Controllers.UserController.BrowseUsers (Api) in 34.5596ms
+2025-07-30 11:01:33.791 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:01:33.795 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=2&pageSize=4 - 200 null application/json; charset=utf-8 72.9058ms
+2025-07-30 11:01:35.919 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=2&pageSize=4 - null null
+2025-07-30 11:01:35.938 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:01:35.942 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=2&pageSize=4 - 204 null null 22.2948ms
+2025-07-30 11:01:35.955 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=2&pageSize=4 - null null
+2025-07-30 11:01:35.966 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:01:35.970 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:01:35.976 +02:00 [INF] Route matched with {action = "BrowseUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseUsers(Int32, Int32, System.Nullable`1[System.Boolean], System.Nullable`1[Core.Models.Users.User+UserRole], System.String) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:01:35.990 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Users` AS `u`
+2025-07-30 11:01:36.003 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+LIMIT @__p_0 OFFSET @__p_0
+2025-07-30 11:01:36.014 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.UserDtos.UserDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:01:36.018 +02:00 [INF] Executed action Api.Controllers.UserController.BrowseUsers (Api) in 34.6895ms
+2025-07-30 11:01:36.024 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:01:36.027 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=2&pageSize=4 - 200 null application/json; charset=utf-8 72.2245ms
+2025-07-30 11:01:37.616 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - null null
+2025-07-30 11:01:37.632 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:01:37.635 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - 204 null null 19.086ms
+2025-07-30 11:01:37.647 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - null null
+2025-07-30 11:01:37.656 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:01:37.659 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:01:37.663 +02:00 [INF] Route matched with {action = "BrowseUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseUsers(Int32, Int32, System.Nullable`1[System.Boolean], System.Nullable`1[Core.Models.Users.User+UserRole], System.String) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:01:37.676 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Users` AS `u`
+2025-07-30 11:01:37.690 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+LIMIT @__p_1 OFFSET @__p_0
+2025-07-30 11:01:37.700 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.UserDtos.UserDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:01:37.705 +02:00 [INF] Executed action Api.Controllers.UserController.BrowseUsers (Api) in 35.4356ms
+2025-07-30 11:01:37.711 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:01:37.715 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - 200 null application/json; charset=utf-8 68.0369ms
+2025-07-30 11:01:39.046 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=2&pageSize=4 - null null
+2025-07-30 11:01:39.059 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:01:39.064 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:01:39.069 +02:00 [INF] Route matched with {action = "BrowseUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseUsers(Int32, Int32, System.Nullable`1[System.Boolean], System.Nullable`1[Core.Models.Users.User+UserRole], System.String) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:01:39.082 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Users` AS `u`
+2025-07-30 11:01:39.097 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+LIMIT @__p_0 OFFSET @__p_0
+2025-07-30 11:01:39.105 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.UserDtos.UserDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:01:39.110 +02:00 [INF] Executed action Api.Controllers.UserController.BrowseUsers (Api) in 33.7661ms
+2025-07-30 11:01:39.115 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:01:39.119 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=2&pageSize=4 - 200 null application/json; charset=utf-8 72.4863ms
+2025-07-30 11:02:03.312 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user - null null
+2025-07-30 11:02:03.321 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - null null
+2025-07-30 11:02:03.324 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:02:03.337 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:02:03.340 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user - 204 null null 27.9271ms
+2025-07-30 11:02:03.343 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - 204 null null 22.1391ms
+2025-07-30 11:02:03.358 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - null null
+2025-07-30 11:02:03.370 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user - null null
+2025-07-30 11:02:03.380 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:02:03.389 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:02:03.393 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:02:03.395 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:02:03.399 +02:00 [INF] Route matched with {action = "BrowseUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseUsers(Int32, Int32, System.Nullable`1[System.Boolean], System.Nullable`1[Core.Models.Users.User+UserRole], System.String) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:02:03.403 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:02:03.420 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Users` AS `u`
+2025-07-30 11:02:03.424 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-30 11:02:03.432 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+LIMIT @__p_1 OFFSET @__p_0
+2025-07-30 11:02:03.441 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-07-30 11:02:03.453 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.UserDtos.UserDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:02:03.459 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 40.2766ms
+2025-07-30 11:02:03.470 +02:00 [INF] Executed action Api.Controllers.UserController.BrowseUsers (Api) in 59.3003ms
+2025-07-30 11:02:03.475 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:02:03.482 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:02:03.487 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user - 200 null application/json; charset=utf-8 117.1762ms
+2025-07-30 11:02:03.492 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - 200 null application/json; charset=utf-8 134.0961ms
+2025-07-30 11:02:06.834 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user?userId=2f831d8c-6b43-43ba-83f4-2ce2776e6656 - null null
+2025-07-30 11:02:06.848 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:02:06.853 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user?userId=2f831d8c-6b43-43ba-83f4-2ce2776e6656 - 204 null null 19.6694ms
+2025-07-30 11:02:06.868 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user?userId=2f831d8c-6b43-43ba-83f4-2ce2776e6656 - null null
+2025-07-30 11:02:06.880 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:02:06.884 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:02:06.891 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:02:06.906 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-30 11:02:06.920 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-07-30 11:02:06.928 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 30.3992ms
+2025-07-30 11:02:06.935 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:02:06.940 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user?userId=2f831d8c-6b43-43ba-83f4-2ce2776e6656 - 200 null application/json; charset=utf-8 71.2621ms
+2025-07-30 11:02:08.408 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - null null
+2025-07-30 11:02:08.423 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:02:08.428 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - 204 null null 20.4478ms
+2025-07-30 11:02:08.447 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - null null
+2025-07-30 11:02:08.461 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:02:08.464 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:02:08.472 +02:00 [INF] Route matched with {action = "BrowseUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseUsers(Int32, Int32, System.Nullable`1[System.Boolean], System.Nullable`1[Core.Models.Users.User+UserRole], System.String) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:02:08.488 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Users` AS `u`
+2025-07-30 11:02:08.505 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+LIMIT @__p_1 OFFSET @__p_0
+2025-07-30 11:02:08.516 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.UserDtos.UserDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:02:08.523 +02:00 [INF] Executed action Api.Controllers.UserController.BrowseUsers (Api) in 41.637ms
+2025-07-30 11:02:08.529 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:02:08.535 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - 200 null application/json; charset=utf-8 87.7669ms
+2025-07-30 11:02:09.618 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user?userId=9f12a3ae-67e0-478f-be3b-069acc55cbf1 - null null
+2025-07-30 11:02:09.633 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:02:09.638 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user?userId=9f12a3ae-67e0-478f-be3b-069acc55cbf1 - 204 null null 20.2083ms
+2025-07-30 11:02:09.653 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user?userId=9f12a3ae-67e0-478f-be3b-069acc55cbf1 - null null
+2025-07-30 11:02:09.665 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:02:09.671 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:02:09.678 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:02:09.693 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-30 11:02:09.705 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-07-30 11:02:09.712 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 23.2311ms
+2025-07-30 11:02:09.719 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:02:09.724 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user?userId=9f12a3ae-67e0-478f-be3b-069acc55cbf1 - 200 null application/json; charset=utf-8 70.9809ms
+2025-07-30 11:02:11.994 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - null null
+2025-07-30 11:02:12.010 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:02:12.013 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:02:12.020 +02:00 [INF] Route matched with {action = "BrowseUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseUsers(Int32, Int32, System.Nullable`1[System.Boolean], System.Nullable`1[Core.Models.Users.User+UserRole], System.String) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:02:12.036 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Users` AS `u`
+2025-07-30 11:02:12.050 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+LIMIT @__p_1 OFFSET @__p_0
+2025-07-30 11:02:12.062 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.UserDtos.UserDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:02:12.069 +02:00 [INF] Executed action Api.Controllers.UserController.BrowseUsers (Api) in 41.373ms
+2025-07-30 11:02:12.076 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:02:12.081 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - 200 null application/json; charset=utf-8 87.4525ms
+2025-07-30 11:02:49.352 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user - null null
+2025-07-30 11:02:49.363 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - null null
+2025-07-30 11:02:49.369 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:02:49.386 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:02:49.393 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user - 204 null null 40.8815ms
+2025-07-30 11:02:49.398 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - 204 null null 34.0463ms
+2025-07-30 11:02:49.420 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user - null null
+2025-07-30 11:02:49.485 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - null null
+2025-07-30 11:02:49.497 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:02:49.512 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:02:49.516 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:02:49.519 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:02:49.528 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:02:49.541 +02:00 [INF] Route matched with {action = "BrowseUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseUsers(Int32, Int32, System.Nullable`1[System.Boolean], System.Nullable`1[Core.Models.Users.User+UserRole], System.String) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:02:49.552 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-30 11:02:49.579 +02:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Users` AS `u`
+2025-07-30 11:02:49.581 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-07-30 11:02:49.596 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+LIMIT @__p_1 OFFSET @__p_0
+2025-07-30 11:02:49.600 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 53.3394ms
+2025-07-30 11:02:49.610 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.UserDtos.UserDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:02:49.615 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:02:49.621 +02:00 [INF] Executed action Api.Controllers.UserController.BrowseUsers (Api) in 55.5237ms
+2025-07-30 11:02:49.626 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user - 200 null application/json; charset=utf-8 206.8032ms
+2025-07-30 11:02:49.633 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:02:49.651 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - 200 null application/json; charset=utf-8 165.4235ms
+2025-07-30 11:02:53.363 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user - null null
+2025-07-30 11:02:53.369 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - null null
+2025-07-30 11:02:53.374 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:02:53.385 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:02:53.392 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:02:53.393 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:02:53.397 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:02:53.402 +02:00 [INF] Route matched with {action = "BrowseUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseUsers(Int32, Int32, System.Nullable`1[System.Boolean], System.Nullable`1[Core.Models.Users.User+UserRole], System.String) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:02:53.415 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-30 11:02:53.426 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Users` AS `u`
+2025-07-30 11:02:53.429 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-07-30 11:02:53.440 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+LIMIT @__p_1 OFFSET @__p_0
+2025-07-30 11:02:53.443 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 32.2992ms
+2025-07-30 11:02:53.451 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.UserDtos.UserDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:02:53.461 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:02:53.467 +02:00 [INF] Executed action Api.Controllers.UserController.BrowseUsers (Api) in 48.8967ms
+2025-07-30 11:02:53.474 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user - 200 null application/json; charset=utf-8 111.4854ms
+2025-07-30 11:02:53.480 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:02:53.499 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - 200 null application/json; charset=utf-8 129.6776ms
+2025-07-30 11:03:01.370 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user - null null
+2025-07-30 11:03:01.383 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:03:01.385 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - null null
+2025-07-30 11:03:01.389 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user - 204 null null 18.5491ms
+2025-07-30 11:03:01.400 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:03:01.420 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user - null null
+2025-07-30 11:03:01.432 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:03:01.437 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - 204 null null 52.8915ms
+2025-07-30 11:03:01.442 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:03:01.461 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - null null
+2025-07-30 11:03:01.465 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:03:01.477 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:03:01.490 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-30 11:03:01.490 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:03:01.499 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-07-30 11:03:01.504 +02:00 [INF] Route matched with {action = "BrowseUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseUsers(Int32, Int32, System.Nullable`1[System.Boolean], System.Nullable`1[Core.Models.Users.User+UserRole], System.String) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:03:01.510 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 25.7535ms
+2025-07-30 11:03:01.523 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:03:01.524 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Users` AS `u`
+2025-07-30 11:03:01.528 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user - 200 null application/json; charset=utf-8 107.7217ms
+2025-07-30 11:03:01.545 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+LIMIT @__p_1 OFFSET @__p_0
+2025-07-30 11:03:01.566 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.UserDtos.UserDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:03:01.574 +02:00 [INF] Executed action Api.Controllers.UserController.BrowseUsers (Api) in 56.183ms
+2025-07-30 11:03:01.582 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:03:01.590 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - 200 null application/json; charset=utf-8 128.751ms
+2025-07-30 11:03:03.736 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=2&pageSize=4 - null null
+2025-07-30 11:03:03.749 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:03:03.752 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=2&pageSize=4 - 204 null null 15.9437ms
+2025-07-30 11:03:03.769 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=2&pageSize=4 - null null
+2025-07-30 11:03:03.781 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:03:03.785 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:03:03.791 +02:00 [INF] Route matched with {action = "BrowseUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseUsers(Int32, Int32, System.Nullable`1[System.Boolean], System.Nullable`1[Core.Models.Users.User+UserRole], System.String) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:03:03.804 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Users` AS `u`
+2025-07-30 11:03:03.817 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+LIMIT @__p_0 OFFSET @__p_0
+2025-07-30 11:03:03.827 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.UserDtos.UserDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:03:03.832 +02:00 [INF] Executed action Api.Controllers.UserController.BrowseUsers (Api) in 34.2199ms
+2025-07-30 11:03:03.839 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:03:03.844 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=2&pageSize=4 - 200 null application/json; charset=utf-8 74.7783ms
+2025-07-30 11:03:05.289 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - null null
+2025-07-30 11:03:05.302 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:03:05.306 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:03:05.309 +02:00 [INF] Route matched with {action = "BrowseUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseUsers(Int32, Int32, System.Nullable`1[System.Boolean], System.Nullable`1[Core.Models.Users.User+UserRole], System.String) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:03:05.320 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Users` AS `u`
+2025-07-30 11:03:05.333 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+LIMIT @__p_1 OFFSET @__p_0
+2025-07-30 11:03:05.340 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.UserDtos.UserDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:03:05.345 +02:00 [INF] Executed action Api.Controllers.UserController.BrowseUsers (Api) in 29.8643ms
+2025-07-30 11:03:05.350 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:03:05.353 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - 200 null application/json; charset=utf-8 64.8978ms
+2025-07-30 11:03:06.286 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=2&pageSize=4 - null null
+2025-07-30 11:03:06.300 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:03:06.304 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:03:06.309 +02:00 [INF] Route matched with {action = "BrowseUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseUsers(Int32, Int32, System.Nullable`1[System.Boolean], System.Nullable`1[Core.Models.Users.User+UserRole], System.String) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:03:06.322 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Users` AS `u`
+2025-07-30 11:03:06.334 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+LIMIT @__p_0 OFFSET @__p_0
+2025-07-30 11:03:06.344 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.UserDtos.UserDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:03:06.349 +02:00 [INF] Executed action Api.Controllers.UserController.BrowseUsers (Api) in 33.6807ms
+2025-07-30 11:03:06.355 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:03:06.360 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=2&pageSize=4 - 200 null application/json; charset=utf-8 74.1262ms
+2025-07-30 11:03:07.239 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - null null
+2025-07-30 11:03:07.251 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:03:07.254 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - 204 null null 15.2452ms
+2025-07-30 11:03:07.266 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - null null
+2025-07-30 11:03:07.278 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:03:07.281 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:03:07.285 +02:00 [INF] Route matched with {action = "BrowseUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseUsers(Int32, Int32, System.Nullable`1[System.Boolean], System.Nullable`1[Core.Models.Users.User+UserRole], System.String) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:03:07.296 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Users` AS `u`
+2025-07-30 11:03:07.311 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+LIMIT @__p_1 OFFSET @__p_0
+2025-07-30 11:03:07.321 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.UserDtos.UserDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:03:07.326 +02:00 [INF] Executed action Api.Controllers.UserController.BrowseUsers (Api) in 35.2569ms
+2025-07-30 11:03:07.331 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:03:07.336 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - 200 null application/json; charset=utf-8 69.7732ms
+2025-07-30 11:03:08.017 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=2&pageSize=4 - null null
+2025-07-30 11:03:08.035 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:03:08.039 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:03:08.043 +02:00 [INF] Route matched with {action = "BrowseUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseUsers(Int32, Int32, System.Nullable`1[System.Boolean], System.Nullable`1[Core.Models.Users.User+UserRole], System.String) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:03:08.055 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Users` AS `u`
+2025-07-30 11:03:08.066 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+LIMIT @__p_0 OFFSET @__p_0
+2025-07-30 11:03:08.077 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.UserDtos.UserDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:03:08.082 +02:00 [INF] Executed action Api.Controllers.UserController.BrowseUsers (Api) in 32.6682ms
+2025-07-30 11:03:08.089 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:03:08.096 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=2&pageSize=4 - 200 null application/json; charset=utf-8 79.158ms
+2025-07-30 11:03:09.993 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - null null
+2025-07-30 11:03:10.008 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:03:10.013 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:03:10.018 +02:00 [INF] Route matched with {action = "BrowseUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseUsers(Int32, Int32, System.Nullable`1[System.Boolean], System.Nullable`1[Core.Models.Users.User+UserRole], System.String) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:03:10.032 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Users` AS `u`
+2025-07-30 11:03:10.046 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+LIMIT @__p_1 OFFSET @__p_0
+2025-07-30 11:03:10.059 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.UserDtos.UserDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:03:10.064 +02:00 [INF] Executed action Api.Controllers.UserController.BrowseUsers (Api) in 36.9ms
+2025-07-30 11:03:10.070 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:03:10.074 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - 200 null application/json; charset=utf-8 81.484ms
+2025-07-30 11:03:13.567 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=5 - null null
+2025-07-30 11:03:13.581 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:03:13.585 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=5 - 204 null null 18.1279ms
+2025-07-30 11:03:13.601 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=5 - null null
+2025-07-30 11:03:13.613 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:03:13.617 +02:00 [INF] Executing endpoint 'Api.Controllers.UserTasksController.BrowseTasks (Api)'
+2025-07-30 11:03:13.624 +02:00 [INF] Route matched with {action = "BrowseTasks", controller = "UserTasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseTasks(Int32, Int32, System.Nullable`1[System.Guid], System.Collections.Generic.List`1[System.Int32]) on controller Api.Controllers.UserTasksController (Api).
+2025-07-30 11:03:13.640 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Status`, `t`.`Title`, `t`.`UpdatedBy`
+FROM `Tasks` AS `t`
+2025-07-30 11:03:13.654 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Api.Dto.TaskDtos.TaskDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:03:13.662 +02:00 [INF] Executed action Api.Controllers.UserTasksController.BrowseTasks (Api) in 28.5766ms
+2025-07-30 11:03:13.668 +02:00 [INF] Executed endpoint 'Api.Controllers.UserTasksController.BrowseTasks (Api)'
+2025-07-30 11:03:13.675 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=5 - 200 null application/json; charset=utf-8 74.1453ms
+2025-07-30 11:03:14.873 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=5 - null null
+2025-07-30 11:03:14.893 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:03:14.898 +02:00 [INF] Executing endpoint 'Api.Controllers.UserTasksController.BrowseTasks (Api)'
+2025-07-30 11:03:14.904 +02:00 [INF] Route matched with {action = "BrowseTasks", controller = "UserTasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseTasks(Int32, Int32, System.Nullable`1[System.Guid], System.Collections.Generic.List`1[System.Int32]) on controller Api.Controllers.UserTasksController (Api).
+2025-07-30 11:03:14.914 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Status`, `t`.`Title`, `t`.`UpdatedBy`
+FROM `Tasks` AS `t`
+2025-07-30 11:03:14.927 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Api.Dto.TaskDtos.TaskDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:03:14.933 +02:00 [INF] Executed action Api.Controllers.UserTasksController.BrowseTasks (Api) in 21.6968ms
+2025-07-30 11:03:14.939 +02:00 [INF] Executed endpoint 'Api.Controllers.UserTasksController.BrowseTasks (Api)'
+2025-07-30 11:03:14.944 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=5 - 200 null application/json; charset=utf-8 70.862ms
+2025-07-30 11:03:16.489 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=5 - null null
+2025-07-30 11:03:16.505 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:03:16.509 +02:00 [INF] Executing endpoint 'Api.Controllers.UserTasksController.BrowseTasks (Api)'
+2025-07-30 11:03:16.512 +02:00 [INF] Route matched with {action = "BrowseTasks", controller = "UserTasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseTasks(Int32, Int32, System.Nullable`1[System.Guid], System.Collections.Generic.List`1[System.Int32]) on controller Api.Controllers.UserTasksController (Api).
+2025-07-30 11:03:16.522 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Status`, `t`.`Title`, `t`.`UpdatedBy`
+FROM `Tasks` AS `t`
+2025-07-30 11:03:16.533 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Api.Dto.TaskDtos.TaskDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:03:16.539 +02:00 [INF] Executed action Api.Controllers.UserTasksController.BrowseTasks (Api) in 19.7866ms
+2025-07-30 11:03:16.544 +02:00 [INF] Executed endpoint 'Api.Controllers.UserTasksController.BrowseTasks (Api)'
+2025-07-30 11:03:16.549 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=5 - 200 null application/json; charset=utf-8 59.704ms
+2025-07-30 11:03:17.887 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=5 - null null
+2025-07-30 11:03:17.903 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:03:17.908 +02:00 [INF] Executing endpoint 'Api.Controllers.UserTasksController.BrowseTasks (Api)'
+2025-07-30 11:03:17.912 +02:00 [INF] Route matched with {action = "BrowseTasks", controller = "UserTasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseTasks(Int32, Int32, System.Nullable`1[System.Guid], System.Collections.Generic.List`1[System.Int32]) on controller Api.Controllers.UserTasksController (Api).
+2025-07-30 11:03:17.922 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Status`, `t`.`Title`, `t`.`UpdatedBy`
+FROM `Tasks` AS `t`
+2025-07-30 11:03:17.931 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Api.Dto.TaskDtos.TaskDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:03:17.936 +02:00 [INF] Executed action Api.Controllers.UserTasksController.BrowseTasks (Api) in 16.6445ms
+2025-07-30 11:03:17.941 +02:00 [INF] Executed endpoint 'Api.Controllers.UserTasksController.BrowseTasks (Api)'
+2025-07-30 11:03:17.944 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=5 - 200 null application/json; charset=utf-8 57.396ms
+2025-07-30 11:03:18.446 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=5 - null null
+2025-07-30 11:03:18.461 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:03:18.465 +02:00 [INF] Executing endpoint 'Api.Controllers.UserTasksController.BrowseTasks (Api)'
+2025-07-30 11:03:18.471 +02:00 [INF] Route matched with {action = "BrowseTasks", controller = "UserTasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseTasks(Int32, Int32, System.Nullable`1[System.Guid], System.Collections.Generic.List`1[System.Int32]) on controller Api.Controllers.UserTasksController (Api).
+2025-07-30 11:03:18.480 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Status`, `t`.`Title`, `t`.`UpdatedBy`
+FROM `Tasks` AS `t`
+2025-07-30 11:03:18.494 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Api.Dto.TaskDtos.TaskDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:03:18.501 +02:00 [INF] Executed action Api.Controllers.UserTasksController.BrowseTasks (Api) in 23.7876ms
+2025-07-30 11:03:18.508 +02:00 [INF] Executed endpoint 'Api.Controllers.UserTasksController.BrowseTasks (Api)'
+2025-07-30 11:03:18.512 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=5 - 200 null application/json; charset=utf-8 66.1577ms
+2025-07-30 11:03:42.861 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - null null
+2025-07-30 11:03:42.875 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:03:42.879 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - 204 null null 18.8432ms
+2025-07-30 11:03:42.895 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - null null
+2025-07-30 11:03:42.907 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:03:42.911 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:03:42.918 +02:00 [INF] Route matched with {action = "BrowseUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseUsers(Int32, Int32, System.Nullable`1[System.Boolean], System.Nullable`1[Core.Models.Users.User+UserRole], System.String) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:03:42.932 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Users` AS `u`
+2025-07-30 11:03:42.946 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+LIMIT @__p_1 OFFSET @__p_0
+2025-07-30 11:03:42.957 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.UserDtos.UserDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:03:42.963 +02:00 [INF] Executed action Api.Controllers.UserController.BrowseUsers (Api) in 38.1486ms
+2025-07-30 11:03:42.970 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:03:42.976 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - 200 null application/json; charset=utf-8 81.2162ms
+2025-07-30 11:03:47.593 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=5 - null null
+2025-07-30 11:03:47.606 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:03:47.609 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=5 - 204 null null 16.4662ms
+2025-07-30 11:03:47.625 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=5 - null null
+2025-07-30 11:03:47.638 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:03:47.641 +02:00 [INF] Executing endpoint 'Api.Controllers.UserTasksController.BrowseTasks (Api)'
+2025-07-30 11:03:47.647 +02:00 [INF] Route matched with {action = "BrowseTasks", controller = "UserTasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseTasks(Int32, Int32, System.Nullable`1[System.Guid], System.Collections.Generic.List`1[System.Int32]) on controller Api.Controllers.UserTasksController (Api).
+2025-07-30 11:03:47.659 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Status`, `t`.`Title`, `t`.`UpdatedBy`
+FROM `Tasks` AS `t`
+2025-07-30 11:03:47.670 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Api.Dto.TaskDtos.TaskDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:03:47.676 +02:00 [INF] Executed action Api.Controllers.UserTasksController.BrowseTasks (Api) in 19.8788ms
+2025-07-30 11:03:47.683 +02:00 [INF] Executed endpoint 'Api.Controllers.UserTasksController.BrowseTasks (Api)'
+2025-07-30 11:03:47.688 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=5 - 200 null application/json; charset=utf-8 63.014ms
+2025-07-30 11:03:56.097 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=5 - null null
+2025-07-30 11:03:56.113 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:03:56.116 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=5 - 204 null null 18.9009ms
+2025-07-30 11:03:56.131 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=5 - null null
+2025-07-30 11:03:56.140 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:03:56.143 +02:00 [INF] Executing endpoint 'Api.Controllers.UserTasksController.BrowseTasks (Api)'
+2025-07-30 11:03:56.147 +02:00 [INF] Route matched with {action = "BrowseTasks", controller = "UserTasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseTasks(Int32, Int32, System.Nullable`1[System.Guid], System.Collections.Generic.List`1[System.Int32]) on controller Api.Controllers.UserTasksController (Api).
+2025-07-30 11:03:56.156 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Status`, `t`.`Title`, `t`.`UpdatedBy`
+FROM `Tasks` AS `t`
+2025-07-30 11:03:56.168 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Api.Dto.TaskDtos.TaskDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:03:56.172 +02:00 [INF] Executed action Api.Controllers.UserTasksController.BrowseTasks (Api) in 19.2287ms
+2025-07-30 11:03:56.178 +02:00 [INF] Executed endpoint 'Api.Controllers.UserTasksController.BrowseTasks (Api)'
+2025-07-30 11:03:56.182 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=5 - 200 null application/json; charset=utf-8 51.2408ms
+2025-07-30 11:03:56.655 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=5 - null null
+2025-07-30 11:03:56.669 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:03:56.673 +02:00 [INF] Executing endpoint 'Api.Controllers.UserTasksController.BrowseTasks (Api)'
+2025-07-30 11:03:56.679 +02:00 [INF] Route matched with {action = "BrowseTasks", controller = "UserTasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseTasks(Int32, Int32, System.Nullable`1[System.Guid], System.Collections.Generic.List`1[System.Int32]) on controller Api.Controllers.UserTasksController (Api).
+2025-07-30 11:03:56.690 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Status`, `t`.`Title`, `t`.`UpdatedBy`
+FROM `Tasks` AS `t`
+2025-07-30 11:03:56.700 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Api.Dto.TaskDtos.TaskDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:03:56.705 +02:00 [INF] Executed action Api.Controllers.UserTasksController.BrowseTasks (Api) in 17.6029ms
+2025-07-30 11:03:56.712 +02:00 [INF] Executed endpoint 'Api.Controllers.UserTasksController.BrowseTasks (Api)'
+2025-07-30 11:03:56.716 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=5 - 200 null application/json; charset=utf-8 60.491ms
+2025-07-30 11:04:25.119 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - null null
+2025-07-30 11:04:25.134 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:04:25.138 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - 204 null null 19.2901ms
+2025-07-30 11:04:25.157 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - null null
+2025-07-30 11:04:25.168 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:04:25.174 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:04:25.180 +02:00 [INF] Route matched with {action = "BrowseUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseUsers(Int32, Int32, System.Nullable`1[System.Boolean], System.Nullable`1[Core.Models.Users.User+UserRole], System.String) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:04:25.195 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Users` AS `u`
+2025-07-30 11:04:25.209 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+LIMIT @__p_1 OFFSET @__p_0
+2025-07-30 11:04:25.220 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.UserDtos.UserDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:04:25.227 +02:00 [INF] Executed action Api.Controllers.UserController.BrowseUsers (Api) in 38.4851ms
+2025-07-30 11:04:25.234 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:04:25.240 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - 200 null application/json; charset=utf-8 83.6567ms
+2025-07-30 11:05:43.856 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/swagger/v1/swagger.json - null null
+2025-07-30 11:05:44.177 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 321.1225ms
+2025-07-30 11:06:11.201 +02:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5259/api/user - application/json 98
+2025-07-30 11:06:11.215 +02:00 [INF] CORS policy execution failed.
+2025-07-30 11:06:11.219 +02:00 [INF] Request origin http://localhost:5259 does not have permission to access the resource.
+2025-07-30 11:06:11.227 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-07-30 11:06:11.238 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-30 11:06:11.244 +02:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5259/api/user - 401 0 null 43.4506ms
+2025-07-30 11:09:28.464 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user - null null
+2025-07-30 11:09:28.532 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:09:28.537 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user - 204 null null 72.9789ms
+2025-07-30 11:09:28.555 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user - null null
+2025-07-30 11:09:28.637 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:09:28.652 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:09:28.698 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:09:28.815 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-30 11:09:28.826 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-07-30 11:09:28.833 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 117.3605ms
+2025-07-30 11:09:28.854 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:09:28.866 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user - 200 null application/json; charset=utf-8 311.5192ms
+2025-07-30 11:11:46.213 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user - null null
+2025-07-30 11:11:46.225 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:11:46.229 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user - 204 null null 16.2187ms
+2025-07-30 11:11:46.243 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user - null null
+2025-07-30 11:11:46.254 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:11:46.258 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:11:46.265 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:11:46.276 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-30 11:11:46.285 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-07-30 11:11:46.290 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 17.9594ms
+2025-07-30 11:11:46.296 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:11:46.301 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user - 200 null application/json; charset=utf-8 57.2018ms
+2025-07-30 11:12:09.305 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user - null null
+2025-07-30 11:12:09.316 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:12:09.320 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user - 204 null null 15.1026ms
+2025-07-30 11:12:09.334 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user - null null
+2025-07-30 11:12:09.347 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:12:09.352 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:12:09.358 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:12:09.370 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-30 11:12:09.379 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-07-30 11:12:09.383 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 17.2996ms
+2025-07-30 11:12:09.388 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:12:09.393 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user - 200 null application/json; charset=utf-8 59.542ms
+2025-07-30 11:12:34.193 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user - null null
+2025-07-30 11:12:34.205 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:12:34.208 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user - 204 null null 15.3478ms
+2025-07-30 11:12:34.221 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user - null null
+2025-07-30 11:12:34.233 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:12:34.237 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:12:34.242 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:12:34.261 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-30 11:12:34.272 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-07-30 11:12:34.278 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 21.4285ms
+2025-07-30 11:12:34.283 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:12:34.288 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user - 200 null application/json; charset=utf-8 66.4851ms
+2025-07-30 11:14:22.094 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user - null null
+2025-07-30 11:14:22.111 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:14:22.115 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user - 204 null null 20.3352ms
+2025-07-30 11:14:22.131 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user - null null
+2025-07-30 11:14:22.147 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:14:22.151 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:14:22.155 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:14:22.172 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-30 11:14:22.188 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-07-30 11:14:22.198 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 33.7298ms
+2025-07-30 11:14:22.204 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:14:22.210 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user - 200 null application/json; charset=utf-8 79.2026ms
+2025-07-30 11:14:30.276 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user - null null
+2025-07-30 11:14:30.294 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:14:30.297 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user - 204 null null 21.4428ms
+2025-07-30 11:14:30.314 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user - null null
+2025-07-30 11:14:30.325 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:14:30.329 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:14:30.335 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:14:30.362 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-30 11:14:30.396 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-07-30 11:14:30.411 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 54.619ms
+2025-07-30 11:14:30.418 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:14:30.424 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user - 200 null application/json; charset=utf-8 110.0878ms
+2025-07-30 11:14:44.169 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user - null null
+2025-07-30 11:14:44.181 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:14:44.189 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user - 204 null null 19.4877ms
+2025-07-30 11:14:44.205 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user - null null
+2025-07-30 11:14:44.217 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:14:44.225 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:14:44.229 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:14:44.240 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-30 11:14:44.248 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-07-30 11:14:44.254 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 18.294ms
+2025-07-30 11:14:44.259 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:14:44.263 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user - 200 null application/json; charset=utf-8 58.4817ms
+2025-07-30 11:14:46.965 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user/user - null null
+2025-07-30 11:14:46.978 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:14:46.982 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user/user - 204 null null 16.5242ms
+2025-07-30 11:14:46.993 +02:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5259/api/user/user - application/json 68
+2025-07-30 11:14:47.002 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:14:47.005 +02:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5259/api/user/user - 404 0 null 11.8965ms
+2025-07-30 11:14:47.021 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: PUT http://localhost:5259/api/user/user, Response status code: 404
+2025-07-30 11:14:53.036 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user/user - null null
+2025-07-30 11:14:53.050 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:14:53.053 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user/user - 204 null null 17.2577ms
+2025-07-30 11:14:53.064 +02:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5259/api/user/user - application/json 70
+2025-07-30 11:14:53.073 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:14:53.077 +02:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5259/api/user/user - 404 0 null 12.1643ms
+2025-07-30 11:14:53.091 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: PUT http://localhost:5259/api/user/user, Response status code: 404
+2025-07-30 11:16:18.685 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user/user - null null
+2025-07-30 11:16:18.698 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:16:18.700 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user/user - 204 null null 15.2327ms
+2025-07-30 11:16:18.714 +02:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5259/api/user/user - application/json 70
+2025-07-30 11:16:18.724 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:16:18.729 +02:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5259/api/user/user - 404 0 null 14.2561ms
+2025-07-30 11:16:18.744 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: PUT http://localhost:5259/api/user/user, Response status code: 404
+2025-07-30 11:16:32.998 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user - null null
+2025-07-30 11:16:33.014 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:16:33.018 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user - 204 null null 20.041ms
+2025-07-30 11:16:33.039 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user - null null
+2025-07-30 11:16:33.055 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:16:33.087 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:16:33.103 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:16:33.119 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-30 11:16:33.135 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-07-30 11:16:33.141 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 28.1066ms
+2025-07-30 11:16:33.155 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:16:33.162 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user - 200 null application/json; charset=utf-8 123.3659ms
+2025-07-30 11:16:35.574 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user - null null
+2025-07-30 11:16:35.585 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:16:35.588 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user - 204 null null 13.6985ms
+2025-07-30 11:16:35.602 +02:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5259/api/user - application/json 68
+2025-07-30 11:16:35.613 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:16:35.617 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.UpdateUser (Api)'
+2025-07-30 11:16:35.629 +02:00 [INF] Route matched with {action = "UpdateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateUser(Api.Dto.UserDtos.UpdateUserDto) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:16:35.650 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-30 11:16:35.662 +02:00 [INF] [Update] User "f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a" updated
+2025-07-30 11:16:35.694 +02:00 [INF] [UpdateData] User "f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a" updated from {"Id":"f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a","Name":"das","Lastname":"ad","PasswordHash":"AQAAAAIAAYagAAAAEKGaDk18QZa7Z7yIXZG8leFwQsrRMmBdqhDlUgFpQ1Di1vFHnTagm\u002B0\u002BW6swTKP\u002BTQ==","Email":"user@example.com","Phone":"","IsActive":true,"LastActive":"2025-07-30T08:28:33.596167","Role":0,"RoleExpiration":null,"CreatedAt":"2025-07-25T18:30:39.13408","UpdatedAt":"2025-07-25T16:30:39.134083","Tasks":null}.
+2025-07-30 11:16:35.717 +02:00 [INF] Executed DbCommand (11ms) [Parameters=[@p11='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = DateTime), @p10='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `CreatedAt` = @p0, `Email` = @p1, `IsActive` = @p2, `LastActive` = @p3, `Lastname` = @p4, `Name` = @p5, `PasswordHash` = @p6, `Phone` = @p7, `Role` = @p8, `RoleExpiration` = @p9, `UpdatedAt` = @p10
+WHERE `Id` = @p11;
+SELECT ROW_COUNT();
+2025-07-30 11:16:35.737 +02:00 [INF] [UpdateData] User "f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a" updated to {"Id":"f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a","Name":"das","Lastname":"ad","PasswordHash":"AQAAAAIAAYagAAAAEKGaDk18QZa7Z7yIXZG8leFwQsrRMmBdqhDlUgFpQ1Di1vFHnTagm\u002B0\u002BW6swTKP\u002BTQ==","Email":"user@example.com","Phone":"","IsActive":true,"LastActive":"2025-07-30T08:28:33.596167","Role":0,"RoleExpiration":null,"CreatedAt":"2025-07-25T18:30:39.13408","UpdatedAt":"2025-07-30T09:16:35.7025622Z","Tasks":null}.
+2025-07-30 11:16:35.746 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Models.Users.User'.
+2025-07-30 11:16:35.761 +02:00 [INF] Executed action Api.Controllers.UserController.UpdateUser (Api) in 123.9411ms
+2025-07-30 11:16:35.769 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.UpdateUser (Api)'
+2025-07-30 11:16:35.775 +02:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5259/api/user - 200 null application/json; charset=utf-8 173.0583ms
+2025-07-30 11:16:44.484 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user - null null
+2025-07-30 11:16:44.501 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:16:44.504 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user - 204 null null 19.3114ms
+2025-07-30 11:16:44.516 +02:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5259/api/user - application/json 75
+2025-07-30 11:16:44.525 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:16:44.528 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.UpdateUser (Api)'
+2025-07-30 11:16:44.532 +02:00 [INF] Route matched with {action = "UpdateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateUser(Api.Dto.UserDtos.UpdateUserDto) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:16:44.544 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-30 11:16:44.554 +02:00 [INF] [Update] User "f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a" updated
+2025-07-30 11:16:44.558 +02:00 [INF] [UpdateData] User "f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a" updated from {"Id":"f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a","Name":"das","Lastname":"ad","PasswordHash":"AQAAAAIAAYagAAAAEKGaDk18QZa7Z7yIXZG8leFwQsrRMmBdqhDlUgFpQ1Di1vFHnTagm\u002B0\u002BW6swTKP\u002BTQ==","Email":"user@example.com","Phone":"","IsActive":true,"LastActive":"2025-07-30T08:28:33.596167","Role":0,"RoleExpiration":null,"CreatedAt":"2025-07-25T18:30:39.13408","UpdatedAt":"2025-07-30T09:16:35.702562","Tasks":null}.
+2025-07-30 11:16:44.571 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@p11='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = DateTime), @p10='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `CreatedAt` = @p0, `Email` = @p1, `IsActive` = @p2, `LastActive` = @p3, `Lastname` = @p4, `Name` = @p5, `PasswordHash` = @p6, `Phone` = @p7, `Role` = @p8, `RoleExpiration` = @p9, `UpdatedAt` = @p10
+WHERE `Id` = @p11;
+SELECT ROW_COUNT();
+2025-07-30 11:16:44.583 +02:00 [INF] [UpdateData] User "f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a" updated to {"Id":"f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a","Name":"dasvidania","Lastname":"ad","PasswordHash":"AQAAAAIAAYagAAAAEKGaDk18QZa7Z7yIXZG8leFwQsrRMmBdqhDlUgFpQ1Di1vFHnTagm\u002B0\u002BW6swTKP\u002BTQ==","Email":"user@example.com","Phone":"","IsActive":true,"LastActive":"2025-07-30T08:28:33.596167","Role":0,"RoleExpiration":null,"CreatedAt":"2025-07-25T18:30:39.13408","UpdatedAt":"2025-07-30T09:16:44.5626558Z","Tasks":null}.
+2025-07-30 11:16:44.591 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Models.Users.User'.
+2025-07-30 11:16:44.596 +02:00 [INF] Executed action Api.Controllers.UserController.UpdateUser (Api) in 56.0214ms
+2025-07-30 11:16:44.602 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.UpdateUser (Api)'
+2025-07-30 11:16:44.607 +02:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5259/api/user - 200 null application/json; charset=utf-8 90.738ms
+2025-07-30 11:16:55.352 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user - null null
+2025-07-30 11:16:55.368 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:16:55.372 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user - 204 null null 19.7513ms
+2025-07-30 11:16:55.383 +02:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5259/api/user - application/json 80
+2025-07-30 11:16:55.392 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:16:55.395 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.UpdateUser (Api)'
+2025-07-30 11:16:55.399 +02:00 [INF] Route matched with {action = "UpdateUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateUser(Api.Dto.UserDtos.UpdateUserDto) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:16:55.410 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-30 11:16:55.421 +02:00 [INF] [Update] User "f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a" updated
+2025-07-30 11:16:55.426 +02:00 [INF] [UpdateData] User "f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a" updated from {"Id":"f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a","Name":"dasvidania","Lastname":"ad","PasswordHash":"AQAAAAIAAYagAAAAEKGaDk18QZa7Z7yIXZG8leFwQsrRMmBdqhDlUgFpQ1Di1vFHnTagm\u002B0\u002BW6swTKP\u002BTQ==","Email":"user@example.com","Phone":"","IsActive":true,"LastActive":"2025-07-30T08:28:33.596167","Role":0,"RoleExpiration":null,"CreatedAt":"2025-07-25T18:30:39.13408","UpdatedAt":"2025-07-30T09:16:44.562655","Tasks":null}.
+2025-07-30 11:16:55.440 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@p11='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = DateTime), @p10='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `CreatedAt` = @p0, `Email` = @p1, `IsActive` = @p2, `LastActive` = @p3, `Lastname` = @p4, `Name` = @p5, `PasswordHash` = @p6, `Phone` = @p7, `Role` = @p8, `RoleExpiration` = @p9, `UpdatedAt` = @p10
+WHERE `Id` = @p11;
+SELECT ROW_COUNT();
+2025-07-30 11:16:55.451 +02:00 [INF] [UpdateData] User "f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a" updated to {"Id":"f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a","Name":"dasvidania","Lastname":"ad","PasswordHash":"AQAAAAIAAYagAAAAEKGaDk18QZa7Z7yIXZG8leFwQsrRMmBdqhDlUgFpQ1Di1vFHnTagm\u002B0\u002BW6swTKP\u002BTQ==","Email":"mazurek321@interia.eu","Phone":"","IsActive":true,"LastActive":"2025-07-30T08:28:33.596167","Role":0,"RoleExpiration":null,"CreatedAt":"2025-07-25T18:30:39.13408","UpdatedAt":"2025-07-30T09:16:55.4311995Z","Tasks":null}.
+2025-07-30 11:16:55.458 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Models.Users.User'.
+2025-07-30 11:16:55.463 +02:00 [INF] Executed action Api.Controllers.UserController.UpdateUser (Api) in 56.8656ms
+2025-07-30 11:16:55.468 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.UpdateUser (Api)'
+2025-07-30 11:16:55.472 +02:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5259/api/user - 200 null application/json; charset=utf-8 88.8973ms
+2025-07-30 11:16:58.406 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - null null
+2025-07-30 11:16:58.421 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:16:58.425 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - 204 null null 19.0049ms
+2025-07-30 11:16:58.440 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - null null
+2025-07-30 11:16:58.452 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:16:58.455 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:16:58.462 +02:00 [INF] Route matched with {action = "BrowseUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseUsers(Int32, Int32, System.Nullable`1[System.Boolean], System.Nullable`1[Core.Models.Users.User+UserRole], System.String) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:16:58.478 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Users` AS `u`
+2025-07-30 11:16:58.492 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+LIMIT @__p_1 OFFSET @__p_0
+2025-07-30 11:16:58.503 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.UserDtos.UserDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:16:58.511 +02:00 [INF] Executed action Api.Controllers.UserController.BrowseUsers (Api) in 40.4042ms
+2025-07-30 11:16:58.518 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:16:58.526 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - 200 null application/json; charset=utf-8 85.6803ms
+2025-07-30 11:17:01.144 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user?userId=9f12a3ae-67e0-478f-be3b-069acc55cbf1 - null null
+2025-07-30 11:17:01.159 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:17:01.164 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user?userId=9f12a3ae-67e0-478f-be3b-069acc55cbf1 - 204 null null 20.5822ms
+2025-07-30 11:17:01.180 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user?userId=9f12a3ae-67e0-478f-be3b-069acc55cbf1 - null null
+2025-07-30 11:17:01.192 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:17:01.197 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:17:01.202 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:17:01.217 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-30 11:17:01.228 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-07-30 11:17:01.234 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 19.9254ms
+2025-07-30 11:17:01.240 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-30 11:17:01.244 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user?userId=9f12a3ae-67e0-478f-be3b-069acc55cbf1 - 200 null application/json; charset=utf-8 63.5457ms
+2025-07-30 11:17:02.694 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - null null
+2025-07-30 11:17:02.709 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:17:02.714 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:17:02.718 +02:00 [INF] Route matched with {action = "BrowseUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseUsers(Int32, Int32, System.Nullable`1[System.Boolean], System.Nullable`1[Core.Models.Users.User+UserRole], System.String) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:17:02.732 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Users` AS `u`
+2025-07-30 11:17:02.748 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+LIMIT @__p_1 OFFSET @__p_0
+2025-07-30 11:17:02.761 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.UserDtos.UserDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:17:02.767 +02:00 [INF] Executed action Api.Controllers.UserController.BrowseUsers (Api) in 40.3173ms
+2025-07-30 11:17:02.774 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:17:02.780 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - 200 null application/json; charset=utf-8 85.5888ms
+2025-07-30 11:17:05.542 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=2&pageSize=4 - null null
+2025-07-30 11:17:05.559 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:17:05.562 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=2&pageSize=4 - 204 null null 20.2065ms
+2025-07-30 11:17:05.578 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=2&pageSize=4 - null null
+2025-07-30 11:17:05.587 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:17:05.590 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:17:05.594 +02:00 [INF] Route matched with {action = "BrowseUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseUsers(Int32, Int32, System.Nullable`1[System.Boolean], System.Nullable`1[Core.Models.Users.User+UserRole], System.String) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:17:05.606 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Users` AS `u`
+2025-07-30 11:17:05.619 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+LIMIT @__p_0 OFFSET @__p_0
+2025-07-30 11:17:05.627 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.UserDtos.UserDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:17:05.632 +02:00 [INF] Executed action Api.Controllers.UserController.BrowseUsers (Api) in 31.739ms
+2025-07-30 11:17:05.638 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:17:05.641 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=2&pageSize=4 - 200 null application/json; charset=utf-8 63.1864ms
+2025-07-30 11:17:10.837 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - null null
+2025-07-30 11:17:10.850 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:17:10.854 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - 204 null null 16.8396ms
+2025-07-30 11:17:10.870 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - null null
+2025-07-30 11:17:10.878 +02:00 [INF] CORS policy execution successful.
+2025-07-30 11:17:10.882 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:17:10.886 +02:00 [INF] Route matched with {action = "BrowseUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseUsers(Int32, Int32, System.Nullable`1[System.Boolean], System.Nullable`1[Core.Models.Users.User+UserRole], System.String) on controller Api.Controllers.UserController (Api).
+2025-07-30 11:17:10.899 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Users` AS `u`
+2025-07-30 11:17:10.912 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+LIMIT @__p_1 OFFSET @__p_0
+2025-07-30 11:17:10.923 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.UserDtos.UserDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-07-30 11:17:10.929 +02:00 [INF] Executed action Api.Controllers.UserController.BrowseUsers (Api) in 35.3558ms
+2025-07-30 11:17:10.934 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-07-30 11:17:10.938 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=4 - 200 null application/json; charset=utf-8 68.0277ms
+2025-07-30 11:17:24.520 +02:00 [INF] Application is shutting down...
+2025-07-30 11:17:24.545 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+2025-07-30 11:17:24.554 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+2025-07-30 11:17:24.568 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.

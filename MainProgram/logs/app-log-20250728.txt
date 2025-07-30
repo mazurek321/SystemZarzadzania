@@ -1,0 +1,112 @@
+2025-07-28 18:04:50.602 +02:00 [INF] Executed DbCommand (41ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `Users` AS `u`
+    WHERE `u`.`Email` = 'admin@admin.com')
+2025-07-28 18:04:51.216 +02:00 [INF] User profile is available. Using 'C:\Users\mazur\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-28 18:04:51.383 +02:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2025-07-28 18:04:51.388 +02:00 [INF] Quartz Scheduler created
+2025-07-28 18:04:51.393 +02:00 [INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2025-07-28 18:04:51.397 +02:00 [INF] RAMJobStore initialized.
+2025-07-28 18:04:51.401 +02:00 [INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2025-07-28 18:04:51.405 +02:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2025-07-28 18:04:51.409 +02:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2025-07-28 18:04:51.442 +02:00 [INF] Adding 2 jobs, 2 triggers.
+2025-07-28 18:04:51.452 +02:00 [INF] Adding job: DEFAULT.ProcessOutboxJob-trigger
+2025-07-28 18:04:51.475 +02:00 [INF] Adding job: DEFAULT.NotificationCheckJob-trigger
+2025-07-28 18:04:51.648 +02:00 [INF] Now listening on: http://localhost:5259
+2025-07-28 18:04:51.654 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-28 18:04:51.658 +02:00 [INF] Hosting environment: Development
+2025-07-28 18:04:51.663 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2025-07-28 18:04:51.663 +02:00 [INF] Content root path: C:\Users\mazur\Desktop\System zarzadzania zasobami\MainProgram
+2025-07-28 18:05:34.283 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/auth/register - null null
+2025-07-28 18:05:34.345 +02:00 [INF] CORS policy execution successful.
+2025-07-28 18:05:34.364 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/auth/register - 204 null null 84.722ms
+2025-07-28 18:05:34.390 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5259/api/auth/register - application/json 136
+2025-07-28 18:05:34.412 +02:00 [INF] CORS policy execution successful.
+2025-07-28 18:05:34.464 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-07-28 18:05:34.665 +02:00 [INF] Executing endpoint 'Api.Controllers.AuthController.Register (Api)'
+2025-07-28 18:05:34.712 +02:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(Api.Dto.AuthDtos.RegisterDto) on controller Api.Controllers.AuthController (Api).
+2025-07-28 18:05:35.119 +02:00 [INF] Executed DbCommand (61ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__email_0
+LIMIT 1
+2025-07-28 18:05:35.290 +02:00 [INF] Executing ConflictObjectResult, writing value of type 'System.String'.
+2025-07-28 18:05:35.307 +02:00 [INF] Executed action Api.Controllers.AuthController.Register (Api) in 576.7132ms
+2025-07-28 18:05:35.316 +02:00 [INF] Executed endpoint 'Api.Controllers.AuthController.Register (Api)'
+2025-07-28 18:05:35.335 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5259/api/auth/register - 409 null text/plain; charset=utf-8 945.8578ms
+2025-07-28 18:06:03.090 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/auth/register - null null
+2025-07-28 18:06:03.106 +02:00 [INF] CORS policy execution successful.
+2025-07-28 18:06:03.111 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/auth/register - 204 null null 21.8033ms
+2025-07-28 18:06:03.132 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5259/api/auth/register - application/json 138
+2025-07-28 18:06:03.148 +02:00 [INF] CORS policy execution successful.
+2025-07-28 18:06:03.156 +02:00 [INF] Executing endpoint 'Api.Controllers.AuthController.Register (Api)'
+2025-07-28 18:06:03.163 +02:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(Api.Dto.AuthDtos.RegisterDto) on controller Api.Controllers.AuthController (Api).
+2025-07-28 18:06:03.317 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__email_0
+LIMIT 1
+2025-07-28 18:06:03.988 +02:00 [INF] Executed DbCommand (12ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (DbType = Guid), @p6='?' (DbType = DateTime), @p7='?' (Size = 4000), @p8='?' (DbType = Boolean), @p9='?' (DbType = DateTime), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (Size = 4000), @p14='?' (DbType = Int32), @p15='?' (DbType = DateTime), @p16='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `OutboxMessages` (`Id`, `Data`, `OccurredOn`, `ProcessedDate`, `Type`)
+VALUES (@p0, @p1, @p2, @p3, @p4);
+INSERT INTO `Users` (`Id`, `CreatedAt`, `Email`, `IsActive`, `LastActive`, `Lastname`, `Name`, `PasswordHash`, `Phone`, `Role`, `RoleExpiration`, `UpdatedAt`)
+VALUES (@p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16);
+2025-07-28 18:06:04.039 +02:00 [INF] [Registration] Created user "2f831d8c-6b43-43ba-83f4-2ce2776e6656".
+2025-07-28 18:06:04.047 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-28 18:06:04.099 +02:00 [INF] Executed action Api.Controllers.AuthController.Register (Api) in 924.2174ms
+2025-07-28 18:06:04.107 +02:00 [INF] Executed endpoint 'Api.Controllers.AuthController.Register (Api)'
+2025-07-28 18:06:04.114 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5259/api/auth/register - 200 null application/json; charset=utf-8 981.5477ms
+2025-07-28 18:06:14.423 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/auth/login - null null
+2025-07-28 18:06:14.438 +02:00 [INF] CORS policy execution successful.
+2025-07-28 18:06:14.443 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/auth/login - 204 null null 20.1301ms
+2025-07-28 18:06:14.463 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5259/api/auth/login - application/json 53
+2025-07-28 18:06:14.478 +02:00 [INF] CORS policy execution successful.
+2025-07-28 18:06:14.488 +02:00 [INF] Executing endpoint 'Api.Controllers.AuthController.Login (Api)'
+2025-07-28 18:06:14.503 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Api.Dto.AuthDtos.LoginDto) on controller Api.Controllers.AuthController (Api).
+2025-07-28 18:06:14.533 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__email_0
+LIMIT 1
+2025-07-28 18:06:14.814 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[@p11='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = DateTime), @p10='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `CreatedAt` = @p0, `Email` = @p1, `IsActive` = @p2, `LastActive` = @p3, `Lastname` = @p4, `Name` = @p5, `PasswordHash` = @p6, `Phone` = @p7, `Role` = @p8, `RoleExpiration` = @p9, `UpdatedAt` = @p10
+WHERE `Id` = @p11;
+SELECT ROW_COUNT();
+2025-07-28 18:06:14.829 +02:00 [INF] [Login] User "2f831d8c-6b43-43ba-83f4-2ce2776e6656" logged in.
+2025-07-28 18:06:14.836 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-07-28 18:06:14.845 +02:00 [INF] Executed action Api.Controllers.AuthController.Login (Api) in 330.5572ms
+2025-07-28 18:06:14.853 +02:00 [INF] Executed endpoint 'Api.Controllers.AuthController.Login (Api)'
+2025-07-28 18:06:14.860 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5259/api/auth/login - 200 null text/plain; charset=utf-8 396.6588ms
+2025-07-28 18:06:14.878 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user - null null
+2025-07-28 18:06:14.894 +02:00 [INF] CORS policy execution successful.
+2025-07-28 18:06:14.899 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user - 204 null null 20.7694ms
+2025-07-28 18:06:14.918 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user - null null
+2025-07-28 18:06:14.934 +02:00 [INF] CORS policy execution successful.
+2025-07-28 18:06:15.050 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-28 18:06:15.064 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-07-28 18:06:15.093 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-28 18:06:15.108 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-07-28 18:06:15.175 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 100.008ms
+2025-07-28 18:06:15.183 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-28 18:06:15.190 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user - 200 null application/json; charset=utf-8 271.5651ms
+2025-07-28 18:06:15.265 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user - null null
+2025-07-28 18:06:15.279 +02:00 [INF] CORS policy execution successful.
+2025-07-28 18:06:15.292 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-28 18:06:15.298 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-07-28 18:06:15.317 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-07-28 18:06:15.328 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-07-28 18:06:15.334 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 27.5244ms
+2025-07-28 18:06:15.341 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-07-28 18:06:15.349 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user - 200 null application/json; charset=utf-8 83.3938ms
+2025-07-28 18:06:19.422 +02:00 [INF] Processed outbox message 088cd9dd-48ce-4fab-83cb-d75f3f461c6d of type Core.Events.UserRegisteredEvent, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.

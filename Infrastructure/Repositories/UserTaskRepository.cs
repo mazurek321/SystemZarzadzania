@@ -2,6 +2,7 @@ using Infrastructure.Database;
 using Core.Models.UserTasks;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace Infrastructure.Repositories;
 
 internal sealed class UserTaskRepository(AppDbContext dbContext) : IUserTaskRepository
@@ -22,11 +23,11 @@ internal sealed class UserTaskRepository(AppDbContext dbContext) : IUserTaskRepo
                         .FirstOrDefaultAsync(x => x.Id == id);
     }
 
-    public async Task<List<UserTask>> GetWithComingDeadlinesAsync(DateTime time, Guid userId)
+    public async Task<List<UserTask>> GetUncompletedTasksAsync()
     {
         return await dbContext.Tasks
-                                .Where(x=>x.Users.Any(u => u.Id == userId) && x.Deadline <= time)
-                                .ToListAsync();                     
+                .Where(x => x.EndDate == null && x.Status != UserTask.TaskStatus.Done)
+                .ToListAsync();
     }
 
     public async Task<ICollection<UserTask>> BrowseTasks(int pageNumber, int pageSize, Guid? userId, List<int>? categories)
@@ -36,17 +37,14 @@ internal sealed class UserTaskRepository(AppDbContext dbContext) : IUserTaskRepo
         if (categories is not null && categories.Any())
             query = query.Where(x => x.Categories.Any(c => categories.Contains(c.Id)));
 
-        var tasks = await query.ToListAsync();
-
         if (userId.HasValue)
-            tasks = tasks
-                .Where(x => x.Users.Any(u => u.Id == userId.Value) || x.CreatedBy == userId.Value)
-                .ToList();
+            query = query
+                .Where(x => x.Users.Any(u => u.Id == userId.Value) || x.CreatedBy == userId.Value);
 
-        return tasks
+        return await query
             .Skip((pageNumber - 1) * pageSize)
             .Take(pageSize)
-            .ToList();
+            .ToListAsync();
     }
 
     public async Task<ICollection<UserTask>> GetCompletedTasks(DateTime? from, DateTime? to, Guid? userId)

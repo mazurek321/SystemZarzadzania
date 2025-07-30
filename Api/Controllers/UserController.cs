@@ -104,6 +104,11 @@ public class UserController : ControllerBase
         if (updatingUser.Id != _user.Id)
             return BadRequest("You cannot update this user.");
 
+        var userWithThisEmail = await _userRepository.FindByEmailAsync(dto.Email);
+
+        if(userWithThisEmail is not null && updatingUser.Id != userWithThisEmail.Id)
+            return BadRequest("User with this email already exists.");
+
         _logger.LogInformation("[Update] User {UserId} updated", updatingUser.Id, DateTime.Now);
         _logger.LogInformation("[UpdateData] User {UserId} updated from {userData}.", updatingUser.Id, JsonSerializer.Serialize(updatingUser));
 
@@ -118,7 +123,21 @@ public class UserController : ControllerBase
 
         _logger.LogInformation("[UpdateData] User {UserId} updated to {userData}.", updatingUser.Id, JsonSerializer.Serialize(updatingUser));
 
-        return Ok(updatingUser);
+        return Ok(new UserDto
+            {
+                Id = updatingUser.Id,
+                Name = updatingUser.Name,
+                Lastname = updatingUser.Lastname,
+                Email = updatingUser.Email,
+                Phone = updatingUser.Phone,
+                IsActive = updatingUser.IsActive,
+                LastActive = updatingUser.LastActive,
+                Role = updatingUser.Role.ToString(),
+                RoleExpiration = updatingUser.RoleExpiration,
+                CreatedAt = updatingUser.CreatedAt,
+                UpdatedAt = updatingUser.UpdatedAt,
+                Tasks = new List<TaskDto>()
+            });
     }
 
     [HttpPut("password")]

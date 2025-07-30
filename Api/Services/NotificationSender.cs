@@ -14,10 +14,10 @@ public class NotificationSender : INotificationSender
         _hubContext = hubContext;
     }
 
-    public async Task SendNotificationToUserAsync(Guid userId, string message)
+    public async Task SendNotificationToUserAsync(Guid userId, NotificationType type, string message)
     {
         await _hubContext.Clients.User(userId.ToString())
-                .SendAsync("ReceiveNotification", message);
+                .SendAsync("ReceiveNotification", type.ToString(), message);
     }
 }
 
