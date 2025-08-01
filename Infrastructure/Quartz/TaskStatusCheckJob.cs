@@ -29,24 +29,49 @@ public class TaskStatusCheckJob : IJob
 
         var uncompletedTasks = await _userTaskRepository.GetUncompletedTasksAsync();
 
+        var notifyTasks = new List<Task>();
+
         foreach (var task in uncompletedTasks)
         {
+            string? message = null;
+            var statusChanged = false;
+            NotificationType? notifType = null;
+
             if (task.Deadline <= DateTime.UtcNow)
             {
-                _logger.LogWarning($"Task {task.Id} missed deadline");
-                task.UpdateStatus(UserTask.TaskStatus.Overdue);
-                await _userTaskRepository.UpdateAsync(task);
+                if (task.Status != UserTask.TaskStatus.Overdue)
+                {
 
-                await NotifyUsers(task, NotificationType.Alert, $"Task {task.Title} missed deadline");
+                    task.UpdateStatus(UserTask.TaskStatus.Overdue);
+
+                    statusChanged = true;
+                    notifType = NotificationType.Alert;
+                    message = $"Task '{task.Title}' missed the deadline.";
+
+                    _logger.LogWarning(message);
+                }
+
             }
 
             else if (task.Deadline <= DateTime.UtcNow.AddDays(1))
             {
-                _logger.LogWarning($"Task {task.Id} will soon miss deadline");
-                task.UpdateStatus(UserTask.TaskStatus.Almostdue);
-                await _userTaskRepository.UpdateAsync(task);
+                if (task.Status != UserTask.TaskStatus.Almostdue)
+                {
 
-                await NotifyUsers(task, NotificationType.Warning, $"Task {task.Title} will soon miss deadline.");
+                    task.UpdateStatus(UserTask.TaskStatus.Almostdue);
+
+                    statusChanged = true;
+                    notifType = NotificationType.Warning;
+                    message = $"Task '{task.Title}' will soon miss the deadline.";
+
+                    _logger.LogWarning(message);
+                }
+            }
+
+            if (statusChanged)
+            {
+                await _userTaskRepository.UpdateAsync(task);
+                await NotifyUsers(task, notifType!.Value, message!);
             }
         }
     }
@@ -56,7 +81,6 @@ public class TaskStatusCheckJob : IJob
         await _notificationSender.SendNotificationToUserAsync(task.CreatedBy, type, message);
 
         var usersToNotify = task.Users.Select(u => u.Id);
-
         foreach (var userId in usersToNotify)
         {
             await _notificationSender.SendNotificationToUserAsync(userId, type, message);

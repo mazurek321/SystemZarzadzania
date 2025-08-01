@@ -12,6 +12,8 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using Core.Models.Users;
+using Microsoft.AspNetCore.SignalR;
+
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.File("logs/app-log-.txt", rollingInterval: RollingInterval.Day)
@@ -74,6 +76,8 @@ builder.Services.AddDbContext<AppDbContext>((serviceProvider, optionsBuilder) =>
 
 builder.Services.AddControllers();
 builder.Services.AddSignalR();
+
+builder.Services.AddSingleton<IUserIdProvider, SignalRUserIdProvider>();
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddRepositories();

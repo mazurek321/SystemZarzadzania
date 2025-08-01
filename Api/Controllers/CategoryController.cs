@@ -19,13 +19,13 @@ public class CategoryController : ControllerBase
     private readonly ICategoryRepository _categoryRepository;
     private readonly IUserRepository _userRepository;
     private readonly ICurrentUserService _user;
-    private readonly ILogger<UserController> _logger;
+    private readonly ILogger<CategoryController> _logger;
     public CategoryController(
         AppDbContext dbContext,
         ICategoryRepository categoryRepository,
         ICurrentUserService user,
         IUserRepository userRepository,
-        ILogger<UserController> logger
+        ILogger<CategoryController> logger
     )
     {
         _dbContext = dbContext;

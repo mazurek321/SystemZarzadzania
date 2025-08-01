@@ -9,7 +9,7 @@ using Core.Models.Users;
 using Infrastructure.Context;
 using Microsoft.Extensions.Logging;
 using System.Text.Json;
-
+using Infrastructure.Quartz;
 
 
 namespace Api.Controllers;
@@ -50,8 +50,6 @@ public class UserTasksController : ControllerBase
         var users = dto.UsersIds != null ? await _userRepository.FindByIdsAsync(dto.UsersIds) : new List<User>();
         var categories = dto.CategoriesIds != null ? await _categoryRepository.GetByIdsAsync(dto.CategoriesIds) : new List<Category>();
 
-        var status = checkStatus(dto.Deadline);
-
         var task = UserTask.NewTask(
             dto.Title,
             dto.Description,
@@ -59,7 +57,7 @@ public class UserTasksController : ControllerBase
             null,
             null,
             dto.Priority,
-            status,
+            UserTask.TaskStatus.Pending,
             user.Id,
             user.Id,
             users,
@@ -72,6 +70,8 @@ public class UserTasksController : ControllerBase
 
         _logger.LogInformation("[Create] User {UserId} created task.", user.Id);
         _logger.LogInformation("[CreateData] Task data: {task}", JsonSerializer.Serialize(taskDto));
+
+        
 
         return Ok(taskDto);
     }
@@ -125,12 +125,8 @@ public class UserTasksController : ControllerBase
         var users = dto.UsersIds != null ? await _userRepository.FindByIdsAsync(dto.UsersIds) : new List<User>();
         var categories = dto.CategoriesIds != null ? await _categoryRepository.GetByIdsAsync(dto.CategoriesIds) : new List<Category>();
 
-
-
         _logger.LogInformation("[Update] User {UserId} updated task {taskId}.", user.Id, task.Id);
         _logger.LogInformation("[UpdateData] Task data before update: {task}", JsonSerializer.Serialize(task));
-
-        var status = checkStatus(dto.Deadline);
 
         task.UpdateTask
         (
@@ -140,7 +136,7 @@ public class UserTasksController : ControllerBase
             dto.StartDate,
             dto.EndDate,
             dto.Priority,
-            status,
+            task.Status,
             user.Id,
             users,
             categories
@@ -208,13 +204,6 @@ public class UserTasksController : ControllerBase
         return NoContent();
     }
 
-
-    private UserTask.TaskStatus checkStatus(DateTime deadline)
-    {
-        if (deadline <= DateTime.UtcNow) return UserTask.TaskStatus.Overdue;
-        else if ((deadline - DateTime.UtcNow).TotalDays <= 1) return UserTask.TaskStatus.Almostdue;
-        else return UserTask.TaskStatus.Pending;
-    }
     private TaskDto MapToDto(UserTask task) => new TaskDto
     {
         Id = task.Id,

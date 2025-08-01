@@ -3,6 +3,7 @@ using Core.Models.Users;
 using Core.Models.OutboxMessages;
 using Core.Models.UserTasks;
 using Core.Models.Categories;
+using Core.Models.Notifications;
 using Core.Domain;
 using Newtonsoft.Json;
 using System.Linq;
@@ -17,6 +18,7 @@ public class AppDbContext : DbContext
     public DbSet<User> Users { get; set; }
     public DbSet<UserTask> Tasks { get; set; }
     public DbSet<Category> Categories { get; set; }
+    public DbSet<Notification> Notifications { get; set; }
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {

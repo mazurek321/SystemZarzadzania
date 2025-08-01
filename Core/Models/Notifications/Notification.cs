@@ -6,31 +6,36 @@ public class Notification
 {
     public Notification() { }
     public Notification(
-        Guid id, NotificationType type, User forUser, string message, DateTime createdAt, bool isRead
+        Guid id, NotificationType type, Guid userId, string message, DateTime createdAt, bool isRead, DateTime? readAt, DateTime receivedAt
     )
     {
         Id = id;
         Type = type;
-        ForUser = forUser;
+        UserId = userId;
         Message = message;
         CreatedAt = createdAt;
         IsRead = isRead;
+        ReadAt = readAt;
+        ReceivedAt = receivedAt;
     }
     public Guid Id { get; private set; }
     public NotificationType Type { get; private set; }
-    public User ForUser { get; private set; }
+    public Guid UserId { get; private set; }
     public string Message { get; private set; }
     public DateTime CreatedAt { get; private set; }
     public bool IsRead { get; private set; }
+    public DateTime? ReadAt{ get;  private set; }
+    public DateTime ReceivedAt { get; private set; }
 
-    public static Notification NewNotification(NotificationType type, User forUser, string message)
+    public static Notification NewNotification(NotificationType type, Guid userId, string message)
     {
-        return new Notification(Guid.NewGuid(), type, forUser, message, DateTime.UtcNow, false);
+        return new Notification(Guid.NewGuid(), type, userId, message, DateTime.UtcNow, false, null, DateTime.UtcNow);
     }
 
     public void MarkAsRead()
     {
         IsRead = true;
+        ReadAt = DateTime.UtcNow;
     }
 }
 
