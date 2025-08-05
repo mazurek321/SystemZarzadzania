@@ -64,9 +64,14 @@ internal sealed class UserRepository(AppDbContext dbContext) : IUserRepository
                 };
     }
 
-    public async Task UpdateActivityAsync(User user)
+    public async Task<List<User>> GetActiveUsers()
     {
-        user.UpdateActivity();
+        return await dbContext.Users.Where(x => x.IsActive).ToListAsync();
+    }
+
+    public async Task UpdateActivityAsync(User user, bool state)
+    {
+        user.UpdateActivity(state);
         dbContext.Update(user);
         await dbContext.SaveChangesAsync();
     }

@@ -1,6 +1,7 @@
 using Infrastructure.Database;
 using Core.Models.UserTasks;
 using Microsoft.EntityFrameworkCore;
+using Core.Dto;
 
 
 namespace Infrastructure.Repositories;
@@ -30,7 +31,7 @@ internal sealed class UserTaskRepository(AppDbContext dbContext) : IUserTaskRepo
                 .ToListAsync();
     }
 
-    public async Task<ICollection<UserTask>> BrowseTasks(int pageNumber, int pageSize, Guid? userId, List<int>? categories)
+    public async Task<PagedResult<UserTask>> BrowseTasks(int pageNumber, int pageSize, Guid? userId, List<int>? categories)
     {
         var query = dbContext.Tasks.AsQueryable();
 
@@ -41,10 +42,19 @@ internal sealed class UserTaskRepository(AppDbContext dbContext) : IUserTaskRepo
             query = query
                 .Where(x => x.Users.Any(u => u.Id == userId.Value) || x.CreatedBy == userId.Value);
 
-        return await query
+        var count = await query.CountAsync();
+
+        var tasks = await query
             .Skip((pageNumber - 1) * pageSize)
             .Take(pageSize)
             .ToListAsync();
+
+
+        return new PagedResult<UserTask>
+        {
+            Items = tasks,
+            TotalCount = count
+        };
     }
 
     public async Task<ICollection<UserTask>> GetCompletedTasks(DateTime? from, DateTime? to, Guid? userId)

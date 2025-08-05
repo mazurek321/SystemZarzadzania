@@ -81,9 +81,48 @@ public class UserTask
         Users = new List<User>(users);
     }
 
-    public void UpdateStatus(TaskStatus status)
+    public void RefreshStatus()
     {
-        Status = status;
+        if (StartDate == null && EndDate == null)
+        {
+            if (Deadline < DateTime.UtcNow)
+                Status = TaskStatus.Overdue;
+            else if (Deadline < DateTime.UtcNow.AddDays(1))
+                Status = TaskStatus.Almostdue;
+            else
+                Status = TaskStatus.Pending;
+        }
+
+        else if (StartDate != null && EndDate == null)
+        {
+            if (Deadline < DateTime.UtcNow)
+                Status = TaskStatus.InProgressOverdue;
+            else if (Deadline < DateTime.UtcNow.AddDays(1))
+                Status = TaskStatus.InProgressAlmostdue;
+            else
+                Status = TaskStatus.InProgress;
+        }
+        else if(EndDate != null)
+        {
+            if (Deadline < DateTime.UtcNow)
+                Status = TaskStatus.DoneOverdue;
+            else if (Deadline < DateTime.UtcNow.AddDays(1))
+                Status = TaskStatus.DoneAlmostDue;
+            else
+                Status = TaskStatus.Done;
+        }
+    }
+
+    public void setStartDate()
+    {
+        RefreshStatus();
+        StartDate = DateTime.UtcNow;
+    }
+
+    public void setEndDate()
+    {
+        RefreshStatus();
+        EndDate = DateTime.UtcNow;
     }
 
     public enum TaskStatus
@@ -92,6 +131,10 @@ public class UserTask
         InProgress,
         Done,
         Almostdue,
-        Overdue
+        Overdue,
+        InProgressAlmostdue,
+        InProgressOverdue,
+        DoneAlmostDue,
+        DoneOverdue,
     }
 }

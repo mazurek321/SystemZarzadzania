@@ -15,8 +15,7 @@ public class TaskStatusCheckJob : IJob
     public TaskStatusCheckJob(
         ILogger<TaskStatusCheckJob> logger,
         IUserTaskRepository userTaskRepository,
-        INotificationSender notificationSender
-    )
+        INotificationSender notificationSender)
     {
         _logger = logger;
         _userTaskRepository = userTaskRepository;
@@ -29,59 +28,40 @@ public class TaskStatusCheckJob : IJob
 
         var uncompletedTasks = await _userTaskRepository.GetUncompletedTasksAsync();
 
-        var notifyTasks = new List<Task>();
-
         foreach (var task in uncompletedTasks)
         {
-            string? message = null;
-            var statusChanged = false;
-            NotificationType? notifType = null;
+            var oldStatus = task.Status;
 
-            if (task.Deadline <= DateTime.UtcNow)
+            task.RefreshStatus();
+
+            if (task.Status != oldStatus)
             {
-                if (task.Status != UserTask.TaskStatus.Overdue)
-                {
+                string message = $"Task '{task.Title}' changed status from {oldStatus} to {task.Status}.";
+                NotificationType notificationType = GetNotificationType(task.Status);
 
-                    task.UpdateStatus(UserTask.TaskStatus.Overdue);
+                _logger.LogInformation(message);
 
-                    statusChanged = true;
-                    notifType = NotificationType.Alert;
-                    message = $"Task '{task.Title}' missed the deadline.";
-
-                    _logger.LogWarning(message);
-                }
-
-            }
-
-            else if (task.Deadline <= DateTime.UtcNow.AddDays(1))
-            {
-                if (task.Status != UserTask.TaskStatus.Almostdue)
-                {
-
-                    task.UpdateStatus(UserTask.TaskStatus.Almostdue);
-
-                    statusChanged = true;
-                    notifType = NotificationType.Warning;
-                    message = $"Task '{task.Title}' will soon miss the deadline.";
-
-                    _logger.LogWarning(message);
-                }
-            }
-
-            if (statusChanged)
-            {
                 await _userTaskRepository.UpdateAsync(task);
-                await NotifyUsers(task, notifType!.Value, message!);
+                await NotifyUsers(task, notificationType, message);
             }
         }
+    }
+
+    private NotificationType GetNotificationType(UserTask.TaskStatus status)
+    {
+        return status switch
+        {
+            UserTask.TaskStatus.Almostdue => NotificationType.Warning,
+            UserTask.TaskStatus.Overdue or UserTask.TaskStatus.InProgressOverdue => NotificationType.Alert,
+            _ => NotificationType.Normal
+        };
     }
 
     private async Task NotifyUsers(UserTask task, NotificationType type, string message)
     {
         await _notificationSender.SendNotificationToUserAsync(task.CreatedBy, type, message);
 
-        var usersToNotify = task.Users.Select(u => u.Id);
-        foreach (var userId in usersToNotify)
+        foreach (var userId in task.Users.Select(u => u.Id))
         {
             await _notificationSender.SendNotificationToUserAsync(userId, type, message);
         }

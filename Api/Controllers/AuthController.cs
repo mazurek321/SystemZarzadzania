@@ -13,8 +13,7 @@ using Core.Events;
 using Core.Entities;
 using Microsoft.Extensions.Logging;
 using System.Text.Json;
-
-
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace Api.Controllers;
@@ -71,13 +70,13 @@ public class AuthController : ControllerBase
 
         var token = _tokenService.GenerateToken(request);
 
-        await _userRepository.UpdateActivityAsync(user);
+        await _userRepository.UpdateActivityAsync(user, true);
 
-         _logger.LogInformation("[Login] User {UserId} logged in.", user.Id);
+        _logger.LogInformation("[Login] User {UserId} logged in.", user.Id);
 
         return Ok(token);
     }
-    
+
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterDto dto)
     {
@@ -94,7 +93,7 @@ public class AuthController : ControllerBase
                 dto.Email,
                 dto.Phone
             );
-            
+
         var hashedPassword = hasher.HashPassword(user, dto.Password);
         user.SetPasswordHash(hashedPassword);
 
@@ -106,7 +105,21 @@ public class AuthController : ControllerBase
         _logger.LogInformation("[Registration] Created user {UserId}.", userEvent.Id);
 
         return Ok(new { Id = userEvent.Id });
+    }
 
+    [HttpPost]
+    [Authorize]
+    public async Task<IActionResult> Logout(
+        [FromQuery] Guid userId
+    )
+    {
+        var user = await _userRepository.FindByIdAsync(userId);
+        if (user is null)
+            return NotFound("User not found.");
+
+        await _userRepository.UpdateActivityAsync(user, false);
+
+        return NoContent();
     }
 
 }

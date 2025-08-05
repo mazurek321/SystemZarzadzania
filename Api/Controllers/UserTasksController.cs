@@ -6,6 +6,7 @@ using Api.Dto.TaskDtos;
 using Core.Models.Categories;
 using Core.Models.UserTasks;
 using Core.Models.Users;
+using Core.Dto;
 using Infrastructure.Context;
 using Microsoft.Extensions.Logging;
 using System.Text.Json;
@@ -98,11 +99,15 @@ public class UserTasksController : ControllerBase
         [FromQuery] List<int>? categories = null
     )
     {
-        var tasks = await _userTaskRepository.BrowseTasks(pageNumber, pageSize, userId, categories);
+        var paged = await _userTaskRepository.BrowseTasks(pageNumber, pageSize, userId, categories);
 
-        var dtos = tasks.Select(t => MapToDto(t)).ToList();
+        var result = new PagedResult<TaskDto>
+        {
+            Items = paged.Items.Select(t => MapToDto(t)).ToList(),
+            TotalCount = paged.TotalCount,
+        };
 
-        return Ok(dtos);
+        return Ok(result);
     }
 
     [HttpPut]
@@ -145,6 +150,56 @@ public class UserTasksController : ControllerBase
         await _userTaskRepository.UpdateAsync(task);
 
         _logger.LogInformation("[UpdateData] Task data after update: {task}", JsonSerializer.Serialize(task));
+
+        return Ok(task);
+    }
+
+    [HttpPut("start")]
+    [Authorize]
+    public async Task<IActionResult> StartTask(
+        [FromQuery] Guid taskId
+    )
+    {
+        var task = await _userTaskRepository.GetByIdAsync(taskId);
+
+        if (task is null)
+            return NotFound("Task not found.");
+
+        var user = await _userRepository.FindByIdAsync(_user.Id.Value);
+
+        if (task.CreatedBy != user.Id
+                && !(task.Users?.Any(x => x.Id == user.Id) ?? false)
+                && user.Role != Core.Models.Users.User.UserRole.Admin)
+            return BadRequest("You cannot modify this task.");
+
+        task.setStartDate();
+
+        await _userTaskRepository.UpdateAsync(task);
+
+        return Ok(task);
+    }
+
+    [HttpPut("done")]
+    [Authorize]
+    public async Task<IActionResult> EndTask(
+        [FromQuery] Guid taskId
+    )
+    {
+        var task = await _userTaskRepository.GetByIdAsync(taskId);
+
+        if (task is null)
+            return NotFound("Task not found.");
+
+        var user = await _userRepository.FindByIdAsync(_user.Id.Value);
+
+        if (task.CreatedBy != user.Id
+                && !(task.Users?.Any(x => x.Id == user.Id) ?? false)
+                && user.Role != Core.Models.Users.User.UserRole.Admin)
+            return BadRequest("You cannot modify this task.");
+
+        task.setEndDate();
+
+        await _userTaskRepository.UpdateAsync(task);
 
         return Ok(task);
     }

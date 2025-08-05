@@ -20,6 +20,10 @@ public static class QuartzConfig
             q.ScheduleJob<TaskStatusCheckJob>(trigger => trigger
                 .WithIdentity("TaskStatusCheckJob-trigger")
                  .WithSimpleSchedule(x => x.WithIntervalInSeconds(30).RepeatForever()));
+            
+            q.ScheduleJob<UsersActivityJob>(trigger => trigger
+                .WithIdentity("UsersActivityJob-trigger")
+                 .WithSimpleSchedule(x => x.WithIntervalInSeconds(60).RepeatForever()));
         });
 
         services.AddQuartzHostedService(options => 

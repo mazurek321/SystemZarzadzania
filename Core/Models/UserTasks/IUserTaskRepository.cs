@@ -1,3 +1,5 @@
+using Core.Dto;
+
 namespace Core.Models.UserTasks;
 
 public interface IUserTaskRepository
@@ -6,7 +8,7 @@ public interface IUserTaskRepository
     Task UpdateAsync(UserTask task);
     Task<UserTask> GetByIdAsync(Guid id);
     Task<List<UserTask>> GetUncompletedTasksAsync();
-    Task<ICollection<UserTask>> BrowseTasks(int pageNumber, int pageSize, Guid? userId, List<int>? categories);
+    Task<PagedResult<UserTask>> BrowseTasks(int pageNumber, int pageSize, Guid? userId, List<int>? categories);
     Task<ICollection<UserTask>> GetCompletedTasks(DateTime? from, DateTime? to, Guid? userId);
     Task DeleteAsync(UserTask task);
 }

@@ -9,7 +9,8 @@ public interface IUserRepository
     Task<List<User>> FindByIdsAsync(List<Guid> list);
     Task<User> FindByEmailAsync(string email);
     Task<PagedResult<User>> BrowseUsers(int pageNumber, int pageSize, bool? isActiveFilter, User.UserRole? roleFilter, string? sortBy);
-    Task UpdateActivityAsync(User user);
+    Task<List<User>> GetActiveUsers();
+    Task UpdateActivityAsync(User user, bool state);
     Task UpdateInformationAsync(User user);
     Task DeleteUserAsync(User user);
 

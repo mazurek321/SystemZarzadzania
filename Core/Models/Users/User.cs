@@ -77,9 +77,9 @@ public class User
         }
     }
 
-    public void UpdateActivity()
+    public void UpdateActivity(bool value)
     {
-        IsActive = !IsActive;
+        IsActive = value;
         LastActive = DateTime.UtcNow;
     }
 

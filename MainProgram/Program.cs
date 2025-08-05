@@ -6,6 +6,7 @@ using Infrastructure.Email;
 using Infrastructure.Repositories;
 using Infrastructure.Services;
 using Infrastructure.Configuration;
+using Infrastructure.Middleware;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -119,6 +120,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseAuthentication();
+app.UseMiddleware<UpdateUserActivityMiddleware>();
 app.UseAuthorization();
 
 using (var scope = app.Services.CreateScope())
