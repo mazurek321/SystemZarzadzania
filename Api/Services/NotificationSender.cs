@@ -30,7 +30,7 @@ public class NotificationSender : INotificationSender
         await _notificationRepository.AddAsync(notification);
 
         await _hubContext.Clients.User(notification.UserId.ToString())
-                .SendAsync("ReceiveNotification", notification.Id, notification.Type.ToString(), notification.Message, notification.IsRead, notification.ReceivedAt);
+                .SendAsync("ReceiveNotification", notification);
     }
 }
 

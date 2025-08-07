@@ -28,27 +28,32 @@ internal sealed class UserRepository(AppDbContext dbContext) : IUserRepository
         return await dbContext.Users.FirstOrDefaultAsync(x => x.Email == email);
     }
 
+    public async Task<bool> CheckByIdIfExistsAsync(Guid id)
+    {
+        return await dbContext.Users.AnyAsync(x => x.Id == id);
+    }
+
     public async Task<PagedResult<User>> BrowseUsers(int pageNumber, int pageSize, bool? isActiveFilter, User.UserRole? roleFilter, string? sortBy)
     {
         var query = dbContext.Users.AsQueryable();
 
-        if(isActiveFilter.HasValue)
+        if (isActiveFilter.HasValue)
             query = query.Where(x => x.IsActive == isActiveFilter.Value);
-        
-        if(roleFilter.HasValue)
-            query = query.Where(x=>x.Role == roleFilter.Value);
 
-        if(sortBy is not null)
-                query = sortBy?.ToLower()
-                switch
-                {
-                    "name" => query.OrderBy(x => x.Name),
-                    "email" => query.OrderBy(x => x.Email),
-                    "createdat" => query.OrderBy(x => x.CreatedAt),
-                    "lastname" => query.OrderBy(x => x.Lastname),
-                    _ => query.OrderBy(x => x.CreatedAt) 
-                };
-        
+        if (roleFilter.HasValue)
+            query = query.Where(x => x.Role == roleFilter.Value);
+
+        if (sortBy is not null)
+            query = sortBy?.ToLower()
+            switch
+            {
+                "name" => query.OrderBy(x => x.Name),
+                "email" => query.OrderBy(x => x.Email),
+                "createdat" => query.OrderBy(x => x.CreatedAt),
+                "lastname" => query.OrderBy(x => x.Lastname),
+                _ => query.OrderBy(x => x.CreatedAt)
+            };
+
         var totalCount = await query.CountAsync();
 
         var users = await query
@@ -57,11 +62,11 @@ internal sealed class UserRepository(AppDbContext dbContext) : IUserRepository
                             .Take(pageSize)
                             .ToListAsync();
 
-       return new PagedResult<User>
-                {
-                    Items = users,
-                    TotalCount = totalCount
-                };
+        return new PagedResult<User>
+        {
+            Items = users,
+            TotalCount = totalCount
+        };
     }
 
     public async Task<List<User>> GetActiveUsers()

@@ -38,6 +38,26 @@ builder.Services.AddAuthentication("Bearer")
             ValidAudience = builder.Configuration["JwtSettings:Audience"],
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:Key"]))
         };
+
+        options.Events = new Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents
+        {
+            OnMessageReceived = context =>
+            {
+                var accessToken = context.Request.Query["access_token"];
+
+                var path = context.HttpContext.Request.Path;
+                if (!string.IsNullOrEmpty(accessToken) &&
+                (
+                    path.StartsWithSegments("/notificationHub") ||
+                    path.StartsWithSegments("/messageHub")
+                ))
+                {
+                    context.Token = accessToken;
+                }
+
+                return Task.CompletedTask;
+            }
+        };
     });
 
 builder.Services.AddSwaggerGen(options =>
@@ -135,6 +155,7 @@ using (var scope = app.Services.CreateScope())
 
 app.MapControllers();
 app.MapHub<Api.Hubs.NotificationHub>("/notificationHub");
+app.MapHub<Api.Hubs.MessageHub>("/messageHub");
 
 app.Run();
 

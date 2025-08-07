@@ -8,6 +8,7 @@ public interface IUserRepository
     Task<User> FindByIdAsync(Guid id);
     Task<List<User>> FindByIdsAsync(List<Guid> list);
     Task<User> FindByEmailAsync(string email);
+    Task<bool> CheckByIdIfExistsAsync(Guid id);
     Task<PagedResult<User>> BrowseUsers(int pageNumber, int pageSize, bool? isActiveFilter, User.UserRole? roleFilter, string? sortBy);
     Task<List<User>> GetActiveUsers();
     Task UpdateActivityAsync(User user, bool state);

@@ -5,9 +5,9 @@ namespace Api.Hubs;
 
 public class NotificationHub : Hub
 {
-    public async Task SendNotificationToUser(string userId, string type, string message)
+    public async Task SendNotificationToUser(Notification notification)
     {
-        await Clients.User(userId).SendAsync("ReceiveNotification", type, message);
+        await Clients.User(notification.UserId.ToString()).SendAsync("ReceiveNotification", notification);
     }
 
 }
