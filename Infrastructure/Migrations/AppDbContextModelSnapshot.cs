@@ -54,24 +54,37 @@ namespace Infrastructure.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("Core.Models.Chats.Chat", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Messages")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Participants")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Chats");
+                });
+
             modelBuilder.Entity("Core.Models.Messages.Message", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<bool?>("IsRead")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<string>("MessageContent")
                         .IsRequired()
                         .HasColumnType("longtext");
-
-                    b.Property<DateTime?>("ReadAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<Guid>("ReceiverUserId")
-                        .HasColumnType("char(36)");
 
                     b.Property<Guid>("SenderUserId")
                         .HasColumnType("char(36)");
@@ -82,6 +95,25 @@ namespace Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Messages");
+                });
+
+            modelBuilder.Entity("Core.Models.Messages.MessageStatus", b =>
+                {
+                    b.Property<Guid>("MessageId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("ReadAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("MessageId", "UserId");
+
+                    b.ToTable("MessageStatuses");
                 });
 
             modelBuilder.Entity("Core.Models.Notifications.Notification", b =>
@@ -266,6 +298,15 @@ namespace Infrastructure.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Core.Models.Messages.MessageStatus", b =>
+                {
+                    b.HasOne("Core.Models.Messages.Message", null)
+                        .WithMany("Statuses")
+                        .HasForeignKey("MessageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("UserUserTask", b =>
                 {
                     b.HasOne("Core.Models.UserTasks.UserTask", null)
@@ -279,6 +320,11 @@ namespace Infrastructure.Migrations
                         .HasForeignKey("UsersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Core.Models.Messages.Message", b =>
+                {
+                    b.Navigation("Statuses");
                 });
 #pragma warning restore 612, 618
         }

@@ -16,20 +16,20 @@ internal sealed class MessageRepository(AppDbContext dbContext) : IMessageReposi
     {
         return await dbContext.Messages.FirstOrDefaultAsync(x=>x.Id == messageId);
     }
-    public async Task<PagedResult<Message>> BrowseMessagesWithUserAsync(Guid userId, Guid secondUserId, int pageNumber, int pageSize)
+    public async Task<PagedResult<Message>> BrowseMessages(Guid chatId, int pageNumber, int pageSize)
     {
-        var allMessages = dbContext.Messages
-                                    .AsNoTracking()
-                                    .Where(x =>
-                                        (x.SenderUserId == userId || x.ReceiverUserId == userId)
-                                        &&
-                                        (x.SenderUserId == secondUserId || x.ReceiverUserId == secondUserId)
-                                    )
-                                    .OrderBy(x => x.SentAt);
+        var chat = await dbContext.Chats
+                                        .AsNoTracking()
+                                        .FirstOrDefaultAsync(x => x.Id == chatId);
+        
+        var messagesQuery = dbContext.Messages
+                                        .AsNoTracking()
+                                        .Where(m => chat.Messages.Contains(m.Id))
+                                        .OrderBy(m => m.SentAt);
 
-        var count = await allMessages.CountAsync();
+        var count = await messagesQuery.CountAsync();
 
-        var messages = await allMessages
+        var messages = await messagesQuery
                                 .Skip((pageNumber - 1) * pageSize)
                                 .Take(pageSize)
                                 .ToListAsync();
@@ -41,6 +41,29 @@ internal sealed class MessageRepository(AppDbContext dbContext) : IMessageReposi
             TotalCount = count
         };
     }
+
+    public async Task<PagedResult<Message>> BrowseUnreadMessages(Guid chatId, Guid userId)
+    {
+        var chat = await dbContext.Chats
+            .AsNoTracking()
+            .FirstOrDefaultAsync(c => c.Id == chatId);
+
+        var query = dbContext.Messages
+            .AsNoTracking()
+            .Where(m => chat.Messages.Contains(m.Id) &&
+                        m.Statuses.Any(s => s.UserId == userId && !s.IsRead))
+            .OrderBy(m => m.SentAt);
+
+        var count = await query.CountAsync();
+        var items = await query.ToListAsync();
+
+        return new PagedResult<Message>
+        {
+            Items = items,
+            TotalCount = count
+        };
+    }
+
     public async Task UpdateAsync(Message message)
     {
         dbContext.Messages.Update(message);

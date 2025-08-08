@@ -1,0 +1,564 @@
+2025-08-08 14:21:16.951 +02:00 [INF] Executed DbCommand (75ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `Users` AS `u`
+    WHERE `u`.`Email` = 'admin@admin.com')
+2025-08-08 14:21:18.066 +02:00 [INF] User profile is available. Using 'C:\Users\mazur\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-08 14:21:18.389 +02:00 [INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2025-08-08 14:21:18.400 +02:00 [INF] Quartz Scheduler created
+2025-08-08 14:21:18.403 +02:00 [INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+2025-08-08 14:21:18.407 +02:00 [INF] RAMJobStore initialized.
+2025-08-08 14:21:18.418 +02:00 [INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+2025-08-08 14:21:18.452 +02:00 [INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+2025-08-08 14:21:18.458 +02:00 [INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+2025-08-08 14:21:18.562 +02:00 [INF] Adding 3 jobs, 3 triggers.
+2025-08-08 14:21:18.601 +02:00 [INF] Adding job: DEFAULT.ProcessOutboxJob-trigger
+2025-08-08 14:21:18.908 +02:00 [INF] Adding job: DEFAULT.TaskStatusCheckJob-trigger
+2025-08-08 14:21:18.929 +02:00 [INF] Adding job: DEFAULT.UsersActivityJob-trigger
+2025-08-08 14:21:19.240 +02:00 [INF] Now listening on: http://localhost:5259
+2025-08-08 14:21:19.267 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-08 14:21:19.281 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+2025-08-08 14:21:19.291 +02:00 [INF] Hosting environment: Development
+2025-08-08 14:21:19.552 +02:00 [INF] Content root path: C:\Users\mazur\Desktop\System zarzadzania zasobami\MainProgram
+2025-08-08 14:21:39.703 +02:00 [INF] Running TaskStatusCheckJob at "2025-08-08T12:21:39.7024246Z"
+2025-08-08 14:21:39.856 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Status`, `t`.`Title`, `t`.`UpdatedBy`
+FROM `Tasks` AS `t`
+WHERE `t`.`EndDate` IS NULL AND (`t`.`Status` <> 2)
+2025-08-08 14:21:40.006 +02:00 [INF] Task 'title2' changed status from Almostdue to Overdue.
+2025-08-08 14:21:40.270 +02:00 [INF] Executed DbCommand (65ms) [Parameters=[@p11='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (DbType = Guid), @p2='?' (DbType = DateTime), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime), @p5='?' (DbType = DateTime), @p6='?' (DbType = Int32), @p7='?' (DbType = DateTime), @p8='?' (DbType = Int32), @p9='?' (Size = 4000), @p10='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Tasks` SET `CreatedAt` = @p0, `CreatedBy` = @p1, `Deadline` = @p2, `Description` = @p3, `EndDate` = @p4, `LastUpdate` = @p5, `Priority` = @p6, `StartDate` = @p7, `Status` = @p8, `Title` = @p9, `UpdatedBy` = @p10
+WHERE `Id` = @p11;
+SELECT ROW_COUNT();
+2025-08-08 14:21:40.404 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?' (DbType = Boolean), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime), @p5='?' (DbType = DateTime), @p6='?' (DbType = Int32), @p7='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Notifications` (`Id`, `CreatedAt`, `IsRead`, `Message`, `ReadAt`, `ReceivedAt`, `Type`, `UserId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-08-08 14:21:40.422 +02:00 [INF] Task 'blahblah' changed status from Almostdue to Overdue.
+2025-08-08 14:21:40.439 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@p11='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (DbType = Guid), @p2='?' (DbType = DateTime), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime), @p5='?' (DbType = DateTime), @p6='?' (DbType = Int32), @p7='?' (DbType = DateTime), @p8='?' (DbType = Int32), @p9='?' (Size = 4000), @p10='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Tasks` SET `CreatedAt` = @p0, `CreatedBy` = @p1, `Deadline` = @p2, `Description` = @p3, `EndDate` = @p4, `LastUpdate` = @p5, `Priority` = @p6, `StartDate` = @p7, `Status` = @p8, `Title` = @p9, `UpdatedBy` = @p10
+WHERE `Id` = @p11;
+SELECT ROW_COUNT();
+2025-08-08 14:21:40.462 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?' (DbType = Boolean), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime), @p5='?' (DbType = DateTime), @p6='?' (DbType = Int32), @p7='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Notifications` (`Id`, `CreatedAt`, `IsRead`, `Message`, `ReadAt`, `ReceivedAt`, `Type`, `UserId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-08-08 14:21:40.474 +02:00 [INF] Task 'title' changed status from Almostdue to Overdue.
+2025-08-08 14:21:40.489 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@p11='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (DbType = Guid), @p2='?' (DbType = DateTime), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime), @p5='?' (DbType = DateTime), @p6='?' (DbType = Int32), @p7='?' (DbType = DateTime), @p8='?' (DbType = Int32), @p9='?' (Size = 4000), @p10='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Tasks` SET `CreatedAt` = @p0, `CreatedBy` = @p1, `Deadline` = @p2, `Description` = @p3, `EndDate` = @p4, `LastUpdate` = @p5, `Priority` = @p6, `StartDate` = @p7, `Status` = @p8, `Title` = @p9, `UpdatedBy` = @p10
+WHERE `Id` = @p11;
+SELECT ROW_COUNT();
+2025-08-08 14:21:40.511 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?' (DbType = Boolean), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime), @p5='?' (DbType = DateTime), @p6='?' (DbType = Int32), @p7='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+INSERT INTO `Notifications` (`Id`, `CreatedAt`, `IsRead`, `Message`, `ReadAt`, `ReceivedAt`, `Type`, `UserId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-08-08 14:22:09.697 +02:00 [INF] Running TaskStatusCheckJob at "2025-08-08T12:22:09.6979085Z"
+2025-08-08 14:22:09.704 +02:00 [INF] Running UsersActivityJob at "2025-08-08T12:22:09.7040280Z"
+2025-08-08 14:22:09.850 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Status`, `t`.`Title`, `t`.`UpdatedBy`
+FROM `Tasks` AS `t`
+WHERE `t`.`EndDate` IS NULL AND (`t`.`Status` <> 2)
+2025-08-08 14:22:09.897 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`IsActive`
+2025-08-08 14:22:10.005 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[@p11='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = DateTime), @p10='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `CreatedAt` = @p0, `Email` = @p1, `IsActive` = @p2, `LastActive` = @p3, `Lastname` = @p4, `Name` = @p5, `PasswordHash` = @p6, `Phone` = @p7, `Role` = @p8, `RoleExpiration` = @p9, `UpdatedAt` = @p10
+WHERE `Id` = @p11;
+SELECT ROW_COUNT();
+2025-08-08 14:22:10.023 +02:00 [INF] Set user user@example.com as inactive.
+2025-08-08 14:22:18.445 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/auth/login - null null
+2025-08-08 14:22:18.506 +02:00 [INF] CORS policy execution successful.
+2025-08-08 14:22:18.530 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/auth/login - 204 null null 86.7022ms
+2025-08-08 14:22:18.550 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5259/api/auth/login - application/json 48
+2025-08-08 14:22:18.569 +02:00 [INF] CORS policy execution successful.
+2025-08-08 14:22:18.607 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-08-08 14:22:18.832 +02:00 [INF] Executing endpoint 'Api.Controllers.AuthController.Login (Api)'
+2025-08-08 14:22:18.876 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Api.Dto.AuthDtos.LoginDto) on controller Api.Controllers.AuthController (Api).
+2025-08-08 14:22:19.094 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__email_0
+LIMIT 1
+2025-08-08 14:22:19.373 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@p11='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = DateTime), @p10='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `CreatedAt` = @p0, `Email` = @p1, `IsActive` = @p2, `LastActive` = @p3, `Lastname` = @p4, `Name` = @p5, `PasswordHash` = @p6, `Phone` = @p7, `Role` = @p8, `RoleExpiration` = @p9, `UpdatedAt` = @p10
+WHERE `Id` = @p11;
+SELECT ROW_COUNT();
+2025-08-08 14:22:19.385 +02:00 [INF] [Login] User "f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a" logged in.
+2025-08-08 14:22:19.409 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-08-08 14:22:19.425 +02:00 [INF] Executed action Api.Controllers.AuthController.Login (Api) in 534.2456ms
+2025-08-08 14:22:19.433 +02:00 [INF] Executed endpoint 'Api.Controllers.AuthController.Login (Api)'
+2025-08-08 14:22:19.442 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5259/api/auth/login - 200 null text/plain; charset=utf-8 891.6384ms
+2025-08-08 14:22:19.458 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user - null null
+2025-08-08 14:22:19.471 +02:00 [INF] CORS policy execution successful.
+2025-08-08 14:22:19.486 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user - 204 null null 27.4089ms
+2025-08-08 14:22:19.557 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user - null null
+2025-08-08 14:22:19.575 +02:00 [INF] CORS policy execution successful.
+2025-08-08 14:22:19.707 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-08-08 14:22:19.725 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@p11='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = DateTime), @p10='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `CreatedAt` = @p0, `Email` = @p1, `IsActive` = @p2, `LastActive` = @p3, `Lastname` = @p4, `Name` = @p5, `PasswordHash` = @p6, `Phone` = @p7, `Role` = @p8, `RoleExpiration` = @p9, `UpdatedAt` = @p10
+WHERE `Id` = @p11;
+SELECT ROW_COUNT();
+2025-08-08 14:22:19.742 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-08-08 14:22:19.762 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-08-08 14:22:19.781 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-08-08 14:22:19.792 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-08-08 14:22:19.886 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 115.5725ms
+2025-08-08 14:22:19.892 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-08-08 14:22:19.899 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user - 200 null application/json; charset=utf-8 342.3273ms
+2025-08-08 14:22:19.913 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/notificationHub/negotiate?negotiateVersion=1 - null null
+2025-08-08 14:22:19.914 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/Notification - null null
+2025-08-08 14:22:19.928 +02:00 [INF] CORS policy execution successful.
+2025-08-08 14:22:19.939 +02:00 [INF] CORS policy execution successful.
+2025-08-08 14:22:19.944 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/notificationHub/negotiate?negotiateVersion=1 - 204 null null 31.1765ms
+2025-08-08 14:22:19.946 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/Notification - 204 null null 31.7816ms
+2025-08-08 14:22:19.958 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5259/notificationHub/negotiate?negotiateVersion=1 - null 0
+2025-08-08 14:22:19.980 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/Notification - null null
+2025-08-08 14:22:19.990 +02:00 [INF] CORS policy execution successful.
+2025-08-08 14:22:19.991 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user - null null
+2025-08-08 14:22:20.002 +02:00 [INF] CORS policy execution successful.
+2025-08-08 14:22:20.022 +02:00 [INF] CORS policy execution successful.
+2025-08-08 14:22:20.038 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-08-08 14:22:20.038 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-08-08 14:22:20.061 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@p11='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = DateTime), @p10='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `CreatedAt` = @p0, `Email` = @p1, `IsActive` = @p2, `LastActive` = @p3, `Lastname` = @p4, `Name` = @p5, `PasswordHash` = @p6, `Phone` = @p7, `Role` = @p8, `RoleExpiration` = @p9, `UpdatedAt` = @p10
+WHERE `Id` = @p11;
+SELECT ROW_COUNT();
+2025-08-08 14:22:20.073 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@p11='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = DateTime), @p10='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `CreatedAt` = @p0, `Email` = @p1, `IsActive` = @p2, `LastActive` = @p3, `Lastname` = @p4, `Name` = @p5, `PasswordHash` = @p6, `Phone` = @p7, `Role` = @p8, `RoleExpiration` = @p9, `UpdatedAt` = @p10
+WHERE `Id` = @p11;
+SELECT ROW_COUNT();
+2025-08-08 14:22:20.075 +02:00 [INF] Executing endpoint '/notificationHub/negotiate'
+2025-08-08 14:22:20.079 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-08-08 14:22:20.093 +02:00 [INF] Executing endpoint 'Api.Controllers.NotificationController.BrowseNotifications (Api)'
+2025-08-08 14:22:20.107 +02:00 [INF] Executed endpoint '/notificationHub/negotiate'
+2025-08-08 14:22:20.110 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@p11='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = DateTime), @p10='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `CreatedAt` = @p0, `Email` = @p1, `IsActive` = @p2, `LastActive` = @p3, `Lastname` = @p4, `Name` = @p5, `PasswordHash` = @p6, `Phone` = @p7, `Role` = @p8, `RoleExpiration` = @p9, `UpdatedAt` = @p10
+WHERE `Id` = @p11;
+SELECT ROW_COUNT();
+2025-08-08 14:22:20.115 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5259/notificationHub/negotiate?negotiateVersion=1 - 200 316 application/json 157.0434ms
+2025-08-08 14:22:20.119 +02:00 [INF] Route matched with {action = "BrowseNotifications", controller = "Notification"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[Api.Dto.NotificationDto.NotificationDto]]] BrowseNotifications(System.Nullable`1[System.Guid], System.Nullable`1[System.Boolean]) on controller Api.Controllers.NotificationController (Api).
+2025-08-08 14:22:20.125 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/notificationHub?id=-3OpV7GypLWHL0GsZCoyNA&access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyQGV4YW1wbGUuY29tIiwiZW1haWwiOiJ1c2VyQGV4YW1wbGUuY29tIiwidXNlcmlkIjoiZjdhYWM4N2UtYjEzMS00NWFjLWIyYTctOGFhYThmNDRiYTdhIiwidXNlcnJvbGUiOiJVc2VyIiwibmJmIjoxNzU0NjU1NzM5LCJleHAiOjE3NTQ2NzM3MzksImlhdCI6MTc1NDY1NTczOSwiaXNzIjoiQXBpIiwiYXVkIjoiQXBpIn0._r-UAS6CULleXAy0BCx23Nj5Fxh8QDT2O1btvy6J8Dk - null null
+2025-08-08 14:22:20.129 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-08-08 14:22:20.157 +02:00 [INF] CORS policy execution successful.
+2025-08-08 14:22:20.162 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-08-08 14:22:20.172 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-08-08 14:22:20.179 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-08-08 14:22:20.181 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `n`.`Id`, `n`.`CreatedAt`, `n`.`IsRead`, `n`.`Message`, `n`.`ReadAt`, `n`.`ReceivedAt`, `n`.`Type`, `n`.`UserId`
+FROM `Notifications` AS `n`
+ORDER BY `n`.`ReceivedAt` DESC
+2025-08-08 14:22:20.195 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[@p11='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = DateTime), @p10='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `CreatedAt` = @p0, `Email` = @p1, `IsActive` = @p2, `LastActive` = @p3, `Lastname` = @p4, `Name` = @p5, `PasswordHash` = @p6, `Phone` = @p7, `Role` = @p8, `RoleExpiration` = @p9, `UpdatedAt` = @p10
+WHERE `Id` = @p11;
+SELECT ROW_COUNT();
+2025-08-08 14:22:20.196 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-08-08 14:22:20.214 +02:00 [INF] Executing endpoint '/notificationHub'
+2025-08-08 14:22:20.219 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 46.4572ms
+2025-08-08 14:22:20.226 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Api.Dto.NotificationDto.NotificationDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-08 14:22:20.228 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-08-08 14:22:20.238 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user - 200 null application/json; charset=utf-8 246.3936ms
+2025-08-08 14:22:20.255 +02:00 [INF] Executed action Api.Controllers.NotificationController.BrowseNotifications (Api) in 108.4266ms
+2025-08-08 14:22:20.258 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/notificationHub/negotiate?negotiateVersion=1 - null null
+2025-08-08 14:22:20.263 +02:00 [INF] Executed endpoint 'Api.Controllers.NotificationController.BrowseNotifications (Api)'
+2025-08-08 14:22:20.266 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/Notification - null null
+2025-08-08 14:22:20.273 +02:00 [INF] CORS policy execution successful.
+2025-08-08 14:22:20.279 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/Notification - 200 null application/json; charset=utf-8 298.901ms
+2025-08-08 14:22:20.290 +02:00 [INF] CORS policy execution successful.
+2025-08-08 14:22:20.295 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/notificationHub/negotiate?negotiateVersion=1 - 204 null null 36.8949ms
+2025-08-08 14:22:20.299 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5259/notificationHub/negotiate?negotiateVersion=1 - null 0
+2025-08-08 14:22:20.317 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-08-08 14:22:20.333 +02:00 [INF] CORS policy execution successful.
+2025-08-08 14:22:20.350 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@p11='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = DateTime), @p10='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `CreatedAt` = @p0, `Email` = @p1, `IsActive` = @p2, `LastActive` = @p3, `Lastname` = @p4, `Name` = @p5, `PasswordHash` = @p6, `Phone` = @p7, `Role` = @p8, `RoleExpiration` = @p9, `UpdatedAt` = @p10
+WHERE `Id` = @p11;
+SELECT ROW_COUNT();
+2025-08-08 14:22:20.352 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-08-08 14:22:20.361 +02:00 [INF] Executing endpoint 'Api.Controllers.NotificationController.BrowseNotifications (Api)'
+2025-08-08 14:22:20.374 +02:00 [INF] Route matched with {action = "BrowseNotifications", controller = "Notification"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[Api.Dto.NotificationDto.NotificationDto]]] BrowseNotifications(System.Nullable`1[System.Guid], System.Nullable`1[System.Boolean]) on controller Api.Controllers.NotificationController (Api).
+2025-08-08 14:22:20.379 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@p11='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = DateTime), @p10='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `CreatedAt` = @p0, `Email` = @p1, `IsActive` = @p2, `LastActive` = @p3, `Lastname` = @p4, `Name` = @p5, `PasswordHash` = @p6, `Phone` = @p7, `Role` = @p8, `RoleExpiration` = @p9, `UpdatedAt` = @p10
+WHERE `Id` = @p11;
+SELECT ROW_COUNT();
+2025-08-08 14:22:20.388 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `n`.`Id`, `n`.`CreatedAt`, `n`.`IsRead`, `n`.`Message`, `n`.`ReadAt`, `n`.`ReceivedAt`, `n`.`Type`, `n`.`UserId`
+FROM `Notifications` AS `n`
+ORDER BY `n`.`ReceivedAt` DESC
+2025-08-08 14:22:20.391 +02:00 [INF] Executing endpoint '/notificationHub/negotiate'
+2025-08-08 14:22:20.405 +02:00 [INF] Executed endpoint '/notificationHub/negotiate'
+2025-08-08 14:22:20.413 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5259/notificationHub/negotiate?negotiateVersion=1 - 200 316 application/json 113.6724ms
+2025-08-08 14:22:20.414 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/notificationHub?id=86HKHw50XyXC4LCqYNjFTA&access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyQGV4YW1wbGUuY29tIiwiZW1haWwiOiJ1c2VyQGV4YW1wbGUuY29tIiwidXNlcmlkIjoiZjdhYWM4N2UtYjEzMS00NWFjLWIyYTctOGFhYThmNDRiYTdhIiwidXNlcnJvbGUiOiJVc2VyIiwibmJmIjoxNzU0NjU1NzM5LCJleHAiOjE3NTQ2NzM3MzksImlhdCI6MTc1NDY1NTczOSwiaXNzIjoiQXBpIiwiYXVkIjoiQXBpIn0._r-UAS6CULleXAy0BCx23Nj5Fxh8QDT2O1btvy6J8Dk - null null
+2025-08-08 14:22:20.419 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Api.Dto.NotificationDto.NotificationDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-08 14:22:20.435 +02:00 [INF] CORS policy execution successful.
+2025-08-08 14:22:20.443 +02:00 [INF] Executed action Api.Controllers.NotificationController.BrowseNotifications (Api) in 61.1395ms
+2025-08-08 14:22:20.449 +02:00 [INF] Executed endpoint 'Api.Controllers.NotificationController.BrowseNotifications (Api)'
+2025-08-08 14:22:20.451 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-08-08 14:22:20.454 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/Notification - 200 null application/json; charset=utf-8 188.237ms
+2025-08-08 14:22:20.472 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@p11='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = DateTime), @p10='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `CreatedAt` = @p0, `Email` = @p1, `IsActive` = @p2, `LastActive` = @p3, `Lastname` = @p4, `Name` = @p5, `PasswordHash` = @p6, `Phone` = @p7, `Role` = @p8, `RoleExpiration` = @p9, `UpdatedAt` = @p10
+WHERE `Id` = @p11;
+SELECT ROW_COUNT();
+2025-08-08 14:22:20.502 +02:00 [INF] Executing endpoint '/notificationHub'
+2025-08-08 14:22:22.847 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/Notification - null null
+2025-08-08 14:22:22.861 +02:00 [INF] CORS policy execution successful.
+2025-08-08 14:22:22.865 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/Notification - 204 null null 18.0841ms
+2025-08-08 14:22:22.878 +02:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5259/api/Notification - application/json 118
+2025-08-08 14:22:22.889 +02:00 [INF] CORS policy execution successful.
+2025-08-08 14:22:22.899 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-08-08 14:22:22.919 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@p11='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = DateTime), @p10='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `CreatedAt` = @p0, `Email` = @p1, `IsActive` = @p2, `LastActive` = @p3, `Lastname` = @p4, `Name` = @p5, `PasswordHash` = @p6, `Phone` = @p7, `Role` = @p8, `RoleExpiration` = @p9, `UpdatedAt` = @p10
+WHERE `Id` = @p11;
+SELECT ROW_COUNT();
+2025-08-08 14:22:22.931 +02:00 [INF] Executing endpoint 'Api.Controllers.NotificationController.MarkAsRead (Api)'
+2025-08-08 14:22:22.943 +02:00 [INF] Route matched with {action = "MarkAsRead", controller = "Notification"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Api.Dto.NotificationDto.NotificationDto]] MarkAsRead(System.Collections.Generic.List`1[System.Guid]) on controller Api.Controllers.NotificationController (Api).
+2025-08-08 14:22:22.970 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-08-08 14:22:22.992 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__notificationId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `n`.`Id`, `n`.`CreatedAt`, `n`.`IsRead`, `n`.`Message`, `n`.`ReadAt`, `n`.`ReceivedAt`, `n`.`Type`, `n`.`UserId`
+FROM `Notifications` AS `n`
+WHERE `n`.`Id` = @__notificationId_0
+LIMIT 1
+2025-08-08 14:22:23.013 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (DbType = Boolean), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime), @p4='?' (DbType = DateTime), @p5='?' (DbType = Int32), @p6='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Notifications` SET `CreatedAt` = @p0, `IsRead` = @p1, `Message` = @p2, `ReadAt` = @p3, `ReceivedAt` = @p4, `Type` = @p5, `UserId` = @p6
+WHERE `Id` = @p7;
+SELECT ROW_COUNT();
+2025-08-08 14:22:23.028 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__notificationId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `n`.`Id`, `n`.`CreatedAt`, `n`.`IsRead`, `n`.`Message`, `n`.`ReadAt`, `n`.`ReceivedAt`, `n`.`Type`, `n`.`UserId`
+FROM `Notifications` AS `n`
+WHERE `n`.`Id` = @__notificationId_0
+LIMIT 1
+2025-08-08 14:22:23.048 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (DbType = Boolean), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime), @p4='?' (DbType = DateTime), @p5='?' (DbType = Int32), @p6='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Notifications` SET `CreatedAt` = @p0, `IsRead` = @p1, `Message` = @p2, `ReadAt` = @p3, `ReceivedAt` = @p4, `Type` = @p5, `UserId` = @p6
+WHERE `Id` = @p7;
+SELECT ROW_COUNT();
+2025-08-08 14:22:23.061 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__notificationId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `n`.`Id`, `n`.`CreatedAt`, `n`.`IsRead`, `n`.`Message`, `n`.`ReadAt`, `n`.`ReceivedAt`, `n`.`Type`, `n`.`UserId`
+FROM `Notifications` AS `n`
+WHERE `n`.`Id` = @__notificationId_0
+LIMIT 1
+2025-08-08 14:22:23.079 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (DbType = Boolean), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime), @p4='?' (DbType = DateTime), @p5='?' (DbType = Int32), @p6='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Notifications` SET `CreatedAt` = @p0, `IsRead` = @p1, `Message` = @p2, `ReadAt` = @p3, `ReceivedAt` = @p4, `Type` = @p5, `UserId` = @p6
+WHERE `Id` = @p7;
+SELECT ROW_COUNT();
+2025-08-08 14:22:23.097 +02:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2025-08-08 14:22:23.102 +02:00 [INF] Executed action Api.Controllers.NotificationController.MarkAsRead (Api) in 149.5044ms
+2025-08-08 14:22:23.108 +02:00 [INF] Executed endpoint 'Api.Controllers.NotificationController.MarkAsRead (Api)'
+2025-08-08 14:22:23.113 +02:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5259/api/Notification - 200 0 null 234.6355ms
+2025-08-08 14:22:27.322 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user - null null
+2025-08-08 14:22:27.323 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=1&pageSize=5 - null null
+2025-08-08 14:22:27.339 +02:00 [INF] CORS policy execution successful.
+2025-08-08 14:22:27.350 +02:00 [INF] CORS policy execution successful.
+2025-08-08 14:22:27.354 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user - 204 null null 31.3113ms
+2025-08-08 14:22:27.357 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user/browse?pageNumber=1&pageSize=5 - 204 null null 33.5638ms
+2025-08-08 14:22:27.377 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user - null null
+2025-08-08 14:22:27.391 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=5 - null null
+2025-08-08 14:22:27.405 +02:00 [INF] CORS policy execution successful.
+2025-08-08 14:22:27.419 +02:00 [INF] CORS policy execution successful.
+2025-08-08 14:22:27.429 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-08-08 14:22:27.434 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-08-08 14:22:27.448 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@p11='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = DateTime), @p10='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `CreatedAt` = @p0, `Email` = @p1, `IsActive` = @p2, `LastActive` = @p3, `Lastname` = @p4, `Name` = @p5, `PasswordHash` = @p6, `Phone` = @p7, `Role` = @p8, `RoleExpiration` = @p9, `UpdatedAt` = @p10
+WHERE `Id` = @p11;
+SELECT ROW_COUNT();
+2025-08-08 14:22:27.457 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@p11='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = DateTime), @p10='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `CreatedAt` = @p0, `Email` = @p1, `IsActive` = @p2, `LastActive` = @p3, `Lastname` = @p4, `Name` = @p5, `PasswordHash` = @p6, `Phone` = @p7, `Role` = @p8, `RoleExpiration` = @p9, `UpdatedAt` = @p10
+WHERE `Id` = @p11;
+SELECT ROW_COUNT();
+2025-08-08 14:22:27.459 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-08-08 14:22:27.468 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-08-08 14:22:27.472 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-08-08 14:22:27.487 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-08-08 14:22:27.494 +02:00 [INF] Route matched with {action = "BrowseUsers", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseUsers(Int32, Int32, System.Nullable`1[System.Boolean], System.Nullable`1[Core.Models.Users.User+UserRole], System.String) on controller Api.Controllers.UserController (Api).
+2025-08-08 14:22:27.497 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-08-08 14:22:27.509 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 24.7474ms
+2025-08-08 14:22:27.514 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-08-08 14:22:27.519 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user - 200 null application/json; charset=utf-8 142.2025ms
+2025-08-08 14:22:27.534 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=5&userId=f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a - null null
+2025-08-08 14:22:27.545 +02:00 [INF] CORS policy execution successful.
+2025-08-08 14:22:27.548 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=5&userId=f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a - 204 null null 14.2531ms
+2025-08-08 14:22:27.561 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=5&userId=f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a - null null
+2025-08-08 14:22:27.575 +02:00 [INF] CORS policy execution successful.
+2025-08-08 14:22:27.584 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-08-08 14:22:27.600 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@p11='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = DateTime), @p10='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `CreatedAt` = @p0, `Email` = @p1, `IsActive` = @p2, `LastActive` = @p3, `Lastname` = @p4, `Name` = @p5, `PasswordHash` = @p6, `Phone` = @p7, `Role` = @p8, `RoleExpiration` = @p9, `UpdatedAt` = @p10
+WHERE `Id` = @p11;
+SELECT ROW_COUNT();
+2025-08-08 14:22:27.609 +02:00 [INF] Executing endpoint 'Api.Controllers.UserTasksController.BrowseTasks (Api)'
+2025-08-08 14:22:27.617 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Users` AS `u`
+2025-08-08 14:22:27.627 +02:00 [INF] Route matched with {action = "BrowseTasks", controller = "UserTasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] BrowseTasks(Int32, Int32, System.Nullable`1[System.Guid], System.Collections.Generic.List`1[System.Int32]) on controller Api.Controllers.UserTasksController (Api).
+2025-08-08 14:22:27.642 +02:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-08-08 14:22:27.646 +02:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-08-08 14:22:27.659 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+LIMIT @__p_1 OFFSET @__p_0
+2025-08-08 14:22:27.670 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.UserDtos.UserDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-08 14:22:27.683 +02:00 [INF] Executed action Api.Controllers.UserController.BrowseUsers (Api) in 180.2408ms
+2025-08-08 14:22:27.689 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.BrowseUsers (Api)'
+2025-08-08 14:22:27.693 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user/browse?pageNumber=1&pageSize=5 - 200 null application/json; charset=utf-8 301.8286ms
+2025-08-08 14:22:27.775 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_Value_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `Tasks` AS `t`
+WHERE EXISTS (
+    SELECT 1
+    FROM `UserUserTask` AS `u`
+    INNER JOIN `Users` AS `u0` ON `u`.`UsersId` = `u0`.`Id`
+    WHERE (`t`.`Id` = `u`.`TasksId`) AND (`u0`.`Id` = @__userId_Value_0)) OR (`t`.`CreatedBy` = @__userId_Value_0)
+2025-08-08 14:22:27.788 +02:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-08-08 14:22:27.792 +02:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-08-08 14:22:27.805 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_Value_0='?' (DbType = Guid), @__p_2='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Status`, `t`.`Title`, `t`.`UpdatedBy`
+FROM `Tasks` AS `t`
+WHERE EXISTS (
+    SELECT 1
+    FROM `UserUserTask` AS `u`
+    INNER JOIN `Users` AS `u0` ON `u`.`UsersId` = `u0`.`Id`
+    WHERE (`t`.`Id` = `u`.`TasksId`) AND (`u0`.`Id` = @__userId_Value_0)) OR (`t`.`CreatedBy` = @__userId_Value_0)
+LIMIT @__p_2 OFFSET @__p_1
+2025-08-08 14:22:27.823 +02:00 [INF] Executing OkObjectResult, writing value of type 'Core.Dto.PagedResult`1[[Api.Dto.TaskDtos.TaskDto, Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-08 14:22:27.838 +02:00 [INF] Executed action Api.Controllers.UserTasksController.BrowseTasks (Api) in 203.3006ms
+2025-08-08 14:22:27.843 +02:00 [INF] Executed endpoint 'Api.Controllers.UserTasksController.BrowseTasks (Api)'
+2025-08-08 14:22:27.848 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/UserTasks/browse?pageNumber=1&pageSize=5&userId=f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a - 200 null application/json; charset=utf-8 286.8484ms
+2025-08-08 14:22:27.858 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user?userId=f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a - null null
+2025-08-08 14:22:27.859 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user?userId=f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a - null null
+2025-08-08 14:22:27.861 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user?userId=f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a - null null
+2025-08-08 14:22:27.864 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user?userId=f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a - null null
+2025-08-08 14:22:27.865 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5259/api/user?userId=f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a - null null
+2025-08-08 14:22:27.877 +02:00 [INF] CORS policy execution successful.
+2025-08-08 14:22:27.888 +02:00 [INF] CORS policy execution successful.
+2025-08-08 14:22:27.899 +02:00 [INF] CORS policy execution successful.
+2025-08-08 14:22:27.909 +02:00 [INF] CORS policy execution successful.
+2025-08-08 14:22:27.919 +02:00 [INF] CORS policy execution successful.
+2025-08-08 14:22:27.923 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user?userId=f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a - 204 null null 63.6343ms
+2025-08-08 14:22:27.928 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user?userId=f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a - 204 null null 70.5466ms
+2025-08-08 14:22:27.931 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user?userId=f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a - 204 null null 70.233ms
+2025-08-08 14:22:27.935 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user?userId=f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a - 204 null null 71.1331ms
+2025-08-08 14:22:27.938 +02:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5259/api/user?userId=f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a - 204 null null 73.1316ms
+2025-08-08 14:22:27.951 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user?userId=f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a - null null
+2025-08-08 14:22:28.015 +02:00 [INF] CORS policy execution successful.
+2025-08-08 14:22:28.023 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-08-08 14:22:28.042 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@p11='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = DateTime), @p10='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `CreatedAt` = @p0, `Email` = @p1, `IsActive` = @p2, `LastActive` = @p3, `Lastname` = @p4, `Name` = @p5, `PasswordHash` = @p6, `Phone` = @p7, `Role` = @p8, `RoleExpiration` = @p9, `UpdatedAt` = @p10
+WHERE `Id` = @p11;
+SELECT ROW_COUNT();
+2025-08-08 14:22:28.053 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-08-08 14:22:28.058 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-08-08 14:22:28.070 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-08-08 14:22:28.080 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-08-08 14:22:28.086 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 18.9308ms
+2025-08-08 14:22:28.089 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user?userId=f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a - null null
+2025-08-08 14:22:28.092 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-08-08 14:22:28.103 +02:00 [INF] CORS policy execution successful.
+2025-08-08 14:22:28.107 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user?userId=f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a - 200 null application/json; charset=utf-8 156.2077ms
+2025-08-08 14:22:28.117 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-08-08 14:22:28.144 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@p11='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = DateTime), @p10='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `CreatedAt` = @p0, `Email` = @p1, `IsActive` = @p2, `LastActive` = @p3, `Lastname` = @p4, `Name` = @p5, `PasswordHash` = @p6, `Phone` = @p7, `Role` = @p8, `RoleExpiration` = @p9, `UpdatedAt` = @p10
+WHERE `Id` = @p11;
+SELECT ROW_COUNT();
+2025-08-08 14:22:28.155 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-08-08 14:22:28.161 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-08-08 14:22:28.172 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-08-08 14:22:28.182 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-08-08 14:22:28.188 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 19.0436ms
+2025-08-08 14:22:28.192 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user?userId=f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a - null null
+2025-08-08 14:22:28.195 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-08-08 14:22:28.207 +02:00 [INF] CORS policy execution successful.
+2025-08-08 14:22:28.210 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user?userId=f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a - 200 null application/json; charset=utf-8 121.0021ms
+2025-08-08 14:22:28.226 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-08-08 14:22:28.249 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@p11='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = DateTime), @p10='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `CreatedAt` = @p0, `Email` = @p1, `IsActive` = @p2, `LastActive` = @p3, `Lastname` = @p4, `Name` = @p5, `PasswordHash` = @p6, `Phone` = @p7, `Role` = @p8, `RoleExpiration` = @p9, `UpdatedAt` = @p10
+WHERE `Id` = @p11;
+SELECT ROW_COUNT();
+2025-08-08 14:22:28.259 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-08-08 14:22:28.263 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-08-08 14:22:28.275 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-08-08 14:22:28.282 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-08-08 14:22:28.288 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 18.3227ms
+2025-08-08 14:22:28.293 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user?userId=f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a - null null
+2025-08-08 14:22:28.296 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-08-08 14:22:28.305 +02:00 [INF] CORS policy execution successful.
+2025-08-08 14:22:28.309 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user?userId=f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a - 200 null application/json; charset=utf-8 117.4982ms
+2025-08-08 14:22:28.319 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-08-08 14:22:28.342 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@p11='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = DateTime), @p10='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `CreatedAt` = @p0, `Email` = @p1, `IsActive` = @p2, `LastActive` = @p3, `Lastname` = @p4, `Name` = @p5, `PasswordHash` = @p6, `Phone` = @p7, `Role` = @p8, `RoleExpiration` = @p9, `UpdatedAt` = @p10
+WHERE `Id` = @p11;
+SELECT ROW_COUNT();
+2025-08-08 14:22:28.351 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-08-08 14:22:28.355 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-08-08 14:22:28.366 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-08-08 14:22:28.375 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-08-08 14:22:28.380 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 17.3772ms
+2025-08-08 14:22:28.382 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5259/api/user?userId=f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a - null null
+2025-08-08 14:22:28.385 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-08-08 14:22:28.396 +02:00 [INF] CORS policy execution successful.
+2025-08-08 14:22:28.400 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user?userId=f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a - 200 null application/json; charset=utf-8 106.3628ms
+2025-08-08 14:22:28.411 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-08-08 14:22:28.435 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@p11='?' (DbType = Guid), @p0='?' (DbType = DateTime), @p1='?' (Size = 4000), @p2='?' (DbType = Boolean), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = DateTime), @p10='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `CreatedAt` = @p0, `Email` = @p1, `IsActive` = @p2, `LastActive` = @p3, `Lastname` = @p4, `Name` = @p5, `PasswordHash` = @p6, `Phone` = @p7, `Role` = @p8, `RoleExpiration` = @p9, `UpdatedAt` = @p10
+WHERE `Id` = @p11;
+SELECT ROW_COUNT();
+2025-08-08 14:22:28.445 +02:00 [INF] Executing endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-08-08 14:22:28.449 +02:00 [INF] Route matched with {action = "GetUser", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUser(System.Nullable`1[System.Guid]) on controller Api.Controllers.UserController (Api).
+2025-08-08 14:22:28.459 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`Id` = @__id_0
+LIMIT 1
+2025-08-08 14:22:28.467 +02:00 [INF] Executing OkObjectResult, writing value of type 'Api.Dto.UserDtos.UserDto'.
+2025-08-08 14:22:28.473 +02:00 [INF] Executed action Api.Controllers.UserController.GetUser (Api) in 17.7243ms
+2025-08-08 14:22:28.479 +02:00 [INF] Executed endpoint 'Api.Controllers.UserController.GetUser (Api)'
+2025-08-08 14:22:28.483 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/api/user?userId=f7aac87e-b131-45ac-b2a7-8aaa8f44ba7a - 200 null application/json; charset=utf-8 100.6613ms
+2025-08-08 14:22:39.700 +02:00 [INF] Running TaskStatusCheckJob at "2025-08-08T12:22:39.7004593Z"
+2025-08-08 14:22:40.154 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Status`, `t`.`Title`, `t`.`UpdatedBy`
+FROM `Tasks` AS `t`
+WHERE `t`.`EndDate` IS NULL AND (`t`.`Status` <> 2)
+2025-08-08 14:23:09.689 +02:00 [INF] Running TaskStatusCheckJob at "2025-08-08T12:23:09.6894143Z"
+2025-08-08 14:23:09.690 +02:00 [INF] Running UsersActivityJob at "2025-08-08T12:23:09.6906419Z"
+2025-08-08 14:23:09.699 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Status`, `t`.`Title`, `t`.`UpdatedBy`
+FROM `Tasks` AS `t`
+WHERE `t`.`EndDate` IS NULL AND (`t`.`Status` <> 2)
+2025-08-08 14:23:09.705 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CreatedAt`, `u`.`Email`, `u`.`IsActive`, `u`.`LastActive`, `u`.`Lastname`, `u`.`Name`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`Role`, `u`.`RoleExpiration`, `u`.`UpdatedAt`
+FROM `Users` AS `u`
+WHERE `u`.`IsActive`
+2025-08-08 14:23:39.693 +02:00 [INF] Running TaskStatusCheckJob at "2025-08-08T12:23:39.6931769Z"
+2025-08-08 14:23:39.702 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`Deadline`, `t`.`Description`, `t`.`EndDate`, `t`.`LastUpdate`, `t`.`Priority`, `t`.`StartDate`, `t`.`Status`, `t`.`Title`, `t`.`UpdatedBy`
+FROM `Tasks` AS `t`
+WHERE `t`.`EndDate` IS NULL AND (`t`.`Status` <> 2)
+2025-08-08 14:23:52.207 +02:00 [INF] Application is shutting down...
+2025-08-08 14:23:52.244 +02:00 [INF] Executed endpoint '/notificationHub'
+2025-08-08 14:23:52.244 +02:00 [INF] Executed endpoint '/notificationHub'
+2025-08-08 14:23:52.251 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/notificationHub?id=86HKHw50XyXC4LCqYNjFTA&access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyQGV4YW1wbGUuY29tIiwiZW1haWwiOiJ1c2VyQGV4YW1wbGUuY29tIiwidXNlcmlkIjoiZjdhYWM4N2UtYjEzMS00NWFjLWIyYTctOGFhYThmNDRiYTdhIiwidXNlcnJvbGUiOiJVc2VyIiwibmJmIjoxNzU0NjU1NzM5LCJleHAiOjE3NTQ2NzM3MzksImlhdCI6MTc1NDY1NTczOSwiaXNzIjoiQXBpIiwiYXVkIjoiQXBpIn0._r-UAS6CULleXAy0BCx23Nj5Fxh8QDT2O1btvy6J8Dk - 101 null null 91836.5834ms
+2025-08-08 14:23:52.256 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5259/notificationHub?id=-3OpV7GypLWHL0GsZCoyNA&access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyQGV4YW1wbGUuY29tIiwiZW1haWwiOiJ1c2VyQGV4YW1wbGUuY29tIiwidXNlcmlkIjoiZjdhYWM4N2UtYjEzMS00NWFjLWIyYTctOGFhYThmNDRiYTdhIiwidXNlcnJvbGUiOiJVc2VyIiwibmJmIjoxNzU0NjU1NzM5LCJleHAiOjE3NTQ2NzM3MzksImlhdCI6MTc1NDY1NTczOSwiaXNzIjoiQXBpIiwiYXVkIjoiQXBpIn0._r-UAS6CULleXAy0BCx23Nj5Fxh8QDT2O1btvy6J8Dk - 101 null null 92130.9975ms
+2025-08-08 14:23:52.299 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+2025-08-08 14:23:52.307 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+2025-08-08 14:23:52.322 +02:00 [INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.

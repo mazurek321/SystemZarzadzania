@@ -1,24 +1,55 @@
 using Microsoft.AspNetCore.SignalR;
 using Core.Models.Messages;
+using Core.Models.Chats;
 namespace Api.Hubs;
 
 public class MessageHub : Hub
 {
-    public async Task SendMessage(string senderId, string receiverId, string messageContent, DateTime sentAt)
+    private readonly IChatRepository _chatRepository;
+    public MessageHub(
+        IChatRepository chatRepository
+    )
     {
-        await Clients.User(receiverId).SendAsync("ReceiveMessage", new
+        _chatRepository = chatRepository;
+    }
+    public async Task SendMessage(Message message, Guid chatId)
+    {
+        var chat = await _chatRepository.GetByIdAsync(chatId);
+        if (chat == null) return;
+
+        foreach (var participantId in chat.Participants)
         {
-            SenderUserId = senderId,
-            MessageContent = messageContent,
-            SentAt = sentAt
-        });
+            await Clients.User(participantId.ToString())
+                         .SendAsync("ReceiveMessage", new
+                         {
+                             SenderUserId = message.SenderUserId,
+                             MessageContent = message.MessageContent,
+                             SentAt = message.SentAt,
+                             ChatId = chatId
+                         });
+        }
     }
 
-    public async Task Typing(string receiverUserId)
+    public async Task Typing(string chatId)
     {
         var senderUserId = Context.UserIdentifier;
+         if (string.IsNullOrEmpty(senderUserId))
+                return;
+        
+        if (!Guid.TryParse(chatId, out var chatGuid))
+            return;
 
-        if(senderUserId is not null)
-            await Clients.User(receiverUserId).SendAsync("ReceiveTyping", senderUserId);
+        var chat = await _chatRepository.GetByIdAsync(chatGuid);
+            if (chat == null)
+                return;
+
+       foreach (var participantId in chat.Participants)
+            {
+                if (participantId.ToString() != senderUserId)
+                {
+                    await Clients.User(participantId.ToString())
+                                 .SendAsync("ReceiveTyping", senderUserId, chatId);
+                }
+            }
     }
 }

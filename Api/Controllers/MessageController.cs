@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Infrastructure.Database;
 using Core.Models.Users;
 using Core.Models.Messages;
+using Core.Models.Chats;
 using Core.Dto;
 using Infrastructure.Context;
 using Microsoft.Extensions.Logging;
@@ -19,6 +20,7 @@ public class MessageController : ControllerBase
     private readonly ICurrentUserService _user;
     private readonly IUserRepository _userRepository;
     private readonly IMessageRepository _messageRepository;
+    private readonly IChatRepository _chatRepository;
     private readonly ILogger<MessageController> _logger;
     private readonly IMessageSender _messageSender;
 
@@ -27,6 +29,7 @@ public class MessageController : ControllerBase
         ICurrentUserService user,
         IUserRepository userRepository,
         IMessageRepository messageRepository,
+        IChatRepository chatRepository,
         ILogger<MessageController> logger,
         IMessageSender messageSender
     )
@@ -35,6 +38,7 @@ public class MessageController : ControllerBase
         _user = user;
         _userRepository = userRepository;
         _messageRepository = messageRepository;
+        _chatRepository = chatRepository;
         _logger = logger;
         _messageSender = messageSender;
     }
@@ -42,7 +46,7 @@ public class MessageController : ControllerBase
     [HttpPost]
     [Authorize]
     public async Task<IActionResult> CreateMessage(
-        [FromQuery] Guid receiverId,
+        [FromQuery] Guid chatId,
         [FromBody] string messageContent
     )
     {
@@ -50,21 +54,21 @@ public class MessageController : ControllerBase
         if (sender is null)
             return NotFound("Error during sending message.");
 
-        var receiver = await _userRepository.CheckByIdIfExistsAsync(receiverId);
-        if (!receiver)
-            return NotFound("Receiver not found.");
+        var chat = await _chatRepository.GetByIdAsync(chatId);
+        if (chat is null)
+            return NotFound("Chat not found.");
+
+        if (!chat.Participants.Contains(_user.Id.Value))
+            return BadRequest("You cannot send message to this chat.");
 
         var newMessage = Message.NewMessage(
             messageContent,
-            sender.Id,
-            receiverId
+            sender.Id
         );
 
         await _messageRepository.AddAsync(newMessage);
 
-        await _messageSender.SendMessageAsync(newMessage);
-
-        _logger.LogInformation("[Create] User {userId} sent message to {receiver} : {message}", sender.Id, receiverId, messageContent);
+        await _messageSender.SendMessageAsync(newMessage, chat.Id);
 
         return Ok(newMessage);
     }
@@ -82,19 +86,19 @@ public class MessageController : ControllerBase
 
     [HttpGet("browse")]
     [Authorize]
-    public async Task<ActionResult<PagedResult<Message>>> BrowseMessagesWithUser(
-        [FromQuery] Guid receiverId, int pageNumber = 1, int pageSize = 30
+    public async Task<ActionResult<PagedResult<Message>>> BrowseMessages(
+        [FromQuery] Guid chatId, int pageNumber = 1, int pageSize = 30
     )
     {
-        var receiverExists = await _userRepository.CheckByIdIfExistsAsync(receiverId);
-        if (!receiverExists)
-            return NotFound("Receiver not found.");
+        var chat = await _chatRepository.GetByIdAsync(chatId);
+            if (chat == null)
+                return NotFound("Chat not found.");
 
         var user = await _userRepository.CheckByIdIfExistsAsync(_user.Id.Value);
         if (!user)
             return NotFound("User not found.");
 
-        var pagedResult = await _messageRepository.BrowseMessagesWithUserAsync(_user.Id.Value, receiverId, pageNumber, pageSize);
+        var pagedResult = await _messageRepository.BrowseMessages(chat.Id, pageNumber, pageSize);
 
         return Ok(pagedResult);
     }

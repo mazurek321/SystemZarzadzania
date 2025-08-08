@@ -4,6 +4,7 @@ using Core.Models.UserTasks;
 using Core.Models.Categories;
 using Core.Models.Notifications;
 using Core.Models.Messages;
+using Core.Models.Chats;
 using Infrastructure.Services;
 using Infrastructure.Context;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,6 +21,7 @@ public static class Extensions
         services.AddScoped<IUserTaskRepository, UserTaskRepository>();
         services.AddScoped<ICategoryRepository, CategoryRepository>();
         services.AddScoped<INotificationRepository, NotificationRepository>();
+        services.AddScoped<IChatRepository, ChatRepository>();
         services.AddScoped<IMessageRepository, MessageRepository>();
 
         return services;

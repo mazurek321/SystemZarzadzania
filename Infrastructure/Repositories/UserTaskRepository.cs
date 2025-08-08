@@ -47,6 +47,7 @@ internal sealed class UserTaskRepository(AppDbContext dbContext) : IUserTaskRepo
         var tasks = await query
             .Skip((pageNumber - 1) * pageSize)
             .Take(pageSize)
+            .OrderByDescending(x=>x.CreatedAt)
             .ToListAsync();
 
 
@@ -80,7 +81,7 @@ internal sealed class UserTaskRepository(AppDbContext dbContext) : IUserTaskRepo
         if (to.HasValue)
             query = query.Where(x => x.EndDate.Value < to.Value.Date.AddDays(1));
         
-        return await query.ToListAsync();
+        return await query.OrderByDescending(x=>x.CreatedAt).ToListAsync();
     }
 
 
